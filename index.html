@@ -68,6 +68,9 @@
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
   }
 
   .logo span { color: var(--accent2); }
@@ -387,7 +390,7 @@
 <body>
   <header id="top">
     <div class="top-bar">
-      <a class="logo" href="index.html">BIOLEARN<span>9</span></a>
+      <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BIOLEARN<span>9</span></a>
       <a class="catalog-badge" href="#catalog">PLAN CATALOG</a>
     </div>
   </header>
@@ -397,10 +400,10 @@
     <h1>Choose a Training Plan</h1>
     <p class="hero-sub">Select a plan to open the full interactive module. Each plan includes lessons, videos, assignments, and assessments in the same visual system used throughout the course.</p>
     <div class="quick-stats">
-      <div class="stat-chip"><strong>1</strong> plan live</div>
+      <div class="stat-chip"><strong>2</strong> plans live</div>
       <div class="stat-chip"><strong>5</strong> lessons in BIO.3</div>
       <div class="stat-chip"><strong>Virginia SOL</strong> aligned</div>
-      <div class="stat-chip"><strong>6</strong> coming soon</div>
+      <div class="stat-chip"><strong>5</strong> coming soon</div>
     </div>
   </section>
 
@@ -462,20 +465,20 @@
         </div>
       </div>
 
-      <div class="plan-card coming-soon">
+      <div class="plan-card">
         <div class="plan-head">
           <div class="plan-title">Photosynthesis and Cellular Respiration</div>
           <div class="plan-grade">Grade 9</div>
         </div>
-        <div class="plan-meta">Energy conversion pathways, ATP production, chloroplasts vs mitochondria, and lab simulations.</div>
+        <div class="plan-meta">Energy conversion pathways, ATP production, chloroplasts vs mitochondria, plus slides, labs, and quiz.</div>
         <div class="plan-tags">
           <span class="tag blue">BIO.5</span>
-          <span class="tag green">Planned</span>
-          <span class="tag orange">Labs</span>
+          <span class="tag green">Module</span>
+          <span class="tag orange">Labs + Quiz</span>
           <span class="tag purple">Self-Paced</span>
         </div>
         <div class="plan-actions">
-          <span class="btn btn-primary">Coming Soon</span>
+          <a class="btn btn-primary" href="photosynthesis_respiration_lesson_final.html">Open Plan</a>
           <a class="btn btn-outline" href="#ov-bio5">Overview</a>
         </div>
       </div>

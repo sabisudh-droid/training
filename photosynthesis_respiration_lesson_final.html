@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photosynthesis & Cellular Respiration | 9th Grade Biology</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1D9E75;--gl:#E1F5EE;--gm:#9FE1CB;--gd:#085041;
+  --blue:#378ADD;--bl:#E6F1FB;--bd:#0C447C;
+  --amber:#BA7517;--al:#FAEEDA;
+  --purple:#534AB7;--pl:#EEEDFE;
+  --coral:#D85A30;--cl:#FAECE7;
+  --bg:#F0F4F8;--white:#fff;
+  --card:#fff;--border:#E2E8F0;--text:#1A202C;--muted:#64748B;
+  --shadow:0 2px 8px rgba(0,0,0,.07);--shadow-md:0 4px 16px rgba(0,0,0,.1);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+h1,h2,h3,h4{font-family:'Syne',sans-serif}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:980px;margin:0 auto;padding:24px 16px 80px}
+
+/* HEADER */
+header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid var(--border)}
+.top-bar{max-width:980px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.06em;color:var(--gd);text-transform:uppercase;display:inline-block;cursor:pointer}
+.logo span{color:var(--green)}
+.catalog-badge{background:linear-gradient(135deg,var(--green),var(--gm));color:#0b2b22;font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;padding:.3rem .8rem;border-radius:999px;letter-spacing:.08em;display:inline-block}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#04342C,#085041 50%,#1D9E75);border-radius:20px;padding:36px 40px;margin-bottom:24px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+.hero::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:rgba(255,255,255,.05);border-radius:50%}
+.hero-inner{display:flex;align-items:flex-start;gap:18px}
+.hero-icon{font-size:3rem;line-height:1;flex-shrink:0}
+.hero h1{font-size:1.9rem;color:#fff;line-height:1.2}
+.hero p{color:rgba(255,255,255,.75);font-size:13.5px;margin-top:5px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 13px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
+
+/* PROGRESS */
+.prog-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+.prog-row span:last-child{font-weight:700;color:var(--green)}
+.prog-track{height:8px;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.08);margin-bottom:20px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--gm));border-radius:8px;transition:width .5s ease;width:0%}
+
+/* NAV */
+.module-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.nav-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:30px;border:2px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
+.nav-btn:hover{border-color:var(--green);color:var(--gd)}
+.nav-btn.active{background:var(--gd);border-color:var(--gd);color:#fff;box-shadow:0 4px 14px rgba(8,80,65,.3)}
+.nav-check{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;opacity:.4;transition:all .2s;flex-shrink:0}
+.nav-btn.done .nav-check{background:#22C55E;border-color:#22C55E;color:#fff;opacity:1}
+
+/* SECTIONS */
+.section{display:none}
+.section.active{display:block}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-head h2{font-size:1.25rem}
+.stag{background:var(--gl);color:var(--gd);font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;font-family:'DM Sans',sans-serif}
+
+/* CARDS */
+.card{background:var(--card);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.info-box{background:var(--bl);border:1px solid #B5D4F4;border-radius:10px;padding:13px 16px;margin-bottom:18px;font-size:13px;color:var(--bd);line-height:1.7}
+.info-box strong{display:block;font-weight:600;font-size:14px;margin-bottom:2px}
+
+/* ── VIDEO SECTION ── */
+.vid-alert{background:var(--al);border:1px solid #FAC775;border-radius:10px;padding:13px 16px;font-size:13px;color:#4A2800;line-height:1.7;margin-bottom:18px}
+.vid-alert strong{font-weight:600}
+
+/* Upload panel */
+.upload-panel{background:var(--card);border:2px dashed var(--border);border-radius:14px;padding:24px;margin-bottom:24px;transition:border-color .2s}
+.upload-panel:hover{border-color:var(--green)}
+.upload-panel h3{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.upload-panel p{font-size:13px;color:var(--muted);margin-bottom:16px}
+.upload-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.upload-slot{background:#F8FAFC;border:1.5px solid var(--border);border-radius:10px;padding:14px}
+.upload-slot label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.upload-slot input[type=text]{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;margin-bottom:6px;background:#fff;color:var(--text)}
+.upload-slot input[type=text]:focus{outline:none;border-color:var(--green)}
+.upload-slot input[type=file]{width:100%;font-size:12px;color:var(--muted)}
+.apply-btn{margin-top:14px;padding:9px 22px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
+.apply-btn:hover{background:var(--gd)}
+
+/* Video cards grid */
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px}
+.vid-card{background:var(--card);border-radius:14px;overflow:hidden;border:2px solid transparent;box-shadow:var(--shadow);transition:all .25s;cursor:pointer}
+.vid-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--green)}
+.vid-thumb{height:162px;position:relative;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center}
+.vid-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vid-thumb .fallback{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.vid-thumb .overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.vid-card:hover .overlay{background:rgba(0,0,0,.1)}
+.play-btn{width:56px;height:56px;background:rgba(255,255,255,.93);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.play-tri{border-left:22px solid var(--gd);border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px}
+.vid-body{padding:12px 14px 14px}
+.vid-body h3{font-size:13.5px;font-weight:600;margin-bottom:4px;line-height:1.4;font-family:'DM Sans',sans-serif}
+.vid-body p{font-size:12px;color:var(--muted);line-height:1.5}
+.vid-meta{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.vbadge{font-size:10.5px;background:var(--gl);color:var(--gd);border-radius:10px;padding:2px 9px;font-weight:600}
+.vdur{font-size:11px;color:var(--muted)}
+.open-yt{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;font-weight:600;color:#CC0000;background:#FFF0F0;border:1px solid #FFAAAA;border-radius:6px;padding:4px 10px;transition:all .2s}
+.open-yt:hover{background:#FFE0E0}
+
+/* Video player modal area */
+.vid-player{display:none;background:var(--card);border-radius:14px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.vid-player.show{display:block}
+.vp-head{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-bottom:1px solid var(--border);background:#F8FAFC}
+.vp-head h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.vp-close{background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.vp-close:hover{background:var(--border)}
+.iframe-wrap{position:relative;padding-bottom:56.25%;height:0}
+.iframe-wrap iframe,.iframe-wrap video{position:absolute;inset:0;width:100%;height:100%;border:none}
+.local-video-wrap{position:relative;padding-bottom:56.25%;height:0;background:#000}
+.kc-bar{padding:14px 18px;border-top:1px solid var(--border)}
+.kc-bar h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:5px;font-family:'DM Sans',sans-serif}
+.kc-bar p{font-size:13px;color:#475569;line-height:1.7}
+
+/* SLIDES */
+.slide-card{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:16px}
+.slide-body{min-height:350px;padding:30px 36px;display:flex;flex-direction:column;position:relative}
+.t1{background:linear-gradient(135deg,#04342C,#1D9E75)}
+.t2{background:linear-gradient(135deg,#042C53,#378ADD)}
+.t3{background:linear-gradient(135deg,#26215C,#534AB7)}
+.t4{background:linear-gradient(135deg,#411200,#D85A30)}
+.t5{background:linear-gradient(135deg,#173404,#639922)}
+.t6{background:linear-gradient(135deg,#2C2C2A,#888780)}
+.slide-num{position:absolute;top:14px;right:18px;font-size:11px;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif}
+.slide-body h3{font-size:1.45rem;color:#fff;margin-bottom:12px;line-height:1.2}
+.slide-content{color:rgba(255,255,255,.88);font-size:14px;line-height:1.85;flex:1}
+.slide-content ul{padding-left:18px}
+.slide-content li{margin-bottom:6px}
+.slide-content strong{color:#fff;font-weight:600}
+.eq{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:11px 18px;text-align:center;font-size:15px;color:#fff;letter-spacing:.5px;margin:12px 0;font-weight:500}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:5px 12px;font-size:12px;color:#fff}
+.slide-nav{background:#fff;border-top:1px solid var(--border);padding:11px 18px;display:flex;align-items:center;justify-content:space-between}
+.s-btn{padding:8px 20px;border-radius:8px;border:2px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)}
+.s-btn:hover:not(:disabled){background:var(--gd);border-color:var(--gd);color:#fff}
+.s-btn:disabled{opacity:.35;cursor:not-allowed}
+.dots{display:flex;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+.dot.active{background:var(--green);transform:scale(1.4)}
+
+/* VOCAB */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin-bottom:20px}
+.vc{background:#fff;border:2px solid var(--border);border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);min-height:78px}
+.vc:hover{border-color:var(--green)}
+.vc.open{border-color:var(--green);background:var(--gl)}
+.vterm{font-weight:600;font-size:14px;color:var(--gd);margin-bottom:2px}
+.vhint{font-size:11px;color:var(--muted)}
+.vdef{font-size:13px;color:#374151;line-height:1.6;margin-top:8px;border-top:1px solid rgba(29,158,117,.2);padding-top:8px;display:none}
+.vc.open .vdef{display:block}
+.vc.open .vhint{display:none}
+
+/* LAB */
+.lab-top{background:linear-gradient(90deg,var(--gd),var(--green));padding:18px 22px;display:flex;align-items:center;gap:14px;border-radius:14px 14px 0 0}
+.lab-top h3{font-size:1.05rem;color:#fff}
+.lab-top p{font-size:12px;color:rgba(255,255,255,.75);margin-top:2px}
+.lab-tabs{display:flex;border-bottom:1px solid var(--border);background:#F8FAFC;padding:0 16px}
+.ltab{padding:11px 17px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;border:none;background:none;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-1px}
+.ltab:hover{color:var(--gd)}
+.ltab.active{color:var(--gd);border-bottom-color:var(--green)}
+.lpanel{display:none;padding:20px 22px}
+.lpanel.active{display:block}
+.ctrls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.cbox{background:#F8FAFC;border-radius:8px;padding:11px 13px;border:1px solid var(--border)}
+.clbl{font-size:12px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:7px}
+.clbl .cv{color:var(--green);font-weight:700}
+input[type=range]{-webkit-appearance:none;width:100%;height:5px;background:var(--border);border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--green);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.sim-box{background:#F0FDF8;border:1px solid #9FE1CB;border-radius:12px;height:176px;margin-bottom:13px;overflow:hidden}
+.sim-box svg{width:100%;height:100%}
+.meters{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:13px}
+.meter{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+.mlbl{font-size:11px;color:var(--muted);margin-bottom:2px}
+.mnum{font-size:1.35rem;font-weight:700;color:var(--green);font-family:'Syne',sans-serif}
+.munit{font-size:10px;color:var(--muted)}
+.run-btn{width:100%;padding:11px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;margin-bottom:11px;transition:background .2s}
+.run-btn:hover{background:var(--gd)}
+.obs{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:11px 13px;font-size:13px;color:#475569;line-height:1.7;min-height:58px}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:13px}
+.dtable th{background:#F8FAFC;padding:8px 11px;text-align:left;font-weight:600;border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.dtable td{padding:8px 11px;border:1px solid var(--border)}
+.pos{color:#3B6D11;font-weight:500}.neg{color:#A32D2D;font-weight:500}.neu{color:var(--muted)}
+.concl{background:var(--pl);border:1px solid #AFA9EC;border-radius:8px;padding:13px 15px;font-size:13px;color:#26215C;line-height:1.7}
+.concl strong{display:block;font-weight:600;margin-bottom:3px}
+
+/* QUIZ */
+.qwrap{max-width:680px}
+.qmeta{font-size:13px;color:var(--muted);margin-bottom:13px;display:flex;align-items:center;gap:8px}
+.qc{font-weight:700;color:var(--gd)}
+.qcard{background:#fff;border-radius:14px;padding:22px;margin-bottom:13px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.qtext{font-size:15px;font-weight:600;margin-bottom:15px;line-height:1.6;font-family:'DM Sans',sans-serif}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{padding:11px 15px;border:2px solid var(--border);border-radius:10px;background:#FAFAFA;font-size:14px;font-family:'DM Sans',sans-serif;text-align:left;cursor:pointer;transition:all .18s;color:var(--text);line-height:1.4}
+.opt:hover:not(:disabled){border-color:var(--green);background:var(--gl);color:var(--gd)}
+.opt.correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
+.opt.wrong{background:#FEE2E2;border-color:#DC2626;color:#7F1D1D}
+.opt.show-correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
+.opt:disabled{cursor:not-allowed}
+.fb{margin-top:11px;padding:10px 13px;border-radius:8px;font-size:13px;line-height:1.65;display:none}
+.fb.show{display:block}
+.fb.correct{background:#DCFCE7;color:#14532D;border:1px solid #86EFAC}
+.fb.wrong{background:#FEE2E2;color:#7F1D1D;border:1px solid #FCA5A5}
+.qbtns{display:flex;gap:10px;margin-top:4px}
+.qbtn{padding:10px 22px;border-radius:10px;border:2px solid var(--green);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;background:var(--green);color:#fff}
+.qbtn:hover{background:var(--gd);border-color:var(--gd)}
+.qbtn.ol{background:#fff;color:var(--gd)}
+.qbtn.ol:hover{background:var(--gl)}
+
+/* SCORE */
+.score-card{display:none;background:#fff;border-radius:14px;padding:34px;text-align:center;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.score-card.show{display:block}
+.score-ring{width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.9rem;font-weight:700;font-family:'Syne',sans-serif}
+.sg{background:#DCFCE7;color:#14532D;border:4px solid #22C55E}
+.so{background:var(--al);color:#633806;border:4px solid #F59E0B}
+.sl{background:#FEE2E2;color:#7F1D1D;border:4px solid #EF4444}
+.sc-title{font-size:1.2rem;margin-bottom:5px}
+.sc-msg{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:22px}
+.stat{background:#F8FAFC;border-radius:8px;padding:13px 10px}
+.snum{font-size:1.45rem;font-weight:700;font-family:'Syne',sans-serif}
+.slbl{font-size:11px;color:var(--muted);margin-top:2px}
+.sc-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* COMPLETE BTN */
+.done-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:11px 26px;background:var(--green);color:#fff;border:none;border-radius:30px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(29,158,117,.3);transition:all .2s}
+.done-btn:hover{background:var(--gd);transform:translateY(-1px)}
+.done-btn.finished{background:#22C55E;pointer-events:none}
+
+/* ── ASSIGNMENT ── */
+.assign-hero{background:linear-gradient(135deg,#26215C,#534AB7,#7F77DD);border-radius:14px;padding:24px 28px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden}
+.assign-hero::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%}
+.assign-hero h3{font-size:1.2rem;color:#fff;margin-bottom:4px}
+.assign-hero p{font-size:13px;color:rgba(255,255,255,.78);line-height:1.6}
+.assign-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.ameta{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
+.concept-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:22px}
+.concept-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.concept-card .cc-icon{font-size:1.6rem;margin-bottom:6px}
+.concept-card h4{font-size:13px;font-weight:700;color:var(--gd);margin-bottom:4px;font-family:'DM Sans',sans-serif}
+.concept-card p{font-size:12px;color:var(--muted);line-height:1.55}
+.part-card{background:#fff;border:1px solid var(--border);border-radius:14px;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
+.part-header{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);background:#F8FAFC;cursor:pointer;transition:background .2s;user-select:none}
+.part-header:hover{background:#F0F4F8}
+.part-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;flex-shrink:0;color:#fff}
+.pn1{background:var(--green)}.pn2{background:var(--blue)}.pn3{background:var(--purple)}.pn4{background:var(--coral)}.pn5{background:var(--amber)}
+.part-header h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;flex:1}
+.part-header .pts{font-size:11px;font-weight:600;padding:3px 9px;border-radius:8px;background:var(--gl);color:var(--gd)}
+.part-toggle{font-size:18px;color:var(--muted);transition:transform .3s;line-height:1}
+.part-body{padding:18px 20px;display:none}
+.part-body.open{display:block}
+.q-prompt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.5;font-family:'DM Sans',sans-serif}
+.q-hint{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.5;font-style:italic}
+.a-textarea{width:100%;min-height:90px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);resize:vertical;background:#FAFAFA;line-height:1.6;transition:border-color .2s}
+.a-textarea:focus{outline:none;border-color:var(--green);background:#fff}
+.a-textarea.filled{border-color:var(--green);background:#fff}
+.q-divider{border:none;border-top:1px dashed var(--border);margin:16px 0}
+.diagram-area{width:100%;min-height:220px;border:2px dashed var(--border);border-radius:10px;background:#FAFAFA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.diagram-area:hover{border-color:var(--green);background:var(--gl)}
+.diagram-area.has-image .placeholder-text{display:none}
+.diagram-area img.diagram-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
+.diagram-area.has-image img.diagram-preview{display:block}
+.placeholder-text{text-align:center;color:var(--muted);font-size:13px;pointer-events:none}
+.placeholder-text span{font-size:2rem;display:block;margin-bottom:6px}
+.diagram-tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.dtool{padding:7px 14px;border-radius:7px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;color:var(--text);transition:all .2s}
+.dtool:hover{border-color:var(--green);color:var(--gd)}
+.rubric-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px}
+.rubric-table th{background:#F8FAFC;padding:7px 10px;text-align:left;border:1px solid var(--border);font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.35px;font-size:11px;font-family:'DM Sans',sans-serif}
+.rubric-table td{padding:7px 10px;border:1px solid var(--border);vertical-align:top;line-height:1.5}
+.rubric-table tr:nth-child(even) td{background:#FAFAFA}
+.submit-bar{background:linear-gradient(135deg,#04342C,#085041);border-radius:14px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
+.submit-bar p{color:rgba(255,255,255,.8);font-size:13px;line-height:1.5}
+.submit-bar strong{color:#fff;display:block;font-size:15px;margin-bottom:2px}
+.submit-btns{display:flex;gap:10px;flex-wrap:wrap}
+.sbtn{padding:10px 22px;border-radius:10px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.sbtn.primary{background:var(--green);color:#fff}
+.sbtn.primary:hover{background:#fff;color:var(--gd)}
+.sbtn.secondary{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff}
+.sbtn.secondary:hover{background:rgba(255,255,255,.25)}
+.saved-msg{font-size:12px;color:var(--green);font-weight:600;display:none;align-items:center;gap:4px}
+.word-count{font-size:11px;color:var(--muted);text-align:right;margin-top:3px}
+.mc-opts{display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
+.mc-opt{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;background:#FAFAFA}
+.mc-opt:hover{border-color:var(--green);background:var(--gl)}
+.mc-opt input[type=radio]{accent-color:var(--green);width:15px;height:15px;flex-shrink:0}
+.mc-opt.selected{border-color:var(--green);background:var(--gl)}
+.mc-opt label{font-size:13.5px;cursor:pointer;line-height:1.4}
+.fill-blank{display:inline-block;width:160px;border:none;border-bottom:2px solid var(--green);background:transparent;font-size:14px;font-family:'DM Sans',sans-serif;padding:2px 6px;color:var(--gd);outline:none;vertical-align:middle;font-weight:600}
+.fill-blank:focus{border-bottom-color:var(--purple)}
+.fill-sent{font-size:14px;line-height:2.2;margin-bottom:8px}
+.matching-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
+.match-col h4{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-family:'DM Sans',sans-serif}
+.match-item{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:13.5px}
+.match-select{padding:5px 8px;border:1.5px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;background:#fff;color:var(--text);cursor:pointer;flex-shrink:0}
+.match-select:focus{outline:none;border-color:var(--green)}
+.footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--muted)}
+
+/* DARK THEME ALIGNMENT (match BIOLEARN9 catalog style) */
+:root{
+  --bg:#0a0e1a;--white:#0a0e1a;--card:#161d2e;--border:#1e2d45;--text:#e2e8f0;--muted:#64748b;
+  --surface:#111827;--shadow:0 10px 30px rgba(0,0,0,.35);--shadow-md:0 18px 40px rgba(0,0,0,.45);
+  --gl:rgba(74,222,128,.12);--gm:#4ade80;--gd:#166534;--bl:rgba(56,189,248,.12);--bd:#38bdf8;
+  --al:rgba(251,146,60,.12);--pl:rgba(167,139,250,.12);--cl:rgba(244,114,182,.12)
+}
+body{background:var(--bg)}
+header{background:linear-gradient(180deg,rgba(10,14,26,1),rgba(10,14,26,.2));border-bottom:1px solid var(--border)}
+.hero{box-shadow:var(--shadow-md)}
+.card,.upload-panel,.vid-player,.qcard,.slide-nav,.lab-tabs,.lpanel,.sim-box,.obs,.meter,.dtable th,.dtable td,.vc,.part-card{background:var(--card);border-color:var(--border)}
+.info-box,.vid-alert,.upload-slot,.vp-head,.slide-nav,.lab-tabs,.cbox,.a-note,.quiz-note,.concl{background:var(--surface);border-color:var(--border);color:var(--text)}
+.nav-btn{background:var(--surface);border-color:var(--border);color:var(--muted)}
+.nav-btn.active{background:var(--gd);border-color:var(--gd);color:#fff}
+.opt,.mc-opt{background:var(--surface);border-color:var(--border);color:var(--text)}
+.opt:hover:not(:disabled),.mc-opt:hover{background:rgba(74,222,128,.06)}
+.match-select{background:var(--surface);color:var(--text);border-color:var(--border)}
+.upload-slot input[type=text]{background:var(--surface);color:var(--text);border-color:var(--border)}
+.slide-nav{background:var(--card)}
+.s-btn{background:var(--surface);color:var(--text);border-color:var(--border)}
+.s-btn:hover:not(:disabled){background:var(--gd);border-color:var(--gd);color:#fff}
+.score-ring{background:var(--surface)}
+.progress-track{background:var(--border)}
+.prog-row span:last-child{color:var(--gm)}
+
+@media print{
+  .module-nav,.prog-track,.prog-row,.hero-tags,.vid-alert,.upload-panel,.done-btn,.submit-bar,.nav-check,
+  .section:not(#sec-assignment){display:none!important}
+  #sec-assignment{display:block!important}
+  .part-body{display:block!important}
+  .hero{background:#085041!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .assign-hero{background:#534AB7!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .a-textarea{border:1px solid #ccc!important;min-height:60px}
+  body{background:#fff}
+  .wrap{padding:10px}
+  .part-card{break-inside:avoid}
+}
+@media(max-width:580px){
+  .hero{padding:22px 20px}.hero h1{font-size:1.4rem}
+  .ctrls{grid-template-columns:1fr}
+  .meters{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .slide-body{padding:22px 20px}
+  .matching-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BIOLEARN<span>9</span></a>
+      <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">PLAN CATALOG</a>
+    </div>
+  </header>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">🌿</div>
+    <div>
+      <h1>Photosynthesis &amp; Cellular Respiration</h1>
+      <p>9th Grade Biology · Self-Paced Learning Module</p>
+      <div class="hero-tags">
+        <span class="htag">Virginia SOL BIO.4</span>
+        <span class="htag">Virginia SOL BIO.6</span>
+        <span class="htag">6 Modules</span>
+        <span class="htag">10-Question Quiz</span>
+        <span class="htag">Assignment</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="prog-row"><span>Module Progress</span><span id="progTxt">0 of 5 complete</span></div>
+<div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+
+<!-- NAV -->
+<div class="module-nav">
+  <button class="nav-btn active" data-s="videos" onclick="showSec('videos',this)">▶ Videos <span class="nav-check" id="chk-videos"></span></button>
+  <button class="nav-btn" data-s="slides" onclick="showSec('slides',this)">📊 Slides <span class="nav-check" id="chk-slides"></span></button>
+  <button class="nav-btn" data-s="vocab" onclick="showSec('vocab',this)">📖 Vocabulary <span class="nav-check" id="chk-vocab"></span></button>
+  <button class="nav-btn" data-s="lab" onclick="showSec('lab',this)">🔬 Virtual Lab <span class="nav-check" id="chk-lab"></span></button>
+  <button class="nav-btn" data-s="quiz" onclick="showSec('quiz',this)">✏️ Quiz <span class="nav-check" id="chk-quiz"></span></button>
+  <button class="nav-btn" data-s="assignment" onclick="showSec('assignment',this)">📋 Assignment <span class="nav-check" id="chk-assignment"></span></button>
+</div>
+
+<!-- ═══════════════════════════════════════
+     VIDEOS
+═══════════════════════════════════════ -->
+<div class="section active" id="sec-videos">
+  <div class="sec-head"><h2>Video Lessons</h2><span class="stag">3 Videos</span></div>
+
+  <div class="info-box">
+    <strong>Learning Objectives — Virginia SOL BIO.4 &amp; BIO.6</strong>
+    Students will understand how plants capture light energy through photosynthesis and how all living cells release energy through cellular respiration, and explain the relationship between these two processes.
+  </div>
+
+  <div class="vid-alert">
+    <strong>📺 How Videos Work in This Module:</strong>
+    The default videos are Amoeba Sisters links that open directly on YouTube (their videos are not embeddable by design). You can also <strong>upload your own video files</strong> below — once uploaded, they play right inside this page with no YouTube needed. This is the best option for classroom use.
+  </div>
+
+  <!-- UPLOAD PANEL -->
+  <div class="upload-panel">
+    <h3>🎬 Upload Your Own Videos <span style="font-size:11px;background:var(--gl);color:var(--gd);padding:2px 8px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600">Optional</span></h3>
+    <p>Upload MP4, WebM, or any video file from your computer. Once applied, the video plays inside this lesson — no internet needed. You can also paste a custom YouTube URL for any embeddable video.</p>
+    <div class="upload-slots">
+      <div class="upload-slot">
+        <label>Video 1 — Photosynthesis</label>
+        <input type="text" id="url1" placeholder="Paste YouTube URL here (optional)">
+        <input type="file" id="file1" accept="video/*" onchange="previewFile(1)">
+        <div id="file1name" style="font-size:11px;color:var(--green);margin-top:4px"></div>
+      </div>
+      <div class="upload-slot">
+        <label>Video 2 — Cellular Respiration</label>
+        <input type="text" id="url2" placeholder="Paste YouTube URL here (optional)">
+        <input type="file" id="file2" accept="video/*" onchange="previewFile(2)">
+        <div id="file2name" style="font-size:11px;color:var(--green);margin-top:4px"></div>
+      </div>
+      <div class="upload-slot">
+        <label>Video 3 — Fermentation / Other</label>
+        <input type="text" id="url3" placeholder="Paste YouTube URL here (optional)">
+        <input type="file" id="file3" accept="video/*" onchange="previewFile(3)">
+        <div id="file3name" style="font-size:11px;color:var(--green);margin-top:4px"></div>
+      </div>
+    </div>
+    <button class="apply-btn" onclick="applyCustomVideos()">✓ Apply Videos</button>
+    <span id="applyMsg" style="font-size:12px;color:var(--green);margin-left:10px;display:none">✓ Applied!</span>
+  </div>
+
+  <!-- PLAYER -->
+  <div class="vid-player" id="vidPlayer">
+    <div class="vp-head">
+      <h3 id="vpTitle">Video</h3>
+      <button class="vp-close" onclick="closeVid()">✕</button>
+    </div>
+    <div id="vpContent"></div>
+    <div class="kc-bar">
+      <h4>Key Concepts</h4>
+      <p id="vpConcepts"></p>
+    </div>
+  </div>
+
+  <!-- VIDEO CARDS -->
+  <div class="vid-grid" id="vidGrid">
+    <div class="vid-card" id="vcard1" onclick="playVid(1)">
+      <div class="vid-thumb">
+        <img src="https://img.youtube.com/vi/CMiPYHNNg28/hqdefault.jpg" alt="Photosynthesis" onerror="this.outerHTML='<div class=\'fallback\' style=\'background:linear-gradient(135deg,#085041,#1D9E75);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px\'><span style=\'font-size:2.5rem\'>🌱</span><span style=\'color:rgba(255,255,255,.7);font-size:11px\'>Photosynthesis</span></div>'">
+        <div class="overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+      </div>
+      <div class="vid-body">
+        <h3 id="vtitle1">Photosynthesis — Amoeba Sisters</h3>
+        <p id="vdesc1">Light-dependent reactions, Calvin Cycle, chloroplast structure, pigments &amp; plant adaptations</p>
+        <div class="vid-meta">
+          <span class="vbadge" id="vsource1">Amoeba Sisters</span>
+          <span class="vdur">~8 min</span>
+        </div>
+        <a class="open-yt" id="vlink1" href="https://www.youtube.com/watch?v=CMiPYHNNg28" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+    <div class="vid-card" id="vcard2" onclick="playVid(2)">
+      <div class="vid-thumb">
+        <img src="https://img.youtube.com/vi/eJ9Zjc-jdys/hqdefault.jpg" alt="Cellular Respiration" onerror="this.outerHTML='<div class=\'fallback\' style=\'background:linear-gradient(135deg,#042C53,#185FA5);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px\'><span style=\'font-size:2.5rem\'>⚡</span><span style=\'color:rgba(255,255,255,.7);font-size:11px\'>Cellular Respiration</span></div>'">
+        <div class="overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+      </div>
+      <div class="vid-body">
+        <h3 id="vtitle2">Cellular Respiration — Amoeba Sisters</h3>
+        <p id="vdesc2">ATP, glycolysis, Krebs cycle, electron transport chain &amp; why all cells need to respire</p>
+        <div class="vid-meta">
+          <span class="vbadge" id="vsource2">Amoeba Sisters</span>
+          <span class="vdur">~13 min</span>
+        </div>
+        <a class="open-yt" id="vlink2" href="https://www.youtube.com/watch?v=eJ9Zjc-jdys" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+    <div class="vid-card" id="vcard3" onclick="playVid(3)">
+      <div class="vid-thumb">
+        <img src="https://img.youtube.com/vi/YbdkbCU20_M/hqdefault.jpg" alt="Fermentation" onerror="this.outerHTML='<div class=\'fallback\' style=\'background:linear-gradient(135deg,#26215C,#534AB7);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px\'><span style=\'font-size:2.5rem\'>🧫</span><span style=\'color:rgba(255,255,255,.7);font-size:11px\'>Fermentation</span></div>'">
+        <div class="overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+      </div>
+      <div class="vid-body">
+        <h3 id="vtitle3">Fermentation — Amoeba Sisters</h3>
+        <p id="vdesc3">What happens without oxygen — lactic acid fermentation &amp; alcoholic fermentation explained</p>
+        <div class="vid-meta">
+          <span class="vbadge" id="vsource3">Amoeba Sisters</span>
+          <span class="vdur">~7 min</span>
+        </div>
+        <a class="open-yt" id="vlink3" href="https://www.youtube.com/watch?v=YbdkbCU20_M" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="done-btn" id="doneVideos" onclick="markDone('videos')">Mark Videos Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDES
+═══════════════════════════════════════ -->
+<div class="section" id="sec-slides">
+  <div class="sec-head"><h2>Lesson Slides</h2><span class="stag">6 Slides</span></div>
+  <div class="slide-card">
+    <div class="slide-body" id="slideBody"></div>
+    <div class="slide-nav">
+      <button class="s-btn" id="prevBtn" onclick="prevSlide()" disabled>← Previous</button>
+      <div class="dots" id="slideDots"></div>
+      <button class="s-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+    </div>
+  </div>
+  <button class="done-btn" id="doneSlides" onclick="markDone('slides')">Mark Slides Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════════════════════
+     VOCABULARY
+═══════════════════════════════════════ -->
+<div class="section" id="sec-vocab">
+  <div class="sec-head"><h2>Key Vocabulary</h2><span class="stag">Tap to flip</span></div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+  <button class="done-btn" id="doneVocab" onclick="markDone('vocab')">Mark Vocabulary Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════════════════════
+     VIRTUAL LAB
+═══════════════════════════════════════ -->
+<div class="section" id="sec-lab">
+  <div class="sec-head"><h2>Virtual Lab</h2><span class="stag">Interactive Simulation</span></div>
+  <div class="card">
+    <div class="lab-top">
+      <div style="font-size:2rem">🧪</div>
+      <div>
+        <h3>Cell Energy Simulation Lab</h3>
+        <p>Adjust conditions to observe how they affect photosynthesis and cellular respiration</p>
+      </div>
+    </div>
+    <div class="lab-tabs">
+      <button class="ltab active" onclick="switchLab('photo',this)">Photosynthesis Sim</button>
+      <button class="ltab" onclick="switchLab('resp',this)">Respiration Sim</button>
+      <button class="ltab" onclick="switchLab('data',this)">Data Table</button>
+    </div>
+
+    <!-- PHOTO SIM -->
+    <div class="lpanel active" id="lab-photo">
+      <div class="ctrls">
+        <div class="cbox"><div class="clbl">Light Intensity<span class="cv" id="lv">50%</span></div><input type="range" min="0" max="100" value="50" id="ls" oninput="upPhoto()"></div>
+        <div class="cbox"><div class="clbl">CO₂ Concentration<span class="cv" id="cv2">0.040%</span></div><input type="range" min="0" max="100" value="40" id="cs" oninput="upPhoto()"></div>
+        <div class="cbox"><div class="clbl">Temperature<span class="cv" id="tv">25°C</span></div><input type="range" min="5" max="45" value="25" id="ts" oninput="upPhoto()"></div>
+        <div class="cbox"><div class="clbl">Water Availability<span class="cv" id="wv">High</span></div><input type="range" min="0" max="100" value="80" id="ws" oninput="upPhoto()"></div>
+      </div>
+      <div class="sim-box"><svg id="psvg" viewBox="0 0 600 176"></svg></div>
+      <div class="meters">
+        <div class="meter"><div class="mlbl">Glucose Produced</div><div class="mnum" id="glucOut">--</div><div class="munit">mol/hr</div></div>
+        <div class="meter"><div class="mlbl">O₂ Released</div><div class="mnum" id="o2Out">--</div><div class="munit">mol/hr</div></div>
+        <div class="meter"><div class="mlbl">Reaction Rate</div><div class="mnum" id="rOut">--</div><div class="munit">% of max</div></div>
+      </div>
+      <button class="run-btn" onclick="runPhoto()">▶ Run Photosynthesis Simulation</button>
+      <div class="obs" id="plog">Set the conditions above, then click Run Simulation to observe results.</div>
+    </div>
+
+    <!-- RESP SIM -->
+    <div class="lpanel" id="lab-resp">
+      <div class="ctrls">
+        <div class="cbox"><div class="clbl">Glucose Available<span class="cv" id="giv">High</span></div><input type="range" min="0" max="100" value="70" id="gis" oninput="upResp()"></div>
+        <div class="cbox"><div class="clbl">Oxygen (O₂) Available<span class="cv" id="oiv">High</span></div><input type="range" min="0" max="100" value="80" id="ois" oninput="upResp()"></div>
+      </div>
+      <div class="sim-box" style="background:#EFF6FF;border-color:#93C5FD"><svg id="rsvg" viewBox="0 0 600 176"></svg></div>
+      <div class="meters">
+        <div class="meter"><div class="mlbl">ATP Produced</div><div class="mnum" id="atpOut" style="color:var(--blue)">--</div><div class="munit">mol/hr</div></div>
+        <div class="meter"><div class="mlbl">CO₂ Released</div><div class="mnum" id="co2Out" style="color:var(--coral)">--</div><div class="munit">mol/hr</div></div>
+        <div class="meter"><div class="mlbl">Process Type</div><div class="mnum" id="typeOut" style="font-size:13px">--</div><div class="munit">respiration</div></div>
+      </div>
+      <button class="run-btn" onclick="runResp()">▶ Run Respiration Simulation</button>
+      <div class="obs" id="rlog">Adjust oxygen and glucose levels, then click Run Simulation.</div>
+    </div>
+
+    <!-- DATA TABLE -->
+    <div class="lpanel" id="lab-data">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Review observations from both simulations.</p>
+      <table class="dtable">
+        <thead><tr><th>Variable Changed</th><th>Effect on Photosynthesis</th><th>Effect on Respiration</th></tr></thead>
+        <tbody>
+          <tr><td>Light intensity ↑</td><td class="pos">Rate increases (up to a limit)</td><td class="neu">No direct effect</td></tr>
+          <tr><td>CO₂ concentration ↑</td><td class="pos">Rate increases</td><td class="neu">No direct effect</td></tr>
+          <tr><td>Temperature ↑ (to ~35°C)</td><td class="pos">Rate increases</td><td class="pos">Rate increases</td></tr>
+          <tr><td>Temperature above 40°C</td><td class="neg">Enzymes denature — rate drops</td><td class="neg">Enzymes denature — rate drops</td></tr>
+          <tr><td>Water availability ↑</td><td class="pos">Rate increases</td><td class="neu">Indirect only</td></tr>
+          <tr><td>O₂ available (aerobic)</td><td class="neu">No direct effect</td><td class="pos">Aerobic: ~36–38 ATP/glucose</td></tr>
+          <tr><td>No O₂ (anaerobic)</td><td class="neu">No direct effect</td><td style="color:var(--amber);font-weight:500">Anaerobic: only 2 ATP/glucose</td></tr>
+        </tbody>
+      </table>
+      <div class="concl">
+        <strong>📝 Lab Conclusion Prompt (write in your notebook):</strong>
+        How do the products of photosynthesis become the reactants of cellular respiration? In your answer, include both chemical equations and explain how these processes form a cycle that sustains life on Earth.
+      </div>
+    </div>
+  </div>
+  <button class="done-btn" id="doneLab" onclick="markDone('lab')">Mark Lab Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════════════════════
+     QUIZ
+═══════════════════════════════════════ -->
+<div class="section" id="sec-quiz">
+  <div class="sec-head"><h2>Knowledge Check</h2><span class="stag">10 Questions</span></div>
+  <div class="qwrap" id="qwrap">
+    <div class="qmeta"><span class="qc" id="qctr">Question 1 of 10</span></div>
+    <div class="qcard">
+      <div class="qtext" id="qtext"></div>
+      <div class="opts" id="qopts"></div>
+      <div class="fb" id="qfb"></div>
+    </div>
+    <div class="qbtns"><button class="qbtn" id="qnext" onclick="nextQ()" style="display:none">Next Question →</button></div>
+  </div>
+  <div class="score-card" id="scoreCard">
+    <div class="score-ring" id="sring"></div>
+    <div class="sc-title" id="stitle"></div>
+    <div class="sc-msg" id="smsg"></div>
+    <div class="stats">
+      <div class="stat"><div class="snum" style="color:#16A34A" id="sco">0</div><div class="slbl">Correct</div></div>
+      <div class="stat"><div class="snum" style="color:#DC2626" id="swr">0</div><div class="slbl">Incorrect</div></div>
+      <div class="stat"><div class="snum" style="color:var(--green)" id="spct">0%</div><div class="slbl">Score</div></div>
+    </div>
+    <div class="sc-btns">
+      <button class="qbtn" onclick="restartQuiz()">↺ Retake Quiz</button>
+      <button class="qbtn ol" onclick="markDone('quiz')">Finish Module ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ASSIGNMENT
+═══════════════════════════════════════ -->
+<div class="section" id="sec-assignment">
+  <div class="sec-head"><h2>Assignment</h2><span class="stag">6 Parts · 50 Points Total</span></div>
+
+  <!-- Assignment hero -->
+  <div class="assign-hero">
+    <h3>Photosynthesis &amp; Cellular Respiration — Unit Assignment</h3>
+    <p>Complete all six parts using what you learned from the videos, slides, vocabulary, and virtual lab. Type your answers directly in the boxes below. When finished, use the Print button to submit a paper copy or ask your teacher for the Google Classroom link.</p>
+    <div class="assign-meta">
+      <span class="ameta">📅 Due: See teacher</span>
+      <span class="ameta">🎯 50 Points Total</span>
+      <span class="ameta">📖 Virginia SOL BIO.4 &amp; BIO.6</span>
+      <span class="ameta">⏱ ~45 minutes</span>
+    </div>
+  </div>
+
+  <!-- Key Concepts Reference -->
+  <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Key Concepts Reference</p>
+  <div class="concept-strip">
+    <div class="concept-card"><div class="cc-icon">🌿</div><h4>Photosynthesis</h4><p>6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂ · Occurs in chloroplasts</p></div>
+    <div class="concept-card"><div class="cc-icon">⚡</div><h4>Cellular Respiration</h4><p>C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ATP · Occurs in mitochondria</p></div>
+    <div class="concept-card"><div class="cc-icon">🔋</div><h4>ATP &amp; Energy</h4><p>Aerobic: ~36–38 ATP · Anaerobic: only 2 ATP · ATP = cell's energy currency</p></div>
+    <div class="concept-card"><div class="cc-icon">🔄</div><h4>The Carbon Cycle</h4><p>Products of photosynthesis are reactants of respiration — and vice versa</p></div>
+    <div class="concept-card"><div class="cc-icon">🌡️</div><h4>Limiting Factors</h4><p>Light, CO₂, temperature, water · Enzymes denature above ~40°C</p></div>
+    <div class="concept-card"><div class="cc-icon">🧫</div><h4>Fermentation</h4><p>Lactic acid (muscle cells) · Alcoholic (yeast) · No oxygen required</p></div>
+  </div>
+
+  <!-- PART 1: Multiple Choice -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p1')">
+      <div class="part-num pn1">1</div>
+      <h3>Multiple Choice — Core Concepts</h3>
+      <span class="pts">10 pts</span>
+      <span class="part-toggle" id="tog-p1">▼</span>
+    </div>
+    <div class="part-body open" id="p1">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Select the best answer for each question.</p>
+
+      <div class="q-prompt">1. Which organelle carries out photosynthesis?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc1" value="a" onchange="selectMC(this)"><label>A. Mitochondria</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="b" onchange="selectMC(this)"><label>B. Chloroplast</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="c" onchange="selectMC(this)"><label>C. Nucleus</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="d" onchange="selectMC(this)"><label>D. Ribosome</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">2. What is produced during the light-dependent reactions of photosynthesis?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc2" value="a" onchange="selectMC(this)"><label>A. Glucose and CO₂</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="b" onchange="selectMC(this)"><label>B. ATP, NADPH, and O₂</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="c" onchange="selectMC(this)"><label>C. Lactic acid and water</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="d" onchange="selectMC(this)"><label>D. ATP and glucose only</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">3. Approximately how many ATP molecules are produced per glucose in aerobic respiration?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc3" value="a" onchange="selectMC(this)"><label>A. 2</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="b" onchange="selectMC(this)"><label>B. 12</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="c" onchange="selectMC(this)"><label>C. 36–38</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="d" onchange="selectMC(this)"><label>D. 100</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">4. Which statement BEST explains why plants appear green?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc4" value="a" onchange="selectMC(this)"><label>A. Chlorophyll absorbs green light and reflects red and blue</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="b" onchange="selectMC(this)"><label>B. Chlorophyll absorbs red and blue light and reflects green</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="c" onchange="selectMC(this)"><label>C. Plants absorb all wavelengths of light equally</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="d" onchange="selectMC(this)"><label>D. Green light provides the most energy for photosynthesis</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">5. During intense exercise, your muscle cells switch to anaerobic respiration. Which waste product accumulates, causing the burning feeling?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc5" value="a" onchange="selectMC(this)"><label>A. CO₂</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="b" onchange="selectMC(this)"><label>B. Ethanol</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="c" onchange="selectMC(this)"><label>C. Lactic acid</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="d" onchange="selectMC(this)"><label>D. Glucose</label></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 2: Fill in the Blank -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p2')">
+      <div class="part-num pn2">2</div>
+      <h3>Fill in the Blank — Equations &amp; Vocabulary</h3>
+      <span class="pts">10 pts</span>
+      <span class="part-toggle" id="tog-p2">▼</span>
+    </div>
+    <div class="part-body open" id="p2">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Complete each sentence or equation using the correct term or value.</p>
+
+      <div class="fill-sent">1. The green pigment found in chloroplasts that absorbs light energy is called <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()">.</div>
+      <div class="fill-sent">2. The balanced equation for photosynthesis is: <input class="fill-blank" type="text" style="width:50px" placeholder="__" oninput="autoSave()">CO₂ + <input class="fill-blank" type="text" style="width:50px" placeholder="__" oninput="autoSave()">H₂O + light energy → C₆H₁₂O₆ + <input class="fill-blank" type="text" style="width:50px" placeholder="__" oninput="autoSave()">O₂.</div>
+      <div class="fill-sent">3. Aerobic cellular respiration occurs in the <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> organelle.</div>
+      <div class="fill-sent">4. The first stage of cellular respiration, <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()">, takes place in the cytoplasm and produces 2 ATP.</div>
+      <div class="fill-sent">5. When there is no oxygen available, cells perform <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> respiration, also called fermentation.</div>
+      <div class="fill-sent">6. The light-independent reactions of photosynthesis, known as the <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> Cycle, occur in the stroma of the chloroplast.</div>
+      <div class="fill-sent">7. Tiny pores on plant leaves called <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> allow CO₂ to enter and O₂ to exit.</div>
+    </div>
+  </div>
+
+  <!-- PART 3: Matching -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p3')">
+      <div class="part-num pn3">3</div>
+      <h3>Matching — Structures &amp; Functions</h3>
+      <span class="pts">8 pts</span>
+      <span class="part-toggle" id="tog-p3">▼</span>
+    </div>
+    <div class="part-body open" id="p3">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Match each structure or term on the left to its correct function or description on the right.</p>
+      <div class="matching-grid">
+        <div class="match-col">
+          <h4>Term</h4>
+          <div class="match-item"><strong>1. Thylakoid</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+          <div class="match-item"><strong>2. Stroma</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+          <div class="match-item"><strong>3. ATP</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+          <div class="match-item"><strong>4. Mitochondria</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+          <div class="match-item"><strong>5. Chlorophyll</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+          <div class="match-item"><strong>6. Glycolysis</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+          <div class="match-item"><strong>7. Glucose</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+          <div class="match-item"><strong>8. Stomata</strong> →
+            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
+          </div>
+        </div>
+        <div class="match-col">
+          <h4>Description</h4>
+          <p style="font-size:13px;line-height:2"><strong>A.</strong> Site of Calvin Cycle; fluid-filled space in chloroplast<br>
+          <strong>B.</strong> Disk-shaped membrane where light reactions occur<br>
+          <strong>C.</strong> The cell's energy currency molecule<br>
+          <strong>D.</strong> "Powerhouse" organelle; site of aerobic respiration<br>
+          <strong>E.</strong> Pigment that absorbs red and blue light<br>
+          <strong>F.</strong> First stage of respiration; occurs in cytoplasm<br>
+          <strong>G.</strong> 6-carbon sugar; product of photosynthesis<br>
+          <strong>H.</strong> Pores in leaves that allow gas exchange</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 4: Short Answer -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p4')">
+      <div class="part-num pn4">4</div>
+      <h3>Short Answer — Analysis &amp; Explanation</h3>
+      <span class="pts">12 pts</span>
+      <span class="part-toggle" id="tog-p4">▼</span>
+    </div>
+    <div class="part-body open" id="p4">
+
+      <div class="q-prompt">1. Compare and contrast photosynthesis and cellular respiration. In your answer, include the location, reactants, products, and energy transformation for each process. (4 pts)</div>
+      <div class="q-hint">Hint: Think about where each occurs in the cell, what goes in, what comes out, and whether energy is stored or released.</div>
+      <textarea class="a-textarea" id="sa1" placeholder="Type your answer here..." oninput="updateWC('sa1','wc1');autoSave()"></textarea>
+      <div class="word-count" id="wc1">0 words</div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">2. Explain why aerobic respiration produces so much more ATP than anaerobic respiration. What additional steps occur in aerobic respiration that account for this difference? (4 pts)</div>
+      <div class="q-hint">Hint: Think about the Krebs Cycle and Electron Transport Chain — what do these contribute that fermentation lacks?</div>
+      <textarea class="a-textarea" id="sa2" placeholder="Type your answer here..." oninput="updateWC('sa2','wc2');autoSave()"></textarea>
+      <div class="word-count" id="wc2">0 words</div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">3. A plant is placed in a dark room for 24 hours. Predict what will happen to its rates of photosynthesis and cellular respiration, and explain why the plant will eventually die if kept in darkness indefinitely. (4 pts)</div>
+      <div class="q-hint">Hint: Consider what photosynthesis produces that cellular respiration needs, and vice versa.</div>
+      <textarea class="a-textarea" id="sa3" placeholder="Type your answer here..." oninput="updateWC('sa3','wc3');autoSave()"></textarea>
+      <div class="word-count" id="wc3">0 words</div>
+    </div>
+  </div>
+
+  <!-- PART 5: Diagram / Drawing -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p5')">
+      <div class="part-num pn5">5</div>
+      <h3>Diagram — Draw &amp; Label</h3>
+      <span class="pts">5 pts</span>
+      <span class="part-toggle" id="tog-p5">▼</span>
+    </div>
+    <div class="part-body open" id="p5">
+      <div class="q-prompt">Draw a diagram showing the relationship between photosynthesis and cellular respiration as a cycle. Your diagram must include: both chemical equations, arrows showing how products of one become reactants of the other, labels for CO₂, H₂O, O₂, glucose, and ATP, and the sun as the energy source.</div>
+      <div class="q-hint">Hint: Think of this as a circle — photosynthesis on one side, respiration on the other, with molecules flowing between them.</div>
+      <div class="diagram-area" id="diagramArea" onclick="document.getElementById('diagramUpload').click()">
+        <img class="diagram-preview" id="diagramPreview" alt="Uploaded diagram">
+        <div class="placeholder-text">
+          <span>✏️</span>
+          <strong style="font-size:14px;color:#475569">Draw on paper, take a photo, and upload here</strong>
+          <span style="font-size:12px">Click to upload image (JPG, PNG, etc.)</span>
+        </div>
+        <input type="file" id="diagramUpload" accept="image/*" style="display:none" onchange="loadDiagram(event)">
+      </div>
+      <div class="diagram-tools">
+        <button class="dtool" onclick="document.getElementById('diagramUpload').click()">📷 Upload Photo</button>
+        <button class="dtool" onclick="clearDiagram()">🗑 Clear Image</button>
+      </div>
+      <div style="margin-top:12px">
+        <div class="q-prompt" style="font-size:13px">Diagram description (optional — describe your diagram in words):</div>
+        <textarea class="a-textarea" id="diagramDesc" style="min-height:60px" placeholder="Describe your diagram here..." oninput="autoSave()"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 6: Extended Response -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p6')">
+      <div class="part-num" style="background:var(--gd)">6</div>
+      <h3>Extended Response — Real World Application</h3>
+      <span class="pts">5 pts</span>
+      <span class="part-toggle" id="tog-p6">▼</span>
+    </div>
+    <div class="part-body open" id="p6">
+      <div class="q-prompt">Choose ONE of the following scenarios and write a well-developed paragraph (minimum 5 sentences) applying your knowledge of photosynthesis and/or cellular respiration:</div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin:12px 0 16px">
+        <label class="mc-opt"><input type="radio" name="scenario" value="A" onchange="selectMC(this)"><label><strong>Scenario A:</strong> A farmer is trying to maximize crop yield. Explain what environmental conditions they should optimize and why, using your knowledge of limiting factors for photosynthesis.</label></label>
+        <label class="mc-opt"><input type="radio" name="scenario" value="B" onchange="selectMC(this)"><label><strong>Scenario B:</strong> An athlete trains at high altitude where oxygen levels are lower. Explain how their cells produce energy differently and what adaptations might occur over time.</label></label>
+        <label class="mc-opt"><input type="radio" name="scenario" value="C" onchange="selectMC(this)"><label><strong>Scenario C:</strong> Scientists are concerned about deforestation affecting Earth's atmosphere. Explain how losing forests disrupts the balance of photosynthesis and respiration on a global scale.</label></label>
+      </div>
+
+      <textarea class="a-textarea" id="er1" style="min-height:130px" placeholder="Type your extended response here (minimum 5 sentences)..." oninput="updateWC('er1','wc4');autoSave()"></textarea>
+      <div class="word-count" id="wc4">0 words</div>
+
+      <!-- Rubric -->
+      <details style="margin-top:14px">
+        <summary style="font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none">▶ View Scoring Rubric</summary>
+        <table class="rubric-table" style="margin-top:10px">
+          <thead><tr><th>Criteria</th><th>Full Credit</th><th>Partial Credit</th><th>No Credit</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Accuracy</strong> (2 pts)</td><td>All scientific facts are correct and precisely stated</td><td>Minor factual errors that don't undermine main idea</td><td>Major errors or missing key concepts</td></tr>
+            <tr><td><strong>Depth</strong> (2 pts)</td><td>Thorough explanation with specific details (organelles, equations, molecules)</td><td>Some detail but surface-level explanation</td><td>Very vague or no detail</td></tr>
+            <tr><td><strong>Connections</strong> (1 pt)</td><td>Clearly links to real-world context of chosen scenario</td><td>Weak or unclear connection to scenario</td><td>No connection to scenario</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+  </div>
+
+  <!-- Submit Bar -->
+  <div class="submit-bar">
+    <div>
+      <strong>Ready to Submit?</strong>
+      <p>Review all six parts, then print this page or save a screenshot for your teacher.</p>
+      <div class="saved-msg" id="savedMsg">✓ Progress auto-saved</div>
+    </div>
+    <div class="submit-btns">
+      <button class="sbtn secondary" onclick="window.print()">🖨 Print Assignment</button>
+      <button class="sbtn primary" onclick="markDone('assignment')">Mark Assignment Complete ✓</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Photosynthesis &amp; Cellular Respiration · 9th Grade Biology · Virginia SOL BIO.4 &amp; BIO.6</p>
+  <p style="margin-top:4px">Amoeba Sisters videos © Amoeba Sisters LLC — used for educational purposes</p>
+</div>
+</div><!-- /wrap -->
+
+<script>
+/* ──────────────── DATA ──────────────── */
+const VIDS = {
+  1:{title:'Photosynthesis — Amoeba Sisters',ytUrl:'https://www.youtube.com/watch?v=CMiPYHNNg28',embedId:'CMiPYHNNg28',concepts:'Covers: balanced photosynthesis equation (6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂), chlorophyll and other pigments, light-dependent reactions in thylakoids, Calvin Cycle in stroma, and CAM photosynthesis adaptations.',localSrc:null,customUrl:null},
+  2:{title:'Cellular Respiration — Amoeba Sisters',ytUrl:'https://www.youtube.com/watch?v=eJ9Zjc-jdys',embedId:'eJ9Zjc-jdys',concepts:'Covers: what ATP is, the overall respiration equation (C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ATP), glycolysis, Krebs Cycle, Electron Transport Chain, and the difference between aerobic and anaerobic respiration.',localSrc:null,customUrl:null},
+  3:{title:'Fermentation — Amoeba Sisters',ytUrl:'https://www.youtube.com/watch?v=YbdkbCU20_M',embedId:'YbdkbCU20_M',concepts:'Covers: what fermentation is, lactic acid fermentation in muscle cells during exercise, alcoholic fermentation in yeast, why anaerobic only produces 2 ATP vs 36-38 for aerobic, and real-world applications.',localSrc:null,customUrl:null}
+};
+
+const SLIDES=[
+  {t:'t1',title:'What is Photosynthesis?',html:`<ul><li>Photosynthesis converts <strong>light energy → chemical energy</strong> stored as glucose</li><li>Performed by plants, algae, and some bacteria — organisms called <strong>autotrophs</strong></li><li>Occurs inside <strong>chloroplasts</strong>, using the green pigment <strong>chlorophyll</strong></li><li>Chlorophyll absorbs red and blue light; it <em>reflects</em> green light</li><li>Two main stages: <strong>Light-Dependent Reactions</strong> (thylakoids) and the <strong>Calvin Cycle</strong> (stroma)</li></ul><div class="chips"><div class="chip">☀️ Light Energy Input</div><div class="chip">🌿 Chloroplast</div><div class="chip">🍬 Glucose Output</div></div>`},
+  {t:'t2',title:'The Photosynthesis Equation',html:`<p>The balanced overall equation:</p><div class="eq">6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂</div><ul><li><strong>Reactants (inputs):</strong> Carbon dioxide (CO₂), Water (H₂O), Light energy</li><li><strong>Products (outputs):</strong> Glucose (C₆H₁₂O₆) and Oxygen (O₂)</li><li>O₂ released comes from splitting water molecules — this is the source of Earth's breathable oxygen</li><li>Glucose is the energy-rich molecule used to fuel all cellular processes</li></ul>`},
+  {t:'t3',title:'Cellular Respiration',html:`<ul><li>Breaks down glucose to release energy as <strong>ATP</strong> (adenosine triphosphate)</li><li>ATP is the cell's "energy currency" — powers every cellular activity</li><li>Occurs in the <strong>mitochondria</strong> — the "powerhouse of the cell"</li><li>Three stages of <strong>aerobic</strong> respiration:</li></ul><div class="chips"><div class="chip">1️⃣ Glycolysis → 2 ATP (cytoplasm)</div><div class="chip">2️⃣ Krebs Cycle → 2 ATP</div><div class="chip">3️⃣ ETC → 32–34 ATP</div></div><p style="margin-top:10px">Total: approximately <strong>36–38 ATP per glucose molecule</strong></p>`},
+  {t:'t4',title:'Respiration Equation & Types',html:`<p>Aerobic cellular respiration:</p><div class="eq">C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ATP</div><ul><li><strong>Aerobic:</strong> Requires O₂, produces ~36–38 ATP — very efficient</li><li><strong>Anaerobic (fermentation):</strong> No O₂, only 2 ATP<ul style="margin-top:4px"><li><em>Lactic acid fermentation:</em> muscle cells during intense exercise</li><li><em>Alcoholic fermentation:</em> yeast — used in bread &amp; brewing</li></ul></li></ul>`},
+  {t:'t5',title:'Photosynthesis vs. Respiration',html:`<ul><li>These two processes are <strong>complementary opposites</strong></li><li>Products of one process are the reactants of the other</li><li><strong>Photosynthesis:</strong> Light energy → stored chemical energy (glucose)</li><li><strong>Respiration:</strong> Chemical energy (glucose) → usable ATP energy</li><li>Plants perform <em>both</em>; animals only perform respiration</li></ul><div class="chips"><div class="chip">☀️ → Photosynthesis → 🍬 Glucose + O₂</div><div class="chip">🍬 Glucose + O₂ → Respiration → ⚡ ATP</div></div>`},
+  {t:'t6',title:'Factors Affecting Both Processes',html:`<ul><li><strong>Light intensity:</strong> ↑ light = ↑ photosynthesis (until limited by CO₂ or temperature)</li><li><strong>CO₂:</strong> Key limiting factor for photosynthesis; more CO₂ = more glucose</li><li><strong>Temperature:</strong> Both rely on enzymes; optimal ~25–35°C; above ~40°C enzymes denature</li><li><strong>Water:</strong> Reactant in photosynthesis; drought closes stomata, limiting CO₂ intake</li><li><strong>Oxygen:</strong> Required for aerobic respiration; without it, cells use anaerobic fermentation</li><li><strong>Glucose:</strong> Fuel for respiration; must be available for ATP production</li></ul>`}
+];
+
+const VOCAB=[
+  {term:'Chloroplast',def:'Organelle in plant cells where photosynthesis takes place; contains thylakoids and stroma.'},
+  {term:'Chlorophyll',def:'Green pigment in chloroplasts that absorbs red and blue light to power photosynthesis; reflects green light.'},
+  {term:'Mitochondria',def:'Organelle known as the "powerhouse of the cell"; site of aerobic cellular respiration and most ATP production.'},
+  {term:'ATP',def:'Adenosine triphosphate — the cell\'s energy currency; produced by cellular respiration and used to power cellular activities.'},
+  {term:'Glucose (C₆H₁₂O₆)',def:'A 6-carbon sugar; the primary product of photosynthesis and the main fuel broken down in cellular respiration.'},
+  {term:'Glycolysis',def:'First stage of cellular respiration; occurs in the cytoplasm; splits one glucose into two pyruvate molecules, producing 2 ATP.'},
+  {term:'Calvin Cycle',def:'Light-independent reactions of photosynthesis; occurs in the stroma; uses CO₂ and energy to build glucose.'},
+  {term:'Aerobic Respiration',def:'Cellular respiration requiring oxygen; most efficient form, producing approximately 36–38 ATP per glucose.'},
+  {term:'Anaerobic Respiration',def:'Fermentation; respiration without oxygen; produces only 2 ATP per glucose. Includes lactic acid and alcoholic fermentation.'},
+  {term:'Stomata',def:'Tiny pores in plant leaves that allow gas exchange — CO₂ enters, O₂ exits, water vapor can escape.'},
+  {term:'Thylakoid',def:'Membrane-bound disk inside the chloroplast where light-dependent reactions occur; stacked into grana.'},
+  {term:'Stroma',def:'Fluid-filled space surrounding the thylakoids inside a chloroplast; site of the Calvin Cycle.'},
+  {term:'Autotroph',def:'An organism (like a plant) that makes its own food through photosynthesis; a producer in food webs.'},
+  {term:'Heterotroph',def:'An organism that must consume other organisms for energy; cannot perform photosynthesis.'},
+];
+
+const QUESTIONS=[
+  {q:'Which organelle is the primary site of photosynthesis?',opts:['Mitochondria','Nucleus','Chloroplast','Ribosome'],ans:2,exp:'Chloroplasts contain chlorophyll and are where photosynthesis occurs, converting light energy into glucose.'},
+  {q:'What are the three reactants (inputs) of photosynthesis?',opts:['Glucose and O₂','CO₂, H₂O, and light energy','ATP and NADPH','O₂ and glucose only'],ans:1,exp:'Photosynthesis requires CO₂ (from air), H₂O (from roots), and light energy to produce glucose and O₂.'},
+  {q:'Cellular respiration primarily occurs in which organelle?',opts:['Chloroplast','Cell wall','Mitochondria','Vacuole'],ans:2,exp:'The mitochondria is the "powerhouse of the cell" — where aerobic cellular respiration takes place and most ATP is made.'},
+  {q:'Approximately how many ATP are produced per glucose in aerobic cellular respiration?',opts:['2','4','10','36–38'],ans:3,exp:'Aerobic respiration produces ~36–38 ATP through glycolysis (2), Krebs Cycle (2), and the Electron Transport Chain (32–34).'},
+  {q:'What is the chemical formula for glucose?',opts:['C₂H₄O₂','C₆H₁₂O₆','C₁₂H₂₂O₁₁','CO₂'],ans:1,exp:'Glucose is C₆H₁₂O₆ — a 6-carbon sugar. Product of photosynthesis and primary fuel for cellular respiration.'},
+  {q:'During anaerobic respiration in muscle cells, what waste product accumulates?',opts:['CO₂','Ethanol','Lactic acid','Water'],ans:2,exp:'When O₂ runs out, muscle cells switch to lactic acid fermentation, producing lactic acid — causing the burning sensation during exercise.'},
+  {q:'What is the main role of chlorophyll in photosynthesis?',opts:['Absorb CO₂ from the air','Release O₂ into the atmosphere','Absorb light energy to power reactions','Transport water up the stem'],ans:2,exp:'Chlorophyll captures light energy (primarily red and blue wavelengths) to power the light-dependent reactions.'},
+  {q:'Which stage of cellular respiration occurs in the cytoplasm?',opts:['Krebs Cycle','Glycolysis','Electron Transport Chain','Light reactions'],ans:1,exp:'Glycolysis occurs in the cytoplasm and splits one glucose into two pyruvate molecules, producing a net 2 ATP.'},
+  {q:'What happens to photosynthesis rate as light intensity increases?',opts:['It always decreases','It stays the same','It increases until limited by another factor','It immediately stops'],ans:2,exp:'Increasing light raises the photosynthesis rate — up to a point where CO₂ or temperature becomes limiting.'},
+  {q:'Which BEST describes the relationship between photosynthesis and cellular respiration?',opts:['They are completely unrelated','The products of one are reactants of the other','Both produce glucose','Both require sunlight'],ans:1,exp:'Photosynthesis produces glucose and O₂, which are reactants for respiration. Respiration produces CO₂ and H₂O, which are reactants for photosynthesis — they form a complementary cycle!'},
+];
+
+/* ──────────────── STATE ──────────────── */
+const done={};
+let curSlide=0,qIdx=0,score=0,answered=false;
+
+/* ──────────────── NAV ──────────────── */
+function showSec(name,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='slides')renderSlide();
+  if(name==='quiz'){qIdx=0;score=0;answered=false;document.getElementById('qwrap').style.display='block';document.getElementById('scoreCard').classList.remove('show');renderQ();}
+}
+function markDone(name){
+  if(done[name])return;
+  done[name]=true;
+  document.querySelector('[data-s="'+name+'"]').classList.add('done');
+  const n=Object.keys(done).length;
+  document.getElementById('progFill').style.width=(n/6*100)+'%';
+  document.getElementById('progTxt').textContent=n+' of 6 complete';
+  const b=document.getElementById('done'+name.charAt(0).toUpperCase()+name.slice(1));
+  if(b){b.textContent='✓ Complete!';b.classList.add('finished')}
+}
+
+/* ──────────────── VIDEOS ──────────────── */
+function previewFile(n){
+  const f=document.getElementById('file'+n).files[0];
+  if(f){document.getElementById('file'+n+'name').textContent='✓ '+f.name;VIDS[n].localSrc=URL.createObjectURL(f);}
+}
+
+function getYTId(url){
+  const m=url.match(/(?:v=|youtu\.be\/)([^&\s?]+)/);
+  return m?m[1]:null;
+}
+
+function applyCustomVideos(){
+  for(let n=1;n<=3;n++){
+    const urlVal=document.getElementById('url'+n).value.trim();
+    if(urlVal){
+      const id=getYTId(urlVal);
+      if(id){VIDS[n].embedId=id;VIDS[n].customUrl=urlVal;}
+      else{VIDS[n].embedId=null;VIDS[n].customUrl=urlVal;}
+    }
+  }
+  const msg=document.getElementById('applyMsg');
+  msg.style.display='inline';
+  setTimeout(()=>msg.style.display='none',2500);
+}
+
+function playVid(n){
+  const v=VIDS[n];
+  document.getElementById('vpTitle').textContent=v.title;
+  document.getElementById('vpConcepts').textContent=v.concepts;
+  const player=document.getElementById('vidPlayer');
+  const content=document.getElementById('vpContent');
+  player.classList.add('show');
+  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
+  document.getElementById('vcard'+n).style.borderColor='var(--green)';
+
+  if(v.localSrc){
+    // Play uploaded local file
+    content.innerHTML=`<div class="local-video-wrap"><video controls autoplay style="position:absolute;inset:0;width:100%;height:100%;background:#000"><source src="${v.localSrc}">Your browser does not support this video.</video></div>`;
+  } else if(v.embedId){
+    // Try embed
+    content.innerHTML=`<div class="iframe-wrap"><iframe src="https://www.youtube.com/embed/${v.embedId}?autoplay=1&rel=0" allowfullscreen allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe></div>`;
+    // After 2s check if blocked and show fallback
+    setTimeout(()=>{
+      const iframe=content.querySelector('iframe');
+      if(!iframe)return;
+      try{const b=iframe.contentDocument;if(b&&b.title&&b.title.includes('blocked'))showYtFallback(content,n);}catch(e){}
+    },3000);
+  } else {
+    showYtFallback(content,n);
+  }
+  player.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function showYtFallback(container,n){
+  const v=VIDS[n];
+  container.innerHTML=`<div style="background:#111;padding:30px;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+    <div style="font-size:3rem">▶</div>
+    <p style="color:rgba(255,255,255,.8);font-size:13px">This video cannot be embedded. Click below to watch on YouTube.</p>
+    <a href="${v.ytUrl}" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#CC0000;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif;text-decoration:none">▶ Watch on YouTube ↗</a>
+    <p style="color:rgba(255,255,255,.5);font-size:12px">Or upload your own video file using the panel above.</p>
+  </div>`;
+}
+
+function closeVid(){
+  document.getElementById('vidPlayer').classList.remove('show');
+  document.getElementById('vpContent').innerHTML='';
+  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
+}
+
+/* ──────────────── SLIDES ──────────────── */
+function renderSlide(){
+  const s=SLIDES[curSlide];
+  const b=document.getElementById('slideBody');
+  b.className='slide-body '+s.t;
+  b.innerHTML=`<div class="slide-num">Slide ${curSlide+1} of ${SLIDES.length}</div><h3>${s.title}</h3><div class="slide-content">${s.html}</div>`;
+  document.getElementById('prevBtn').disabled=curSlide===0;
+  document.getElementById('nextBtn').disabled=curSlide===SLIDES.length-1;
+  const dots=document.getElementById('slideDots');
+  dots.innerHTML='';
+  SLIDES.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===curSlide?' active':'');d.onclick=()=>{curSlide=i;renderSlide()};dots.appendChild(d);});
+}
+function nextSlide(){if(curSlide<SLIDES.length-1){curSlide++;renderSlide();}}
+function prevSlide(){if(curSlide>0){curSlide--;renderSlide();}}
+
+/* ──────────────── VOCAB ──────────────── */
+(function(){
+  const g=document.getElementById('vocabGrid');
+  VOCAB.forEach(v=>{
+    const c=document.createElement('div');c.className='vc';
+    c.innerHTML=`<div class="vterm">${v.term}</div><div class="vhint">Tap to reveal →</div><div class="vdef">${v.def}</div>`;
+    c.onclick=()=>c.classList.toggle('open');
+    g.appendChild(c);
+  });
+})();
+
+/* ──────────────── LAB ──────────────── */
+function switchLab(name,btn){
+  document.querySelectorAll('.lpanel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ltab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('lab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function calcPhoto(l,c,t,w){
+  let r=(l/100)*(c/100)*100;
+  if(t<10)r*=0.2;else if(t<20)r*=0.6;else if(t<=35)r*=1.0;else if(t<=40)r*=0.7;else r*=Math.max(0,(50-t)/10);
+  r*=(w/100);return Math.min(100,Math.max(0,r));
+}
+
+function upPhoto(){
+  const l=+document.getElementById('ls').value,c=+document.getElementById('cs').value,t=+document.getElementById('ts').value,w=+document.getElementById('ws').value;
+  document.getElementById('lv').textContent=l+'%';
+  document.getElementById('cv2').textContent=(c*0.001).toFixed(3)+'%';
+  document.getElementById('tv').textContent=t+'°C';
+  document.getElementById('wv').textContent=w>60?'High':w>30?'Medium':'Low';
+  drawPhoto(l,c,t,w);
+}
+
+function drawPhoto(l,c,t,w){
+  const rate=calcPhoto(l,c,t,w);
+  const svg=document.getElementById('psvg');
+  let h=`<ellipse cx="300" cy="88" rx="75" ry="58" fill="#9FE1CB" stroke="#1D9E75" stroke-width="2" opacity=".55"/>
+  <text x="300" y="82" text-anchor="middle" font-size="13" fill="#085041" font-family="sans-serif" font-weight="600">Chloroplast</text>
+  <text x="300" y="100" text-anchor="middle" font-size="11" fill="#085041" font-family="sans-serif">Rate: ${Math.round(rate)}%</text>`;
+  const sr=12+(l/100)*16;
+  h+=`<circle cx="55" cy="38" r="${sr}" fill="#EF9F27" opacity="${(0.3+l/150).toFixed(2)}"/>`;
+  const pc=Math.round(rate/5.5);
+  const cols=['#9FE1CB','#FAC775','#B5D4F4','#C0DD97'];
+  for(let i=0;i<pc;i++){const px=(50+Math.random()*500).toFixed(1),py=(10+Math.random()*155).toFixed(1);h+=`<circle cx="${px}" cy="${py}" r="${(2+Math.random()*2).toFixed(1)}" fill="${cols[i%4]}" opacity=".7"/>`;}
+  h+=`<text x="300" y="170" text-anchor="middle" font-size="10" fill="#5F5E5A" font-family="sans-serif">CO₂: ${(c*0.001).toFixed(3)}%  |  Temp: ${t}°C  |  Light: ${l}%  |  Water: ${w>60?'High':w>30?'Med':'Low'}</text>`;
+  svg.innerHTML=h;
+}
+
+function runPhoto(){
+  const l=+document.getElementById('ls').value,c=+document.getElementById('cs').value,t=+document.getElementById('ts').value,w=+document.getElementById('ws').value;
+  const rate=calcPhoto(l,c,t,w);
+  document.getElementById('glucOut').textContent=(rate*0.06).toFixed(2);
+  document.getElementById('o2Out').textContent=(rate*0.36).toFixed(2);
+  document.getElementById('rOut').textContent=Math.round(rate);
+  let obs=`At ${l}% light, ${(c*0.001).toFixed(3)}% CO₂, ${t}°C, and ${w>60?'high':'low'} water: `;
+  if(rate>70)obs+='Photosynthesis is at a HIGH rate — lots of glucose and O₂ being produced.';
+  else if(rate>35)obs+='Photosynthesis is at a MODERATE rate.';
+  else obs+='Photosynthesis rate is LOW.';
+  if(t>40)obs+=' ⚠️ Temperature above 40°C — enzymes are denaturing!';
+  else if(l<15)obs+=' Light is the limiting factor.';
+  else if(c<15)obs+=' CO₂ concentration is the limiting factor.';
+  document.getElementById('plog').textContent=obs;
+}
+
+function upResp(){
+  const g=+document.getElementById('gis').value,o=+document.getElementById('ois').value;
+  document.getElementById('giv').textContent=g>60?'High':g>30?'Medium':'Low';
+  document.getElementById('oiv').textContent=o>60?'High':o>30?'Medium':'Low';
+  drawResp(g,o);
+}
+
+function drawResp(g,o){
+  const aerobic=o>30;
+  const svg=document.getElementById('rsvg');
+  const fill=aerobic?'#B5D4F4':'#F5C4B3',stroke=aerobic?'#378ADD':'#D85A30',tc=aerobic?'#0C447C':'#993C1D';
+  let h=`<ellipse cx="300" cy="88" rx="85" ry="58" fill="${fill}" stroke="${stroke}" stroke-width="2" opacity=".65"/>
+  <text x="300" y="82" text-anchor="middle" font-size="13" fill="${tc}" font-family="sans-serif" font-weight="600">Mitochondria</text>
+  <text x="300" y="100" text-anchor="middle" font-size="11" fill="${tc}" font-family="sans-serif">${aerobic?'Aerobic':'Anaerobic'}</text>`;
+  const cnt=aerobic?Math.round(g*0.25):Math.round(g*0.02);
+  for(let i=0;i<Math.min(cnt,35);i++){const px=(30+Math.random()*540).toFixed(1),py=(8+Math.random()*158).toFixed(1);h+=`<circle cx="${px}" cy="${py}" r="${(2+Math.random()*1.5).toFixed(1)}" fill="${aerobic?'#EF9F27':'#D85A30'}" opacity=".8"/>`;}
+  h+=`<text x="300" y="170" text-anchor="middle" font-size="11" fill="#5F5E5A" font-family="sans-serif">${aerobic?'⚡ Aerobic: ~36–38 ATP / glucose':'⚠️ Anaerobic: only ~2 ATP / glucose'}</text>`;
+  svg.innerHTML=h;
+}
+
+function runResp(){
+  const g=+document.getElementById('gis').value,o=+document.getElementById('ois').value;
+  const aerobic=o>30;
+  const atp=(aerobic?g*0.38:g*0.02).toFixed(2),co2=(aerobic?g*0.36:g*0.01).toFixed(2);
+  document.getElementById('atpOut').textContent=atp;
+  document.getElementById('co2Out').textContent=co2;
+  document.getElementById('typeOut').textContent=aerobic?'Aerobic':'Anaerobic';
+  document.getElementById('typeOut').style.color=aerobic?'var(--blue)':'var(--coral)';
+  const obs=aerobic
+    ?`Aerobic respiration occurring. With O₂ present, the ETC produces ${atp} mol/hr ATP — very efficient! CO₂ (${co2} mol/hr) is released as waste. This is your cells' normal state.`
+    :`Anaerobic fermentation! Without sufficient O₂, only ${atp} mol/hr ATP is produced. In muscle cells this produces lactic acid; in yeast it produces ethanol + CO₂ (alcoholic fermentation).`;
+  document.getElementById('rlog').textContent=obs;
+}
+
+/* ──────────────── QUIZ ──────────────── */
+function renderQ(){
+  if(qIdx>=QUESTIONS.length){showScore();return;}
+  const q=QUESTIONS[qIdx];
+  document.getElementById('qctr').textContent=`Question ${qIdx+1} of ${QUESTIONS.length}`;
+  document.getElementById('qtext').textContent=q.q;
+  const ol=document.getElementById('qopts');ol.innerHTML='';
+  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.onclick=()=>checkA(i,q.ans,q.exp);ol.appendChild(b);});
+  document.getElementById('qfb').className='fb';document.getElementById('qfb').textContent='';
+  document.getElementById('qnext').style.display='none';answered=false;
+}
+
+function checkA(chosen,correct,exp){
+  if(answered)return;answered=true;
+  document.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add(chosen===correct?'correct':'show-correct');else if(i===chosen)b.classList.add('wrong');});
+  if(chosen===correct)score++;
+  const fb=document.getElementById('qfb');
+  fb.className='fb show '+(chosen===correct?'correct':'wrong');
+  fb.textContent=(chosen===correct?'✓ Correct! ':'✗ Not quite. ')+exp;
+  document.getElementById('qnext').style.display='block';
+}
+
+function nextQ(){qIdx++;renderQ();}
+
+function showScore(){
+  document.getElementById('qwrap').style.display='none';
+  const pct=Math.round(score/QUESTIONS.length*100);
+  const ring=document.getElementById('sring');
+  ring.textContent=pct+'%';ring.className='score-ring '+(pct>=80?'sg':pct>=60?'so':'sl');
+  const tiers=[['Keep Studying!','Review the videos and slides, then try again!'],['Good Effort!','Review the vocabulary and try again.'],['Well Done!','Good understanding of both processes!'],['Excellent Work!','Great mastery of photosynthesis and respiration!'],['Perfect Score! 🎉','Outstanding — you\'ve mastered this topic!']];
+  const tier=pct<50?0:pct<65?1:pct<80?2:pct<100?3:4;
+  document.getElementById('stitle').textContent=tiers[tier][0];
+  document.getElementById('smsg').textContent=tiers[tier][1];
+  document.getElementById('sco').textContent=score;document.getElementById('swr').textContent=QUESTIONS.length-score;document.getElementById('spct').textContent=pct+'%';
+  document.getElementById('scoreCard').classList.add('show');
+}
+
+function restartQuiz(){
+  qIdx=0;score=0;answered=false;
+  document.getElementById('qwrap').style.display='block';
+  document.getElementById('scoreCard').classList.remove('show');
+  renderQ();
+}
+
+/* ──────────────── ASSIGNMENT ──────────────── */
+function togglePart(id){
+  const body=document.getElementById(id);
+  const tog=document.getElementById('tog-'+id);
+  const open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  tog.style.transform=open?'':'rotate(180deg)';
+}
+
+function selectMC(radio){
+  const name=radio.name;
+  document.querySelectorAll('input[name="'+name+'"]').forEach(r=>{
+    r.closest('.mc-opt').classList.toggle('selected',r.checked);
+  });
+  autoSave();
+}
+
+function updateWC(textareaId,counterId){
+  const txt=document.getElementById(textareaId).value.trim();
+  const words=txt?txt.split(/\s+/).length:0;
+  document.getElementById(counterId).textContent=words+' word'+(words!==1?'s':'');
+  document.getElementById(textareaId).classList.toggle('filled',txt.length>0);
+}
+
+function loadDiagram(e){
+  const file=e.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    document.getElementById('diagramPreview').src=ev.target.result;
+    document.getElementById('diagramArea').classList.add('has-image');
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearDiagram(){
+  document.getElementById('diagramPreview').src='';
+  document.getElementById('diagramArea').classList.remove('has-image');
+  document.getElementById('diagramUpload').value='';
+}
+
+let saveTimer=null;
+function autoSave(){
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{
+    const msg=document.getElementById('savedMsg');
+    if(msg){msg.style.display='flex';setTimeout(()=>msg.style.display='none',2000);}
+  },800);
+}
+
+/* INIT */
+renderSlide();drawPhoto(50,40,25,80);drawResp(70,80);upPhoto();upResp();
+</script>
+</body>
+</html>
