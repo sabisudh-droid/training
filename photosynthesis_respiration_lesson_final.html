@@ -326,6 +326,11 @@ header{background:linear-gradient(180deg,rgba(10,14,26,1),rgba(10,14,26,.2));bor
 .prog-row span:last-child{color:var(--gm)}
 .vterm,.vdef{color:var(--text)}
 .vhint{color:#94a3b8}
+.obs,.concl,.info-box,.vid-alert,.kc-bar p{color:var(--text)}
+.dtable td{color:var(--text)}
+.dtable th,.mlbl,.munit,.slbl{color:#94a3b8}
+.qmeta{color:var(--muted)}
+.qtext{color:var(--text)}
 
 @media print{
   .module-nav,.prog-track,.prog-row,.hero-tags,.vid-alert,.upload-panel,.done-btn,.submit-bar,.nav-check,
@@ -835,7 +840,7 @@ header{background:linear-gradient(180deg,rgba(10,14,26,1),rgba(10,14,26,.2));bor
         <img class="diagram-preview" id="diagramPreview" alt="Uploaded diagram">
         <div class="placeholder-text">
           <span>✏️</span>
-          <strong style="font-size:14px;color:#475569">Draw on paper, take a photo, and upload here</strong>
+          <strong style="font-size:14px;color:var(--text)">Draw on paper, take a photo, and upload here</strong>
           <span style="font-size:12px">Click to upload image (JPG, PNG, etc.)</span>
         </div>
         <input type="file" id="diagramUpload" accept="image/*" style="display:none" onchange="loadDiagram(event)">
