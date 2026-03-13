@@ -28,6 +28,9 @@ header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid v
 .top-bar{max-width:980px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.06em;color:var(--gd);text-transform:uppercase;display:inline-block;cursor:pointer}
 .logo span{color:var(--green)}
+.nav-links{display:flex;gap:0.8rem;flex-wrap:wrap;align-items:center}
+.nav-link{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid var(--border);padding:0.35rem 0.8rem;border-radius:999px}
+.nav-link:hover{border-color:var(--accent1);color:var(--accent1)}
 .catalog-badge{background:linear-gradient(135deg,var(--green),var(--gm));color:#0b2b22;font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;padding:.3rem .8rem;border-radius:999px;letter-spacing:.08em;display:inline-block}
 
 /* HERO */
@@ -48,10 +51,10 @@ header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid v
 
 /* NAV */
 .module-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.nav-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:30px;border:2px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
+.nav-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:30px;border:1px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
 .nav-btn:hover{border-color:var(--green);color:var(--gd)}
 .nav-btn.active{background:var(--gd);border-color:var(--gd);color:#fff;box-shadow:0 4px 14px rgba(8,80,65,.3)}
-.nav-check{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;opacity:.4;transition:all .2s;flex-shrink:0}
+.nav-check{width:18px;height:18px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;opacity:.4;transition:all .2s;flex-shrink:0}
 .nav-btn.done .nav-check{background:#22C55E;border-color:#22C55E;color:#fff;opacity:1}
 
 /* SECTIONS */
@@ -71,7 +74,7 @@ header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid v
 .vid-alert strong{font-weight:600}
 
 /* Upload panel */
-.upload-panel{background:var(--card);border:2px dashed var(--border);border-radius:14px;padding:24px;margin-bottom:24px;transition:border-color .2s}
+.upload-panel{background:var(--card);border:1px dashed var(--border);border-radius:14px;padding:24px;margin-bottom:24px;transition:border-color .2s}
 .upload-panel:hover{border-color:var(--green)}
 .upload-panel h3{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
 .upload-panel p{font-size:13px;color:var(--muted);margin-bottom:16px}
@@ -86,7 +89,7 @@ header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid v
 
 /* Video cards grid */
 .vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px}
-.vid-card{background:var(--card);border-radius:14px;overflow:hidden;border:2px solid transparent;box-shadow:var(--shadow);transition:all .25s;cursor:pointer}
+.vid-card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid transparent;box-shadow:var(--shadow);transition:all .25s;cursor:pointer}
 .vid-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--green)}
 .vid-thumb{height:162px;position:relative;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center}
 .vid-thumb img{width:100%;height:100%;object-fit:cover;display:block}
@@ -137,7 +140,7 @@ header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid v
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:5px 12px;font-size:12px;color:#fff}
 .slide-nav{background:#fff;border-top:1px solid var(--border);padding:11px 18px;display:flex;align-items:center;justify-content:space-between}
-.s-btn{padding:8px 20px;border-radius:8px;border:2px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)}
+.s-btn{padding:8px 20px;border-radius:8px;border:1px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)}
 .s-btn:hover:not(:disabled){background:var(--gd);border-color:var(--gd);color:#fff}
 .s-btn:disabled{opacity:.35;cursor:not-allowed}
 .dots{display:flex;gap:6px}
@@ -146,7 +149,7 @@ header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid v
 
 /* VOCAB */
 .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin-bottom:20px}
-.vc{background:#fff;border:2px solid var(--border);border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);min-height:78px}
+.vc{background:#fff;border:1px solid var(--border);border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);min-height:78px}
 .vc:hover{border-color:var(--green)}
 .vc.open{border-color:var(--green);background:var(--gl)}
 .vterm{font-weight:600;font-size:14px;color:var(--gd);margin-bottom:2px}
@@ -195,7 +198,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .qcard{background:#fff;border-radius:14px;padding:22px;margin-bottom:13px;box-shadow:var(--shadow);border:1px solid var(--border)}
 .qtext{font-size:15px;font-weight:600;margin-bottom:15px;line-height:1.6;font-family:'DM Sans',sans-serif}
 .opts{display:flex;flex-direction:column;gap:8px}
-.opt{padding:11px 15px;border:2px solid var(--border);border-radius:10px;background:#FAFAFA;font-size:14px;font-family:'DM Sans',sans-serif;text-align:left;cursor:pointer;transition:all .18s;color:var(--text);line-height:1.4}
+.opt{padding:11px 15px;border:1px solid var(--border);border-radius:10px;background:#FAFAFA;font-size:14px;font-family:'DM Sans',sans-serif;text-align:left;cursor:pointer;transition:all .18s;color:var(--text);line-height:1.4}
 .opt:hover:not(:disabled){border-color:var(--green);background:var(--gl);color:var(--gd)}
 .opt.correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
 .opt.wrong{background:#FEE2E2;border-color:#DC2626;color:#7F1D1D}
@@ -206,7 +209,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .fb.correct{background:#DCFCE7;color:#14532D;border:1px solid #86EFAC}
 .fb.wrong{background:#FEE2E2;color:#7F1D1D;border:1px solid #FCA5A5}
 .qbtns{display:flex;gap:10px;margin-top:4px}
-.qbtn{padding:10px 22px;border-radius:10px;border:2px solid var(--green);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;background:var(--green);color:#fff}
+.qbtn{padding:10px 22px;border-radius:10px;border:1px solid var(--green);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;background:var(--green);color:#fff}
 .qbtn:hover{background:var(--gd);border-color:var(--gd)}
 .qbtn.ol{background:#fff;color:var(--gd)}
 .qbtn.ol:hover{background:var(--gl)}
@@ -425,7 +428,12 @@ header{background:linear-gradient(180deg,rgba(10,14,26,1),rgba(10,14,26,.2));bor
   <header>
     <div class="top-bar">
       <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BIOLEARN<span>9</span></a>
-      <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">PLAN CATALOG</a>
+      <div class="nav-links">
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
+        <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">PLAN CATALOG</a>
+      </div>
     </div>
   </header>
 <div class="wrap">

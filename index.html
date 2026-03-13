@@ -73,6 +73,27 @@
     pointer-events: auto;
   }
 
+  .nav-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+  }
+
+  .nav-link:hover { border-color: var(--accent1); color: var(--accent1); }
+
   .logo span { color: var(--accent2); }
 
   .catalog-badge {
@@ -391,7 +412,11 @@
   <header id="top">
     <div class="top-bar">
       <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BIOLEARN<span>9</span></a>
-      <a class="catalog-badge" href="#catalog">PLAN CATALOG</a>
+      <div class="nav-links">
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="catalog-badge" href="#catalog">PLAN CATALOG</a>
+      </div>
     </div>
   </header>
 
@@ -478,7 +503,7 @@
           <span class="tag purple">Self-Paced</span>
         </div>
         <div class="plan-actions">
-          <a class="btn btn-primary" href="grade-9/photosynthesis_respiration_lesson_final.html">Open Plan</a>
+          <a class="btn btn-primary" href="grade-9/bio5-photosynthesis.html">Open Plan</a>
           <a class="btn btn-outline" href="#ov-bio5">Overview</a>
         </div>
       </div>

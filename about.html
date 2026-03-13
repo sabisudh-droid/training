@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — BioLearn9</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --card: #161d2e;
+    --border: #1e2d45;
+    --accent1: #38bdf8;
+    --accent2: #4ade80;
+    --accent3: #f472b6;
+    --accent4: #fb923c;
+    --accent5: #a78bfa;
+    --text: #e2e8f0;
+    --muted: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    z-index: 10;
+    padding: 0 2rem;
+    background: linear-gradient(180deg, rgba(10,14,26,1) 0%, rgba(10,14,26,0) 100%);
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--accent1);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--accent2); }
+
+  .nav-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+  }
+
+  .nav-link:hover { border-color: var(--accent1); color: var(--accent1); }
+
+  .hero {
+    position: relative;
+    z-index: 10;
+    padding: 3.5rem 2rem 2rem;
+    text-align: center;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    background: linear-gradient(135deg, #fff 0%, var(--accent1) 50%, var(--accent5) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+  }
+
+  .profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.2rem;
+  }
+
+  .profile-pic {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .profile-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .profile-role {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .chip {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(56,189,248,.3);
+    color: var(--accent1);
+    background: rgba(56,189,248,.08);
+    margin: 0.2rem 0.2rem 0 0;
+  }
+
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .item {
+    margin-bottom: 1rem;
+  }
+
+  .item:last-child { margin-bottom: 0; }
+
+  .item h3 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .item p {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  footer {
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .content { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 0 1.2rem; }
+    .hero { padding: 2.5rem 1.2rem 1.6rem; }
+    .content { padding: 0 1.2rem 3rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>About Me</h1>
+    <p class="hero-sub">Experienced science educator focused on building clear, rigorous, and engaging biology learning experiences for high school students.</p>
+  </section>
+
+  <main class="content">
+    <aside class="profile-card">
+      <img class="profile-pic" src="artifacts/1516655843740.jpeg" alt="Profile photo">
+      <div class="profile-name">Sabi Sudhakar</div>
+      <div class="profile-role">Science Educator · Curriculum Designer</div>
+      <div>
+        <span class="chip">Biology</span>
+        <span class="chip">AP Environmental</span>
+        <span class="chip">Curriculum Design</span>
+        <span class="chip">STEM</span>
+      </div>
+    </aside>
+
+    <div>
+      <section class="section">
+        <div class="section-title">Education</div>
+        <div class="item">
+          <h3>American College of Education</h3>
+          <p>Master of Education (MEd), Curriculum and Instruction · 2016–2017 · GPA 4.0</p>
+        </div>
+        <div class="item">
+          <h3>University of Mysore</h3>
+          <p>B.Sc.Ed, Chemistry, Botany, Zoology · 1977–1981</p>
+        </div>
+        <div class="item">
+          <h3>Kendriya Vidyalaya</h3>
+          <p>High School Diploma, Biological and Physical Sciences · 1970–1977</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Licenses & Certifications</div>
+        <div class="item">
+          <h3>Professional Teaching Licence</h3>
+          <p>Texas Education Agency · Issued Jul 2017 · Expired Jan 2023</p>
+        </div>
+        <div class="item">
+          <h3>Professional License for Middle Grade Science and High School Biology</h3>
+          <p>South Carolina Department of Education · Issued Jun 2007 · Expired Jun 2022 · Credential ID 221583</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Experience</div>
+        <div class="item">
+          <h3>Teacher, Independence High School (LCPS)</h3>
+          <p>Aug 2022–Present · Loudoun County Public Schools · United States (On-site)</p>
+          <p>Teaching Research Biology and AP Environmental Science to high school students.</p>
+        </div>
+        <div class="item">
+          <h3>Teacher, Baylor College of Medicine Academy at Ryan</h3>
+          <p>Nov 2017–Oct 2023 · Houston, Texas</p>
+          <p>Teaching Earth Science, Life Science, and Physical Science to 7th and 8th grade students.</p>
+        </div>
+        <div class="item">
+          <h3>High School Science Teacher, Allendale-Fairfax High School</h3>
+          <p>Jul 2011–Oct 2017 · Fairfax, South Carolina, USA</p>
+          <p>Taught Biology and Physical Science to high school students.</p>
+        </div>
+        <div class="item">
+          <h3>Middle School Science Teacher, Estill Middle School</h3>
+          <p>Aug 2004–Jun 2011 · Estill, South Carolina</p>
+          <p>Taught Earth Science and Physical Science to middle school students.</p>
+        </div>
+        <div class="item">
+          <h3>Science Teacher, Atomic Energy Central School</h3>
+          <p>Apr 1981–Apr 2001 · Hyderabad, India</p>
+          <p>Taught high school Chemistry and Biology.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    BioLearn9 · About the Instructor
+  </footer>
+</body>
+</html>
