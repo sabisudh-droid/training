@@ -65,6 +65,7 @@
     letter-spacing: 0.05em;
     color: var(--accent1);
     text-transform: uppercase;
+    text-decoration: none;
   }
 
   .logo span { color: var(--accent2); }
@@ -78,6 +79,8 @@
     padding: 0.3rem 0.8rem;
     border-radius: 999px;
     letter-spacing: 0.08em;
+    text-decoration: none;
+    display: inline-block;
   }
 
   .hero {
@@ -303,6 +306,33 @@
     opacity: 0.6;
   }
 
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .overview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+  }
+
+  .overview-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+
+  .overview-card p {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
   .info-banner {
     margin-top: 2rem;
     background: var(--surface);
@@ -353,10 +383,10 @@
 </style>
 </head>
 <body>
-  <header>
+  <header id="top">
     <div class="top-bar">
-      <div class="logo">BIO <span>TRAINING</span></div>
-      <div class="catalog-badge">PLAN CATALOG</div>
+      <a class="logo" href="index.html">BIOLEARN<span>9</span></a>
+      <a class="catalog-badge" href="#catalog">PLAN CATALOG</a>
     </div>
   </header>
 
@@ -368,12 +398,12 @@
       <div class="stat-chip"><strong>1</strong> plan live</div>
       <div class="stat-chip"><strong>5</strong> lessons in BIO.3</div>
       <div class="stat-chip"><strong>Virginia SOL</strong> aligned</div>
-      <div class="stat-chip"><strong>More</strong> coming soon</div>
+      <div class="stat-chip"><strong>6</strong> coming soon</div>
     </div>
   </section>
 
   <main class="content-area">
-    <div class="section-title">Available Training Plans</div>
+    <div id="catalog" class="section-title">Available Training Plans</div>
 
     <div class="plan-grid">
       <div class="plan-card">
@@ -390,7 +420,7 @@
         </div>
         <div class="plan-actions">
           <a class="btn btn-primary" href="bio3-cell-structure.html">Open Plan</a>
-          <a class="btn btn-outline" href="#details">Overview</a>
+          <a class="btn btn-outline" href="#ov-bio3">Overview</a>
         </div>
       </div>
 
@@ -408,7 +438,7 @@
         </div>
         <div class="plan-actions">
           <span class="btn btn-primary">Coming Soon</span>
-          <a class="btn btn-outline" href="#details">Overview</a>
+          <a class="btn btn-outline" href="#ov-bio4">Overview</a>
         </div>
       </div>
 
@@ -426,8 +456,112 @@
         </div>
         <div class="plan-actions">
           <span class="btn btn-primary">Coming Soon</span>
-          <a class="btn btn-outline" href="#details">Overview</a>
+          <a class="btn btn-outline" href="#ov-bio8">Overview</a>
         </div>
+      </div>
+
+      <div class="plan-card coming-soon">
+        <div class="plan-head">
+          <div class="plan-title">Photosynthesis and Cellular Respiration</div>
+          <div class="plan-grade">Grade 9</div>
+        </div>
+        <div class="plan-meta">Energy conversion pathways, ATP production, chloroplasts vs mitochondria, and lab simulations.</div>
+        <div class="plan-tags">
+          <span class="tag blue">BIO.5</span>
+          <span class="tag green">Planned</span>
+          <span class="tag orange">Labs</span>
+          <span class="tag purple">Self-Paced</span>
+        </div>
+        <div class="plan-actions">
+          <span class="btn btn-primary">Coming Soon</span>
+          <a class="btn btn-outline" href="#ov-bio5">Overview</a>
+        </div>
+      </div>
+
+      <div class="plan-card coming-soon">
+        <div class="plan-head">
+          <div class="plan-title">Evolution and Natural Selection</div>
+          <div class="plan-grade">Grade 9</div>
+        </div>
+        <div class="plan-meta">Evidence for evolution, adaptations, selection pressures, and speciation through case studies.</div>
+        <div class="plan-tags">
+          <span class="tag blue">BIO.7</span>
+          <span class="tag green">Planned</span>
+          <span class="tag orange">Case Studies</span>
+          <span class="tag purple">Self-Paced</span>
+        </div>
+        <div class="plan-actions">
+          <span class="btn btn-primary">Coming Soon</span>
+          <a class="btn btn-outline" href="#ov-bio7">Overview</a>
+        </div>
+      </div>
+
+      <div class="plan-card coming-soon">
+        <div class="plan-head">
+          <div class="plan-title">Biological Molecules and Enzymes</div>
+          <div class="plan-grade">Grade 9</div>
+        </div>
+        <div class="plan-meta">Macromolecules, enzyme function, catalysis, and pH/temperature investigations.</div>
+        <div class="plan-tags">
+          <span class="tag blue">BIO.2</span>
+          <span class="tag green">Planned</span>
+          <span class="tag orange">Labs</span>
+          <span class="tag purple">Self-Paced</span>
+        </div>
+        <div class="plan-actions">
+          <span class="btn btn-primary">Coming Soon</span>
+          <a class="btn btn-outline" href="#ov-bio2">Overview</a>
+        </div>
+      </div>
+
+      <div class="plan-card coming-soon">
+        <div class="plan-head">
+          <div class="plan-title">Scientific Investigation and Lab Skills</div>
+          <div class="plan-grade">Grade 9</div>
+        </div>
+        <div class="plan-meta">Experimental design, graphing, claims-evidence-reasoning, measurement, and safety routines.</div>
+        <div class="plan-tags">
+          <span class="tag blue">BIO.1</span>
+          <span class="tag green">Planned</span>
+          <span class="tag orange">Skill Builder</span>
+          <span class="tag purple">Self-Paced</span>
+        </div>
+        <div class="plan-actions">
+          <span class="btn btn-primary">Coming Soon</span>
+          <a class="btn btn-outline" href="#ov-bio1">Overview</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Plan Overviews</div>
+    <div class="overview-grid">
+      <div id="ov-bio3" class="overview-card">
+        <h3>Cell Structure and Function (BIO.3)</h3>
+        <p>Five-lesson sequence on cell theory, organelles, membranes, mitosis, and differentiation. Includes videos, slides, labs, assignments, and a 10-question quiz.</p>
+      </div>
+      <div id="ov-bio4" class="overview-card">
+        <h3>Genetics and Heredity (BIO.4)</h3>
+        <p>Mendelian genetics, Punnett squares, probability, and inheritance patterns. Students build pedigrees and analyze dominant vs recessive traits.</p>
+      </div>
+      <div id="ov-bio8" class="overview-card">
+        <h3>Ecology and Systems (BIO.8)</h3>
+        <p>Energy flow, food webs, biogeochemical cycles, and population dynamics. Emphasizes human impact and ecosystem stability.</p>
+      </div>
+      <div id="ov-bio5" class="overview-card">
+        <h3>Photosynthesis and Cellular Respiration (BIO.5)</h3>
+        <p>ATP production, chemical equations, and organelle roles. Hands-on investigations compare plant and animal energy pathways.</p>
+      </div>
+      <div id="ov-bio7" class="overview-card">
+        <h3>Evolution and Natural Selection (BIO.7)</h3>
+        <p>Evidence for evolution, adaptation, and speciation. Case studies focus on selection pressures and changing environments.</p>
+      </div>
+      <div id="ov-bio2" class="overview-card">
+        <h3>Biological Molecules and Enzymes (BIO.2)</h3>
+        <p>Macromolecules, enzyme structure/function, and reaction rates. Lab activities explore pH, temperature, and substrate specificity.</p>
+      </div>
+      <div id="ov-bio1" class="overview-card">
+        <h3>Scientific Investigation and Lab Skills (BIO.1)</h3>
+        <p>Experimental design, variables, measurement, graphing, and claims-evidence-reasoning. Establishes core lab routines and safety.</p>
       </div>
     </div>
 
