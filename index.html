@@ -5,113 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Training Plans — Self-Paced Biology</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
 <style>
-  :root {
-    --bg: #0a0e1a;
-    --surface: #111827;
-    --card: #161d2e;
-    --border: #1e2d45;
-    --accent1: #38bdf8;
-    --accent2: #4ade80;
-    --accent3: #f472b6;
-    --accent4: #fb923c;
-    --accent5: #a78bfa;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --highlight: #fbbf24;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  header {
-    position: relative;
-    z-index: 10;
-    padding: 0 2rem;
-    background: linear-gradient(180deg, rgba(10,14,26,1) 0%, rgba(10,14,26,0) 100%);
-  }
-
-  .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--accent1);
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    z-index: 20;
-    pointer-events: auto;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-  }
-
-  .nav-link {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text);
-    text-decoration: none;
-    border: 1px solid var(--border);
-    padding: 0.35rem 0.8rem;
-    border-radius: 999px;
-  }
-
-  .nav-link:hover { border-color: var(--accent1); color: var(--accent1); }
-
-  .logo span { color: var(--accent2); }
-
-  .catalog-badge {
-    background: linear-gradient(135deg, var(--accent1), var(--accent5));
-    color: #000;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.7rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: 999px;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    display: inline-block;
-  }
-
   .hero {
-    position: relative;
-    z-index: 10;
     padding: 4rem 2rem 2.5rem;
     text-align: center;
     max-width: 980px;
@@ -125,8 +21,8 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent2);
-    border: 1px solid rgba(74,222,128,.3);
+    color: var(--green);
+    border: 1px solid rgba(29,158,117,.3);
     padding: 0.3rem 1rem;
     border-radius: 999px;
     margin-bottom: 1.5rem;
@@ -137,7 +33,7 @@
     font-size: clamp(2.2rem, 5vw, 3.6rem);
     font-weight: 800;
     line-height: 1.05;
-    background: linear-gradient(135deg, #fff 0%, var(--accent1) 50%, var(--accent5) 100%);
+    background: linear-gradient(135deg, var(--gd) 0%, var(--green) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -167,13 +63,11 @@
     border-radius: 6px;
     padding: 0.35rem 0.8rem;
     color: var(--muted);
+    box-shadow: var(--shadow);
   }
-
-  .stat-chip strong { color: var(--accent1); }
+  .stat-chip strong { color: var(--green); }
 
   .content-area {
-    position: relative;
-    z-index: 10;
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 2rem 4rem;
@@ -191,13 +85,7 @@
     align-items: center;
     gap: 0.8rem;
   }
-
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
   .plan-grid {
     display: grid;
@@ -215,20 +103,19 @@
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
-    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    box-shadow: var(--shadow);
   }
-
   .plan-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent1), transparent);
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--blue));
   }
-
   .plan-card:hover {
-    border-color: var(--accent1);
-    background: rgba(56,189,248,.04);
+    border-color: var(--green);
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
   }
 
@@ -238,38 +125,27 @@
     justify-content: space-between;
     gap: 1rem;
   }
-
   .plan-title {
     font-family: 'Syne', sans-serif;
     font-size: 1.05rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text);
   }
-
   .plan-grade {
     font-size: 0.7rem;
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
-    background: rgba(74,222,128,.12);
-    border: 1px solid rgba(74,222,128,.3);
-    color: var(--accent2);
+    background: var(--gl);
+    border: 1px solid rgba(29,158,117,.3);
+    color: var(--gd);
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
+  .plan-meta { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
-  .plan-meta {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .plan-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
+  .plan-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag {
     font-size: 0.68rem;
     font-weight: 600;
@@ -277,134 +153,60 @@
     border-radius: 999px;
     border: 1px solid;
   }
+  .tag.blue   { color: var(--green);  border-color: rgba(29,158,117,.35); background: var(--gl); }
+  .tag.green  { color: var(--bd);     border-color: rgba(12,68,124,.25);  background: var(--bl); }
+  .tag.orange { color: var(--amber);  border-color: rgba(186,117,23,.3);  background: var(--al); }
+  .tag.purple { color: var(--purple); border-color: rgba(83,74,183,.3);   background: var(--pl); }
 
-  .tag.blue { color: var(--accent1); border-color: rgba(56,189,248,.3); background: rgba(56,189,248,.08); }
-  .tag.green { color: var(--accent2); border-color: rgba(74,222,128,.3); background: rgba(74,222,128,.08); }
-  .tag.orange { color: var(--accent4); border-color: rgba(251,146,60,.3); background: rgba(251,146,60,.08); }
-  .tag.purple { color: var(--accent5); border-color: rgba(167,139,250,.3); background: rgba(167,139,250,.08); }
+  .plan-actions { margin-top: auto; display: flex; align-items: center; gap: 0.6rem; }
 
-  .plan-actions {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.6rem 1.1rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-decoration: none;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent1), var(--accent5));
-    color: #000;
-  }
-
-  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-
-  .btn-outline:hover { border-color: var(--accent1); color: var(--accent1); }
-
-  .coming-soon {
-    opacity: 0.6;
-  }
-
-  .coming-soon .btn-primary {
-    pointer-events: none;
-    opacity: 0.6;
-  }
+  .coming-soon { opacity: 0.55; }
+  .coming-soon .btn-primary { pointer-events: none; }
 
   .overview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1rem;
   }
-
   .overview-card {
-    background: var(--surface);
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 1.2rem 1.3rem;
+    box-shadow: var(--shadow);
   }
-
   .overview-card h3 {
     font-family: 'Syne', sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--gd);
     margin-bottom: 0.4rem;
   }
-
-  .overview-card p {
-    font-size: 0.82rem;
-    color: #94a3b8;
-    line-height: 1.6;
-  }
+  .overview-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
   .info-banner {
     margin-top: 2rem;
-    background: var(--surface);
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.2rem 1.4rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
+    box-shadow: var(--shadow);
   }
-
   .info-block h3 {
     font-family: 'Syne', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--accent1);
+    color: var(--green);
     margin-bottom: 0.4rem;
   }
-
-  .info-block p {
-    font-size: 0.82rem;
-    color: #94a3b8;
-    line-height: 1.6;
-  }
-
-  footer {
-    position: relative;
-    z-index: 10;
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    text-align: center;
-    font-size: 0.78rem;
-    color: var(--muted);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+  .info-block p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
   @media (max-width: 720px) {
     .hero { padding: 2.6rem 1.5rem 2rem; }
     .content-area { padding: 0 1.5rem 3.2rem; }
-    header { padding: 0 1.5rem; }
   }
 </style>
 </head>
@@ -413,8 +215,8 @@
     <div class="top-bar">
       <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BIOLEARN<span>9</span></a>
       <div class="nav-links">
-        <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
         <a class="catalog-badge" href="#catalog">PLAN CATALOG</a>
       </div>
     </div>

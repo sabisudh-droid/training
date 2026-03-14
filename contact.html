@@ -5,208 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — BioLearn9</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
 <style>
-  :root {
-    --bg: #0a0e1a;
-    --surface: #111827;
-    --card: #161d2e;
-    --border: #1e2d45;
-    --accent1: #38bdf8;
-    --accent2: #4ade80;
-    --accent5: #a78bfa;
-    --text: #e2e8f0;
-    --muted: #64748b;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  header {
-    position: relative;
-    z-index: 10;
-    padding: 0 2rem;
-    background: linear-gradient(180deg, rgba(10,14,26,1) 0%, rgba(10,14,26,0) 100%);
-  }
-
-  .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--border);
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--accent1);
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-
-  .logo span { color: var(--accent2); }
-
-  .nav-links {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-  }
-
-  .nav-link {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text);
-    text-decoration: none;
-    border: 1px solid var(--border);
-    padding: 0.35rem 0.8rem;
-    border-radius: 999px;
-  }
-
-  .nav-link:hover { border-color: var(--accent1); color: var(--accent1); }
-
   .hero {
-    position: relative;
-    z-index: 10;
     padding: 3.5rem 2rem 2rem;
     text-align: center;
     max-width: 980px;
     margin: 0 auto;
   }
-
   h1 {
     font-family: 'Syne', sans-serif;
     font-size: clamp(2rem, 5vw, 3.3rem);
     font-weight: 800;
     line-height: 1.05;
-    background: linear-gradient(135deg, #fff 0%, var(--accent1) 50%, var(--accent5) 100%);
+    background: linear-gradient(135deg, var(--gd) 0%, var(--green) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 0.8rem;
   }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 640px; margin: 0 auto; line-height: 1.7; }
 
-  .hero-sub {
-    font-size: 1.05rem;
-    color: var(--muted);
-    max-width: 640px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-
-  .content {
-    position: relative;
-    z-index: 10;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 2rem 4rem;
-  }
+  .content { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
 
   .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 1.6rem;
-  }
-
-  .form-grid {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .field label {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.4rem;
-    font-family: 'Syne', sans-serif;
-  }
-
-  .field input,
-  .field textarea {
-    width: 100%;
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.7rem 0.85rem;
-    font-size: 0.95rem;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .field textarea {
-    min-height: 140px;
-    resize: vertical;
-  }
-
-  .field input:focus,
-  .field textarea:focus {
-    outline: none;
-    border-color: var(--accent1);
-  }
-
-  .form-actions {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent1), var(--accent5));
-    color: #000;
-  }
-
-  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-
-  .form-note {
-    font-size: 0.82rem;
-    color: var(--muted);
+    box-shadow: var(--shadow);
   }
 
   .label {
@@ -219,32 +46,42 @@
     margin-bottom: 0.6rem;
   }
 
-  .contact-line {
-    font-size: 1.05rem;
-    font-weight: 600;
-  }
+  .form-grid { display: grid; gap: 1rem; }
 
-  .contact-line a {
-    color: var(--accent1);
-    text-decoration: none;
-  }
-
-  .contact-line a:hover { color: var(--accent2); }
-
-  footer {
-    position: relative;
-    z-index: 10;
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    text-align: center;
-    font-size: 0.78rem;
+  .field label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--muted);
-    max-width: 860px;
-    margin: 0 auto;
+    margin-bottom: 0.4rem;
+    font-family: 'Syne', sans-serif;
   }
+  .field input,
+  .field textarea {
+    width: 100%;
+    background: var(--surface);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color .2s;
+  }
+  .field textarea { min-height: 140px; resize: vertical; }
+  .field input:focus,
+  .field textarea:focus { outline: none; border-color: var(--green); }
+
+  .form-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
+  .form-note { font-size: 0.82rem; color: var(--muted); }
+
+  .contact-line { font-size: 1.05rem; font-weight: 600; }
+  .contact-line a { color: var(--green); }
+  .contact-line a:hover { color: var(--gd); }
 
   @media (max-width: 600px) {
-    header { padding: 0 1.2rem; }
     .hero { padding: 2.5rem 1.2rem 1.6rem; }
     .content { padding: 0 1.2rem 3rem; }
   }
@@ -256,8 +93,8 @@
       <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
       <div class="nav-links">
         <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
-        <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+        <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
       </div>
     </div>
   </header>

@@ -1,38 +1,46 @@
-# training
+# BioLearn9
 
-Self-paced biology training plans hosted on GitHub Pages.
-
-## Structure
-
-- `index.html`: Catalog home page that lists all available plans.
-- `grade-9/`: Grade 9 plan modules (one HTML per plan).
-  - `bio3-cell-structure.html`: BIO.3 Cell Structure & Function module.
-  - `photosynthesis_respiration_lesson_final.html`: BIO.5 Photosynthesis & Cellular Respiration module.
+Self-paced biology training plans for 9th grade students, hosted on GitHub Pages.
 
 ## Live Site
 
-- Home page: https://sabisudh-droid.github.io/training/
+**https://sabisudh-droid.github.io/training/**
+
+## Structure
+
+```
+training_v2/
+├── index.html                        ← Catalog home page
+├── about.html                        ← Instructor bio
+├── contact.html                      ← Contact form
+├── theme.css                         ← Shared design system (all pages link this)
+├── CLAUDE.md                         ← Authoring guide for adding new plans
+└── grade-9/
+    ├── bio3-cell-structure.html      ← BIO.3 Cell Structure & Function
+    ├── bio4-genetics-heredity.html   ← BIO.4 Genetics & Heredity
+    ├── bio5-photosynthesis.html      ← BIO.5 Photosynthesis & Cellular Respiration
+    └── bio8-ecology-systems.html     ← BIO.8 Ecology & Systems
+```
 
 ## How to Add a New Plan
 
-1. Duplicate an existing module in `grade-9/` and rename it (kebab-case preferred).
-2. Update the plan content (title, lesson data, videos, assignments, quiz).
-3. Add a plan card to `index.html`:
-   - Title, grade, short summary
-   - Tags (BIO.* alignment, lesson count, labs/quiz, self-paced)
-   - Link the **Open Plan** button to the new HTML path (e.g. `grade-9/your-plan.html`)
-4. Add a matching entry in the **Plan Overviews** section and update the `Overview` anchor on the card.
+See **CLAUDE.md** for the full step-by-step guide. Short version:
 
-## Style Consistency Rules
+1. Copy `grade-9/bio5-photosynthesis.html` as the starting template and rename it.
+2. Update the content (title, SOL standard, videos, slides, vocab, lab, quiz, assignment).
+3. Add a plan card to the `plan-grid` in `index.html`.
+4. Add a matching entry to the `overview-grid` in `index.html`.
 
-- Typography: `Syne` for headings, `DM Sans` for body.
-- Theme: Dark background, high-contrast text, and neon-accent borders.
-- Navigation: `BIOLEARN9` logo always links to the catalog home page.
-- Catalog badge: `PLAN CATALOG` links to `#catalog` on the home page.
-- Contrast: light text on dark surfaces, dark text on light surfaces.
+## Style
+
+- **Theme:** Photosynthesis-inspired light theme — `#F0F4F8` background, `#1D9E75` green primary, white cards.
+- **Shared styles:** All pages link `theme.css` (root pages) or `../theme.css` (grade-9 pages).
+- **Typography:** `Syne` for headings, `DM Sans` for body — loaded via Google Fonts.
+- **Navigation:** All nav links use absolute GitHub Pages URLs.
+- **Logo:** `BIOLEARN9` always links to `https://sabisudh-droid.github.io/training/`.
 
 ## Local Preview
 
-Open `index.html` in a browser. Then use the **Open Plan** buttons to navigate to modules in `grade-9/`.
+Open `index.html` directly in a browser. Use the **Open Plan** buttons to navigate to modules.
 
-Note: Some embedded video iframes may not load on `file://` URLs. Use GitHub Pages for full functionality.
+> Some embedded video iframes may not load on `file://` URLs. Use GitHub Pages for full functionality.

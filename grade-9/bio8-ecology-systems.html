@@ -3,41 +3,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ecology — 9th Grade Science | Virginia SOL</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
 <style>
+  /* Map bio8 ecology vars to the shared theme palette */
   :root {
-    --forest: #1a3a2a;
-    --moss: #2d5a3d;
-    --leaf: #4a8c5c;
-    --lime: #7ec850;
-    --sky: #a8d8b0;
-    --cream: #f5f0e8;
-    --sand: #e8dfc8;
-    --bark: #6b4e35;
-    --sun: #f2c94c;
-    --water: #4a9eba;
-    --text: #1c1c1c;
-    --muted: #6b7c6e;
-    --white: #ffffff;
+    --forest: var(--gd);
+    --moss:   var(--green);
+    --leaf:   var(--green);
+    --lime:   #7ec850;
+    --sky:    var(--gm);
+    --cream:  var(--bg);
+    --sand:   var(--border);
+    --bark:   #6b4e35;
+    --sun:    #f2c94c;
+    --water:  var(--blue);
+    --white:  #ffffff;
     --progress-h: 6px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; overflow-x: hidden; }
 
-  header { background: var(--forest); color: var(--white); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,.35); }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; gap: 16px; flex-wrap: wrap; }
-  .logo { display: flex; align-items: center; gap: 12px; }
-  .logo-icon { width: 40px; height: 40px; background: var(--lime); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-  .logo-text h1 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: .5px; line-height: 1.1; }
-  .logo-text p { font-size: .72rem; color: var(--sky); font-weight: 300; letter-spacing: 1.5px; text-transform: uppercase; }
-  .header-progress { display: flex; align-items: center; gap: 10px; flex: 1; max-width: 340px; margin: 0 auto; }
-  .progress-label { font-size: .75rem; color: var(--sky); white-space: nowrap; }
-  .progress-bar-wrap { flex: 1; background: rgba(255,255,255,.15); border-radius: 99px; height: var(--progress-h); overflow: hidden; }
+  /* Progress sub-bar below top-bar */
+  .header-progress { display: flex; align-items: center; gap: 10px; padding: 6px 2rem; background: var(--gd); }
+  .progress-label { font-size: .72rem; color: var(--gm); white-space: nowrap; }
+  .progress-bar-wrap { flex: 1; background: rgba(255,255,255,.2); border-radius: 99px; height: var(--progress-h); overflow: hidden; max-width: 340px; }
   .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--lime), var(--sun)); border-radius: 99px; transition: width .5s ease; width: 0%; }
-  .xp-badge { background: var(--sun); color: var(--forest); font-family: 'Syne', sans-serif; font-weight: 700; font-size: .78rem; padding: 4px 10px; border-radius: 99px; }
+  .save-btn { background: var(--lime); color: var(--gd); border: none; border-radius: 8px; padding: 5px 14px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: .75rem; cursor: pointer; white-space: nowrap; margin-left: auto; }
 
-  .app { display: grid; grid-template-columns: 270px 1fr; min-height: calc(100vh - 68px); }
+  .app { display: grid; grid-template-columns: 270px 1fr; min-height: calc(100vh - 84px); }
 
-  .sidebar { background: var(--forest); color: var(--white); padding: 24px 0; position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--moss) transparent; }
+  .sidebar { background: var(--forest); color: var(--white); padding: 24px 0; position: sticky; top: 84px; height: calc(100vh - 84px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--moss) transparent; }
   .sidebar-title { font-family: 'Syne', sans-serif; font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sky); padding: 0 24px 12px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 12px; }
   .module-btn { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; padding: 12px 24px; text-align: left; transition: background .2s; position: relative; }
   .module-btn:hover { background: rgba(255,255,255,.06); }
@@ -330,22 +325,19 @@
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo">
-      <div class="logo-icon">🌿</div>
-      <div class="logo-text">
-        <h1>Ecology Explorer</h1>
-        <p>Virginia SOL · Biology 9th Grade</p>
-      </div>
+  <div class="top-bar">
+    <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
+      <a class="catalog-badge" href="#">BIO.8</a>
     </div>
-    <div class="header-progress">
-      <span class="progress-label">Progress</span>
-      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="globalProgress" style="width: 0%;"></div></div>
-      <div class="xp-badge" id="xpDisplay">220 XP</div>
-      <button onclick="saveAndDownload()" style="background:var(--lime);color:var(--forest);border:none;border-radius:8px;padding:8px 16px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px;" title="Save your video links permanently into the file">
-        💾 Save &amp; Download
-      </button>
-    </div>
+  </div>
+  <div class="header-progress">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="globalProgress" style="width:0%"></div></div>
+    <span class="progress-label" id="xpDisplay">0 XP</span>
+    <button class="save-btn" onclick="saveAndDownload()" title="Save your video links permanently into the file">💾 Save &amp; Download</button>
   </div>
 </header>
 

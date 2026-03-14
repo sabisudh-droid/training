@@ -5,69 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Genetics & Heredity — 9th Grade Biology</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
 <style>
+/* Map bio4 variables to the shared theme palette */
 :root {
-  --ink:    #0d1b2a;
-  --navy:   #1a3a5c;
-  --teal:   #0a7e8c;
-  --cyan:   #00c9b8;
+  --ink:    var(--text);
+  --navy:   var(--gd);
+  --teal:   var(--green);
+  --cyan:   var(--green);
   --lime:   #6cc04a;
-  --amber:  #e8a020;
-  --rose:   #d63a5a;
-  --purple: #7c3aed;
-  --cream:  #f5f0e8;
-  --paper:  #faf8f4;
-  --muted:  #6b7a8d;
-  --rule:   #e2ddd6;
-  --card:   #ffffff;
-  --gene-bg:#0f2a3f;
+  --amber:  var(--amber);
+  --rose:   var(--coral);
+  --purple: var(--purple);
+  --cream:  var(--bg);
+  --paper:  var(--surface);
+  --rule:   var(--border);
+  --gene-bg: var(--gd);
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(13,27,42,0.95);
-  backdrop-filter: blur(12px);
-  padding: 0 2rem;
-  display: flex; align-items: center; gap: 0;
-  border-bottom: 2px solid var(--cyan);
-  height: 52px;
-}
-nav .logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800; font-size: 1rem;
-  color: var(--cyan); letter-spacing: 0.08em;
-  margin-right: 2.5rem; white-space: nowrap;
-}
-.nav-links { display: flex; gap: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-.nav-links::-webkit-scrollbar { display: none; }
-.nav-links a {
-  color: rgba(255,255,255,0.6); text-decoration: none;
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
-  padding: 0 1rem; height: 52px; display: flex; align-items: center;
-  text-transform: uppercase; transition: color 0.2s, border-color 0.2s;
-  border-bottom: 2px solid transparent; white-space: nowrap;
-}
-.nav-links a:hover, .nav-links a.active { color: #fff; border-bottom-color: var(--cyan); }
 
 /* HERO */
 #hero {
-  min-height: 100vh;
+  min-height: 90vh;
   background: var(--gene-bg);
   display: flex; flex-direction: column; justify-content: center;
-  padding: 6rem 4rem 4rem;
+  padding: 4rem 4rem 4rem;
   position: relative; overflow: hidden;
 }
 .dna-bg {
@@ -125,7 +86,7 @@ nav .logo {
 }
 
 /* SECTION LAYOUT */
-section { padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; }
+section { padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; scroll-margin-top: 60px; }
 .section-header {
   display: flex; align-items: baseline; gap: 1.5rem;
   margin-bottom: 3rem; padding-bottom: 1rem;
@@ -733,19 +694,18 @@ footer span { color: var(--cyan); }
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">BIO.6 ◆ GENETICS</div>
-  <div class="nav-links">
-    <a href="#vocab">Vocabulary</a>
-    <a href="#mendel">Mendelian</a>
-    <a href="#punnett">Punnett Squares</a>
-    <a href="#nonmendelian">Non-Mendelian</a>
-    <a href="#videos">Amoeba Sisters</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#summary">Summary</a>
+<!-- HEADER -->
+<header>
+  <div class="top-bar">
+    <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
+    <nav class="nav-links">
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
+      <a class="catalog-badge" href="#hero">BIO.4</a>
+    </nav>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
 <div id="hero">

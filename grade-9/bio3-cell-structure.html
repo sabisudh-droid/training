@@ -5,110 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cell Structure — BIO.3 Self-Paced Course</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
 <style>
+  /* Map accent vars to photosynthesis theme palette */
   :root {
-    --bg: #0a0e1a;
-    --surface: #111827;
-    --card: #161d2e;
-    --border: #1e2d45;
-    --accent1: #38bdf8;
-    --accent2: #4ade80;
-    --accent3: #f472b6;
-    --accent4: #fb923c;
-    --accent5: #a78bfa;
-    --text: #e2e8f0;
-    --muted: #64748b;
+    --accent1: var(--green);
+    --accent2: var(--blue);
+    --accent3: var(--coral);
+    --accent4: var(--amber);
+    --accent5: var(--purple);
     --highlight: #fbbf24;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ── GRID BACKGROUND ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── HEADER ── */
-  header {
-    position: relative;
-    z-index: 10;
-    padding: 0 2rem;
-    background: linear-gradient(180deg, rgba(10,14,26,1) 0%, rgba(10,14,26,0) 100%);
-  }
-
-  .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--accent1);
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    z-index: 20;
-    pointer-events: auto;
-  }
-
-  .logo span { color: var(--accent2); }
-
-  .sol-badge {
-    background: linear-gradient(135deg, var(--accent1), var(--accent5));
-    color: #000;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.7rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: 999px;
-    letter-spacing: 0.08em;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .nav-link {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text);
-    text-decoration: none;
-    border: 1px solid var(--border);
-    padding: 0.35rem 0.8rem;
-    border-radius: 999px;
-  }
-
-  .nav-link:hover { border-color: var(--accent1); color: var(--accent1); }
 
   /* ── HERO ── */
   .hero {
@@ -307,7 +214,7 @@
     font-family: 'Syne', sans-serif;
     font-size: 1.05rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--gd);
   }
 
   .card-meta {
@@ -319,7 +226,7 @@
   .card p {
     font-size: 0.92rem;
     line-height: 1.7;
-    color: #94a3b8;
+    color: var(--muted);
     margin-bottom: 0.8rem;
   }
 
@@ -375,7 +282,7 @@
     font-family: 'Syne', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--text);
     margin-bottom: 0.2rem;
   }
 
@@ -517,7 +424,7 @@
     font-family: 'Syne', sans-serif;
     font-size: 1.4rem;
     font-weight: 800;
-    color: #fff;
+    color: var(--gd);
     margin-bottom: 0.4rem;
   }
 
@@ -539,7 +446,7 @@
   .quiz-q .q-text {
     font-size: 0.95rem;
     font-weight: 500;
-    color: #fff;
+    color: var(--text);
     margin-bottom: 0.8rem;
     line-height: 1.5;
   }
@@ -564,7 +471,7 @@
     color: var(--text);
   }
 
-  .q-opt:hover { border-color: var(--accent1); background: rgba(56,189,248,.06); }
+  .q-opt:hover { border-color: var(--green); background: var(--gl); }
   .q-opt.correct { border-color: var(--accent2); background: rgba(74,222,128,.1); color: var(--accent2); }
   .q-opt.wrong { border-color: var(--accent3); background: rgba(244,114,182,.1); color: var(--accent3); }
 
@@ -645,7 +552,7 @@
 
   .assign-desc {
     font-size: 0.88rem;
-    color: #94a3b8;
+    color: var(--muted);
     line-height: 1.6;
     margin-bottom: 0.8rem;
   }
@@ -693,42 +600,10 @@
     padding: 0.25rem 0.7rem;
   }
 
-  /* ── BUTTONS ── */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.6rem 1.4rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-decoration: none;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent1), var(--accent5));
-    color: #000;
-  }
-
-  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-
-  .btn-outline:hover { border-color: var(--accent1); color: var(--accent1); }
-
+  /* ── BUTTONS (page-specific) ── */
   .btn-green {
-    background: linear-gradient(135deg, var(--accent2), #16a34a);
-    color: #000;
+    background: linear-gradient(135deg, var(--green), var(--gd));
+    color: #fff;
   }
 
   .mark-btn {
@@ -746,8 +621,8 @@
     transition: all 0.15s;
   }
 
-  .mark-btn:hover { border-color: var(--accent2); color: var(--accent2); }
-  .mark-btn.done { border-color: var(--accent2); color: var(--accent2); background: rgba(74,222,128,.08); }
+  .mark-btn:hover { border-color: var(--green); color: var(--green); }
+  .mark-btn.done { border-color: var(--green); color: var(--green); background: var(--gl); }
 
   /* ── QUIZ SCORE ── */
   .score-display {
@@ -814,27 +689,14 @@
   .compare-table td {
     padding: 0.7rem 1rem;
     border-bottom: 1px solid var(--border);
-    color: #94a3b8;
+    color: var(--muted);
     vertical-align: top;
   }
 
-  .compare-table tr:hover td { background: rgba(56,189,248,.04); }
+  .compare-table tr:hover td { background: var(--gl); }
 
   .yes { color: var(--accent2); font-weight: 600; }
   .no { color: var(--accent3); }
-
-  /* ── FOOTER ── */
-  footer {
-    position: relative;
-    z-index: 10;
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    text-align: center;
-    font-size: 0.78rem;
-    color: var(--muted);
-    max-width: 860px;
-    margin: 0 auto;
-  }
 
   /* ── YOUTUBE CARD ── */
   .yt-card {
@@ -871,17 +733,10 @@
     padding: 1rem 1rem 0.6rem; text-align: center; letter-spacing: 0.05em;
   }
 
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
-
   @media (max-width: 600px) {
     .hero { padding: 2.5rem 1.5rem 2rem; }
     .content-area { padding: 0 1rem 3rem; }
     .progress-wrap, .tab-nav { padding: 0 1rem; }
-    header { padding: 0 1rem; }
   }
 </style>
 </head>
@@ -890,7 +745,7 @@
 <!-- HEADER -->
 <header>
   <div class="top-bar">
-    <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BioLearn<span>9</span></a>
+    <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BIOLEARN<span>9</span></a>
     <div class="nav-links">
       <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
       <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
