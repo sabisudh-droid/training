@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genetics & Heredity — 9th Grade Biology</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0d1b2a;
+  --navy:   #1a3a5c;
+  --teal:   #0a7e8c;
+  --cyan:   #00c9b8;
+  --lime:   #6cc04a;
+  --amber:  #e8a020;
+  --rose:   #d63a5a;
+  --purple: #7c3aed;
+  --cream:  #f5f0e8;
+  --paper:  #faf8f4;
+  --muted:  #6b7a8d;
+  --rule:   #e2ddd6;
+  --card:   #ffffff;
+  --gene-bg:#0f2a3f;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(13,27,42,0.95);
+  backdrop-filter: blur(12px);
+  padding: 0 2rem;
+  display: flex; align-items: center; gap: 0;
+  border-bottom: 2px solid var(--cyan);
+  height: 52px;
+}
+nav .logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1rem;
+  color: var(--cyan); letter-spacing: 0.08em;
+  margin-right: 2.5rem; white-space: nowrap;
+}
+.nav-links { display: flex; gap: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.6); text-decoration: none;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+  padding: 0 1rem; height: 52px; display: flex; align-items: center;
+  text-transform: uppercase; transition: color 0.2s, border-color 0.2s;
+  border-bottom: 2px solid transparent; white-space: nowrap;
+}
+.nav-links a:hover, .nav-links a.active { color: #fff; border-bottom-color: var(--cyan); }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  background: var(--gene-bg);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 4rem 4rem;
+  position: relative; overflow: hidden;
+}
+.dna-bg {
+  position: absolute; right: -40px; top: 0; bottom: 0; width: 340px;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 0; pointer-events: none;
+}
+.dna-row {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 48px; position: relative;
+}
+.dna-dot {
+  width: 18px; height: 18px; border-radius: 50%;
+  position: absolute; transition: all 0.3s;
+}
+.dna-rung {
+  position: absolute; top: 50%; height: 2px;
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-50%);
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.18em;
+  color: var(--cyan); text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 800; line-height: 0.95;
+  color: #fff; letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.hero-title span { color: var(--cyan); }
+.hero-sub {
+  font-size: 1.1rem; color: rgba(255,255,255,0.6);
+  max-width: 500px; margin-bottom: 3rem; line-height: 1.7;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; }
+.tag {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.4rem 1rem; border-radius: 2px;
+  border: 1px solid; background: transparent;
+}
+.tag-cyan  { border-color: var(--cyan);   color: var(--cyan); }
+.tag-lime  { border-color: var(--lime);   color: var(--lime); }
+.tag-amber { border-color: var(--amber);  color: var(--amber); }
+.tag-rose  { border-color: var(--rose);   color: var(--rose); }
+.sol-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(0,201,184,0.12); border: 1px solid rgba(0,201,184,0.3);
+  padding: 0.5rem 1.2rem; border-radius: 4px; color: var(--cyan);
+  font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em;
+}
+
+/* SECTION LAYOUT */
+section { padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; }
+.section-header {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  margin-bottom: 3rem; padding-bottom: 1rem;
+  border-bottom: 2px solid var(--rule);
+}
+.section-num {
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  color: var(--cyan); letter-spacing: 0.18em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem; font-weight: 700; color: var(--navy);
+  letter-spacing: -0.03em;
+}
+
+/* FULL-WIDTH DIVIDER BANDS */
+.band {
+  width: 100%; padding: 4rem;
+  position: relative;
+}
+.band-dark { background: var(--gene-bg); }
+.band-navy { background: var(--navy); }
+.band-teal { background: var(--teal); }
+.band-inner { max-width: 1100px; margin: 0 auto; }
+.band .section-title { color: #fff; }
+.band .section-num { color: var(--cyan); }
+
+/* VOCAB GRID */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.vocab-card {
+  background: var(--card);
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.vocab-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 1; }
+.vocab-term {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.vocab-def { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+.vocab-example {
+  margin-top: 0.5rem;
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  padding: 0.25rem 0.6rem; display: inline-block;
+  background: var(--paper); border-left: 3px solid;
+  color: var(--muted);
+}
+
+/* MENDEL SECTION */
+.mendel-layout {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;
+}
+.mendel-facts { }
+.mendel-facts h3 {
+  font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700;
+  color: #fff; margin-bottom: 1.5rem;
+}
+.fact-item {
+  display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: flex-start;
+}
+.fact-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cyan); margin-top: 0.45rem; flex-shrink: 0;
+}
+.fact-text { font-size: 0.95rem; color: rgba(255,255,255,0.75); }
+.fact-text strong { color: #fff; }
+
+.traits-table { width: 100%; border-collapse: collapse; }
+.traits-table th {
+  text-align: left; padding: 0.6rem 1rem;
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cyan); border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.traits-table td {
+  padding: 0.65rem 1rem; font-size: 0.9rem;
+  color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.traits-table tr:hover td { background: rgba(255,255,255,0.04); }
+
+/* LAWS CARDS */
+.laws-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.law-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 2rem; border-radius: 4px;
+}
+.law-num {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 0.5rem;
+}
+.law-name {
+  font-family: 'Syne', sans-serif; font-size: 1.25rem;
+  font-weight: 700; color: #fff; margin-bottom: 1rem;
+}
+.law-desc { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
+
+/* GENERATION FLOW */
+.gen-flow { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; flex-wrap: wrap; }
+.gen-box {
+  flex: 1; min-width: 180px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  padding: 1.2rem; border-radius: 4px; text-align: center;
+}
+.gen-label {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.5rem;
+}
+.gen-genotype {
+  font-family: 'Syne', sans-serif; font-size: 1.3rem;
+  font-weight: 700; margin-bottom: 0.3rem;
+}
+.gen-pheno { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+.gen-arrow {
+  font-size: 1.5rem; color: rgba(255,255,255,0.3);
+  flex-shrink: 0; align-self: center;
+}
+
+/* PUNNETT SQUARE */
+.punnett-section { display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: start; }
+.punnett-wrapper { }
+.punnett-title {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 1rem;
+}
+.punnett-grid {
+  display: grid; grid-template-columns: 60px 1fr 1fr;
+  grid-template-rows: 60px 1fr 1fr;
+  border: 2px solid var(--rule); width: 280px;
+}
+.p-header {
+  background: var(--navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700;
+}
+.p-header.empty { background: var(--paper); }
+.p-cell {
+  border: 1px solid var(--rule);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 0.5rem; min-height: 80px;
+}
+.p-geno {
+  font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700;
+}
+.p-pheno { font-size: 0.7rem; color: var(--muted); margin-top: 0.2rem; }
+.p-dominant { background: #f0fdf4; }
+.p-recessive { background: #fdf4ff; }
+
+.punnett-results { }
+.result-title {
+  font-family: 'Syne', sans-serif; font-size: 1.4rem;
+  font-weight: 700; color: var(--navy); margin-bottom: 1.5rem;
+}
+.ratio-row {
+  display: flex; align-items: center; gap: 1.5rem;
+  margin-bottom: 1.5rem; padding: 1.2rem;
+  background: var(--card); border: 1px solid var(--rule);
+}
+.ratio-pct {
+  font-family: 'Syne', sans-serif; font-size: 2rem;
+  font-weight: 800; min-width: 80px; text-align: center;
+}
+.ratio-info h4 {
+  font-weight: 600; font-size: 0.95rem; color: var(--navy);
+}
+.ratio-info p { font-size: 0.85rem; color: var(--muted); }
+.key-ratio {
+  font-family: 'DM Mono', monospace; font-size: 0.85rem;
+  padding: 0.8rem 1.2rem; background: var(--navy);
+  color: var(--cyan); border-radius: 2px; display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* PRACTICE PROBLEMS */
+.practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.practice-card {
+  border: 1px solid var(--rule); background: var(--card);
+  padding: 1.5rem;
+}
+.practice-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+  color: #fff; margin-bottom: 1rem;
+}
+.practice-cross {
+  font-family: 'DM Mono', monospace; font-size: 0.8rem;
+  background: var(--paper); padding: 0.4rem 0.8rem;
+  border-left: 3px solid var(--teal); margin-bottom: 1rem; display: inline-block;
+  color: var(--ink);
+}
+.practice-q { font-size: 0.9rem; color: var(--ink); margin-bottom: 1rem; line-height: 1.6; }
+.empty-grid {
+  display: grid; grid-template-columns: 40px 1fr 1fr;
+  grid-template-rows: 40px 1fr 1fr; border: 1px solid var(--rule);
+  width: 100%; max-width: 200px;
+}
+.eg-header {
+  background: var(--ink); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #fff;
+}
+.eg-header.empty { background: var(--paper); }
+.eg-cell {
+  border: 1px solid var(--rule); min-height: 48px;
+  background: #fafafa;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; color: var(--rule);
+}
+
+/* NON-MENDELIAN */
+.nm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.nm-card {
+  background: var(--card); border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.nm-head {
+  padding: 1rem 1.5rem;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem;
+  color: #fff;
+}
+.nm-body { padding: 1.5rem; }
+.nm-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+.nm-badge {
+  display: inline-flex; align-items: center;
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.08em; padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+}
+.nm-example {
+  background: var(--paper); padding: 1rem;
+  border-left: 3px solid; font-size: 0.85rem; margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* FLOWER VISUAL for incomplete dominance */
+.flower-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;
+}
+.flower-item { text-align: center; }
+.flower-circle {
+  width: 70px; height: 70px; border-radius: 50%;
+  margin: 0 auto 0.5rem; border: 2px solid rgba(0,0,0,0.1);
+}
+.flower-geno {
+  font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted);
+}
+.flower-pheno { font-size: 0.8rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+.cross-symbol { font-size: 1.5rem; color: var(--muted); align-self: center; padding-bottom: 1rem; }
+
+/* BLOOD TYPE TABLE */
+.blood-table { width: 100%; border-collapse: collapse; }
+.blood-table th {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.5rem 0.8rem; color: var(--muted);
+  border-bottom: 2px solid var(--rule); text-align: left;
+}
+.blood-table td { padding: 0.6rem 0.8rem; font-size: 0.9rem; border-bottom: 1px solid var(--rule); }
+.blood-A { background: #fff0f0; }
+.blood-B { background: #f0f4ff; }
+.blood-AB { background: #f0fff4; border-left: 3px solid var(--lime); }
+.blood-O { background: #fffbf0; }
+.blood-badge {
+  display: inline-block; width: 32px; height: 32px; border-radius: 50%;
+  line-height: 32px; text-align: center; font-weight: 800; font-size: 0.9rem;
+  color: #fff;
+}
+
+/* SEX-LINKED */
+.sexlinked-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.chromosome-visual {
+  display: flex; gap: 2rem; justify-content: center;
+  margin: 1.5rem 0;
+}
+.chrom {
+  text-align: center;
+}
+.chrom-shape {
+  font-size: 3rem; display: block; line-height: 1;
+}
+.chrom-label {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 1rem; margin-top: 0.3rem;
+}
+.chrom-sub { font-size: 0.75rem; color: var(--muted); }
+
+.xl-punnett { }
+.xl-grid {
+  display: grid; grid-template-columns: 70px 1fr 1fr;
+  grid-template-rows: 50px 1fr 1fr; border: 1px solid var(--rule);
+  max-width: 300px;
+}
+.xl-head {
+  background: var(--purple); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 0.85rem; font-weight: 500;
+}
+.xl-head.empty { background: var(--paper); }
+.xl-cell {
+  border: 1px solid var(--rule); min-height: 60px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 0.4rem;
+}
+.xl-geno { font-family: 'DM Mono', monospace; font-size: 0.85rem; font-weight: 500; text-align: center; }
+.xl-res { font-size: 0.65rem; margin-top: 0.2rem; text-align: center; }
+.xl-legend { margin-top: 1rem; }
+.xl-legend-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; margin-bottom: 0.4rem;
+}
+.xl-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* POLYGENIC */
+.bell-section { margin-top: 2rem; }
+.bell-label {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 1rem;
+}
+.bell-bars {
+  display: flex; align-items: flex-end; gap: 4px; height: 100px;
+  padding-bottom: 4px; margin-bottom: 0.5rem;
+}
+.bell-bar {
+  flex: 1; border-radius: 2px 2px 0 0; min-width: 0;
+  transition: opacity 0.3s;
+}
+.bell-bar:hover { opacity: 0.8; }
+.bell-axis {
+  display: flex; justify-content: space-between;
+  font-size: 0.7rem; color: var(--muted); padding: 0 2px;
+}
+.polygenic-examples { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.poly-pill {
+  padding: 0.4rem 1rem; border: 1px solid var(--rule);
+  border-radius: 100px; font-size: 0.82rem; color: var(--muted);
+  font-family: 'DM Mono', monospace; background: var(--card);
+}
+
+/* AMOEBA SISTERS VIDEOS */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.video-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+.video-thumb {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #000;
+  cursor: pointer;
+  overflow: hidden;
+}
+.video-thumb img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.video-card:hover .video-thumb img { transform: scale(1.04); }
+.video-play-btn {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35);
+  transition: background 0.2s;
+}
+.video-card:hover .video-play-btn { background: rgba(0,0,0,0.5); }
+.play-circle {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(255,0,0,0.9);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s;
+}
+.video-card:hover .play-circle { transform: scale(1.1); }
+.play-circle svg { margin-left: 4px; }
+.video-iframe-wrap {
+  position: relative; width: 100%; padding-top: 56.25%;
+  display: none;
+}
+.video-iframe-wrap iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: 0;
+}
+.video-info { padding: 1rem 1.2rem 1.2rem; }
+.video-number {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.3rem;
+}
+.video-title {
+  font-family: 'Syne', sans-serif; font-size: 0.98rem;
+  font-weight: 700; color: var(--navy);
+  margin-bottom: 0.4rem; line-height: 1.3;
+}
+.video-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+.video-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.video-tag {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.2rem 0.6rem; border-radius: 2px;
+  background: var(--paper); color: var(--muted);
+  border: 1px solid var(--rule);
+}
+.video-duration {
+  position: absolute; bottom: 8px; right: 8px;
+  background: rgba(0,0,0,0.8); color: #fff;
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  padding: 2px 6px; border-radius: 2px;
+}
+.amoeba-brand {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 2rem; padding: 1rem 1.5rem;
+  background: #fff8f0; border: 1px solid #ffd4a8;
+  border-left: 4px solid var(--amber);
+}
+.amoeba-brand-text { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
+.amoeba-brand-text strong { color: var(--amber); }
+.amoeba-brand-text a { color: var(--teal); text-decoration: none; }
+.amoeba-brand-text a:hover { text-decoration: underline; }
+
+
+.quiz-intro {
+  font-size: 0.9rem; color: rgba(255,255,255,0.6);
+  margin-bottom: 2.5rem; max-width: 600px;
+}
+.quiz-section-title {
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem;
+  color: var(--cyan); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.quiz-section-title::after {
+  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1);
+}
+.mc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+.mc-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5rem; position: relative;
+  transition: border-color 0.2s;
+}
+.mc-card:hover { border-color: rgba(0,201,184,0.3); }
+.mc-num {
+  position: absolute; top: -1px; left: -1px;
+  width: 32px; height: 32px;
+  background: var(--teal); color: #fff;
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+}
+.mc-q {
+  font-size: 0.9rem; color: rgba(255,255,255,0.9);
+  margin: 1rem 0 1.2rem; padding-left: 0; line-height: 1.6;
+}
+.mc-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.mc-opt {
+  padding: 0.5rem 0.75rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px; cursor: pointer;
+  font-size: 0.82rem; color: rgba(255,255,255,0.7);
+  transition: all 0.15s; text-align: left; width: 100%;
+  font-family: 'DM Sans', sans-serif;
+}
+.mc-opt:hover { background: rgba(0,201,184,0.1); border-color: rgba(0,201,184,0.3); color: #fff; }
+.mc-opt.correct { background: rgba(108,192,74,0.15); border-color: var(--lime); color: var(--lime); }
+.mc-opt.wrong   { background: rgba(214,58,90,0.15);  border-color: var(--rose); color: var(--rose); }
+.mc-opt:disabled { cursor: default; }
+.mc-feedback {
+  margin-top: 0.75rem; font-size: 0.8rem; padding: 0.4rem 0.8rem;
+  border-radius: 2px; display: none;
+}
+.mc-feedback.show { display: block; }
+.mc-feedback.ok  { background: rgba(108,192,74,0.1); color: var(--lime); }
+.mc-feedback.bad { background: rgba(214,58,90,0.1);  color: var(--rose); }
+
+.sa-grid { display: grid; gap: 1.5rem; }
+.sa-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 1.5rem;
+}
+.sa-num-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.sa-num-badge {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--rose); color: #fff;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.sa-q { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
+.sa-answer-line {
+  width: 100%; height: 80px; margin-top: 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  resize: none; color: rgba(255,255,255,0.8);
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+  padding: 0.75rem; border-radius: 2px; outline: none;
+  transition: border-color 0.2s;
+}
+.sa-answer-line:focus { border-color: rgba(0,201,184,0.4); }
+.show-answer-btn {
+  margin-top: 0.75rem; padding: 0.4rem 1rem;
+  background: transparent; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5); font-size: 0.75rem; cursor: pointer;
+  font-family: 'DM Mono', monospace; letter-spacing: 0.08em;
+  transition: all 0.2s;
+}
+.show-answer-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+.answer-reveal {
+  margin-top: 0.75rem; padding: 0.75rem 1rem;
+  background: rgba(0,201,184,0.08); border-left: 3px solid var(--cyan);
+  font-size: 0.85rem; color: rgba(255,255,255,0.75);
+  display: none; line-height: 1.6;
+}
+.answer-reveal.show { display: block; }
+.answer-reveal strong { color: var(--cyan); }
+
+/* QUIZ SCORE */
+.quiz-score-bar {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5rem 2rem; margin-top: 2rem;
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.score-display {
+  font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--cyan);
+}
+.score-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+.score-bar-wrap { flex: 1; min-width: 200px; }
+.score-bar-bg {
+  height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;
+}
+.score-bar-fill {
+  height: 100%; background: var(--lime); border-radius: 4px;
+  width: 0%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.check-quiz-btn {
+  padding: 0.75rem 2rem;
+  background: var(--cyan); color: var(--ink);
+  border: none; cursor: pointer;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem;
+  letter-spacing: 0.03em; transition: all 0.2s;
+}
+.check-quiz-btn:hover { background: #fff; }
+
+/* SUMMARY */
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.sum-card {
+  padding: 1.5rem;
+  border-top: 3px solid;
+}
+.sum-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+.sum-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 0.5rem; }
+.sum-desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+/* FOOTER */
+footer {
+  background: #060e16; color: rgba(255,255,255,0.3);
+  text-align: center; padding: 2rem;
+  font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em;
+}
+footer span { color: var(--cyan); }
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  section, .band { padding: 3rem 1.5rem; }
+  #hero { padding: 5rem 1.5rem 3rem; }
+  .dna-bg { display: none; }
+  .mendel-layout, .punnett-section, .laws-grid,
+  .nm-grid, .sexlinked-layout,
+  .mc-grid, .practice-grid, .summary-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">BIO.6 ◆ GENETICS</div>
+  <div class="nav-links">
+    <a href="#vocab">Vocabulary</a>
+    <a href="#mendel">Mendelian</a>
+    <a href="#punnett">Punnett Squares</a>
+    <a href="#nonmendelian">Non-Mendelian</a>
+    <a href="#videos">Amoeba Sisters</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#summary">Summary</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="dna-bg" id="dnaBg"></div>
+  <div class="hero-eyebrow">Virginia SOL BIO.6 · 9th Grade Biology</div>
+  <h1 class="hero-title">Genetics &<br><span>&amp; Heredity</span></h1>
+  <p class="hero-sub">Explore how traits pass from parents to offspring through the fascinating science of genetics — from Mendel's peas to modern molecular biology.</p>
+  <div class="hero-tags">
+    <span class="tag tag-cyan">Mendelian Traits</span>
+    <span class="tag tag-lime">Non-Mendelian Traits</span>
+    <span class="tag tag-amber">Punnett Squares</span>
+    <span class="tag tag-rose">Knowledge Quiz</span>
+  </div>
+  <div class="sol-badge">
+    <span>▸</span> Aligned to Virginia SOL BIO.6
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- SECTION 1: VOCABULARY -->
+<!-- ══════════════════════════════════════════════════ -->
+<section id="vocab">
+  <div class="section-header reveal">
+    <span class="section-num">01 / VOCABULARY</span>
+    <h2 class="section-title">Key Terms</h2>
+  </div>
+  <div class="vocab-grid reveal">
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--teal)">Gene</div>
+      <div class="vocab-def">A segment of DNA that codes for a specific trait or characteristic in an organism.</div>
+      <div class="vocab-example" style="border-color:var(--teal)">e.g., Gene for eye color</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--lime)">Allele</div>
+      <div class="vocab-def">One of two or more versions of a gene. Each parent contributes one allele to offspring.</div>
+      <div class="vocab-example" style="border-color:var(--lime)">e.g., B (brown) or b (blue)</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--amber)">Genotype</div>
+      <div class="vocab-def">The genetic makeup of an organism — the actual allele combination it carries.</div>
+      <div class="vocab-example" style="border-color:var(--amber)">e.g., BB, Bb, or bb</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--rose)">Phenotype</div>
+      <div class="vocab-def">The physical expression of the genotype — the visible trait that results from the alleles.</div>
+      <div class="vocab-example" style="border-color:var(--rose)">e.g., brown eyes, tall plant</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--purple)">Dominant Allele</div>
+      <div class="vocab-def">An allele that masks the expression of the recessive allele when present. Written in uppercase.</div>
+      <div class="vocab-example" style="border-color:var(--purple)">e.g., B (brown eye allele)</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--navy)">Recessive Allele</div>
+      <div class="vocab-def">An allele whose expression is masked by the dominant allele. Expressed only when homozygous. Lowercase.</div>
+      <div class="vocab-example" style="border-color:var(--navy)">e.g., b (blue eye allele)</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--teal)">Homozygous</div>
+      <div class="vocab-def">Having two identical alleles for a given trait. Can be homozygous dominant or recessive.</div>
+      <div class="vocab-example" style="border-color:var(--teal)">e.g., BB (dominant) or bb (recessive)</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--lime)">Heterozygous</div>
+      <div class="vocab-def">Having two different alleles for a given trait. The dominant allele is expressed in phenotype.</div>
+      <div class="vocab-example" style="border-color:var(--lime)">e.g., Bb (shows dominant trait)</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--amber)">Punnett Square</div>
+      <div class="vocab-def">A diagram used to predict the probability of offspring genotypes and phenotypes from a genetic cross.</div>
+      <div class="vocab-example" style="border-color:var(--amber)">Used for all trait crosses</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--rose)">Heredity</div>
+      <div class="vocab-def">The passing of traits from parents to their offspring through genetic material (DNA).</div>
+      <div class="vocab-example" style="border-color:var(--rose)">e.g., Hair color from parents</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--purple)">Chromosome</div>
+      <div class="vocab-def">A structure made of DNA and proteins that carries genes. Humans have 46 chromosomes (23 pairs).</div>
+      <div class="vocab-example" style="border-color:var(--purple)">23 pairs in human cells</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term" style="color:var(--navy)">Trait</div>
+      <div class="vocab-def">A specific characteristic of an organism that can be observed and that can be inherited from parents.</div>
+      <div class="vocab-example" style="border-color:var(--navy)">e.g., height, ear shape</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- SECTION 2: MENDEL -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="band band-dark" id="mendel">
+<div class="band-inner">
+  <div class="section-header reveal">
+    <span class="section-num">02 / MENDELIAN GENETICS</span>
+    <h2 class="section-title">Gregor Mendel &amp; Classical Inheritance</h2>
+  </div>
+
+  <div class="mendel-layout reveal">
+    <div class="mendel-facts">
+      <h3>Father of Genetics</h3>
+      <div class="fact-item"><div class="fact-dot"></div><div class="fact-text">Austrian monk who lived <strong>1822–1884</strong></div></div>
+      <div class="fact-item"><div class="fact-dot"></div><div class="fact-text">Conducted pea plant experiments in the <strong>1850s–1860s</strong></div></div>
+      <div class="fact-item"><div class="fact-dot"></div><div class="fact-text">Studied <strong>7 different traits</strong> over 8 years</div></div>
+      <div class="fact-item"><div class="fact-dot"></div><div class="fact-text">Analyzed over <strong>29,000 pea plants</strong></div></div>
+      <div class="fact-item"><div class="fact-dot"></div><div class="fact-text">Published findings in 1866 — widely ignored until the <strong>early 1900s</strong></div></div>
+      <div class="fact-item"><div class="fact-dot"></div><div class="fact-text">His work forms the <strong>foundation of modern genetics</strong></div></div>
+    </div>
+    <div>
+      <table class="traits-table">
+        <thead>
+          <tr><th>Trait</th><th>Dominant</th><th>Recessive</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Seed Shape</td><td>Round (R)</td><td>Wrinkled (r)</td></tr>
+          <tr><td>Seed Color</td><td>Yellow (Y)</td><td>Green (y)</td></tr>
+          <tr><td>Pod Shape</td><td>Inflated (I)</td><td>Constricted (i)</td></tr>
+          <tr><td>Pod Color</td><td>Green (G)</td><td>Yellow (g)</td></tr>
+          <tr><td>Flower Color</td><td>Purple (P)</td><td>White (p)</td></tr>
+          <tr><td>Flower Position</td><td>Axial (A)</td><td>Terminal (a)</td></tr>
+          <tr><td>Plant Height</td><td>Tall (T)</td><td>Short (t)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="laws-grid reveal" style="margin-top:3rem">
+    <div class="law-card">
+      <div class="law-num">Law I</div>
+      <div class="law-name">Law of Segregation</div>
+      <div class="law-desc">Each organism has <strong style="color:#fff">two alleles</strong> for each trait. During gamete formation, these alleles <strong style="color:#fff">separate</strong> so each gamete carries only ONE allele. The alleles recombine randomly at fertilization.</div>
+    </div>
+    <div class="law-card">
+      <div class="law-num">Law II</div>
+      <div class="law-name">Law of Independent Assortment</div>
+      <div class="law-desc">Alleles of <strong style="color:#fff">different genes</strong> sort independently of one another during gamete formation. Inheriting one trait does <strong style="color:#fff">not affect</strong> the inheritance of another trait.</div>
+    </div>
+  </div>
+
+  <div class="gen-flow reveal">
+    <div class="gen-box">
+      <div class="gen-label">P Generation (Parents)</div>
+      <div class="gen-genotype" style="color:var(--cyan)">PP × pp</div>
+      <div class="gen-pheno">Purple × White</div>
+    </div>
+    <div class="gen-arrow">→</div>
+    <div class="gen-box">
+      <div class="gen-label">F1 Generation</div>
+      <div class="gen-genotype" style="color:var(--lime)">All Pp</div>
+      <div class="gen-pheno">100% Purple (heterozygous)</div>
+    </div>
+    <div class="gen-arrow">→</div>
+    <div class="gen-box">
+      <div class="gen-label">F2 Generation</div>
+      <div class="gen-genotype" style="color:var(--amber)">1PP : 2Pp : 1pp</div>
+      <div class="gen-pheno">3 Purple : 1 White</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- SECTION 3: PUNNETT SQUARES -->
+<!-- ══════════════════════════════════════════════════ -->
+<section id="punnett">
+  <div class="section-header reveal">
+    <span class="section-num">03 / PUNNETT SQUARES</span>
+    <h2 class="section-title">Predicting Offspring</h2>
+  </div>
+
+  <div class="punnett-section reveal">
+    <div class="punnett-wrapper">
+      <div class="punnett-title">Cross: Bb × Bb (Purple flowers)</div>
+      <div class="punnett-grid">
+        <div class="p-header empty"></div>
+        <div class="p-header">B</div>
+        <div class="p-header">b</div>
+        <div class="p-header">B</div>
+        <div class="p-cell p-dominant">
+          <div class="p-geno" style="color:var(--teal)">BB</div>
+          <div class="p-pheno">Purple</div>
+        </div>
+        <div class="p-cell p-dominant">
+          <div class="p-geno" style="color:var(--teal)">Bb</div>
+          <div class="p-pheno">Purple</div>
+        </div>
+        <div class="p-header">b</div>
+        <div class="p-cell p-dominant">
+          <div class="p-geno" style="color:var(--teal)">Bb</div>
+          <div class="p-pheno">Purple</div>
+        </div>
+        <div class="p-cell p-recessive">
+          <div class="p-geno" style="color:var(--purple)">bb</div>
+          <div class="p-pheno">White</div>
+        </div>
+      </div>
+    </div>
+    <div class="punnett-results">
+      <div class="result-title">Results Summary</div>
+      <div class="ratio-row">
+        <div class="ratio-pct" style="color:var(--teal)">25%</div>
+        <div class="ratio-info">
+          <h4>BB — Homozygous Dominant</h4>
+          <p>Purple flowers — two dominant alleles</p>
+        </div>
+      </div>
+      <div class="ratio-row">
+        <div class="ratio-pct" style="color:var(--lime)">50%</div>
+        <div class="ratio-info">
+          <h4>Bb — Heterozygous</h4>
+          <p>Purple flowers — dominant allele expressed</p>
+        </div>
+      </div>
+      <div class="ratio-row">
+        <div class="ratio-pct" style="color:var(--purple)">25%</div>
+        <div class="ratio-info">
+          <h4>bb — Homozygous Recessive</h4>
+          <p>White flowers — only recessive alleles</p>
+        </div>
+      </div>
+      <div class="key-ratio">Genotypic: 1 BB : 2 Bb : 1 bb</div><br>
+      <div class="key-ratio">Phenotypic: 3 Purple : 1 White</div>
+    </div>
+  </div>
+
+  <!-- Practice Problems -->
+  <div style="margin-top:4rem">
+    <div class="section-header reveal">
+      <span class="section-num">PRACTICE</span>
+      <h2 class="section-title" style="font-size:1.4rem">Fill in the Punnett Squares</h2>
+    </div>
+    <div class="practice-grid reveal">
+      <div class="practice-card">
+        <div class="practice-num" style="background:var(--teal)">1</div>
+        <div class="practice-cross">TT × tt</div>
+        <p class="practice-q">Cross a <strong>homozygous dominant tall</strong> (TT) pea plant with a <strong>homozygous recessive short</strong> (tt) plant. T = Tall, t = short.</p>
+        <div class="empty-grid">
+          <div class="eg-header empty"></div>
+          <div class="eg-header">T</div>
+          <div class="eg-header">T</div>
+          <div class="eg-header">t</div>
+          <div class="eg-cell">?</div><div class="eg-cell">?</div>
+          <div class="eg-header">t</div>
+          <div class="eg-cell">?</div><div class="eg-cell">?</div>
+        </div>
+        <details style="margin-top:1rem">
+          <summary style="cursor:pointer;font-size:0.8rem;color:var(--teal);font-family:'DM Mono',monospace;">▶ Show Answer</summary>
+          <div style="margin-top:0.75rem;padding:0.75rem;background:var(--paper);font-size:0.85rem;border-left:3px solid var(--teal)">All offspring are <strong>Tt</strong> (heterozygous) → <strong>100% Tall</strong> phenotype.</div>
+        </details>
+      </div>
+      <div class="practice-card">
+        <div class="practice-num" style="background:var(--lime)">2</div>
+        <div class="practice-cross">Rr × Rr</div>
+        <p class="practice-q">Cross two <strong>heterozygous round seed</strong> (Rr) plants. R = Round (dominant), r = wrinkled (recessive).</p>
+        <div class="empty-grid">
+          <div class="eg-header empty"></div>
+          <div class="eg-header">R</div>
+          <div class="eg-header">r</div>
+          <div class="eg-header">R</div>
+          <div class="eg-cell">?</div><div class="eg-cell">?</div>
+          <div class="eg-header">r</div>
+          <div class="eg-cell">?</div><div class="eg-cell">?</div>
+        </div>
+        <details style="margin-top:1rem">
+          <summary style="cursor:pointer;font-size:0.8rem;color:var(--lime);font-family:'DM Mono',monospace;">▶ Show Answer</summary>
+          <div style="margin-top:0.75rem;padding:0.75rem;background:var(--paper);font-size:0.85rem;border-left:3px solid var(--lime)"><strong>1 RR : 2 Rr : 1 rr</strong> → <strong>3 Round : 1 Wrinkled</strong> (classic 3:1 Mendelian ratio)</div>
+        </details>
+      </div>
+      <div class="practice-card">
+        <div class="practice-num" style="background:var(--purple)">3</div>
+        <div class="practice-cross">Bb × bb</div>
+        <p class="practice-q">Cross a <strong>heterozygous black rabbit</strong> (Bb) with a <strong>homozygous recessive white rabbit</strong> (bb). B = Black, b = white.</p>
+        <div class="empty-grid">
+          <div class="eg-header empty"></div>
+          <div class="eg-header">B</div>
+          <div class="eg-header">b</div>
+          <div class="eg-header">b</div>
+          <div class="eg-cell">?</div><div class="eg-cell">?</div>
+          <div class="eg-header">b</div>
+          <div class="eg-cell">?</div><div class="eg-cell">?</div>
+        </div>
+        <details style="margin-top:1rem">
+          <summary style="cursor:pointer;font-size:0.8rem;color:var(--purple);font-family:'DM Mono',monospace;">▶ Show Answer</summary>
+          <div style="margin-top:0.75rem;padding:0.75rem;background:var(--paper);font-size:0.85rem;border-left:3px solid var(--purple)"><strong>1 Bb : 1 bb</strong> → <strong>50% Black : 50% White</strong> (testcross result)</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- SECTION 4: NON-MENDELIAN -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="band" id="nonmendelian" style="background:#f0f4f8; width:100%; padding:5rem 4rem;">
+<div class="band-inner">
+  <div class="section-header reveal">
+    <span class="section-num" style="color:var(--teal)">04 / NON-MENDELIAN GENETICS</span>
+    <h2 class="section-title">Beyond Simple Dominance</h2>
+  </div>
+  <p class="reveal" style="color:var(--muted);max-width:650px;margin-bottom:3rem;font-size:1rem;line-height:1.7">Not all traits follow Mendel's simple dominant/recessive rules. Several other patterns of inheritance exist that produce different ratios and phenotypes.</p>
+
+  <div class="nm-grid reveal">
+    <!-- Incomplete Dominance -->
+    <div class="nm-card">
+      <div class="nm-head" style="background:var(--rose)">🌺 Incomplete Dominance</div>
+      <div class="nm-body">
+        <p>Neither allele is completely dominant. The heterozygous offspring shows a <strong>blend</strong> of both parent phenotypes.</p>
+        <div class="flower-row">
+          <div class="flower-item">
+            <div class="flower-circle" style="background:#c0392b"></div>
+            <div class="flower-pheno">Red</div>
+            <div class="flower-geno">R¹R¹</div>
+          </div>
+          <div class="cross-symbol">×</div>
+          <div class="flower-item">
+            <div class="flower-circle" style="background:#f0f0f0;border:2px solid #ccc"></div>
+            <div class="flower-pheno">White</div>
+            <div class="flower-geno">R²R²</div>
+          </div>
+          <div class="cross-symbol">→</div>
+          <div class="flower-item">
+            <div class="flower-circle" style="background:#e07090"></div>
+            <div class="flower-pheno" style="color:var(--rose)">Pink!</div>
+            <div class="flower-geno">R¹R²</div>
+          </div>
+        </div>
+        <div class="nm-example" style="border-color:var(--rose)">
+          <strong>Phenotype Ratio:</strong> 1 Red : 2 Pink : 1 White (1:2:1)<br>
+          <strong>Key Difference from Mendel:</strong> The phenotypic ratio matches the genotypic ratio — 3 distinct phenotypes instead of 2.
+        </div>
+        <span class="nm-badge" style="background:#fff0f2;color:var(--rose);margin-top:0.75rem">Examples: Snapdragons, four o'clock flowers, some hair textures</span>
+      </div>
+    </div>
+
+    <!-- Codominance -->
+    <div class="nm-card">
+      <div class="nm-head" style="background:var(--teal)">🩸 Codominance</div>
+      <div class="nm-body">
+        <p><strong>Both alleles are fully expressed simultaneously</strong> in the heterozygote — no blending occurs. Both traits appear side-by-side.</p>
+        <table class="blood-table">
+          <thead><tr><th>Type</th><th>Genotype</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr class="blood-A"><td><span class="blood-badge" style="background:#c0392b">A</span></td><td>I^A I^A or I^A i</td><td>A antigens</td></tr>
+            <tr class="blood-B"><td><span class="blood-badge" style="background:#2980b9">B</span></td><td>I^B I^B or I^B i</td><td>B antigens</td></tr>
+            <tr class="blood-AB"><td><span class="blood-badge" style="background:#27ae60">AB</span></td><td>I^A I^B</td><td>⭐ Both A & B antigens!</td></tr>
+            <tr class="blood-O"><td><span class="blood-badge" style="background:#777">O</span></td><td>ii</td><td>No A or B antigens</td></tr>
+          </tbody>
+        </table>
+        <div class="nm-example" style="border-color:var(--teal);margin-top:1rem">
+          <strong>Codominance vs. Incomplete Dominance:</strong><br>
+          Codominance = BOTH traits visible side-by-side (AB blood has both A and B antigens)<br>
+          Incomplete = A NEW blended trait (pink from red + white)
+        </div>
+      </div>
+    </div>
+
+    <!-- Sex-Linked Traits -->
+    <div class="nm-card">
+      <div class="nm-head" style="background:var(--purple)">🧬 Sex-Linked Traits</div>
+      <div class="nm-body">
+        <p>Traits controlled by genes located on the <strong>sex chromosomes</strong> (X or Y). Most sex-linked traits are X-linked.</p>
+        <div class="sexlinked-layout" style="gap:1.5rem;margin:1rem 0">
+          <div>
+            <div class="chromosome-visual">
+              <div class="chrom">
+                <span class="chrom-shape">♀</span>
+                <div class="chrom-label" style="color:var(--rose)">Female</div>
+                <div class="chrom-sub">XX</div>
+              </div>
+              <div class="chrom">
+                <span class="chrom-shape">♂</span>
+                <div class="chrom-label" style="color:var(--teal)">Male</div>
+                <div class="chrom-sub">XY</div>
+              </div>
+            </div>
+            <p style="font-size:0.85rem;color:var(--muted)">Males have only one X chromosome — one recessive allele is enough to express X-linked traits. This is why X-linked conditions are more common in males.</p>
+          </div>
+          <div>
+            <div class="xl-grid">
+              <div class="xl-head empty"></div>
+              <div class="xl-head">X^H</div>
+              <div class="xl-head">Y</div>
+              <div class="xl-head">X^H</div>
+              <div class="xl-cell"><div class="xl-geno" style="color:var(--lime)">X^H X^H</div><div class="xl-res">Normal ♀</div></div>
+              <div class="xl-cell"><div class="xl-geno" style="color:var(--lime)">X^H Y</div><div class="xl-res">Normal ♂</div></div>
+              <div class="xl-head">X^h</div>
+              <div class="xl-cell"><div class="xl-geno" style="color:var(--amber)">X^H X^h</div><div class="xl-res">Carrier ♀</div></div>
+              <div class="xl-cell"><div class="xl-geno" style="color:var(--rose)">X^h Y</div><div class="xl-res" style="color:var(--rose)">Affected ♂</div></div>
+            </div>
+            <div class="xl-legend">
+              <div class="xl-legend-item"><div class="xl-dot" style="background:var(--lime)"></div> Normal (unaffected)</div>
+              <div class="xl-legend-item"><div class="xl-dot" style="background:var(--amber)"></div> Carrier female</div>
+              <div class="xl-legend-item"><div class="xl-dot" style="background:var(--rose)"></div> Affected male (color blind)</div>
+            </div>
+          </div>
+        </div>
+        <span class="nm-badge" style="background:#f0eeff;color:var(--purple)">Examples: Color blindness, hemophilia, Duchenne muscular dystrophy</span>
+      </div>
+    </div>
+
+    <!-- Polygenic -->
+    <div class="nm-card">
+      <div class="nm-head" style="background:var(--amber)">🎨 Polygenic Traits</div>
+      <div class="nm-body">
+        <p>Traits controlled by <strong>two or more genes</strong>. Produce a wide, continuous range of phenotypes — not discrete categories.</p>
+        <div class="bell-section">
+          <div class="bell-label">Distribution of skin color in a population</div>
+          <div class="bell-bars" id="bellBars">
+            <!-- Filled by JS -->
+          </div>
+          <div class="bell-axis">
+            <span>Very Light</span>
+            <span>← Range of Skin Tones →</span>
+            <span>Very Dark</span>
+          </div>
+        </div>
+        <div class="polygenic-examples">
+          <span class="poly-pill">Height</span>
+          <span class="poly-pill">Skin Color</span>
+          <span class="poly-pill">Eye Color</span>
+          <span class="poly-pill">Intelligence</span>
+          <span class="poly-pill">Body Weight</span>
+          <span class="poly-pill">Hair Color</span>
+        </div>
+        <div class="nm-example" style="border-color:var(--amber);margin-top:1rem">
+          <strong>Key Characteristic:</strong> Polygenic traits produce a bell-curve distribution in populations because many gene combinations are possible, with extreme phenotypes being rare.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- SECTION 5: AMOEBA SISTERS VIDEOS -->
+<!-- ══════════════════════════════════════════════════ -->
+<section id="videos">
+  <div class="section-header reveal">
+    <span class="section-num">05 / AMOEBA SISTERS</span>
+    <h2 class="section-title">Video Lessons</h2>
+  </div>
+
+  <div class="amoeba-brand reveal">
+    <div style="font-size:2rem;flex-shrink:0">🧫</div>
+    <div class="amoeba-brand-text">
+      <strong>Amoeba Sisters</strong> — Free biology videos by two sisters (Pinky &amp; Petunia) that demystify science with humor, comics, and relatable examples. All videos are hosted free on YouTube at <a href="https://www.youtube.com/@AmoebaSisters" target="_blank">youtube.com/@AmoebaSisters</a>. Click any thumbnail below to watch directly in this page!
+    </div>
+  </div>
+
+  <div class="videos-grid reveal">
+
+    <!-- Video 1 -->
+    <div class="video-card">
+      <div class="video-thumb" onclick="playVideo(this,'8m6hHRlKwxY')">
+        <img src="https://img.youtube.com/vi/8m6hHRlKwxY/mqdefault.jpg" alt="Intro to Heredity thumbnail" loading="lazy">
+        <div class="video-play-btn">
+          <div class="play-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="video-duration">~9 min</div>
+      </div>
+      <div class="video-iframe-wrap" id="iframe-8m6hHRlKwxY"></div>
+      <div class="video-info">
+        <div class="video-number">Video 1 · Foundation</div>
+        <div class="video-title">DNA, Chromosomes, Genes &amp; Traits: Intro to Heredity</div>
+        <div class="video-desc">Understand the big picture — how DNA, chromosomes, genes, and traits connect. The perfect starting point for this unit!</div>
+        <div class="video-tags">
+          <span class="video-tag">DNA</span>
+          <span class="video-tag">Chromosomes</span>
+          <span class="video-tag">Traits</span>
+          <span class="video-tag">Heredity</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-card">
+      <div class="video-thumb" onclick="playVideo(this,'i-0rSv6oxSY')">
+        <img src="https://img.youtube.com/vi/i-0rSv6oxSY/mqdefault.jpg" alt="Punnett Squares thumbnail" loading="lazy">
+        <div class="video-play-btn">
+          <div class="play-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="video-duration">~6 min</div>
+      </div>
+      <div class="video-iframe-wrap" id="iframe-i-0rSv6oxSY"></div>
+      <div class="video-info">
+        <div class="video-number">Video 2 · Mendelian</div>
+        <div class="video-title">Monohybrids &amp; Punnett Squares (Guinea Pigs!)</div>
+        <div class="video-desc">Learn how to set up and solve a monohybrid Punnett square using guinea pig hair as the example. Covers genotype, phenotype, dominant &amp; recessive.</div>
+        <div class="video-tags">
+          <span class="video-tag">Punnett Square</span>
+          <span class="video-tag">Monohybrid</span>
+          <span class="video-tag">Genotype</span>
+          <span class="video-tag">Phenotype</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-card">
+      <div class="video-thumb" onclick="playVideo(this,'qIGXTJLrLf8')">
+        <img src="https://img.youtube.com/vi/qIGXTJLrLf8/mqdefault.jpg" alt="Dihybrid Crosses thumbnail" loading="lazy">
+        <div class="video-play-btn">
+          <div class="play-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="video-duration">~8 min</div>
+      </div>
+      <div class="video-iframe-wrap" id="iframe-qIGXTJLrLf8"></div>
+      <div class="video-info">
+        <div class="video-number">Video 3 · Mendelian</div>
+        <div class="video-title">Dihybrid and Two-Trait Crosses</div>
+        <div class="video-desc">Extend to two-trait Punnett squares. Learn Independent Assortment and how to track two genes simultaneously across a 4×4 grid.</div>
+        <div class="video-tags">
+          <span class="video-tag">Dihybrid</span>
+          <span class="video-tag">Two Traits</span>
+          <span class="video-tag">Independent Assortment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 4 -->
+    <div class="video-card">
+      <div class="video-thumb" onclick="playVideo(this,'YJHGfbW55l0')">
+        <img src="https://img.youtube.com/vi/YJHGfbW55l0/mqdefault.jpg" alt="Non-Mendelian thumbnail" loading="lazy">
+        <div class="video-play-btn">
+          <div class="play-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="video-duration">~10 min</div>
+      </div>
+      <div class="video-iframe-wrap" id="iframe-YJHGfbW55l0"></div>
+      <div class="video-info">
+        <div class="video-number">Video 4 · Non-Mendelian</div>
+        <div class="video-title">Incomplete Dominance, Codominance, Polygenic Traits &amp; Epistasis</div>
+        <div class="video-desc">The "rule breakers" of genetics! Covers all four non-Mendelian patterns with clear examples — including snapdragons, speckled chickens, and more.</div>
+        <div class="video-tags">
+          <span class="video-tag">Incomplete Dominance</span>
+          <span class="video-tag">Codominance</span>
+          <span class="video-tag">Polygenic</span>
+          <span class="video-tag">Epistasis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 5 -->
+    <div class="video-card">
+      <div class="video-thumb" onclick="playVideo(this,'RW-SqE1f5Ug')">
+        <img src="https://img.youtube.com/vi/RW-SqE1f5Ug/mqdefault.jpg" alt="Sex-Linked Traits thumbnail" loading="lazy">
+        <div class="video-play-btn">
+          <div class="play-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="video-duration">~8 min</div>
+      </div>
+      <div class="video-iframe-wrap" id="iframe-RW-SqE1f5Ug"></div>
+      <div class="video-info">
+        <div class="video-number">Video 5 · Non-Mendelian</div>
+        <div class="video-title">Punnett Squares &amp; Sex-Linked Traits</div>
+        <div class="video-desc">Explore how sex chromosomes (XX and XY) influence inheritance. Includes X-linked traits like color blindness and hemophilia with Punnett square examples.</div>
+        <div class="video-tags">
+          <span class="video-tag">Sex-Linked</span>
+          <span class="video-tag">X Chromosome</span>
+          <span class="video-tag">Color Blindness</span>
+          <span class="video-tag">Hemophilia</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 6 -->
+    <div class="video-card">
+      <div class="video-thumb" onclick="playVideo(this,'v8tJZ-t0UxQ')">
+        <img src="https://img.youtube.com/vi/v8tJZ-t0UxQ/mqdefault.jpg" alt="Pedigrees thumbnail" loading="lazy">
+        <div class="video-play-btn">
+          <div class="play-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="video-duration">~8 min</div>
+      </div>
+      <div class="video-iframe-wrap" id="iframe-v8tJZ-t0UxQ"></div>
+      <div class="video-info">
+        <div class="video-number">Video 6 · Application</div>
+        <div class="video-title">Pedigrees</div>
+        <div class="video-desc">Learn how to read and interpret pedigree charts to trace the inheritance of traits across multiple generations of a family.</div>
+        <div class="video-tags">
+          <span class="video-tag">Pedigree</span>
+          <span class="video-tag">Family Traits</span>
+          <span class="video-tag">Autosomal</span>
+          <span class="video-tag">Generations</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end videos-grid -->
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<div class="band band-dark" id="quiz">
+<div class="band-inner">
+  <div class="section-header reveal">
+    <span class="section-num">06 / ASSESSMENT</span>
+    <h2 class="section-title">Knowledge Quiz</h2>
+  </div>
+  <p class="quiz-intro">Test your understanding. Select your answers for the multiple choice questions, then write short answers below. Click <em>Check My Score</em> when done with MC.</p>
+
+  <div class="quiz-section-title">Multiple Choice — Questions 1–5</div>
+
+  <div class="mc-grid reveal" id="mcGrid">
+    <div class="mc-card">
+      <div class="mc-num">1</div>
+      <div class="mc-q">What is the term for an organism that has two identical alleles for a specific trait?</div>
+      <div class="mc-options">
+        <button class="mc-opt" onclick="pickAnswer(this,false,'1')">A) Heterozygous</button>
+        <button class="mc-opt" onclick="pickAnswer(this,true,'1')">B) Homozygous</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'1')">C) Polygenic</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'1')">D) Codominant</button>
+      </div>
+      <div class="mc-feedback" id="fb1"></div>
+    </div>
+    <div class="mc-card">
+      <div class="mc-num">2</div>
+      <div class="mc-q">In a Bb × Bb cross, what is the expected phenotype ratio of offspring?</div>
+      <div class="mc-options">
+        <button class="mc-opt" onclick="pickAnswer(this,false,'2')">A) 1:1</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'2')">B) 4:0</button>
+        <button class="mc-opt" onclick="pickAnswer(this,true,'2')">C) 3:1</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'2')">D) 2:1</button>
+      </div>
+      <div class="mc-feedback" id="fb2"></div>
+    </div>
+    <div class="mc-card">
+      <div class="mc-num">3</div>
+      <div class="mc-q">A red flower (R¹R¹) crossed with a white flower (R²R²) produces only pink offspring. This pattern is called:</div>
+      <div class="mc-options">
+        <button class="mc-opt" onclick="pickAnswer(this,false,'3')">A) Codominance</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'3')">B) Complete dominance</button>
+        <button class="mc-opt" onclick="pickAnswer(this,true,'3')">C) Incomplete dominance</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'3')">D) Sex linkage</button>
+      </div>
+      <div class="mc-feedback" id="fb3"></div>
+    </div>
+    <div class="mc-card">
+      <div class="mc-num">4</div>
+      <div class="mc-q">Which type of inheritance produces a 1:2:1 phenotype ratio in offspring?</div>
+      <div class="mc-options">
+        <button class="mc-opt" onclick="pickAnswer(this,false,'4')">A) Complete dominance</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'4')">B) Codominance</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'4')">C) Polygenic</button>
+        <button class="mc-opt" onclick="pickAnswer(this,true,'4')">D) Incomplete dominance</button>
+      </div>
+      <div class="mc-feedback" id="fb4"></div>
+    </div>
+    <div class="mc-card" style="grid-column: 1 / -1">
+      <div class="mc-num">5</div>
+      <div class="mc-q">Why are males more likely to express X-linked recessive traits than females?</div>
+      <div class="mc-options" style="grid-template-columns: repeat(2, 1fr)">
+        <button class="mc-opt" onclick="pickAnswer(this,false,'5')">A) Males have two X chromosomes</button>
+        <button class="mc-opt" onclick="pickAnswer(this,true,'5')">B) Males have only one X chromosome</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'5')">C) Males have a stronger immune system</button>
+        <button class="mc-opt" onclick="pickAnswer(this,false,'5')">D) Males inherit both alleles from dad</button>
+      </div>
+      <div class="mc-feedback" id="fb5"></div>
+    </div>
+  </div>
+
+  <div class="quiz-score-bar reveal">
+    <div>
+      <div class="score-display" id="scoreDisplay">–/5</div>
+      <div class="score-label">Multiple Choice Score</div>
+    </div>
+    <div class="score-bar-wrap">
+      <div class="score-bar-bg"><div class="score-bar-fill" id="scoreBarFill"></div></div>
+    </div>
+    <button class="check-quiz-btn" onclick="checkScore()">Check My Score</button>
+  </div>
+
+  <!-- Short Answer -->
+  <div class="quiz-section-title reveal" style="margin-top:3rem">Short Answer — Questions 6–10</div>
+
+  <div class="sa-grid reveal">
+    <div class="sa-card">
+      <div class="sa-num-row"><div class="sa-num-badge">6</div><div class="sa-q">What is the difference between genotype and phenotype? Give a specific example of each.</div></div>
+      <textarea class="sa-answer-line" placeholder="Write your answer here..."></textarea>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">▶ Show Model Answer</button>
+      <div class="answer-reveal"><strong>Model Answer:</strong> The genotype is the actual genetic makeup of an organism — the allele combination it carries (e.g., Bb). The phenotype is the physical, visible expression of that genotype (e.g., brown eyes). Two organisms can have different genotypes (BB and Bb) but the same phenotype (both show brown eyes).</div>
+    </div>
+    <div class="sa-card">
+      <div class="sa-num-row"><div class="sa-num-badge">7</div><div class="sa-q">A black (BB) cat mates with a white (bb) cat. List ALL possible genotypes and phenotypes of the offspring.</div></div>
+      <textarea class="sa-answer-line" placeholder="Write your answer here..."></textarea>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">▶ Show Model Answer</button>
+      <div class="answer-reveal"><strong>Model Answer:</strong> All offspring will be Bb (heterozygous). Since B (black) is dominant over b (white), all offspring will be black. Genotype: 100% Bb. Phenotype: 100% Black. This is a complete dominance cross.</div>
+    </div>
+    <div class="sa-card">
+      <div class="sa-num-row"><div class="sa-num-badge">8</div><div class="sa-q">Explain why AB blood type is an example of codominance and NOT incomplete dominance.</div></div>
+      <textarea class="sa-answer-line" placeholder="Write your answer here..."></textarea>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">▶ Show Model Answer</button>
+      <div class="answer-reveal"><strong>Model Answer:</strong> In type AB blood, both A and B antigens are fully expressed and present on red blood cells simultaneously — neither masks the other. This is codominance. Incomplete dominance would produce a brand new blended phenotype (like pink from red × white). AB blood does not produce a "blend" — it shows both A and B traits fully and separately at the same time.</div>
+    </div>
+    <div class="sa-card">
+      <div class="sa-num-row"><div class="sa-num-badge">9</div><div class="sa-q">A carrier woman (X^H X^h) and an unaffected man (X^H Y) have children. Draw a Punnett square and determine the probability their son will have color blindness.</div></div>
+      <textarea class="sa-answer-line" placeholder="Draw/describe your Punnett square and calculate probability..." style="height:100px"></textarea>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">▶ Show Model Answer</button>
+      <div class="answer-reveal"><strong>Model Answer:</strong> Cross: X^H X^h × X^H Y → Offspring: X^H X^H (normal female), X^H X^h (carrier female), X^H Y (normal male), X^h Y (color blind male). Of the two possible sons, one is normal (X^H Y) and one has color blindness (X^h Y). Probability that a son has color blindness = <strong>50%</strong>. Overall probability for any child = 25%.</div>
+    </div>
+    <div class="sa-card">
+      <div class="sa-num-row"><div class="sa-num-badge">10</div><div class="sa-q">How do polygenic traits differ from single-gene traits? Give two examples of polygenic traits in humans.</div></div>
+      <textarea class="sa-answer-line" placeholder="Write your answer here..."></textarea>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">▶ Show Model Answer</button>
+      <div class="answer-reveal"><strong>Model Answer:</strong> Single-gene traits produce a limited number of discrete phenotypes (e.g., 2 or 3). Polygenic traits are controlled by two or more genes and produce a continuous range of phenotypes — many possible outcomes distributed in a bell curve. They are also influenced by the environment. Two examples: (1) Human height — ranges from very short to very tall with all values in between; (2) Skin color — ranges from very light to very dark due to multiple pigment genes.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- SECTION 6: SUMMARY -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="band band-navy" id="summary">
+<div class="band-inner">
+  <div class="section-header reveal">
+    <span class="section-num">07 / SUMMARY</span>
+    <h2 class="section-title">Module Review</h2>
+  </div>
+  <div class="summary-grid reveal">
+    <div class="sum-card" style="border-color:var(--cyan);background:rgba(255,255,255,0.05)">
+      <div class="sum-icon">🌱</div>
+      <div class="sum-title">Mendelian Genetics</div>
+      <div class="sum-desc">Mendel's laws, dominant/recessive alleles, monohybrid crosses, and the classic 3:1 phenotypic ratio.</div>
+    </div>
+    <div class="sum-card" style="border-color:var(--lime);background:rgba(255,255,255,0.05)">
+      <div class="sum-icon">⬜</div>
+      <div class="sum-title">Punnett Squares</div>
+      <div class="sum-desc">Tool to predict offspring genotype and phenotype probabilities from any genetic cross.</div>
+    </div>
+    <div class="sum-card" style="border-color:var(--rose);background:rgba(255,255,255,0.05)">
+      <div class="sum-icon">🌺</div>
+      <div class="sum-title">Incomplete Dominance</div>
+      <div class="sum-desc">Blended phenotype in heterozygotes. Produces a 1:2:1 phenotype ratio, not the classic 3:1.</div>
+    </div>
+    <div class="sum-card" style="border-color:var(--teal);background:rgba(255,255,255,0.05)">
+      <div class="sum-icon">🩸</div>
+      <div class="sum-title">Codominance</div>
+      <div class="sum-desc">Both alleles are fully and simultaneously expressed. Classic example: ABO blood type system.</div>
+    </div>
+    <div class="sum-card" style="border-color:var(--purple);background:rgba(255,255,255,0.05)">
+      <div class="sum-icon">🧬</div>
+      <div class="sum-title">Sex-Linked Traits</div>
+      <div class="sum-desc">Genes on X chromosome. Males (XY) need only one recessive allele to express the trait.</div>
+    </div>
+    <div class="sum-card" style="border-color:var(--amber);background:rgba(255,255,255,0.05)">
+      <div class="sum-icon">🎨</div>
+      <div class="sum-title">Polygenic Traits</div>
+      <div class="sum-desc">Multiple genes control one trait. Produces a continuous bell-curve distribution of phenotypes.</div>
+    </div>
+  </div>
+  <div class="reveal" style="margin-top:3rem;padding:1.5rem;border:1px solid rgba(0,201,184,0.3);background:rgba(0,201,184,0.06)">
+    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--cyan);margin-bottom:0.5rem">VIRGINIA STANDARD OF LEARNING</div>
+    <div style="color:rgba(255,255,255,0.8);font-size:0.95rem;line-height:1.6"><strong style="color:#fff">BIO.6</strong> — The student will investigate and understand genetics and heredity, including Mendelian and non-Mendelian patterns of inheritance, including but not limited to: dominant and recessive traits, incomplete dominance, codominance, multiple alleles, polygenic traits, and sex-linked traits.</div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <span>GENETICS & HEREDITY MODULE</span> · 9th Grade Biology · Virginia SOL BIO.6 · Built for classroom use
+</footer>
+
+<script>
+// ── Video Player
+function playVideo(thumbEl, videoId) {
+  const card = thumbEl.closest('.video-card');
+  const iframeWrap = card.querySelector('.video-iframe-wrap');
+  thumbEl.style.display = 'none';
+  iframeWrap.style.display = 'block';
+  iframeWrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+}
+
+
+const dnaBg = document.getElementById('dnaBg');
+const colors = ['#00c9b8','#6cc04a','#e8a020','#d63a5a','#7c3aed','#0a7e8c'];
+for (let i = 0; i < 14; i++) {
+  const row = document.createElement('div');
+  row.className = 'dna-row';
+  const offset = Math.sin(i * 0.85) * 100;
+  const c1 = colors[i % colors.length];
+  const c2 = colors[(i + 3) % colors.length];
+  row.innerHTML = `
+    <div class="dna-dot" style="background:${c1};left:calc(50% + ${offset}px - 9px)"></div>
+    <div class="dna-dot" style="background:${c2};left:calc(50% - ${offset}px - 9px)"></div>
+    ${i % 2 === 0 ? `<div class="dna-rung" style="left:calc(50% - ${Math.abs(offset)}px);width:${Math.abs(offset)*2}px"></div>` : ''}
+  `;
+  dnaBg.appendChild(row);
+}
+
+// ── Bell Bars
+const bellBars = document.getElementById('bellBars');
+const heights = [8,18,36,60,80,95,80,60,36,18,8];
+const skinTones = ['#fde8d4','#f5c9a6','#eaaa78','#d9885a','#c8693a','#b24e22','#9a3a14','#7d2b0c','#5c1e08','#3a1004','#200802'];
+heights.forEach((h, i) => {
+  const bar = document.createElement('div');
+  bar.className = 'bell-bar';
+  bar.style.height = h + 'px';
+  bar.style.background = skinTones[i];
+  bar.title = `Frequency: ${h}%`;
+  bellBars.appendChild(bar);
+});
+
+// ── Scroll Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, idx) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), idx * 60);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(r => observer.observe(r));
+
+// ── Active Nav
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ── Quiz Logic
+const answers = {};
+function pickAnswer(btn, isCorrect, qNum) {
+  const card = btn.closest('.mc-card');
+  const opts = card.querySelectorAll('.mc-opt');
+  opts.forEach(o => o.disabled = true);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) opts.forEach(o => { if (o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  const fb = document.getElementById('fb' + qNum);
+  fb.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect — see the highlighted answer.';
+  fb.className = 'mc-feedback show ' + (isCorrect ? 'ok' : 'bad');
+  answers[qNum] = isCorrect;
+}
+
+function checkScore() {
+  const correct = Object.values(answers).filter(Boolean).length;
+  const total = 5;
+  document.getElementById('scoreDisplay').textContent = correct + '/5';
+  const pct = (correct / total) * 100;
+  document.getElementById('scoreBarFill').style.width = pct + '%';
+  const fill = document.getElementById('scoreBarFill');
+  fill.style.background = pct >= 80 ? 'var(--lime)' : pct >= 60 ? 'var(--amber)' : 'var(--rose)';
+}
+
+function toggleAnswer(btn) {
+  const reveal = btn.nextElementSibling;
+  const isShown = reveal.classList.contains('show');
+  reveal.classList.toggle('show');
+  btn.textContent = isShown ? '▶ Show Model Answer' : '▼ Hide Answer';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1319 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecology — 9th Grade Science | Virginia SOL</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --moss: #2d5a3d;
+    --leaf: #4a8c5c;
+    --lime: #7ec850;
+    --sky: #a8d8b0;
+    --cream: #f5f0e8;
+    --sand: #e8dfc8;
+    --bark: #6b4e35;
+    --sun: #f2c94c;
+    --water: #4a9eba;
+    --text: #1c1c1c;
+    --muted: #6b7c6e;
+    --white: #ffffff;
+    --progress-h: 6px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  header { background: var(--forest); color: var(--white); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,.35); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; gap: 16px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-icon { width: 40px; height: 40px; background: var(--lime); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .logo-text h1 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: .5px; line-height: 1.1; }
+  .logo-text p { font-size: .72rem; color: var(--sky); font-weight: 300; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-progress { display: flex; align-items: center; gap: 10px; flex: 1; max-width: 340px; margin: 0 auto; }
+  .progress-label { font-size: .75rem; color: var(--sky); white-space: nowrap; }
+  .progress-bar-wrap { flex: 1; background: rgba(255,255,255,.15); border-radius: 99px; height: var(--progress-h); overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--lime), var(--sun)); border-radius: 99px; transition: width .5s ease; width: 0%; }
+  .xp-badge { background: var(--sun); color: var(--forest); font-family: 'Syne', sans-serif; font-weight: 700; font-size: .78rem; padding: 4px 10px; border-radius: 99px; }
+
+  .app { display: grid; grid-template-columns: 270px 1fr; min-height: calc(100vh - 68px); }
+
+  .sidebar { background: var(--forest); color: var(--white); padding: 24px 0; position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--moss) transparent; }
+  .sidebar-title { font-family: 'Syne', sans-serif; font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sky); padding: 0 24px 12px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 12px; }
+  .module-btn { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; padding: 12px 24px; text-align: left; transition: background .2s; position: relative; }
+  .module-btn:hover { background: rgba(255,255,255,.06); }
+  .module-btn.active { background: rgba(126,200,80,.18); }
+  .module-btn.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--lime); border-radius: 0 2px 2px 0; }
+  .mod-num { width: 28px; height: 28px; min-width: 28px; border-radius: 8px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: .78rem; font-weight: 700; color: var(--sky); margin-top: 1px; }
+  .module-btn.active .mod-num { background: var(--lime); color: var(--forest); }
+  .module-btn.completed .mod-num { background: var(--water); color: white; }
+  .mod-info { flex: 1; }
+  .mod-title { font-family: 'Syne', sans-serif; font-size: .85rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+  .mod-subtitle { font-size: .72rem; color: var(--sky); margin-top: 2px; opacity: .7; }
+  .mod-check { font-size: 1rem; margin-top: 4px; opacity: 0; transition: opacity .3s; }
+  .module-btn.completed .mod-check { opacity: 1; }
+
+  .main { padding: 36px 40px; max-width: 860px; }
+
+  .module-header { margin-bottom: 32px; animation: fadeUp .4s ease both; }
+  .module-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--lime); color: var(--forest); font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 99px; margin-bottom: 12px; }
+  .module-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--forest); line-height: 1.15; margin-bottom: 8px; }
+  .module-desc { color: var(--muted); font-size: .95rem; line-height: 1.6; max-width: 600px; margin-bottom: 16px; }
+  .sol-tag { display: inline-block; background: var(--sand); border: 1px solid var(--bark); color: var(--bark); font-size: .7rem; font-weight: 500; padding: 3px 10px; border-radius: 4px; letter-spacing: .5px; }
+
+  .section-tabs { display: flex; gap: 4px; margin-bottom: 28px; background: var(--sand); padding: 4px; border-radius: 12px; width: fit-content; animation: fadeUp .4s .1s ease both; flex-wrap: wrap; }
+  .sec-tab { border: none; background: none; font-family: 'DM Sans', sans-serif; font-size: .85rem; padding: 8px 18px; border-radius: 8px; cursor: pointer; transition: all .2s; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .sec-tab.active { background: var(--white); color: var(--forest); font-weight: 500; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .sec-tab .tab-icon { font-size: 1rem; }
+
+  .section-content { animation: fadeUp .35s ease both; }
+
+  .slide-deck { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.08); margin-bottom: 24px; }
+  .slide { display: none; min-height: 360px; position: relative; }
+  .slide.active { display: flex; flex-direction: column; }
+  .slide-visual { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 5rem; position: relative; overflow: hidden; }
+  .slide-visual::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(transparent, var(--white)); }
+  .slide-body { padding: 20px 28px 24px; flex: 1; }
+  .slide-num { font-family: 'Syne', sans-serif; font-size: .7rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .slide-heading { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--forest); margin-bottom: 10px; line-height: 1.25; }
+  .slide-text { font-size: .9rem; line-height: 1.7; color: #444; }
+  .slide-text ul { padding-left: 18px; margin-top: 6px; }
+  .slide-text li { margin-bottom: 5px; }
+  .slide-text strong { color: var(--forest); }
+  .slide-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-top: 1px solid var(--sand); background: #fafaf8; }
+  .slide-dots { display: flex; gap: 6px; }
+  .slide-dot { width: 7px; height: 7px; border-radius: 99px; background: var(--sand); transition: all .2s; cursor: pointer; border: none; }
+  .slide-dot.active { background: var(--leaf); width: 18px; }
+  .slide-nav-btn { border: 1px solid var(--sand); background: var(--white); color: var(--forest); font-size: .82rem; padding: 7px 16px; border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all .2s; display: flex; align-items: center; gap: 5px; }
+  .slide-nav-btn:hover { background: var(--forest); color: white; border-color: var(--forest); }
+  .slide-nav-btn:disabled { opacity: .3; cursor: default; }
+  .slide-nav-btn:disabled:hover { background: var(--white); color: var(--forest); border-color: var(--sand); }
+
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .video-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); cursor: pointer; transition: transform .2s, box-shadow .2s; display: block; border: 2px solid transparent; }
+  .video-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.12); border-color: var(--lime); }
+  .video-thumb { height: 120px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; font-size: 2.5rem; }
+  .play-btn { position: absolute; width: 42px; height: 42px; background: rgba(255,255,255,.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,.2); z-index: 2; }
+  .video-info { padding: 12px 14px 14px; }
+  .video-title { font-family: 'Syne', sans-serif; font-size: .88rem; font-weight: 600; margin-bottom: 4px; color: var(--forest); line-height: 1.3; }
+  .video-meta { font-size: .72rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .video-badge { background: var(--lime); color: var(--forest); font-size: .65rem; font-weight: 600; padding: 2px 7px; border-radius: 99px; }
+
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 200; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+  .modal-overlay.open { display: flex; animation: fadeIn .2s ease; }
+  .modal-box { background: var(--white); border-radius: 16px; overflow: hidden; max-width: 720px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+  .modal-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--sand); background: var(--forest); color: white; }
+  .modal-head h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+  .modal-close { background: rgba(255,255,255,.15); border: none; color: white; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+  .modal-close:hover { background: rgba(255,255,255,.3); }
+  .modal-video-wrap { position: relative; padding-top: 56.25%; background: #000; }
+  .modal-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .modal-footer { padding: 14px 20px; display: flex; justify-content: flex-end; }
+
+  .info-card { background: var(--white); border-radius: 14px; padding: 22px 26px; margin-bottom: 16px; border-left: 4px solid var(--leaf); box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+  .info-card.highlight { border-left-color: var(--sun); background: #fffdf0; }
+  .info-card.tip { border-left-color: var(--water); background: #f0f8ff; }
+  .info-card h4 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--forest); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+  .info-card p, .info-card li { font-size: .9rem; line-height: 1.7; color: #444; }
+  .info-card ul { padding-left: 18px; }
+  .info-card li { margin-bottom: 4px; }
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .vocab-item { background: var(--cream); border-radius: 8px; padding: 10px 14px; }
+  .vocab-term { font-weight: 600; color: var(--forest); font-size: .88rem; }
+  .vocab-def { font-size: .8rem; color: var(--muted); margin-top: 2px; }
+
+  .assignment-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); margin-bottom: 20px; }
+  .assignment-head { background: var(--forest); color: white; padding: 16px 22px; display: flex; align-items: center; gap: 12px; }
+  .assignment-head .icon { font-size: 1.4rem; }
+  .assignment-head h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+  .assignment-head p { font-size: .8rem; opacity: .7; margin-top: 2px; }
+  .assignment-body { padding: 22px; }
+  .assignment-body > p { font-size: .9rem; line-height: 1.7; color: #444; margin-bottom: 14px; }
+  .assignment-step { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+  .step-num { width: 26px; height: 26px; min-width: 26px; background: var(--lime); color: var(--forest); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: .78rem; font-weight: 700; margin-top: 1px; }
+  .step-text { font-size: .88rem; line-height: 1.6; color: #444; padding-top: 2px; }
+  .submit-area { background: var(--cream); border-radius: 10px; padding: 16px; margin-top: 16px; }
+  .submit-area label { display: block; font-size: .82rem; font-weight: 500; color: var(--forest); margin-bottom: 8px; }
+  .submit-area textarea { width: 100%; min-height: 100px; border: 1px solid var(--sand); border-radius: 8px; padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: .88rem; color: var(--text); resize: vertical; background: var(--white); transition: border .2s; }
+  .submit-area textarea:focus { outline: none; border-color: var(--leaf); }
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 22px; border-radius: 9px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 500; transition: all .2s; }
+  .btn-primary { background: var(--forest); color: white; margin-top: 10px; }
+  .btn-primary:hover { background: var(--moss); }
+  .btn-lime { background: var(--lime); color: var(--forest); font-weight: 600; }
+  .btn-lime:hover { background: #6ab840; }
+
+  .quiz-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); margin-bottom: 20px; }
+  .quiz-head { background: linear-gradient(135deg, var(--moss), var(--leaf)); padding: 16px 22px; color: white; display: flex; align-items: center; justify-content: space-between; }
+  .quiz-head h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+  .quiz-score-badge { background: rgba(255,255,255,.2); border-radius: 99px; padding: 4px 12px; font-size: .78rem; font-weight: 500; }
+  .quiz-body { padding: 22px; }
+  .question-block { margin-bottom: 24px; }
+  .question-block:last-child { margin-bottom: 0; }
+  .question-text { font-family: 'Syne', sans-serif; font-size: .95rem; font-weight: 600; color: var(--forest); margin-bottom: 12px; line-height: 1.4; }
+  .question-num { font-size: .72rem; font-weight: 400; color: var(--muted); display: block; margin-bottom: 4px; letter-spacing: .5px; text-transform: uppercase; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option { display: flex; align-items: center; gap: 10px; padding: 11px 16px; border: 1.5px solid var(--sand); border-radius: 9px; cursor: pointer; transition: all .2s; font-size: .88rem; color: #444; background: var(--white); user-select: none; }
+  .option:hover:not(.disabled) { border-color: var(--leaf); background: #f2faf4; }
+  .option.selected { border-color: var(--leaf); background: #f0faf3; color: var(--forest); }
+  .option.correct { border-color: #27ae60; background: #eafaf1; color: #1e8449; }
+  .option.incorrect { border-color: #e74c3c; background: #fef9f9; color: #c0392b; }
+  .option.disabled { cursor: default; }
+  .option-letter { width: 24px; height: 24px; min-width: 24px; border-radius: 6px; background: var(--sand); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: .75rem; font-weight: 700; color: var(--muted); }
+  .option.selected .option-letter { background: var(--leaf); color: white; }
+  .option.correct .option-letter { background: #27ae60; color: white; }
+  .option.incorrect .option-letter { background: #e74c3c; color: white; }
+  .feedback { margin-top: 8px; padding: 10px 14px; border-radius: 8px; font-size: .83rem; line-height: 1.5; display: none; }
+  .feedback.show { display: block; animation: fadeIn .3s ease; }
+  .feedback.correct { background: #eafaf1; color: #1e8449; border-left: 3px solid #27ae60; }
+  .feedback.incorrect { background: #fef9f9; color: #c0392b; border-left: 3px solid #e74c3c; }
+  .quiz-submit { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--sand); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .score-display { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); display: none; }
+  .score-display.show { display: block; animation: fadeIn .4s ease; }
+
+  .diagram-wrap {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    margin-bottom: 20px;
+    padding: 10px 10px 4px;
+  }
+  .diagram-label {
+    font-family: 'Syne', sans-serif;
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--forest);
+    padding: 8px 12px 6px;
+    letter-spacing: .3px;
+  }
+
+
+  .video-slots { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+
+  .video-slot-card {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    border: 2px dashed var(--sand);
+    transition: border-color .2s;
+  }
+  .video-slot-card:has(.slot-filled) { border-style: solid; border-color: var(--leaf); }
+
+  .slot-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--forest);
+    color: white;
+  }
+  .slot-num {
+    width: 24px; height: 24px;
+    background: var(--lime);
+    color: var(--forest);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+  .slot-label {
+    font-family: 'Syne', sans-serif;
+    font-size: .88rem;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .slot-empty {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .slot-input, .slot-title-input {
+    width: 100%;
+    border: 1.5px solid var(--sand);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .88rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border .2s;
+  }
+  .slot-input:focus, .slot-title-input:focus { outline: none; border-color: var(--leaf); background: white; }
+  .slot-add-btn {
+    align-self: flex-start;
+    background: var(--forest);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .slot-add-btn:hover { background: var(--moss); }
+
+  .slot-filled {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+  .slot-thumb {
+    width: 110px; min-width: 110px; height: 62px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .slot-info { flex: 1; }
+  .slot-title {
+    font-family: 'Syne', sans-serif;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .slot-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--lime);
+    color: var(--forest);
+    font-size: .8rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    padding: 5px 14px;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .slot-link:hover { background: #6ab840; }
+  .slot-remove {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c0392b;
+    border-radius: 6px;
+    width: 28px; height: 28px;
+    cursor: pointer;
+    font-size: .85rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+  .slot-remove:hover { background: #fcc; }
+
+  .next-module { display: flex; align-items: center; justify-content: space-between; background: var(--white); border: 2px dashed var(--leaf); border-radius: 14px; padding: 18px 24px; margin-top: 24px; cursor: pointer; transition: all .2s; }
+  .next-module:hover { border-style: solid; background: #f2faf4; }
+  .next-module-text .label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--leaf); font-weight: 600; margin-bottom: 4px; }
+  .next-module-text .title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--forest); }
+  .next-arrow { font-size: 1.4rem; color: var(--leaf); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  @media (max-width: 768px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 24px 20px; }
+    .video-grid { grid-template-columns: 1fr; }
+    .vocab-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<script>if(!window.VIDEO_DATA)window.VIDEO_DATA={0:[],1:[],2:[],3:[],4:[]};</script>
+<script>window.VIDEO_DATA = {"0":[{"url":"https://www.youtube.com/watch?v=7cRgK0qG00E","title":"Ecosystem basics"},{"url":"https://www.youtube.com/watch?v=GK_vRtHJZu4","title":"Biodiversity"},null,null],"1":[{"url":"https://www.youtube.com/watch?v=-oVavgmveyY","title":"Food chain and Food web"},{"url":"https://www.youtube.com/watch?v=rNjPI84sApQ","title":"Ecological relationship"}],"2":[{"url":"https://www.youtube.com/watch?v=srpl5YRw-_U","title":"Ecology Review"},{"url":"https://www.youtube.com/watch?v=GK_vRtHJZu4","title":"Biodiversity"}],"3":[{"url":"https://www.youtube.com/watch?v=uip4Q6t7yfQ","title":"Nitrogen cycle"},{"url":"https://www.youtube.com/watch?v=A4cPmHGegKI","title":"Carbon cycle"}],"4":[{"url":"https://www.youtube.com/watch?v=5eTCZ9L834s","title":"Human Impact-Crash course"}]};</script><script>window.VIDEO_DATA = {"0":[{"url":"https://www.youtube.com/watch?v=7cRgK0qG00E","title":"Ecosystem basics"},{"url":"https://www.youtube.com/watch?v=GK_vRtHJZu4","title":"Biodiversity"},null,null],"1":[{"url":"https://www.youtube.com/watch?v=-oVavgmveyY","title":"Food chain and Food web"},{"url":"https://www.youtube.com/watch?v=rNjPI84sApQ","title":"Ecological relationship"}],"2":[{"url":"https://www.youtube.com/watch?v=srpl5YRw-_U","title":"Ecology Review"},{"url":"https://www.youtube.com/watch?v=GK_vRtHJZu4","title":"Biodiversity"}],"3":[{"url":"https://www.youtube.com/watch?v=uip4Q6t7yfQ","title":"Nitrogen cycle"},{"url":"https://www.youtube.com/watch?v=A4cPmHGegKI","title":"Carbon cycle"}],"4":[{"url":"https://www.youtube.com/watch?v=5eTCZ9L834s","title":"Human Impact-Crash course"}]};</script></head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🌿</div>
+      <div class="logo-text">
+        <h1>Ecology Explorer</h1>
+        <p>Virginia SOL · Biology 9th Grade</p>
+      </div>
+    </div>
+    <div class="header-progress">
+      <span class="progress-label">Progress</span>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="globalProgress" style="width: 0%;"></div></div>
+      <div class="xp-badge" id="xpDisplay">220 XP</div>
+      <button onclick="saveAndDownload()" style="background:var(--lime);color:var(--forest);border:none;border-radius:8px;padding:8px 16px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px;" title="Save your video links permanently into the file">
+        💾 Save &amp; Download
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modalTitle">Video</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-video-wrap">
+      <iframe id="modalFrame" src="" allowfullscreen=""></iframe>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-lime" onclick="closeModal()">✓ Mark Watched &amp; Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="app">
+  <nav class="sidebar">
+    <p class="sidebar-title">Course Modules</p>
+    <button class="module-btn" onclick="loadModule(0)" id="modBtn0">
+      <div class="mod-num">1</div>
+      <div class="mod-info"><div class="mod-title">Ecosystems &amp; Energy</div><div class="mod-subtitle">Biotic · Abiotic · Flow</div></div>
+      <div class="mod-check">✔️</div>
+    </button>
+    <button class="module-btn" onclick="loadModule(1)" id="modBtn1">
+      <div class="mod-num">2</div>
+      <div class="mod-info"><div class="mod-title">Population Ecology</div><div class="mod-subtitle">Growth · Limiting Factors</div></div>
+      <div class="mod-check">✔️</div>
+    </button>
+    <button class="module-btn" onclick="loadModule(2)" id="modBtn2">
+      <div class="mod-num">3</div>
+      <div class="mod-info"><div class="mod-title">Biomes &amp; Biodiversity</div><div class="mod-subtitle">Habitats · Virginia</div></div>
+      <div class="mod-check">✔️</div>
+    </button>
+    <button class="module-btn" onclick="loadModule(3)" id="modBtn3">
+      <div class="mod-num">4</div>
+      <div class="mod-info"><div class="mod-title">Biogeochemical Cycles</div><div class="mod-subtitle">Carbon · Water · Nitrogen</div></div>
+      <div class="mod-check">✔️</div>
+    </button>
+    <button class="module-btn active" onclick="loadModule(4)" id="modBtn4">
+      <div class="mod-num">5</div>
+      <div class="mod-info"><div class="mod-title">Human Impact</div><div class="mod-subtitle">Conservation · Change</div></div>
+      <div class="mod-check">✔️</div>
+    </button>
+  </nav>
+  <main class="main" id="mainContent">
+    <div class="module-header">
+      <div class="module-tag">Module 5 · 🌎</div>
+      <h2 class="module-title">Human Impact &amp; Conservation</h2>
+      <p class="module-desc">Examine how human activities affect ecosystems and what Virginia is doing to protect its natural heritage.</p>
+      <span class="sol-tag">📚 VA SOL BIO.9a, BIO.9b, BIO.9c</span>
+    </div>
+    <div class="section-tabs"><button class="sec-tab active" onclick="setTab('slides')"><span class="tab-icon">📋</span>Slides</button><button class="sec-tab " onclick="setTab('videos')"><span class="tab-icon">▶️</span>Videos</button><button class="sec-tab " onclick="setTab('notes')"><span class="tab-icon">📝</span>Notes</button><button class="sec-tab " onclick="setTab('assignment')"><span class="tab-icon">✏️</span>Assignment</button><button class="sec-tab " onclick="setTab('quiz')"><span class="tab-icon">✅</span>Quiz</button></div>
+    <div class="section-content"><div class="slide-deck">
+    
+      <div class="slide active">
+        <div class="slide-visual" style="background:linear-gradient(135deg,#3a1a1a,#6a3a2a)">🏭</div>
+        <div class="slide-body">
+          <div class="slide-num">Slide 1 of 4</div>
+          <div class="slide-heading">Major Human Impacts</div>
+          <div class="slide-text"><ul><li><strong>Habitat loss</strong> — #1 cause of biodiversity loss; deforestation, urban sprawl</li><li><strong>Pollution</strong> — air, water, soil; affects food chains</li><li><strong>Invasive species</strong> — outcompete native species</li><li><strong>Overexploitation</strong> — overfishing, hunting, poaching</li><li><strong>Climate change</strong> — shifts biomes, disrupts cycles</li></ul></div>
+        </div>
+      </div>
+      <div class="slide ">
+        <div class="slide-visual" style="background:linear-gradient(135deg,#1a3a4a,#3a6a8a)">🌡️</div>
+        <div class="slide-body">
+          <div class="slide-num">Slide 2 of 4</div>
+          <div class="slide-heading">Climate Change &amp; Ecosystems</div>
+          <div class="slide-text">Rising CO₂ → greenhouse effect → global warming:<br><br><ul><li>Rising sea levels threaten coastal Virginia wetlands</li><li>Shifting temperatures change species' ranges</li><li>Ocean acidification harms shellfish in Chesapeake Bay</li><li>Earlier springs disrupt migration and breeding timing</li></ul></div>
+        </div>
+      </div>
+      <div class="slide ">
+        <div class="slide-visual" style="background:linear-gradient(135deg,#1a3a1a,#2a6a3a)">🛡️</div>
+        <div class="slide-body">
+          <div class="slide-num">Slide 3 of 4</div>
+          <div class="slide-heading">Conservation Strategies</div>
+          <div class="slide-text"><ul><li><strong>Protected areas</strong> — national/state parks, wildlife refuges</li><li><strong>Habitat restoration</strong> — reforestation, wetland restoration</li><li><strong>Captive breeding</strong> — for endangered species</li><li><strong>Laws &amp; policy</strong> — Endangered Species Act, Clean Water Act</li><li><strong>Sustainable practices</strong> — responsible fishing, renewable energy</li></ul></div>
+        </div>
+      </div>
+      <div class="slide ">
+        <div class="slide-visual" style="background:linear-gradient(135deg,#2a3a1a,#5a7a3a)">🦋</div>
+        <div class="slide-body">
+          <div class="slide-num">Slide 4 of 4</div>
+          <div class="slide-heading">Virginia Conservation Efforts</div>
+          <div class="slide-text">Virginia is actively protecting its ecosystems:<br><br><ul><li><strong>Chesapeake Bay Program</strong> — multi-state restoration effort</li><li><strong>Virginia Wildlife Action Plan</strong> — 1,000+ species of concern</li><li><strong>Shenandoah National Park</strong> — 200,000+ acres protected</li><li><strong>Native Plant Program</strong> — restore native species diversity</li></ul></div>
+        </div>
+      </div>
+    <div class="slide-nav">
+      <button class="slide-nav-btn" onclick="changeSlide(-1)" disabled="">← Prev</button>
+      <div class="slide-dots"><button class="slide-dot active" onclick="goSlide(0)"></button><button class="slide-dot " onclick="goSlide(1)"></button><button class="slide-dot " onclick="goSlide(2)"></button><button class="slide-dot " onclick="goSlide(3)"></button></div>
+      <button class="slide-nav-btn" onclick="changeSlide(1)">Next →</button>
+    </div>
+  </div></div>
+    <div style="text-align:center;padding:28px;background:var(--forest);border-radius:14px;color:white;margin-top:24px;"><div style="font-size:2.5rem;margin-bottom:8px">🎓</div><div style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:6px">Course Complete!</div><p style="opacity:.8;font-size:.9rem">You have finished all 5 Ecology modules. You are ready for your Virginia SOL assessment!</p></div></main>
+</div>
+
+<script>
+const modules = [
+  {
+    id:0, tag:"Module 1", emoji:"🌳", title:"Ecosystems & Energy Flow",
+    desc:"Explore how living and non-living components interact, and how energy moves through food webs.",
+    sol:"VA SOL BIO.8a, BIO.8b",
+    slides:[
+      { bg:"linear-gradient(135deg,#1a3a2a,#4a8c5c)", emoji:"🌍", heading:"What is an Ecosystem?",
+        text:`An <strong>ecosystem</strong> is a community of living organisms interacting with their non-living environment.<br><br><ul><li><strong>Biotic factors</strong> — all living things (plants, animals, fungi, bacteria)</li><li><strong>Abiotic factors</strong> — non-living components (sunlight, water, temperature, soil)</li></ul>` },
+      { bg:"linear-gradient(135deg,#2d5a3d,#7ec850)", emoji:"☀️", heading:"Energy Producers",
+        text:`<strong>Producers (autotrophs)</strong> capture energy from the sun through <strong>photosynthesis</strong>.<br><br>6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂<br><br>Virginia examples: <em>oak trees, grasses, algae, phytoplankton</em>` },
+      { bg:"linear-gradient(135deg,#1a4060,#4a9eba)", emoji:"🦊", heading:"Consumers & Food Chains",
+        text:`<ul><li><strong>Primary consumers</strong> — eat producers (herbivores)</li><li><strong>Secondary consumers</strong> — eat primary consumers</li><li><strong>Tertiary consumers</strong> — top predators</li><li><strong>Decomposers</strong> — break down dead matter, recycling nutrients</li></ul><br><em>Only ~10% of energy transfers between trophic levels!</em>` },
+      { bg:"linear-gradient(135deg,#4a3520,#8b6340)", emoji:"📊", heading:"Ecological Pyramids",
+        text:`Ecological pyramids show energy, biomass, or numbers at each trophic level.<br><br><ul><li><strong>Energy pyramid</strong> — 10% rule; base is always largest</li><li><strong>Biomass pyramid</strong> — total mass at each level</li><li><strong>Numbers pyramid</strong> — count of organisms (can be inverted!)</li></ul>` },
+      { bg:"linear-gradient(135deg,#3d1a5a,#7b5ea7)", emoji:"🔄", heading:"Food Webs",
+        text:`A <strong>food web</strong> shows the interconnected feeding relationships in an ecosystem.<br><br>Key ideas:<ul><li>More connections = more stable ecosystem</li><li>Removing a <strong>keystone species</strong> can collapse a food web</li><li>Trophic cascades occur when top predators are removed</li></ul>` }
+    ],
+    videos:[
+      { title:"Ecosystems — Amoeba Sisters", channel:"Amoeba Sisters", duration:"7:29", thumb:"linear-gradient(135deg,#1a3a2a,#4a8c5c)", id:"vWPzuvCCvtQ", badge:"Core" },
+      { title:"Food Webs & Energy Flow (Ecology)", channel:"Crash Course Biology", duration:"9:17", thumb:"linear-gradient(135deg,#4a6c1a,#7ec850)", id:"3oFMLmRzJnM", badge:"Core" },
+      { title:"Food Chains — Khan Academy", channel:"Khan Academy", duration:"4:54", thumb:"linear-gradient(135deg,#1a4060,#4a9eba)", id:"OJRfpxbNiSA", badge:"Deep Dive" },
+      { title:"Energy Flow in Ecosystems", channel:"Bozeman Science", duration:"8:00", thumb:"linear-gradient(135deg,#5a3a1a,#c87040)", id:"eo6iqaIbPVo", badge:"Quick" }
+    ],
+    notes:[
+      { type:"normal", icon:"📌", title:"Key Concept: Trophic Levels", content:"Energy flows in ONE direction through an ecosystem — from producers to consumers. Each level loses ~90% of energy as heat, which is why food chains rarely exceed 5–6 levels. This is described by the <strong>10% Rule</strong>." },
+      { type:"highlight", icon:"⭐", title:"Virginia Connection", content:"The Chesapeake Bay watershed covers 64,000 sq miles of Virginia. It supports over 3,600 species of plants and animals and is a perfect real-world example of a complex food web and ecosystem health." },
+      { type:"tip", icon:"💡", title:"Study Tip: Biotic vs Abiotic", content:"Remember: <strong>Biotic = Biological (living)</strong>. If it was ever alive, it's biotic. Decomposing leaves? Still biotic! Rocks, sunlight, and temperature = abiotic." },
+      { vocab:true, icon:"📖", title:"Key Vocabulary", terms:[
+        { term:"Ecosystem", def:"Community + non-living environment" },
+        { term:"Producer", def:"Organism that makes its own food" },
+        { term:"Consumer", def:"Organism that eats other organisms" },
+        { term:"Decomposer", def:"Breaks down dead organic matter" },
+        { term:"Food Web", def:"Network of feeding relationships" },
+        { term:"Trophic Level", def:"Position in food chain/web" }
+      ]}
+    ],
+    assignment:{
+      icon:"🌐", title:"Food Web Construction", subtitle:"Research & Creative Assignment",
+      instructions:"You will construct and analyze a food web from a Virginia ecosystem.",
+      steps:[
+        "Choose a Virginia ecosystem: Chesapeake Bay, Appalachian Forest, Shenandoah Valley, or Blue Ridge Mountains.",
+        "Identify at least 10 organisms (at least 1 producer, 2 primary consumers, 2 secondary consumers, 1 decomposer).",
+        "Draw or diagram your food web — arrows should point FROM prey TO predator (direction of energy flow).",
+        "Predict what would happen if one species was removed — write 3–4 sentences.",
+        "Label the trophic levels and identify whether this is a stable or fragile web, with justification."
+      ],
+      prompt:"Describe your chosen ecosystem and explain one trophic cascade that could occur if a key species were removed."
+    },
+    quiz:[
+      { q:"Which of the following is an abiotic factor in an ecosystem?", opts:["A mushroom","A deer","Soil temperature","Bacteria"], ans:2, explain:"Soil temperature is non-living (abiotic). Mushrooms, deer, and bacteria are all living (biotic) organisms." },
+      { q:"According to the 10% rule, if producers store 10,000 kcal, how much energy is available to secondary consumers?", opts:["1,000 kcal","100 kcal","1 kcal","10,000 kcal"], ans:1, explain:"Producers → Primary consumers: 10% = 1,000 kcal. Primary → Secondary consumers: 10% of 1,000 = 100 kcal." },
+      { q:"What role do decomposers play in an ecosystem?", opts:["They produce their own food from sunlight","They eat only primary consumers","They break down dead matter and recycle nutrients","They are always at the top of the food chain"], ans:2, explain:"Decomposers like bacteria and fungi break down dead organic matter, returning nutrients to the soil for producers to use." },
+      { q:"An ecological pyramid of energy always has the LARGEST section at which level?", opts:["Tertiary consumers","Secondary consumers","Primary consumers","Producers"], ans:3, explain:"Producers capture the most energy from sunlight. Each level above has ~90% less energy, making producers the base/largest level." },
+      { q:"What is a keystone species?", opts:["A species with the largest population","A species whose removal causes major ecosystem collapse","A species that eats only plants","The species at the top of every food chain"], ans:1, explain:"A keystone species has a disproportionately large effect on its ecosystem. Removing it can cause a trophic cascade." }
+    ]
+  },
+  {
+    id:1, tag:"Module 2", emoji:"🦌", title:"Population Ecology",
+    desc:"Investigate how populations grow, what limits them, and how species interact within communities.",
+    sol:"VA SOL BIO.8c, BIO.8d",
+    slides:[
+      { bg:"linear-gradient(135deg,#1a2a4a,#3a5a8a)", emoji:"📈", heading:"Population Growth Models",
+        text:`Two main models describe population growth:<br><br><ul><li><strong>Exponential (J-curve)</strong> — unlimited resources, rapid unchecked growth</li><li><strong>Logistic (S-curve)</strong> — resources are limited; growth slows near <em>carrying capacity (K)</em></li></ul>` },
+      { bg:"linear-gradient(135deg,#2a4a1a,#5a8a3a)", emoji:"⚖️", heading:"Limiting Factors",
+        text:`Factors that prevent a population from growing indefinitely:<br><br><ul><li><strong>Density-dependent</strong> — predation, disease, competition (worsen as population increases)</li><li><strong>Density-independent</strong> — natural disasters, weather, climate (affect any size population)</li></ul>` },
+      { bg:"linear-gradient(135deg,#4a1a1a,#8a3a3a)", emoji:"🐺", heading:"Species Interactions",
+        text:`<ul><li><strong>Predation (+/−)</strong> — predator benefits; prey harmed</li><li><strong>Competition (−/−)</strong> — both harmed; niche overlap</li><li><strong>Mutualism (+/+)</strong> — both benefit (bees &amp; flowers)</li><li><strong>Commensalism (+/0)</strong> — one benefits, other unaffected</li><li><strong>Parasitism (+/−)</strong> — parasite benefits; host harmed</li></ul>` },
+      { bg:"linear-gradient(135deg,#2a1a4a,#5a3a8a)", emoji:"🏠", heading:"Habitat & Niche",
+        text:`<ul><li><strong>Habitat</strong> — physical location where an organism lives</li><li><strong>Ecological niche</strong> — organism's role + all its interactions in an ecosystem</li><li><strong>Competitive exclusion principle</strong> — two species can't occupy the same niche</li><li><strong>Resource partitioning</strong> — similar species divide resources to coexist</li></ul>` }
+    ],
+    videos:[
+      { title:"Population Ecology — Bozeman Science", channel:"Bozeman Science", duration:"8:24", thumb:"linear-gradient(135deg,#1a2a4a,#4a6aba)", id:"RBOsqmBQBuk", badge:"Core" },
+      { title:"Population Ecology: The Texas Mosquito Problem", channel:"Crash Course Biology", duration:"10:53", thumb:"linear-gradient(135deg,#2a4a1a,#5a8a3a)", id:"ychI8G4D5Jg", badge:"Core" },
+      { title:"Symbiosis — Amoeba Sisters", channel:"Amoeba Sisters", duration:"8:27", thumb:"linear-gradient(135deg,#4a1a1a,#8a3a3a)", id:"mFordkFGON8", badge:"Deep Dive" },
+      { title:"Predator Prey Relationships — Bozeman", channel:"Bozeman Science", duration:"7:34", thumb:"linear-gradient(135deg,#2a1a4a,#6a3a8a)", id:"NYq2078_xqc", badge:"Visual" }
+    ],
+    notes:[
+      { type:"normal", icon:"📌", title:"Carrying Capacity (K)", content:"Carrying capacity is the maximum population a habitat can support. Logistic growth flattens as population approaches K. Real populations often oscillate around K rather than staying perfectly steady." },
+      { type:"highlight", icon:"⭐", title:"Virginia Example: White-Tailed Deer", content:"Virginia's white-tailed deer population is a classic example of population dynamics. With reduced predators and suburban expansion, deer can exceed carrying capacity, overgrazing vegetation and causing ecological imbalance." },
+      { type:"tip", icon:"💡", title:"Remember the Symbols!", content:"Species interactions use + and − signs.<br><strong>Predation = +/−</strong> | <strong>Competition = −/−</strong> | <strong>Mutualism = +/+</strong> | <strong>Commensalism = +/0</strong> | <strong>Parasitism = +/−</strong>" },
+      { vocab:true, icon:"📖", title:"Key Vocabulary", terms:[
+        { term:"Population", def:"Same species living in same area" },
+        { term:"Carrying capacity", def:"Max population an environment supports" },
+        { term:"Exponential growth", def:"J-curve; unlimited resource growth" },
+        { term:"Logistic growth", def:"S-curve; growth limited by resources" },
+        { term:"Niche", def:"Species' role in ecosystem" },
+        { term:"Symbiosis", def:"Close, long-term species interaction" }
+      ]}
+    ],
+    assignment:{
+      icon:"📊", title:"Population Data Analysis", subtitle:"Math & Ecology Integration",
+      instructions:"Analyze population growth data and identify real-world limiting factors.",
+      steps:[
+        "Graph the following deer population data: Year 1: 50, Year 5: 200, Year 10: 800, Year 15: 1,600, Year 20: 1,900, Year 25: 2,000.",
+        "Label the exponential growth phase, inflection point, and carrying capacity on your graph.",
+        "Identify 2 density-dependent and 2 density-independent limiting factors for deer in Virginia.",
+        "Research a real invasive species in Virginia (e.g., emerald ash borer, kudzu vine) and describe how it affects native population dynamics.",
+        "Write a short recommendation (5–7 sentences) for wildlife managers on how to maintain a healthy deer population in Virginia."
+      ],
+      prompt:"Explain the difference between exponential and logistic growth using the deer population data. What limiting factors create the S-curve shape?"
+    },
+    quiz:[
+      { q:"Which population growth model produces an S-shaped curve?", opts:["Exponential growth","Logistic growth","Linear growth","Cyclic growth"], ans:1, explain:"Logistic growth produces an S-curve (sigmoid) because growth slows as the population approaches carrying capacity." },
+      { q:"Wolves reintroduced to an ecosystem cause deer populations to decline. This is an example of:", opts:["Mutualism","Competition","Predation","Commensalism"], ans:2, explain:"Wolves (predator, +) benefit while deer (prey, −) are harmed. This predation helps regulate the deer population." },
+      { q:"A disease that kills more individuals as population density increases is a:", opts:["Density-independent factor","Density-dependent factor","Abiotic factor","Mutualistic relationship"], ans:1, explain:"Disease spreads more easily in dense populations. Effects worsen as population increases = density-dependent." },
+      { q:"Two different species of squirrels eating the same nuts in the same trees experience:", opts:["Mutualism","Parasitism","Intraspecific competition","Interspecific competition"], ans:3, explain:"Different species competing for the same resource is interspecific competition (−/−)." },
+      { q:"Clownfish live in anemones — the fish is protected while the anemone is unaffected. This is:", opts:["Parasitism","Mutualism","Commensalism","Predation"], ans:2, explain:"The clownfish benefits (+) and the anemone is neither helped nor harmed (0) = commensalism (+/0)." }
+    ]
+  },
+  {
+    id:2, tag:"Module 3", emoji:"🌲", title:"Biomes & Virginia Biodiversity",
+    desc:"Discover Earth's major biomes and explore the incredible biodiversity found right here in Virginia.",
+    sol:"VA SOL BIO.8e, BIO.9a",
+    slides:[
+      { bg:"linear-gradient(135deg,#1a3a1a,#2d8a2d)", emoji:"🗺️", heading:"Major Terrestrial Biomes",
+        text:`<ul><li><strong>Tropical Rainforest</strong> — hot, wet; highest biodiversity</li><li><strong>Temperate Deciduous Forest</strong> — four seasons; Virginia's primary biome</li><li><strong>Grassland/Savanna</strong> — dry; grasses dominate</li><li><strong>Desert</strong> — low precipitation (&lt;25 cm/year)</li><li><strong>Tundra</strong> — polar; permafrost; treeless</li><li><strong>Taiga (Boreal Forest)</strong> — coniferous; cold winters</li></ul>` },
+      { bg:"linear-gradient(135deg,#1a3a4a,#2d6a8a)", emoji:"🌊", heading:"Aquatic Biomes",
+        text:`<ul><li><strong>Marine</strong> — oceans (70% of Earth), high salinity</li><li><strong>Freshwater</strong> — rivers, lakes, ponds, low salinity</li><li><strong>Estuaries</strong> — where freshwater meets saltwater; extremely productive</li><li><strong>Wetlands</strong> — marshes, swamps; biodiversity hotspots</li></ul><br><em>The Chesapeake Bay estuary is one of the most productive in the world!</em>` },
+      { bg:"linear-gradient(135deg,#2a4a1a,#5a8a3a)", emoji:"🦅", heading:"Virginia's Ecosystems",
+        text:`Virginia spans multiple biomes:<br><br><ul><li><strong>Blue Ridge Mountains</strong> — mixed deciduous &amp; coniferous</li><li><strong>Shenandoah Valley</strong> — fertile farmland &amp; grassland</li><li><strong>Piedmont</strong> — rolling hills; temperate deciduous forest</li><li><strong>Coastal Plain</strong> — wetlands, tidal marshes</li><li><strong>Chesapeake Bay</strong> — estuary; 3,600+ species</li></ul>` },
+      { bg:"linear-gradient(135deg,#4a1a3a,#8a3a6a)", emoji:"🧬", heading:"Biodiversity",
+        text:`<strong>Biodiversity</strong> — the variety of life in an area (genetic, species, ecosystem).<br><br>Why it matters:<ul><li>More diverse = more stable ecosystems</li><li>Provides food, medicine, clean water, oxygen</li><li>Threatened by habitat loss, pollution, invasive species, climate change</li></ul>` }
+    ],
+    videos:[
+      { title:"Biomes of the World — Crash Course", channel:"Crash Course Biology", duration:"11:37", thumb:"linear-gradient(135deg,#1a3a1a,#3a8a3a)", id:"GK_vRtHJZu4", badge:"Core" },
+      { title:"What Is Biodiversity? — TED-Ed", channel:"TED-Ed", duration:"4:54", thumb:"linear-gradient(135deg,#1a3a4a,#3a6a8a)", id:"GlnV-aDJTEY", badge:"Virginia" },
+      { title:"Biodiversity & Evolution — Amoeba Sisters", channel:"Amoeba Sisters", duration:"7:31", thumb:"linear-gradient(135deg,#4a1a3a,#8a3a6a)", id:"1vBSFkGbkbQ", badge:"Core" },
+      { title:"Aquatic Biomes — Crash Course", channel:"Crash Course Biology", duration:"8:27", thumb:"linear-gradient(135deg,#2a4a1a,#5a8a3a)", id:"kp_1S1BVlks", badge:"Virginia" }
+    ],
+    notes:[
+      { type:"normal", icon:"📌", title:"Biome vs. Ecosystem", content:"A <strong>biome</strong> is a large geographic region defined by its climate, plants, and animals. An <strong>ecosystem</strong> is a specific community + environment within a biome. Multiple ecosystems exist within a single biome." },
+      { type:"highlight", icon:"⭐", title:"Virginia's Unique Position", content:"Virginia lies at the boundary of multiple biomes and has the Blue Ridge Mountains, Shenandoah Valley, Piedmont, Coastal Plain, and the Chesapeake Bay watershed. This geographic diversity supports exceptional biodiversity." },
+      { type:"tip", icon:"💡", title:"Climate Determines Biome", content:"The two most important factors determining which biome exists in an area are <strong>temperature</strong> and <strong>precipitation</strong>. A warm + wet climate → rainforest; warm + dry → desert." },
+      { vocab:true, icon:"📖", title:"Key Vocabulary", terms:[
+        { term:"Biome", def:"Large region defined by climate & life" },
+        { term:"Estuary", def:"Where freshwater meets saltwater" },
+        { term:"Biodiversity", def:"Variety of life in an area" },
+        { term:"Endemic species", def:"Found only in one specific place" },
+        { term:"Wetland", def:"Land saturated with water seasonally" },
+        { term:"Deciduous", def:"Trees that shed leaves seasonally" }
+      ]}
+    ],
+    assignment:{
+      icon:"🗺️", title:"Virginia Biodiversity Field Guide", subtitle:"Research & Design Project",
+      instructions:"Create a mini field guide entry for a Virginia native species.",
+      steps:[
+        "Choose one native Virginia species (plant, animal, or fungus) — not a common household pet.",
+        "Research its habitat, diet/role, range, and conservation status using credible sources.",
+        "Describe which Virginia ecosystem/biome it inhabits and how it is adapted to that environment.",
+        "Identify at least TWO threats this species faces (habitat loss, invasive species, climate change, pollution).",
+        "Write one paragraph on what conservation actions are in place to protect this species in Virginia."
+      ],
+      prompt:"Which Virginia species did you choose, and what makes it important to its ecosystem? What would change if this species disappeared?"
+    },
+    quiz:[
+      { q:"Which biome is characterized by the HIGHEST biodiversity on Earth?", opts:["Tundra","Temperate deciduous forest","Tropical rainforest","Desert"], ans:2, explain:"Tropical rainforests, with warm temperatures and heavy rainfall year-round, support the greatest biodiversity (~50% of all species)." },
+      { q:"Virginia's primary terrestrial biome is:", opts:["Tropical rainforest","Temperate deciduous forest","Boreal forest (taiga)","Grassland"], ans:1, explain:"Virginia's climate (warm summers, cold winters, moderate rainfall) is characteristic of the temperate deciduous forest biome." },
+      { q:"An estuary is defined as:", opts:["A type of deep ocean trench","A place where freshwater and saltwater meet","A polar wetland with permafrost","A tropical lake ecosystem"], ans:1, explain:"Estuaries are where rivers (freshwater) meet the ocean (saltwater). The Chesapeake Bay is one of the world's most productive estuaries." },
+      { q:"Which TWO factors are MOST important in determining what biome exists in a region?", opts:["Soil type and elevation","Distance from equator only","Temperature and precipitation","Ocean currents and tides"], ans:2, explain:"Both temperature AND precipitation together determine a biome. Warm + wet → rainforest; warm + dry → desert, etc." },
+      { q:"A species that lives ONLY in one specific geographic location is called:", opts:["A keystone species","An endemic species","An invasive species","A decomposer"], ans:1, explain:"Endemic species are native to and restricted to a particular geographic region. Virginia has several endemic salamander species in the Appalachians." }
+    ]
+  },
+  {
+    id:3, tag:"Module 4", emoji:"♻️", title:"Biogeochemical Cycles",
+    desc:"Trace how essential elements like carbon, water, and nitrogen cycle through living and non-living systems.",
+    sol:"VA SOL BIO.8f",
+    slides:[
+      { bg:"linear-gradient(135deg,#1a1a3a,#3a3a8a)", emoji:"💧", heading:"The Water Cycle",
+        text:`Key processes:<ul><li><strong>Evaporation / Transpiration</strong> → water vapor enters atmosphere</li><li><strong>Condensation</strong> → water vapor → clouds</li><li><strong>Precipitation</strong> → rain, snow, sleet</li><li><strong>Runoff / Infiltration</strong> → water returns to oceans/groundwater</li></ul>` },
+      { bg:"linear-gradient(135deg,#1a3a1a,#3a8a3a)", emoji:"🌫️", heading:"The Carbon Cycle",
+        text:`Carbon moves between:<ul><li><strong>Atmosphere</strong> (CO₂)</li><li><strong>Living things</strong> (photosynthesis, respiration, decomposition)</li><li><strong>Oceans</strong> (dissolved CO₂)</li><li><strong>Earth's crust</strong> (fossil fuels, limestone)</li></ul><br><em>Burning fossil fuels adds extra CO₂ to the atmosphere!</em>` },
+      { bg:"linear-gradient(135deg,#1a3a4a,#3a6a8a)", emoji:"⚗️", heading:"The Nitrogen Cycle",
+        text:`Nitrogen (N₂) makes up 78% of air, but most organisms can't use it directly!<br><br><ul><li><strong>Nitrogen fixation</strong> — bacteria convert N₂ → NH₃ (ammonia)</li><li><strong>Nitrification</strong> — ammonia → nitrites → nitrates (usable by plants)</li><li><strong>Assimilation</strong> — plants take up nitrates</li><li><strong>Denitrification</strong> — bacteria return N₂ to atmosphere</li></ul>` },
+      { bg:"linear-gradient(135deg,#3a1a1a,#8a3a3a)", emoji:"🔥", heading:"The Phosphorus Cycle",
+        text:`Unlike other cycles, phosphorus does NOT enter the atmosphere.<br><br><ul><li>Weathering of rocks releases phosphates into soil</li><li>Plants absorb phosphates through roots</li><li>Animals get phosphorus by eating plants</li><li>Decomposition returns P to soil and water</li></ul><br><em>Excess phosphorus causes algal blooms!</em>` }
+    ],
+    videos:[
+      { title:"The Water Cycle — Crash Course", channel:"Crash Course Kids", duration:"4:52", thumb:"linear-gradient(135deg,#1a1a4a,#3a3a8a)", id:"al-do-HGuIk", badge:"Core" },
+      { title:"Carbon Cycle — Bozeman Science", channel:"Bozeman Science", duration:"7:18", thumb:"linear-gradient(135deg,#1a3a1a,#3a7a3a)", id:"pqEyHhkT5pQ", badge:"Core" },
+      { title:"Nitrogen Cycle — Bozeman Science", channel:"Bozeman Science", duration:"7:12", thumb:"linear-gradient(135deg,#1a3a4a,#3a6a8a)", id:"suN5G04H80Y", badge:"Deep Dive" },
+      { title:"Biogeochemical Cycles — Amoeba Sisters", channel:"Amoeba Sisters", duration:"8:38", thumb:"linear-gradient(135deg,#3a1a1a,#8a3a3a)", id:"wqMOyPf_jQQ", badge:"Review" }
+    ],
+    notes:[
+      { type:"normal", icon:"📌", title:"Why Cycles Matter", content:"Matter cannot be created or destroyed — it cycles through ecosystems. Unlike energy (which flows one direction and is lost as heat), nutrients like carbon, nitrogen, and water are RECYCLED continuously through biotic and abiotic components." },
+      { type:"diagram", id:"carbon-diagram" },
+      { type:"diagram", id:"nitrogen-diagram" },
+      { type:"highlight", icon:"⭐", title:"Human Disruption of Cycles", content:"Humans significantly alter biogeochemical cycles: burning fossil fuels disrupts the carbon cycle; nitrogen fertilizers cause eutrophication of Virginia's waterways; over-extraction disrupts the water cycle." },
+      { type:"tip", icon:"💡", title:"Connect Cycles to Photosynthesis/Respiration", content:"<strong>Photosynthesis</strong> takes CO₂ from the atmosphere and fixes it into organic molecules. <strong>Cellular respiration</strong> releases it back. These two processes are the ENGINE of the carbon cycle!" },
+      { vocab:true, icon:"📖", title:"Key Vocabulary", terms:[
+        { term:"Nitrogen fixation", def:"N₂ gas → usable ammonia (bacteria)" },
+        { term:"Denitrification", def:"Nitrates → N₂ gas returned to air" },
+        { term:"Transpiration", def:"Water release from plant leaves" },
+        { term:"Eutrophication", def:"Excess nutrients → algal blooms" },
+        { term:"Biogeochemical", def:"Bio + geo + chemical cycling" },
+        { term:"Decomposition", def:"Breakdown returning nutrients to soil" }
+      ]}
+    ],
+    assignment:{
+      icon:"♻️", title:"Cycle Disruption Report", subtitle:"Research & Analysis Assignment",
+      instructions:"Investigate how humans disrupt a biogeochemical cycle in Virginia.",
+      steps:[
+        "Choose ONE cycle: Carbon, Nitrogen, Water, or Phosphorus.",
+        "Describe the natural flow of your chosen cycle using a labeled diagram.",
+        "Research a specific human activity in Virginia that disrupts this cycle (agriculture runoff, urban development, power plants, deforestation, etc.).",
+        "Explain the downstream ecological consequences — include at least one specific effect on wildlife or human health.",
+        "Propose two realistic solutions that could reduce this disruption and explain the science behind why they would work."
+      ],
+      prompt:"Which cycle did you choose, and what human activity in Virginia most significantly disrupts it? What is the most serious ecological consequence?"
+    },
+    quiz:[
+      { q:"Which process converts atmospheric nitrogen (N₂) into a usable form for plants?", opts:["Transpiration","Nitrification","Nitrogen fixation","Denitrification"], ans:2, explain:"Nitrogen fixation is performed by bacteria in soil and root nodules of legumes. They convert N₂ gas into ammonia (NH₃), which plants can use." },
+      { q:"Excessive phosphorus and nitrogen from agricultural runoff entering a lake can cause:", opts:["Nitrogen fixation","Eutrophication","Denitrification","The greenhouse effect"], ans:1, explain:"Excess nutrients cause explosive algae growth → algae die → decomposers use up dissolved oxygen → fish die. This is eutrophication." },
+      { q:"In the carbon cycle, which process removes CO₂ from the atmosphere?", opts:["Cellular respiration","Combustion","Photosynthesis","Decomposition"], ans:2, explain:"Photosynthesis: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂. Plants absorb CO₂, converting it to organic molecules." },
+      { q:"Unlike carbon and nitrogen, the phosphorus cycle lacks a significant:", opts:["Terrestrial phase","Aquatic phase","Atmospheric phase","Biological phase"], ans:2, explain:"Phosphorus doesn't have a gas phase — it moves through rock weathering, soil, water, and organisms, but not the atmosphere." },
+      { q:"Which stage of the water cycle converts liquid water to water vapor?", opts:["Precipitation","Condensation","Infiltration","Evaporation"], ans:3, explain:"Evaporation (and transpiration from plants) converts liquid water to water vapor. Condensation is the reverse (vapor → liquid)." }
+    ]
+  },
+  {
+    id:4, tag:"Module 5", emoji:"🌎", title:"Human Impact & Conservation",
+    desc:"Examine how human activities affect ecosystems and what Virginia is doing to protect its natural heritage.",
+    sol:"VA SOL BIO.9a, BIO.9b, BIO.9c",
+    slides:[
+      { bg:"linear-gradient(135deg,#3a1a1a,#6a3a2a)", emoji:"🏭", heading:"Major Human Impacts",
+        text:`<ul><li><strong>Habitat loss</strong> — #1 cause of biodiversity loss; deforestation, urban sprawl</li><li><strong>Pollution</strong> — air, water, soil; affects food chains</li><li><strong>Invasive species</strong> — outcompete native species</li><li><strong>Overexploitation</strong> — overfishing, hunting, poaching</li><li><strong>Climate change</strong> — shifts biomes, disrupts cycles</li></ul>` },
+      { bg:"linear-gradient(135deg,#1a3a4a,#3a6a8a)", emoji:"🌡️", heading:"Climate Change & Ecosystems",
+        text:`Rising CO₂ → greenhouse effect → global warming:<br><br><ul><li>Rising sea levels threaten coastal Virginia wetlands</li><li>Shifting temperatures change species' ranges</li><li>Ocean acidification harms shellfish in Chesapeake Bay</li><li>Earlier springs disrupt migration and breeding timing</li></ul>` },
+      { bg:"linear-gradient(135deg,#1a3a1a,#2a6a3a)", emoji:"🛡️", heading:"Conservation Strategies",
+        text:`<ul><li><strong>Protected areas</strong> — national/state parks, wildlife refuges</li><li><strong>Habitat restoration</strong> — reforestation, wetland restoration</li><li><strong>Captive breeding</strong> — for endangered species</li><li><strong>Laws & policy</strong> — Endangered Species Act, Clean Water Act</li><li><strong>Sustainable practices</strong> — responsible fishing, renewable energy</li></ul>` },
+      { bg:"linear-gradient(135deg,#2a3a1a,#5a7a3a)", emoji:"🦋", heading:"Virginia Conservation Efforts",
+        text:`Virginia is actively protecting its ecosystems:<br><br><ul><li><strong>Chesapeake Bay Program</strong> — multi-state restoration effort</li><li><strong>Virginia Wildlife Action Plan</strong> — 1,000+ species of concern</li><li><strong>Shenandoah National Park</strong> — 200,000+ acres protected</li><li><strong>Native Plant Program</strong> — restore native species diversity</li></ul>` }
+    ],
+    videos:[
+      { title:"Human Impact on Ecosystems — Crash Course", channel:"Crash Course Biology", duration:"11:52", thumb:"linear-gradient(135deg,#3a1a1a,#6a3a2a)", id:"0D3OFxQAlGE", badge:"Core" },
+      { title:"Climate Change — It's Real. It's Us. TED-Ed", channel:"TED-Ed", duration:"5:13", thumb:"linear-gradient(135deg,#1a3a4a,#3a6a8a)", id:"G4H1N_yXBiA", badge:"Core" },
+      { title:"Invasive Species — Crash Course Ecology", channel:"Crash Course Ecology", duration:"10:00", thumb:"linear-gradient(135deg,#1a3a1a,#2a6a4a)", id:"eDTOcnBB5FY", badge:"Virginia" },
+      { title:"Conservation Biology — Bozeman Science", channel:"Bozeman Science", duration:"8:52", thumb:"linear-gradient(135deg,#2a3a1a,#5a7a3a)", id:"YfP2APa5wlQ", badge:"Virginia" }
+    ],
+    notes:[
+      { type:"normal", icon:"📌", title:"HIPPO: The 5 Threats to Biodiversity", content:"<strong>H</strong>abitat loss | <strong>I</strong>nvasive species | <strong>P</strong>ollution | <strong>P</strong>opulation growth (human) | <strong>O</strong>verexploitation. Remember HIPPO to recall the major threats to biodiversity worldwide and in Virginia." },
+      { type:"highlight", icon:"⭐", title:"Chesapeake Bay Restoration", content:"The Chesapeake Bay — the nation's largest estuary — suffered severe degradation from nutrient runoff, overfishing, and habitat loss. Since the 1980s, a multi-state effort has improved water clarity, restored oyster reefs, and replanted underwater grasses." },
+      { type:"tip", icon:"💡", title:"Your Environmental Footprint", content:"Every consumer choice has an ecological impact. Reducing meat consumption, using less plastic, choosing local foods, and conserving energy all reduce pressure on Virginia's ecosystems. Conservation starts at home!" },
+      { vocab:true, icon:"📖", title:"Key Vocabulary", terms:[
+        { term:"Habitat fragmentation", def:"Breaking habitat into isolated patches" },
+        { term:"Invasive species", def:"Non-native species that outcompetes natives" },
+        { term:"Endangered species", def:"At risk of extinction in the near future" },
+        { term:"Sustainability", def:"Meeting needs without harming future" },
+        { term:"Eutrophication", def:"Nutrient overload → algal blooms → O₂ loss" },
+        { term:"Keystone species", def:"Species vital to ecosystem stability" }
+      ]}
+    ],
+    assignment:{
+      icon:"🌿", title:"Environmental Action Plan", subtitle:"Capstone Project",
+      instructions:"Design an action plan to address a real environmental issue in your Virginia community.",
+      steps:[
+        "Identify a specific environmental problem affecting your local area (water quality, invasive species, air pollution, habitat loss, etc.).",
+        "Research the scientific causes and how it connects to ecology concepts from this course.",
+        "Identify the organisms most impacted and explain the ecological consequences using food web or cycle concepts.",
+        "Design 3 concrete, realistic action steps your school or community could take to address this issue.",
+        "Create a one-page summary of your action plan suitable for presenting to your school board."
+      ],
+      prompt:"What environmental issue affects your community, and what is the most important action that students your age could take to address it?"
+    },
+    quiz:[
+      { q:"The #1 cause of biodiversity loss worldwide is:", opts:["Pollution","Overhunting","Habitat loss","Invasive species"], ans:2, explain:"Habitat loss (deforestation, urban development, agriculture) is the leading cause of species extinction and biodiversity decline globally." },
+      { q:"The greenhouse effect is caused by gases that:", opts:["Reflect sunlight back into space","Absorb infrared radiation and trap heat","Deplete the ozone layer","Increase ocean salinity"], ans:1, explain:"Greenhouse gases (CO₂, CH₄, N₂O) trap outgoing infrared radiation, warming Earth's surface." },
+      { q:"An organism introduced to an area where it has no natural predators is called:", opts:["A keystone species","An endemic species","An invasive species","A decomposer"], ans:2, explain:"Invasive species lack natural predators in their new environment, allowing them to rapidly outcompete native species." },
+      { q:"Which of the following is a sustainable fishing practice?", opts:["Taking all fish of any size from a habitat","Catching only mature fish and leaving breeding populations","Using fine-mesh nets that catch all organisms","Eliminating all competing predators"], ans:1, explain:"Sustainable fishing means catching fish at a rate that allows populations to replenish, including size limits and catch limits." },
+      { q:"Ocean acidification, caused by rising CO₂ levels, primarily threatens:", opts:["Deep-sea fish populations","Marine mammals like whales","Organisms that build calcium carbonate shells/skeletons","Seabirds along the Virginia coast"], ans:2, explain:"CO₂ dissolves in seawater to form carbonic acid. Lower pH dissolves the calcium carbonate shells of oysters, clams, and coral." }
+    ]
+  }
+];
+
+const state = {
+  currentModule: 0,
+  currentTab: 'slides',
+  slideIndex: {},
+  quizAnswers: {},
+  quizSubmitted: {},
+  assignmentText: {},
+  completedModules: new Set(),
+  xp: 0
+};
+
+modules.forEach(m => { state.slideIndex[m.id] = 0; });
+
+function loadModule(idx) {
+  state.currentModule = idx;
+  state.currentTab = 'slides';
+  document.querySelectorAll('.module-btn').forEach((b,i) => b.classList.toggle('active', i === idx));
+  renderMain();
+}
+
+function renderNotes_post() {
+  setTimeout(() => { drawCarbonCycle(); drawNitrogenCycle(); }, 0);
+}
+
+function setTab(tab) {
+  state.currentTab = tab;
+  renderMain();
+  if (tab === 'notes') { setTimeout(() => { drawCarbonCycle(); drawNitrogenCycle(); }, 0); }
+}
+
+function renderMain() {
+  const m = modules[state.currentModule];
+  const main = document.getElementById('mainContent');
+  const tabs = [
+    {key:'slides',icon:'📋',label:'Slides'},
+    {key:'videos',icon:'▶️',label:'Videos'},
+    {key:'notes',icon:'📝',label:'Notes'},
+    {key:'assignment',icon:'✏️',label:'Assignment'},
+    {key:'quiz',icon:'✅',label:'Quiz'}
+  ];
+
+  let sectionHtml = '';
+  if (state.currentTab === 'slides') sectionHtml = renderSlides(m);
+  else if (state.currentTab === 'videos') sectionHtml = renderVideos(m);
+  else if (state.currentTab === 'notes') { sectionHtml = renderNotes(m); setTimeout(()=>{drawCarbonCycle();drawNitrogenCycle();},0); }
+  else if (state.currentTab === 'assignment') sectionHtml = renderAssignment(m);
+  else if (state.currentTab === 'quiz') sectionHtml = renderQuiz(m);
+
+  const nextIdx = state.currentModule + 1;
+  const nextMod = modules[nextIdx];
+  const nextHtml = nextMod
+    ? `<div class="next-module" onclick="loadModule(${nextIdx})"><div class="next-module-text"><div class="label">Up Next</div><div class="title">${nextMod.emoji} Module ${nextIdx+1}: ${nextMod.title}</div></div><div class="next-arrow">→</div></div>`
+    : `<div style="text-align:center;padding:28px;background:var(--forest);border-radius:14px;color:white;margin-top:24px;"><div style="font-size:2.5rem;margin-bottom:8px">🎓</div><div style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:6px">Course Complete!</div><p style="opacity:.8;font-size:.9rem">You have finished all 5 Ecology modules. You are ready for your Virginia SOL assessment!</p></div>`;
+
+  main.innerHTML = `
+    <div class="module-header">
+      <div class="module-tag">${m.tag} · ${m.emoji}</div>
+      <h2 class="module-title">${m.title}</h2>
+      <p class="module-desc">${m.desc}</p>
+      <span class="sol-tag">📚 ${m.sol}</span>
+    </div>
+    <div class="section-tabs">${tabs.map(t=>`<button class="sec-tab ${state.currentTab===t.key?'active':''}" onclick="setTab('${t.key}')"><span class="tab-icon">${t.icon}</span>${t.label}</button>`).join('')}</div>
+    <div class="section-content">${sectionHtml}</div>
+    ${nextHtml}`;
+}
+
+function renderSlides(m) {
+  const idx = state.slideIndex[m.id];
+  const slides = m.slides;
+  return `<div class="slide-deck">
+    ${slides.map((s,i)=>`
+      <div class="slide ${i===idx?'active':''}">
+        <div class="slide-visual" style="background:${s.bg}">${s.emoji}</div>
+        <div class="slide-body">
+          <div class="slide-num">Slide ${i+1} of ${slides.length}</div>
+          <div class="slide-heading">${s.heading}</div>
+          <div class="slide-text">${s.text}</div>
+        </div>
+      </div>`).join('')}
+    <div class="slide-nav">
+      <button class="slide-nav-btn" onclick="changeSlide(-1)" ${idx===0?'disabled':''}>← Prev</button>
+      <div class="slide-dots">${slides.map((_,i)=>`<button class="slide-dot ${i===idx?'active':''}" onclick="goSlide(${i})"></button>`).join('')}</div>
+      <button class="slide-nav-btn" onclick="changeSlide(1)" ${idx===slides.length-1?'disabled':''}>Next →</button>
+    </div>
+  </div>`;
+}
+
+function changeSlide(dir) {
+  const m = modules[state.currentModule];
+  state.slideIndex[m.id] = Math.max(0, Math.min(m.slides.length-1, state.slideIndex[m.id]+dir));
+  renderMain();
+}
+function goSlide(i) { state.slideIndex[modules[state.currentModule].id]=i; renderMain(); }
+
+// ── VIDEO DATA (persists inside this file via Save) ──
+const VIDEO_DATA = window.VIDEO_DATA || {"0":[{"url":"https://www.youtube.com/watch?v=7cRgK0qG00E","title":"Ecosystem basics"},{"url":"https://www.youtube.com/watch?v=GK_vRtHJZu4","title":"Biodiversity"},null,null],"1":[{"url":"https://www.youtube.com/watch?v=-oVavgmveyY","title":"Food chain and Food web"},{"url":"https://www.youtube.com/watch?v=rNjPI84sApQ","title":"Ecological relationship"}],"2":[{"url":"https://www.youtube.com/watch?v=srpl5YRw-_U","title":"Ecology Review"},{"url":"https://www.youtube.com/watch?v=GK_vRtHJZu4","title":"Biodiversity"}],"3":[{"url":"https://www.youtube.com/watch?v=uip4Q6t7yfQ","title":"Nitrogen cycle"},{"url":"https://www.youtube.com/watch?v=A4cPmHGegKI","title":"Carbon cycle"}],"4":[{"url":"https://www.youtube.com/watch?v=5eTCZ9L834s","title":"Human Impact-Crash course"}]};
+
+function renderVideos(m) {
+  const saved = VIDEO_DATA[m.id] || [];
+  const slots = [
+    { label: 'Video 1', badge: 'Core' },
+    { label: 'Video 2', badge: 'Core' },
+    { label: 'Video 3', badge: 'Extension' },
+    { label: 'Video 4', badge: 'Extension' },
+  ];
+  return `
+    <div class="info-card tip" style="margin-bottom:20px;">
+      <h4>🎬 Teacher Video Manager</h4>
+      <p>Paste any YouTube URL into a slot, then click <strong>+ Add</strong>. When done, click <strong>💾 Save &amp; Download</strong> at the top — this downloads an updated copy of the lesson with your videos permanently saved inside.</p>
+    </div>
+    <div class="video-slots">
+      ${slots.map((slot, i) => {
+        const v = saved[i] || {};
+        return `
+        <div class="video-slot-card">
+          <div class="slot-header">
+            <span class="slot-num">${i+1}</span>
+            <span class="slot-label">${slot.label} — Module ${m.id+1}</span>
+            <span class="video-badge">${slot.badge}</span>
+          </div>
+          ${v.url ? `
+            <div class="slot-filled">
+              <div class="slot-thumb">
+                <img src="https://img.youtube.com/vi/${extractYTId(v.url)}/mqdefault.jpg"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                     style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+                <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;background:#1a3a2a;border-radius:6px;font-size:2rem;">🎬</div>
+              </div>
+              <div class="slot-info">
+                <div class="slot-title">${v.title || 'Video ' + (i+1)}</div>
+                <a href="${v.url}" target="_blank" class="slot-link">▶ Open on YouTube</a>
+              </div>
+              <button class="slot-remove" onclick="removeVideo(${m.id},${i})">✕ Remove</button>
+            </div>
+          ` : `
+            <div class="slot-empty">
+              <input type="text" class="slot-input" id="input-${m.id}-${i}" placeholder="Paste YouTube URL here  e.g. https://www.youtube.com/watch?v=abc123" />
+              <input type="text" class="slot-title-input" id="title-${m.id}-${i}" placeholder="Video title (optional)" />
+              <button class="slot-add-btn" onclick="addVideo(${m.id},${i})">+ Add</button>
+            </div>
+          `}
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+function extractYTId(url) {
+  const m = url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : '';
+}
+
+function addVideo(modId, slotIdx) {
+  const urlEl = document.getElementById('input-' + modId + '-' + slotIdx);
+  const titleEl = document.getElementById('title-' + modId + '-' + slotIdx);
+  const url = (urlEl ? urlEl.value.trim() : '');
+  if (!url) { alert('Please paste a YouTube URL first.'); return; }
+  const ytId = extractYTId(url);
+  if (!ytId) { alert('Please enter a valid YouTube URL.\nExample: https://www.youtube.com/watch?v=abc123'); return; }
+  const title = (titleEl && titleEl.value.trim()) ? titleEl.value.trim() : 'Video ' + (slotIdx + 1);
+  if (!VIDEO_DATA[modId]) VIDEO_DATA[modId] = [];
+  VIDEO_DATA[modId][slotIdx] = { url: 'https://www.youtube.com/watch?v=' + ytId, title };
+  addXP(20);
+  renderMain();
+}
+
+function removeVideo(modId, slotIdx) {
+  if (!VIDEO_DATA[modId]) VIDEO_DATA[modId] = [];
+  VIDEO_DATA[modId][slotIdx] = null;
+  renderMain();
+}
+
+function saveAndDownload() {
+  // Read current HTML, inject VIDEO_DATA, download updated file
+  let html = document.documentElement.outerHTML;
+  const dataStr = JSON.stringify(VIDEO_DATA);
+  // Replace the VIDEO_DATA init line with current data
+  html = html.replace(
+    /const VIDEO_DATA = window\.VIDEO_DATA \|\| \{[^}]*\};/,
+    'const VIDEO_DATA = window.VIDEO_DATA || ' + dataStr + ';'
+  );
+  // Also patch window.VIDEO_DATA so on reload it uses saved data
+  html = html.replace(
+    /<\/head>/,
+    '<script>window.VIDEO_DATA = ' + dataStr + ';<\/script></head>'
+  );
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'ecology_lesson_with_videos.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function openVideo(id, title) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalFrame').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+  document.getElementById('videoModal').classList.add('open');
+  addXP(20);
+}
+function closeModal() {
+  document.getElementById('videoModal').classList.remove('open');
+  document.getElementById('modalFrame').src='';
+}
+
+function renderNotes(m) {
+  return m.notes.map(n=>{
+    if(n.type==='diagram' && n.id==='carbon-diagram') return carbonDiagram();
+    if(n.type==='diagram' && n.id==='nitrogen-diagram') return nitrogenDiagram();
+    if(n.vocab){
+      return `<div class="info-card"><h4>${n.icon} ${n.title}</h4><div class="vocab-grid">${n.terms.map(t=>`<div class="vocab-item"><div class="vocab-term">${t.term}</div><div class="vocab-def">${t.def}</div></div>`).join('')}</div></div>`;
+    }
+    return `<div class="info-card ${n.type||''}"><h4>${n.icon} ${n.title}</h4><p>${n.content}</p></div>`;
+  }).join('');
+}
+
+function carbonDiagram() {
+  return `<div class="diagram-wrap">
+    <div class="diagram-label">🌫️ The Carbon Cycle — Labeled Diagram</div>
+    <div class="cycle-diagram" id="carbon-cycle-diagram"></div>
+  </div>`;
+}
+
+function nitrogenDiagram() {
+  return `<div class="diagram-wrap">
+    <div class="diagram-label">⚗️ The Nitrogen Cycle — Labeled Diagram</div>
+    <div class="cycle-diagram" id="nitrogen-cycle-diagram"></div>
+  </div>`;
+}
+
+function drawCarbonCycle() {
+  const el = document.getElementById('carbon-cycle-diagram');
+  if (!el) return;
+  el.innerHTML = `
+  <svg viewBox="0 0 700 520" width="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="c-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#555"/>
+      </marker>
+      <marker id="c-arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#2d7a3a"/>
+      </marker>
+      <marker id="c-arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#1a6080"/>
+      </marker>
+      <marker id="c-arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#c0392b"/>
+      </marker>
+      <marker id="c-arrow-brown" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#7a5020"/>
+      </marker>
+      <marker id="c-arrow-purple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#534ab7"/>
+      </marker>
+      <marker id="c-arrow-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#c87040"/>
+      </marker>
+    </defs>
+
+    <!-- ATMOSPHERE -->
+    <rect x="220" y="20" width="220" height="60" rx="10" fill="#d6eaff" stroke="#378add" stroke-width="1.5"/>
+    <text x="330" y="46" text-anchor="middle" font-size="15" font-weight="bold" fill="#0c447c" font-family="Arial,sans-serif">Atmosphere</text>
+    <text x="330" y="66" text-anchor="middle" font-size="12" fill="#185fa5" font-family="Arial,sans-serif">CO₂ gas pool</text>
+
+    <!-- PLANTS -->
+    <rect x="30" y="170" width="175" height="60" rx="10" fill="#d4f0c8" stroke="#2d7a3a" stroke-width="1.5"/>
+    <text x="118" y="196" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a4a1a" font-family="Arial,sans-serif">Plants &amp; Algae</text>
+    <text x="118" y="216" text-anchor="middle" font-size="12" fill="#2d5a3d" font-family="Arial,sans-serif">Producers / Photosynthesis</text>
+
+    <!-- ANIMALS -->
+    <rect x="255" y="210" width="175" height="60" rx="10" fill="#fce8d6" stroke="#c87040" stroke-width="1.5"/>
+    <text x="343" y="236" text-anchor="middle" font-size="14" font-weight="bold" fill="#4a2010" font-family="Arial,sans-serif">Animals</text>
+    <text x="343" y="256" text-anchor="middle" font-size="12" fill="#7a3a18" font-family="Arial,sans-serif">Consumers / Respiration</text>
+
+    <!-- SOIL & DECOMPOSERS -->
+    <rect x="220" y="360" width="220" height="60" rx="10" fill="#e8dfc8" stroke="#8b6340" stroke-width="1.5"/>
+    <text x="330" y="386" text-anchor="middle" font-size="14" font-weight="bold" fill="#3a2010" font-family="Arial,sans-serif">Soil &amp; Decomposers</text>
+    <text x="330" y="406" text-anchor="middle" font-size="12" fill="#6b4e35" font-family="Arial,sans-serif">Dead organic matter</text>
+
+    <!-- FOSSIL FUELS -->
+    <rect x="490" y="290" width="175" height="60" rx="10" fill="#ddd8ee" stroke="#534ab7" stroke-width="1.5"/>
+    <text x="578" y="316" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215c" font-family="Arial,sans-serif">Fossil Fuels</text>
+    <text x="578" y="336" text-anchor="middle" font-size="12" fill="#3c3489" font-family="Arial,sans-serif">Coal, oil, natural gas</text>
+
+    <!-- OCEAN -->
+    <rect x="500" y="80" width="165" height="60" rx="10" fill="#d6f0f8" stroke="#4a9eba" stroke-width="1.5"/>
+    <text x="583" y="106" text-anchor="middle" font-size="14" font-weight="bold" fill="#0a3a50" font-family="Arial,sans-serif">Oceans</text>
+    <text x="583" y="126" text-anchor="middle" font-size="12" fill="#1a6080" font-family="Arial,sans-serif">Dissolved CO₂</text>
+
+    <!-- ARROW: Atmosphere → Plants (Photosynthesis) -->
+    <path d="M220 62 Q110 115 118 170" fill="none" stroke="#2d7a3a" stroke-width="2" marker-end="url(#c-arrow-green)"/>
+    <rect x="26" y="105" width="96" height="18" rx="4" fill="white" opacity="0.85"/>
+    <text x="74" y="118" text-anchor="middle" font-size="11" fill="#2d5a3d" font-family="Arial,sans-serif">CO₂ absorbed</text>
+
+    <!-- ARROW: Plants → Atmosphere (Respiration) -->
+    <path d="M180 170 Q230 130 228 80" fill="none" stroke="#1a6080" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#c-arrow-blue)"/>
+    <rect x="200" y="128" width="82" height="18" rx="4" fill="white" opacity="0.85"/>
+    <text x="241" y="141" text-anchor="middle" font-size="11" fill="#1a6080" font-family="Arial,sans-serif">Plant respir.</text>
+
+    <!-- ARROW: Plants → Animals (Feeding/Eating) -->
+    <path d="M205 215 Q230 228 255 232" fill="none" stroke="#7ec850" stroke-width="2" marker-end="url(#c-arrow)"/>
+    <rect x="198" y="208" width="64" height="16" rx="4" fill="white" opacity="0.85"/>
+    <text x="230" y="220" text-anchor="middle" font-size="11" fill="#3a6020" font-family="Arial,sans-serif">Feeding</text>
+
+    <!-- ARROW: Animals → Atmosphere (Animal Respiration) -->
+    <path d="M343 210 Q343 140 330 80" fill="none" stroke="#c87040" stroke-width="2" marker-end="url(#c-arrow-orange)"/>
+    <rect x="346" y="152" width="88" height="18" rx="4" fill="white" opacity="0.85"/>
+    <text x="390" y="165" text-anchor="middle" font-size="11" fill="#7a3a18" font-family="Arial,sans-serif">Animal respir.</text>
+
+    <!-- ARROW: Animals → Soil (Death/Decomposition) -->
+    <path d="M343 270 Q343 320 343 360" fill="none" stroke="#8b6340" stroke-width="2" marker-end="url(#c-arrow-brown)"/>
+    <rect x="348" y="308" width="52" height="16" rx="4" fill="white" opacity="0.85"/>
+    <text x="374" y="320" text-anchor="middle" font-size="11" fill="#5a3a20" font-family="Arial,sans-serif">Death</text>
+
+    <!-- ARROW: Plants → Soil (Leaf Litter) -->
+    <path d="M118 230 Q170 300 228 365" fill="none" stroke="#8b6340" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#c-arrow-brown)"/>
+    <rect x="94" y="296" width="68" height="16" rx="4" fill="white" opacity="0.85"/>
+    <text x="128" y="308" text-anchor="middle" font-size="11" fill="#5a3a20" font-family="Arial,sans-serif">Leaf litter</text>
+
+    <!-- ARROW: Soil → Atmosphere (Decomp CO₂) -->
+    <path d="M220 378 Q160 330 265 80" fill="none" stroke="#c87040" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#c-arrow-orange)"/>
+    <rect x="114" y="255" width="82" height="16" rx="4" fill="white" opacity="0.85"/>
+    <text x="155" y="267" text-anchor="middle" font-size="11" fill="#7a3a18" font-family="Arial,sans-serif">Decomp. CO₂</text>
+
+    <!-- ARROW: Soil → Fossil Fuels (millions of years) -->
+    <path d="M440 395 Q490 395 490 350" fill="none" stroke="#534ab7" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#c-arrow-purple)"/>
+    <rect x="448" y="372" width="100" height="16" rx="4" fill="white" opacity="0.85"/>
+    <text x="498" y="384" text-anchor="middle" font-size="11" fill="#3c3489" font-family="Arial,sans-serif">Millions of yrs</text>
+
+    <!-- ARROW: Fossil Fuels → Atmosphere (Combustion) -->
+    <path d="M546 290 Q510 210 460 80" fill="none" stroke="#c0392b" stroke-width="2.5" marker-end="url(#c-arrow-red)"/>
+    <rect x="490" y="195" width="102" height="18" rx="4" fill="#fff0ee" opacity="0.95"/>
+    <text x="541" y="208" text-anchor="middle" font-size="11" font-weight="bold" fill="#c0392b" font-family="Arial,sans-serif">🔥 Combustion</text>
+
+    <!-- ARROW: Ocean ↔ Atmosphere -->
+    <path d="M500 108 Q480 80 440 66" fill="none" stroke="#4a9eba" stroke-width="1.8" marker-end="url(#c-arrow-blue)"/>
+    <path d="M440 72 Q480 92 500 114" fill="none" stroke="#4a9eba" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#c-arrow-blue)"/>
+    <rect x="428" y="58" width="80" height="16" rx="4" fill="white" opacity="0.85"/>
+    <text x="468" y="70" text-anchor="middle" font-size="11" fill="#1a6080" font-family="Arial,sans-serif">CO₂ exchange</text>
+
+    <!-- LEGEND -->
+    <rect x="15" y="456" width="660" height="54" rx="8" fill="#f5f5ee" stroke="#ccc" stroke-width="1"/>
+    <line x1="30" y1="477" x2="58" y2="477" stroke="#2d7a3a" stroke-width="2" marker-end="url(#c-arrow-green)"/>
+    <text x="65" y="481" font-size="11" fill="#2d5a3d" font-family="Arial,sans-serif">Natural process</text>
+    <line x1="190" y1="477" x2="218" y2="477" stroke="#888" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#c-arrow)"/>
+    <text x="225" y="481" font-size="11" fill="#555" font-family="Arial,sans-serif">Slow / decay path</text>
+    <line x1="380" y1="477" x2="408" y2="477" stroke="#c0392b" stroke-width="2.5" marker-end="url(#c-arrow-red)"/>
+    <text x="415" y="481" font-size="11" fill="#c0392b" font-family="Arial,sans-serif" font-weight="bold">Human activity (combustion)</text>
+    <text x="340" y="501" text-anchor="middle" font-size="11" fill="#888" font-family="Arial,sans-serif" font-style="italic">Arrows show direction of carbon movement through the ecosystem</text>
+  </svg>`;
+}
+
+function drawNitrogenCycle() {
+  const el = document.getElementById('nitrogen-cycle-diagram');
+  if (!el) return;
+  el.innerHTML = `
+  <svg viewBox="0 0 700 540" width="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="n-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#555"/>
+      </marker>
+      <marker id="n-arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#2d7a3a"/>
+      </marker>
+      <marker id="n-arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#185fa5"/>
+      </marker>
+      <marker id="n-arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#c0392b"/>
+      </marker>
+      <marker id="n-arrow-brown" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#7a5020"/>
+      </marker>
+      <marker id="n-arrow-purple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#534ab7"/>
+      </marker>
+      <marker id="n-arrow-gold" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#b08800"/>
+      </marker>
+      <marker id="n-arrow-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#c87040"/>
+      </marker>
+    </defs>
+
+    <!-- ATMOSPHERE (N₂) -->
+    <rect x="215" y="18" width="260" height="62" rx="10" fill="#d6eaff" stroke="#378add" stroke-width="1.5"/>
+    <text x="345" y="44" text-anchor="middle" font-size="15" font-weight="bold" fill="#0c447c" font-family="Arial,sans-serif">Atmosphere (N₂ gas)</text>
+    <text x="345" y="64" text-anchor="middle" font-size="12" fill="#185fa5" font-family="Arial,sans-serif">78% nitrogen — NOT directly usable</text>
+
+    <!-- NITROGEN FIXATION -->
+    <rect x="18" y="185" width="200" height="68" rx="10" fill="#e8f8e8" stroke="#2d8a2d" stroke-width="1.5"/>
+    <text x="118" y="210" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a4a1a" font-family="Arial,sans-serif">Nitrogen Fixation</text>
+    <text x="118" y="228" text-anchor="middle" font-size="12" fill="#2d6a2d" font-family="Arial,sans-serif">N₂ → NH₃ (ammonia)</text>
+    <text x="118" y="244" text-anchor="middle" font-size="11" fill="#3a7a3a" font-family="Arial,sans-serif" font-style="italic">Rhizobium bacteria / lightning</text>
+
+    <!-- AMMONIUM IN SOIL -->
+    <rect x="215" y="220" width="260" height="62" rx="10" fill="#fef9d6" stroke="#b08800" stroke-width="1.5"/>
+    <text x="345" y="247" text-anchor="middle" font-size="15" font-weight="bold" fill="#5a4200" font-family="Arial,sans-serif">Ammonium (NH₄⁺)</text>
+    <text x="345" y="267" text-anchor="middle" font-size="12" fill="#7a5800" font-family="Arial,sans-serif">In soil — available to some bacteria</text>
+
+    <!-- NITRITES (intermediate) -->
+    <rect x="215" y="310" width="260" height="52" rx="10" fill="#fff3cc" stroke="#d4a800" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <text x="345" y="333" text-anchor="middle" font-size="13" font-weight="bold" fill="#5a4200" font-family="Arial,sans-serif">Nitrites (NO₂⁻)</text>
+    <text x="345" y="351" text-anchor="middle" font-size="11" fill="#7a5800" font-family="Arial,sans-serif" font-style="italic">Nitrosomonas bacteria</text>
+
+    <!-- NITRATES IN SOIL -->
+    <rect x="215" y="390" width="260" height="62" rx="10" fill="#d4f0c8" stroke="#4a8c5c" stroke-width="1.5"/>
+    <text x="345" y="416" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a3a2a" font-family="Arial,sans-serif">Nitrates (NO₃⁻)</text>
+    <text x="345" y="436" text-anchor="middle" font-size="12" fill="#2d5a3d" font-family="Arial,sans-serif">Usable by plants — Nitrobacter bacteria</text>
+
+    <!-- PLANTS & ANIMALS -->
+    <rect x="490" y="270" width="190" height="68" rx="10" fill="#fce8d6" stroke="#c87040" stroke-width="1.5"/>
+    <text x="585" y="296" text-anchor="middle" font-size="14" font-weight="bold" fill="#4a2010" font-family="Arial,sans-serif">Plants &amp; Animals</text>
+    <text x="585" y="314" text-anchor="middle" font-size="12" fill="#7a3a18" font-family="Arial,sans-serif">Organic N in proteins,</text>
+    <text x="585" y="328" text-anchor="middle" font-size="11" fill="#7a3a18" font-family="Arial,sans-serif">DNA, chlorophyll</text>
+
+    <!-- DECOMPOSERS -->
+    <rect x="490" y="400" width="190" height="60" rx="10" fill="#e8dfc8" stroke="#8b6340" stroke-width="1.5"/>
+    <text x="585" y="425" text-anchor="middle" font-size="14" font-weight="bold" fill="#3a2010" font-family="Arial,sans-serif">Decomposers</text>
+    <text x="585" y="445" text-anchor="middle" font-size="12" fill="#6b4e35" font-family="Arial,sans-serif">Fungi &amp; bacteria → NH₄⁺</text>
+
+    <!-- DENITRIFICATION -->
+    <rect x="18" y="390" width="175" height="62" rx="10" fill="#ddd8ee" stroke="#534ab7" stroke-width="1.5"/>
+    <text x="106" y="416" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215c" font-family="Arial,sans-serif">Denitrification</text>
+    <text x="106" y="436" text-anchor="middle" font-size="12" fill="#3c3489" font-family="Arial,sans-serif">NO₃⁻ → N₂ gas (back to air)</text>
+
+    <!-- ARROW: Atmosphere → Fixation -->
+    <path d="M215 62 Q110 118 118 185" fill="none" stroke="#2d7a3a" stroke-width="2" marker-end="url(#n-arrow-green)"/>
+    <rect x="30" y="118" width="104" height="18" rx="4" fill="white" opacity="0.9"/>
+    <text x="82" y="131" text-anchor="middle" font-size="11" fill="#2d5a3d" font-family="Arial,sans-serif">Lightning / bacteria</text>
+
+    <!-- ARROW: Fixation → Ammonium -->
+    <path d="M218 230 L215 251" fill="none" stroke="#b08800" stroke-width="2" marker-end="url(#n-arrow-gold)"/>
+    <rect x="154" y="232" width="58" height="16" rx="4" fill="white" opacity="0.9"/>
+    <text x="183" y="244" text-anchor="middle" font-size="11" fill="#7a5800" font-family="Arial,sans-serif">→ NH₄⁺</text>
+
+    <!-- ARROW: Ammonium → Nitrites -->
+    <path d="M345 282 L345 310" fill="none" stroke="#b08800" stroke-width="2" marker-end="url(#n-arrow-gold)"/>
+    <rect x="350" y="290" width="90" height="16" rx="4" fill="white" opacity="0.9"/>
+    <text x="395" y="302" text-anchor="middle" font-size="11" fill="#7a5800" font-family="Arial,sans-serif">Nitrification ①</text>
+
+    <!-- ARROW: Nitrites → Nitrates -->
+    <path d="M345 362 L345 390" fill="none" stroke="#4a8c5c" stroke-width="2" marker-end="url(#n-arrow-green)"/>
+    <rect x="350" y="368" width="90" height="16" rx="4" fill="white" opacity="0.9"/>
+    <text x="395" y="380" text-anchor="middle" font-size="11" fill="#2d5a3d" font-family="Arial,sans-serif">Nitrification ②</text>
+
+    <!-- ARROW: Nitrates → Plants (Assimilation) -->
+    <path d="M475 418 Q490 370 490 338" fill="none" stroke="#c87040" stroke-width="2" marker-end="url(#n-arrow-orange)"/>
+    <rect x="480" y="370" width="88" height="18" rx="4" fill="white" opacity="0.9"/>
+    <text x="524" y="383" text-anchor="middle" font-size="11" fill="#7a3a18" font-family="Arial,sans-serif">Assimilation</text>
+    <text x="524" y="397" text-anchor="middle" font-size="11" fill="#7a3a18" font-family="Arial,sans-serif">(root uptake)</text>
+
+    <!-- ARROW: Plants → Decomposers (Death) -->
+    <path d="M585 338 L585 400" fill="none" stroke="#8b6340" stroke-width="2" marker-end="url(#n-arrow-brown)"/>
+    <rect x="592" y="362" width="76" height="28" rx="4" fill="white" opacity="0.9"/>
+    <text x="630" y="373" text-anchor="middle" font-size="11" fill="#5a3a20" font-family="Arial,sans-serif">Death /</text>
+    <text x="630" y="386" text-anchor="middle" font-size="11" fill="#5a3a20" font-family="Arial,sans-serif">excretion</text>
+
+    <!-- ARROW: Decomposers → Ammonium (Mineralization) -->
+    <path d="M490 430 Q420 380 475 258" fill="none" stroke="#b08800" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#n-arrow-gold)"/>
+    <rect x="398" y="330" width="92" height="28" rx="4" fill="white" opacity="0.9"/>
+    <text x="444" y="342" text-anchor="middle" font-size="11" fill="#7a5800" font-family="Arial,sans-serif">Mineralization</text>
+    <text x="444" y="355" text-anchor="middle" font-size="11" fill="#7a5800" font-family="Arial,sans-serif">→ NH₄⁺ in soil</text>
+
+    <!-- ARROW: Nitrates → Denitrification -->
+    <path d="M215 418 L193 418" fill="none" stroke="#534ab7" stroke-width="2" marker-end="url(#n-arrow-purple)"/>
+    <rect x="150" y="402" width="70" height="16" rx="4" fill="white" opacity="0.9"/>
+    <text x="185" y="414" text-anchor="middle" font-size="11" fill="#3c3489" font-family="Arial,sans-serif">Anaerobic</text>
+    <text x="185" y="428" text-anchor="middle" font-size="11" fill="#3c3489" font-family="Arial,sans-serif">bacteria</text>
+
+    <!-- ARROW: Denitrification → Atmosphere -->
+    <path d="M106 390 Q80 250 215 66" fill="none" stroke="#534ab7" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#n-arrow-purple)"/>
+    <rect x="15" y="248" width="78" height="28" rx="4" fill="white" opacity="0.9"/>
+    <text x="54" y="260" text-anchor="middle" font-size="11" fill="#3c3489" font-family="Arial,sans-serif">N₂ returns</text>
+    <text x="54" y="273" text-anchor="middle" font-size="11" fill="#3c3489" font-family="Arial,sans-serif">to air</text>
+
+    <!-- ARROW: Human Fertilizer → Ammonium (red dashed) -->
+    <path d="M215 44 Q178 130 238 220" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#n-arrow-red)"/>
+    <rect x="108" y="148" width="88" height="28" rx="4" fill="#fff0ee" opacity="0.95"/>
+    <text x="152" y="160" text-anchor="middle" font-size="11" font-weight="bold" fill="#c0392b" font-family="Arial,sans-serif">🏭 Fertilizer</text>
+    <text x="152" y="173" text-anchor="middle" font-size="11" fill="#c0392b" font-family="Arial,sans-serif">production</text>
+
+    <!-- LEGEND -->
+    <rect x="15" y="476" width="665" height="54" rx="8" fill="#f5f5ee" stroke="#ccc" stroke-width="1"/>
+    <line x1="28" y1="497" x2="56" y2="497" stroke="#2d7a3a" stroke-width="2" marker-end="url(#n-arrow-green)"/>
+    <text x="63" y="501" font-size="11" fill="#2d5a3d" font-family="Arial,sans-serif">Natural process</text>
+    <line x1="190" y1="497" x2="218" y2="497" stroke="#888" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#n-arrow)"/>
+    <text x="225" y="501" font-size="11" fill="#555" font-family="Arial,sans-serif">Slow / return path</text>
+    <line x1="380" y1="497" x2="408" y2="497" stroke="#c0392b" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#n-arrow-red)"/>
+    <text x="415" y="501" font-size="11" fill="#c0392b" font-family="Arial,sans-serif" font-weight="bold">Human activity (fertilizer)</text>
+    <text x="345" y="521" text-anchor="middle" font-size="11" fill="#888" font-family="Arial,sans-serif" font-style="italic">Arrows show the path of nitrogen through the ecosystem</text>
+  </svg>`;
+}
+
+function renderAssignment(m) {
+  const a = m.assignment;
+  const saved = state.assignmentText[m.id] || '';
+  return `<div class="assignment-card">
+    <div class="assignment-head"><div class="icon">${a.icon}</div><div><h3>${a.title}</h3><p>${a.subtitle}</p></div></div>
+    <div class="assignment-body">
+      <p>${a.instructions}</p>
+      ${a.steps.map((s,i)=>`<div class="assignment-step"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`).join('')}
+      <div class="submit-area">
+        <label>📝 Response / Reflection</label>
+        <p style="font-size:.83rem;color:var(--muted);margin-bottom:8px">${a.prompt}</p>
+        <textarea id="assignTextarea" placeholder="Type your response here...">${saved}</textarea><br>
+        <button class="btn btn-primary" onclick="submitAssignment(this)">✓ Save Response</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function submitAssignment(btn) {
+  const ta = document.getElementById('assignTextarea');
+  if(ta) state.assignmentText[state.currentModule] = ta.value;
+  addXP(50); markProgress();
+  btn.textContent = '✓ Saved!'; btn.style.background='#27ae60';
+  setTimeout(()=>{ btn.textContent='✓ Save Response'; btn.style.background=''; }, 2000);
+}
+
+function renderQuiz(m) {
+  const submitted = state.quizSubmitted[m.id];
+  const answers = state.quizAnswers[m.id] || {};
+  return `<div class="quiz-card">
+    <div class="quiz-head"><h3>✅ Check for Understanding — Module ${m.id+1}</h3><div class="quiz-score-badge">${m.quiz.length} Questions</div></div>
+    <div class="quiz-body">
+      ${m.quiz.map((q,qi)=>`
+        <div class="question-block">
+          <div class="question-text"><span class="question-num">Question ${qi+1}</span>${q.q}</div>
+          <div class="options">${q.opts.map((opt,oi)=>`
+            <div class="option ${submitted?(oi===q.ans?'correct':(answers[qi]===oi?'incorrect':'disabled')):(answers[qi]===oi?'selected':'')} ${submitted?'disabled':''}"
+                 onclick="${submitted?'':  `selectAnswer(${qi},${oi})`}">
+              <div class="option-letter">${['A','B','C','D'][oi]}</div>${opt}
+            </div>`).join('')}
+          </div>
+          <div class="feedback ${submitted?'show':''} ${submitted?(answers[qi]===q.ans?'correct':'incorrect'):''}">
+            ${submitted?(answers[qi]===q.ans?'✓ Correct! ':'✗ Incorrect. ')+q.explain:''}
+          </div>
+        </div>`).join('')}
+      <div class="quiz-submit">
+        <div class="score-display ${submitted?'show':''}">${submitted?scoreText(m):''}</div>
+        <button class="btn btn-lime" onclick="${submitted?'retakeQuiz()':'submitQuiz()'}">
+          ${submitted?'🔄 Retake Quiz':'✓ Submit Answers'}
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function selectAnswer(qi, oi) {
+  const id = state.currentModule;
+  if(!state.quizAnswers[id]) state.quizAnswers[id]={};
+  state.quizAnswers[id][qi]=oi;
+  renderMain();
+}
+
+function submitQuiz() {
+  const m = modules[state.currentModule];
+  const answers = state.quizAnswers[m.id] || {};
+  if(Object.keys(answers).length < m.quiz.length){ alert('Please answer all questions before submitting!'); return; }
+  state.quizSubmitted[m.id]=true;
+  const score = m.quiz.filter((q,i)=>answers[i]===q.ans).length;
+  addXP(score*25); markProgress(); renderMain();
+}
+
+function retakeQuiz() {
+  const id = state.currentModule;
+  state.quizAnswers[id]={};
+  state.quizSubmitted[id]=false;
+  renderMain();
+}
+
+function scoreText(m) {
+  const answers = state.quizAnswers[m.id] || {};
+  const score = m.quiz.filter((q,i)=>answers[i]===q.ans).length;
+  const pct = Math.round(score/m.quiz.length*100);
+  const emoji = pct>=80?'🌟':pct>=60?'👍':'📚';
+  return `${emoji} Score: ${score}/${m.quiz.length} (${pct}%)`;
+}
+
+function addXP(amount) {
+  state.xp += amount;
+  document.getElementById('xpDisplay').textContent = state.xp + ' XP';
+  updateGlobalProgress();
+}
+
+function markProgress() {
+  state.completedModules.add(state.currentModule);
+  document.getElementById(`modBtn${state.currentModule}`).classList.add('completed');
+  updateGlobalProgress();
+}
+
+function updateGlobalProgress() {
+  document.getElementById('globalProgress').style.width = (state.completedModules.size/modules.length*100)+'%';
+}
+
+loadModule(0);
+</script>
+
+
+</body></html>
