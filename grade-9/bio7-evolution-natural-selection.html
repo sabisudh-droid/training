@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolution & Natural Selection — Biology 9 | Virginia SOL BIO.7</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f2;
+    --bg-tertiary: #eeece6;
+    --text-primary: #1a1a18;
+    --text-secondary: #5a5a56;
+    --text-tertiary: #9a9a94;
+    --border: rgba(0,0,0,0.12);
+    --border-md: rgba(0,0,0,0.22);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --green: #1D9E75;
+    --green-light: #E1F5EE;
+    --green-dark: #085041;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --blue-dark: #0C447C;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --coral: #993C1D;
+    --coral-light: #FAECE7;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .app-header {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .course-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+  .nav-sep { color: var(--text-tertiary); font-size: 14px; }
+  .header-sub { font-size: 13px; color: var(--text-secondary); }
+  .standard-badge {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  /* MODULE TABS */
+  .module-tabs {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding: 0.6rem 1.5rem;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    font-weight: 400;
+  }
+  .tab-btn.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+    font-weight: 500;
+  }
+  .tab-btn:hover:not(.active) {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+
+  /* PROGRESS */
+  .progress-bar-wrap {
+    padding: 0.5rem 1.5rem;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .progress-bar-track {
+    flex: 1;
+    height: 5px;
+    background: var(--bg-secondary);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+  .progress-label { font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
+
+  /* CONTENT PANELS */
+  .content-panel { display: none; padding: 1.5rem; max-width: 860px; margin: 0 auto; }
+  .content-panel.active { display: block; }
+
+  /* SECTION HEADINGS */
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  /* SLIDE CARD */
+  .slide-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .slide-hero {
+    position: relative;
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .slide-hero-emoji {
+    position: absolute;
+    font-size: 90px;
+    opacity: 0.11;
+    pointer-events: none;
+    user-select: none;
+  }
+  .slide-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 1rem;
+  }
+  .slide-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .slide-hero-sub { font-size: 13px; color: var(--text-secondary); }
+  .slide-body { padding: 1.25rem 1.5rem; }
+
+  /* CONCEPT GRID */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+  .concept-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 0.85rem;
+    border-left: 3px solid;
+  }
+  .concept-card.green  { border-color: var(--green); }
+  .concept-card.blue   { border-color: var(--blue); }
+  .concept-card.amber  { border-color: var(--amber); }
+  .concept-card.coral  { border-color: var(--coral); }
+  .concept-card.purple { border-color: var(--purple); }
+  .concept-title { font-size: 12px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+  .concept-body  { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* TIMELINE */
+  .timeline { margin-bottom: 1rem; }
+  .timeline-item { display: flex; gap: 14px; margin-bottom: 0.85rem; }
+  .timeline-dot-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .timeline-dot {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    flex-shrink: 0;
+  }
+  .timeline-line { width: 1px; flex: 1; background: var(--border); margin-top: 4px; }
+  .timeline-content { flex: 1; padding-bottom: 0.5rem; }
+  .timeline-heading { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 3px; }
+  .timeline-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* SLIDE NAV */
+  .slides-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .slide-counter { font-size: 12px; color: var(--text-secondary); }
+  .slide-dots { display: flex; gap: 7px; }
+  .slide-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border-md);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .slide-dot.active { background: var(--green); }
+
+  /* VIDEO CARDS */
+  .video-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .video-thumb {
+    position: relative;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .video-thumb:hover .play-btn { transform: scale(1.1); }
+  .play-btn {
+    width: 60px; height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s;
+    position: relative;
+    z-index: 2;
+  }
+  .play-triangle {
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 11px 0 11px 20px;
+    border-color: transparent transparent transparent var(--blue-dark);
+    margin-left: 4px;
+  }
+  .video-label {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    color: white;
+    font-size: 12px;
+    background: rgba(0,0,0,0.5);
+    padding: 3px 9px;
+    border-radius: 5px;
+    z-index: 2;
+  }
+  .video-yt-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.92;
+  }
+  .video-info { padding: 0.85rem 1.1rem; }
+  .video-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+  .video-meta { font-size: 12px; color: var(--text-secondary); }
+
+  /* VOCAB */
+  .vocab-table {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .vocab-row {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    align-items: stretch;
+  }
+  .vocab-row:last-child { border-bottom: none; }
+  .vocab-term {
+    width: 150px;
+    flex-shrink: 0;
+    padding: 11px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green-dark);
+    background: var(--green-light);
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .vocab-def {
+    padding: 11px 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  /* SIMULATION */
+  .sim-wrap {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .sim-header {
+    padding: 0.8rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sim-badge {
+    font-size: 11px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    padding: 3px 9px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .ext-badge {
+    background: var(--amber-light);
+    color: var(--amber);
+  }
+  .sim-title-text { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .sim-canvas-area { padding: 1.1rem; }
+  .sim-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 0.85rem;
+    align-items: center;
+  }
+  .sim-controls label { font-size: 12px; color: var(--text-secondary); }
+  .sim-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 0.85rem;
+  }
+  .sim-stat {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 0.6rem 0.85rem;
+    text-align: center;
+  }
+  .sim-stat-num { font-size: 22px; font-weight: 500; color: var(--text-primary); }
+  .sim-stat-label { font-size: 11px; color: var(--text-secondary); }
+  #pepperCanvas {
+    width: 100%;
+    height: 190px;
+    display: block;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    cursor: crosshair;
+  }
+  #simMessage {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    padding: 9px 12px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    line-height: 1.5;
+  }
+
+  /* QUIZ */
+  .quiz-q {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.35rem;
+    margin-bottom: 0.85rem;
+  }
+  .quiz-q-num { font-size: 11px; color: var(--text-tertiary); margin-bottom: 7px; }
+  .quiz-q-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.85rem;
+    line-height: 1.55;
+  }
+  .quiz-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 9px 12px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    margin-bottom: 7px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.5;
+  }
+  .quiz-option:hover:not(.selected):not(.correct):not(.wrong) {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+  .quiz-option.selected { border-color: var(--blue); background: var(--blue-light); color: var(--blue-dark); }
+  .quiz-option.correct  { border-color: var(--green); background: var(--green-light); color: var(--green-dark); }
+  .quiz-option.wrong    { border-color: var(--coral); background: var(--coral-light); color: #712B13; }
+  .quiz-feedback {
+    font-size: 12px;
+    margin-top: 9px;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    display: none;
+    line-height: 1.55;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: var(--green-light); color: var(--green-dark); }
+  .quiz-feedback.wrong   { background: var(--coral-light); color: #712B13; }
+
+  .submit-btn {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 11px 26px;
+    border-radius: 22px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.15s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover { opacity: 0.88; }
+  .submit-btn.blue-btn { background: var(--blue); }
+  .submit-btn.amber-btn { background: var(--amber); }
+
+  .score-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 1.25rem;
+    display: none;
+    border: 1px solid var(--border);
+  }
+  .score-card.show { display: block; }
+  .score-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .score-sub { font-size: 14px; color: var(--text-secondary); margin-top: 6px; }
+
+  /* NOTE BOXES */
+  .info-note {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 10px 14px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--border-md);
+    line-height: 1.55;
+  }
+  .info-note.green { border-color: var(--green); }
+  .info-note.blue  { border-color: var(--blue); }
+
+  /* EXTERNAL LINK BUTTON */
+  .ext-link-block {
+    margin-bottom: 0.75rem;
+  }
+  .ext-link-block p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .ext-link-note {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 7px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .sim-stats-row { grid-template-columns: 1fr 1fr 1fr; }
+    .vocab-term { width: 110px; font-size: 11px; }
+    .slide-hero-title { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top-bar">
+    <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
+      <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">BIO.7</a>
+    </div>
+  </div>
+</header>
+
+<div class="module-tabs">
+  <button class="tab-btn active" onclick="switchTab('slides')">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('videos')">▶ Videos</button>
+  <button class="tab-btn" onclick="switchTab('vocab')">📖 Vocabulary</button>
+  <button class="tab-btn" onclick="switchTab('simulation')">🔬 Simulation</button>
+  <button class="tab-btn" onclick="switchTab('quiz')">✏️ Quiz</button>
+</div>
+
+<div class="progress-bar-wrap">
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="progressFill" style="width:20%"></div>
+  </div>
+  <span class="progress-label" id="progressLabel">1 of 5 sections visited</span>
+</div>
+
+<!-- ===== SLIDES PANEL ===== -->
+<div class="content-panel active" id="panel-slides">
+
+  <div id="slideDeck">
+
+    <!-- Slide 1 -->
+    <div class="slide-card" id="slide-1">
+      <div class="slide-hero" style="background:var(--green-light);">
+        <span class="slide-hero-emoji">🌿</span>
+        <div class="slide-hero-content">
+          <div class="slide-hero-title">What is Evolution?</div>
+          <div class="slide-hero-sub">Change in populations over time</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="concept-grid">
+          <div class="concept-card green">
+            <div class="concept-title">Definition</div>
+            <div class="concept-body">Evolution is the change in inherited characteristics of a population over successive generations.</div>
+          </div>
+          <div class="concept-card blue">
+            <div class="concept-title">Populations, Not Individuals</div>
+            <div class="concept-body">Evolution happens at the population level. Individual organisms do not evolve — populations do.</div>
+          </div>
+          <div class="concept-card amber">
+            <div class="concept-title">Time Scale</div>
+            <div class="concept-body">Evolution can occur over millions of years, or within just a few generations (e.g., antibiotic resistance).</div>
+          </div>
+        </div>
+        <div class="info-note green">Key idea: Evolution is driven by heritable variation within populations. Without variation, there is nothing for selection to act on.</div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-card" id="slide-2" style="display:none;">
+      <div class="slide-hero" style="background:var(--blue-light);">
+        <span class="slide-hero-emoji">🐦</span>
+        <div class="slide-hero-content">
+          <div class="slide-hero-title">Darwin's Four Postulates</div>
+          <div class="slide-hero-sub">The foundation of natural selection</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot-col"><div class="timeline-dot">1</div><div class="timeline-line"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-heading">Variation</div>
+              <div class="timeline-text">Individuals within a population show variation in their traits (e.g., beak size, fur color, disease resistance).</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-col"><div class="timeline-dot">2</div><div class="timeline-line"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-heading">Heritability</div>
+              <div class="timeline-text">Traits are passed from parents to offspring through genes. Only heritable traits can be shaped by natural selection.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-col"><div class="timeline-dot">3</div><div class="timeline-line"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-heading">Overproduction</div>
+              <div class="timeline-text">Organisms produce more offspring than the environment can support, creating competition for limited resources.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-col"><div class="timeline-dot" style="background:var(--amber);">4</div></div>
+            <div class="timeline-content" style="padding-bottom:0;">
+              <div class="timeline-heading">Differential Survival &amp; Reproduction</div>
+              <div class="timeline-text">Individuals with favorable traits survive and reproduce more — "survival of the fittest." Their traits become more common over time.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-card" id="slide-3" style="display:none;">
+      <div class="slide-hero" style="background:var(--amber-light);">
+        <span class="slide-hero-emoji">🦋</span>
+        <div class="slide-hero-content">
+          <div class="slide-hero-title">Types of Natural Selection</div>
+          <div class="slide-hero-sub">How populations shift over time</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="concept-grid">
+          <div class="concept-card green">
+            <div class="concept-title">Directional Selection</div>
+            <div class="concept-body">One extreme phenotype is favored. The population shifts over time. Example: antibiotic-resistant bacteria increasing as antibiotics are used.</div>
+          </div>
+          <div class="concept-card blue">
+            <div class="concept-title">Stabilizing Selection</div>
+            <div class="concept-body">Average phenotype is favored; extremes are selected against. Example: human birth weight — very small and very large babies have lower survival rates.</div>
+          </div>
+          <div class="concept-card coral">
+            <div class="concept-title">Disruptive Selection</div>
+            <div class="concept-body">Both extremes are favored over the intermediate phenotype. Can lead to speciation when two distinct groups form within a population.</div>
+          </div>
+        </div>
+        <div class="info-note blue">VA SOL BIO.7b: Understand how natural selection can change allele frequencies in a population over time.</div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-card" id="slide-4" style="display:none;">
+      <div class="slide-hero" style="background:var(--coral-light);">
+        <span class="slide-hero-emoji">🦴</span>
+        <div class="slide-hero-content">
+          <div class="slide-hero-title">Evidence for Evolution</div>
+          <div class="slide-hero-sub">Multiple independent lines of scientific support</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="concept-grid">
+          <div class="concept-card coral">
+            <div class="concept-title">Fossil Record</div>
+            <div class="concept-body">Fossils show a chronological sequence of organisms from ancient to modern forms, revealing transitional species.</div>
+          </div>
+          <div class="concept-card green">
+            <div class="concept-title">Comparative Anatomy</div>
+            <div class="concept-body">Homologous structures (same structure, different function) reveal common ancestry. Example: human arm, whale flipper, bat wing.</div>
+          </div>
+          <div class="concept-card blue">
+            <div class="concept-title">Molecular Evidence</div>
+            <div class="concept-body">DNA and protein similarities across species show evolutionary relationships. Humans share ~98% of DNA with chimpanzees.</div>
+          </div>
+          <div class="concept-card amber">
+            <div class="concept-title">Observed Evolution</div>
+            <div class="concept-body">Antibiotic resistance in bacteria and the color shift of peppered moths during the industrial revolution are evolution observed in real time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide-card" id="slide-5" style="display:none;">
+      <div class="slide-hero" style="background:var(--purple-light);">
+        <span class="slide-hero-emoji">🌎</span>
+        <div class="slide-hero-content">
+          <div class="slide-hero-title">Speciation</div>
+          <div class="slide-hero-sub">How new species form from common ancestors</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="concept-grid">
+          <div class="concept-card purple">
+            <div class="concept-title">Geographic Isolation</div>
+            <div class="concept-body">Populations are physically separated by barriers (mountains, rivers, oceans). Genetic differences accumulate independently in each group.</div>
+          </div>
+          <div class="concept-card" style="border-color:#7F77DD;">
+            <div class="concept-title">Reproductive Isolation</div>
+            <div class="concept-body">Over time, isolated populations can no longer interbreed successfully — they become separate species. This is the definition of a new species.</div>
+          </div>
+        </div>
+        <div class="concept-card amber" style="margin-bottom:0.75rem;">
+          <div class="concept-title">Galapagos Finches — Classic Case Study</div>
+          <div class="concept-body">Darwin observed 13 finch species on the Galapagos, each with a beak adapted to a unique food source — all descended from one ancestor. This is <strong>adaptive radiation</strong>: rapid diversification from a single lineage into multiple ecological niches.</div>
+        </div>
+        <div class="info-note blue">VA SOL BIO.7a: Understand evolution, including natural selection and the concept of common descent.</div>
+      </div>
+    </div>
+
+  </div><!-- /slideDeck -->
+
+  <div class="slides-nav">
+    <button class="tab-btn" id="prevSlide" onclick="changeSlide(-1)" disabled>← Prev</button>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="slide-dots" id="slideDots"></div>
+      <span class="slide-counter" id="slideCounter">1 / 5</span>
+    </div>
+    <button class="tab-btn" id="nextSlide" onclick="changeSlide(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ===== VIDEOS PANEL ===== -->
+<div class="content-panel" id="panel-videos">
+  <p class="section-heading">Video Lessons</p>
+  <p class="section-sub">Watch these curated videos to reinforce key concepts. Each video is tagged to specific Virginia SOL BIO.7 standards. Click a thumbnail to open on YouTube.</p>
+
+  <div class="video-card">
+    <a class="video-thumb" href="https://www.youtube.com/watch?v=0SCjhI86grU" target="_blank" style="background:#042C53;">
+      <div class="video-overlay" style="background:linear-gradient(135deg,#042C53,#185FA5);"></div>
+      <div class="play-btn"><div class="play-triangle"></div></div>
+      <span class="video-label">CrashCourse Biology · ~12 min</span>
+      <span class="video-yt-badge">YouTube ↗</span>
+    </a>
+    <div class="video-info">
+      <div class="video-title">Natural Selection — CrashCourse Biology #14</div>
+      <div class="video-meta">Covers: variation, heritability, differential reproduction · SOL BIO.7a</div>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <a class="video-thumb" href="https://www.youtube.com/watch?v=GcjgWov7mTM" target="_blank" style="background:#04342C;">
+      <div class="video-overlay" style="background:linear-gradient(135deg,#04342C,#1D9E75);"></div>
+      <div class="play-btn"><div class="play-triangle" style="border-color:transparent transparent transparent var(--green-dark);"></div></div>
+      <span class="video-label">Amoeba Sisters · ~9 min</span>
+      <span class="video-yt-badge">YouTube ↗</span>
+    </a>
+    <div class="video-info">
+      <div class="video-title">Evidence for Evolution — Amoeba Sisters</div>
+      <div class="video-meta">Covers: fossil record, DNA evidence, homologous structures · SOL BIO.7b</div>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <a class="video-thumb" href="https://www.youtube.com/watch?v=hOfRN0KihOU" target="_blank" style="background:#412402;">
+      <div class="video-overlay" style="background:linear-gradient(135deg,#412402,#BA7517);"></div>
+      <div class="play-btn"><div class="play-triangle" style="border-color:transparent transparent transparent #412402;"></div></div>
+      <span class="video-label">TED-Ed · ~5 min</span>
+      <span class="video-yt-badge">YouTube ↗</span>
+    </a>
+    <div class="video-info">
+      <div class="video-title">How Does Evolution Actually Work? — TED-Ed</div>
+      <div class="video-meta">Covers: Darwin's finches, speciation, adaptation · SOL BIO.7a, 7c</div>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <a class="video-thumb" href="https://www.youtube.com/watch?v=qzaFRdKVOFY" target="_blank" style="background:#26215C;">
+      <div class="video-overlay" style="background:linear-gradient(135deg,#26215C,#534AB7);"></div>
+      <div class="play-btn"><div class="play-triangle" style="border-color:transparent transparent transparent #3C3489;"></div></div>
+      <span class="video-label">Stated Clearly · ~8 min</span>
+      <span class="video-yt-badge">YouTube ↗</span>
+    </a>
+    <div class="video-info">
+      <div class="video-title">What is the Evidence for Evolution? — Stated Clearly</div>
+      <div class="video-meta">Covers: molecular biology, comparative anatomy, vestigial structures · SOL BIO.7b</div>
+    </div>
+  </div>
+
+  <div class="info-note">Take notes as you watch — key vocabulary from each video will appear on the quiz. Use the Vocabulary tab to review terms.</div>
+</div>
+
+<!-- ===== VOCAB PANEL ===== -->
+<div class="content-panel" id="panel-vocab">
+  <p class="section-heading">Key Vocabulary</p>
+  <p class="section-sub">Master these 12 terms — they appear on the quiz and on your Virginia SOL exam.</p>
+
+  <div class="vocab-table">
+    <div class="vocab-row"><div class="vocab-term">Evolution</div><div class="vocab-def">Change in the heritable characteristics of a biological population over successive generations.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Natural Selection</div><div class="vocab-def">The process by which organisms with favorable traits survive and reproduce more successfully than others, passing traits to offspring.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Adaptation</div><div class="vocab-def">A heritable trait that increases an organism's fitness (survival and reproductive success) in its environment.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Fitness</div><div class="vocab-def">An organism's ability to survive and reproduce in its environment relative to other individuals in the population.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Variation</div><div class="vocab-def">Differences in traits among individuals in a population, arising from mutations and genetic recombination during reproduction.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Speciation</div><div class="vocab-def">The evolutionary process by which populations evolve to become distinct species, usually through reproductive isolation.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Common Descent</div><div class="vocab-def">The principle that all living things share a common ancestor, supported by DNA sequences and the fossil record.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Homologous Structures</div><div class="vocab-def">Structures in different species that share the same evolutionary origin but may perform different functions (e.g., human arm and whale flipper).</div></div>
+    <div class="vocab-row"><div class="vocab-term">Vestigial Structures</div><div class="vocab-def">Body parts that have lost most of their ancestral function through evolution (e.g., human tailbone, whale pelvic bones).</div></div>
+    <div class="vocab-row"><div class="vocab-term">Allele Frequency</div><div class="vocab-def">How common a particular version of a gene is in a population. Natural selection changes allele frequencies over generations.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Fossil Record</div><div class="vocab-def">The collection of all known fossils, providing a historical record of life on Earth and showing evolutionary change over time.</div></div>
+    <div class="vocab-row"><div class="vocab-term">Adaptive Radiation</div><div class="vocab-def">Rapid diversification of many species from a single ancestor into diverse ecological niches. Classic example: Darwin's Galapagos finches.</div></div>
+  </div>
+</div>
+
+<!-- ===== SIMULATION PANEL ===== -->
+<div class="content-panel" id="panel-simulation">
+  <p class="section-heading">Simulations &amp; Interactive Activities</p>
+  <p class="section-sub">Explore natural selection through hands-on simulations. The peppered moth activity is built right in — the others open in your browser.</p>
+
+  <!-- BUILT-IN SIM -->
+  <div class="sim-wrap">
+    <div class="sim-header">
+      <span class="sim-badge">Interactive — Built In</span>
+      <span class="sim-title-text">Peppered Moth Simulation — Industrial Melanism</span>
+    </div>
+    <div class="sim-canvas-area">
+      <div class="sim-controls">
+        <label>Environment:</label>
+        <button class="tab-btn" id="envLight" onclick="setEnv('light')">Light bark</button>
+        <button class="tab-btn active" id="envDark" onclick="setEnv('dark')">Dark bark</button>
+        <button class="tab-btn" onclick="resetSim()">Reset</button>
+        <span style="font-size:12px;color:var(--text-tertiary);margin-left:auto;">Click moths to "eat" them</span>
+      </div>
+      <div class="sim-stats-row">
+        <div class="sim-stat"><div class="sim-stat-num" id="statLight">--</div><div class="sim-stat-label">Light moths</div></div>
+        <div class="sim-stat"><div class="sim-stat-num" id="statDark">--</div><div class="sim-stat-label">Dark moths</div></div>
+        <div class="sim-stat"><div class="sim-stat-num" id="statGen">1</div><div class="sim-stat-label">Generation</div></div>
+      </div>
+      <canvas id="pepperCanvas" width="800" height="190"></canvas>
+      <div id="simMessage"></div>
+    </div>
+  </div>
+
+  <!-- PHET -->
+  <div class="sim-wrap">
+    <div class="sim-header">
+      <span class="sim-badge ext-badge">External — Free</span>
+      <span class="sim-title-text">Natural Selection Simulation — PhET Colorado</span>
+    </div>
+    <div class="sim-canvas-area">
+      <div class="ext-link-block">
+        <p>Control mutation rate, population size, and predator pressure across multiple generations. Directly observe allele frequency change — a core requirement of VA SOL BIO.7b.</p>
+        <a href="https://phet.colorado.edu/en/simulations/natural-selection" target="_blank">
+          <button class="submit-btn">Open PhET Simulation →</button>
+        </a>
+        <p class="ext-link-note">Opens in a new tab. Free, browser-based, no login required.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HHMI -->
+  <div class="sim-wrap">
+    <div class="sim-header">
+      <span class="sim-badge ext-badge">External — Free</span>
+      <span class="sim-title-text">Exploring Fossil Evidence — HHMI BioInteractive</span>
+    </div>
+    <div class="sim-canvas-area">
+      <div class="ext-link-block">
+        <p>Explore interactive fossil data and connect evidence to phylogenetic trees. Understand how paleontology supports common descent and the pattern of evolution across time.</p>
+        <a href="https://www.biointeractive.org/classroom-resources/exploring-fossils" target="_blank">
+          <button class="submit-btn blue-btn">Open HHMI Activity →</button>
+        </a>
+        <p class="ext-link-note">Opens in a new tab. Free educator and student resource from Howard Hughes Medical Institute.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HHMI Lizards -->
+  <div class="sim-wrap">
+    <div class="sim-header">
+      <span class="sim-badge ext-badge">External — Free</span>
+      <span class="sim-title-text">Lizard Evolution Virtual Lab — HHMI BioInteractive</span>
+    </div>
+    <div class="sim-canvas-area">
+      <div class="ext-link-block">
+        <p>Analyze real field data from lizard populations in the Bahamas. Measure how predation changes body characteristics over generations — a powerful real-world example of natural selection in action.</p>
+        <a href="https://www.biointeractive.org/classroom-resources/lizard-evolution-virtual-lab" target="_blank">
+          <button class="submit-btn amber-btn">Open Lizard Lab →</button>
+        </a>
+        <p class="ext-link-note">Opens in a new tab. Uses real scientific data from published research.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUIZ PANEL ===== -->
+<div class="content-panel" id="panel-quiz">
+  <p class="section-heading">Knowledge Check Quiz</p>
+  <p class="section-sub">10 questions aligned to Virginia SOL BIO.7. Select your answer for each question, then click Submit. Detailed feedback is provided for every question.</p>
+
+  <div id="quizContainer"></div>
+
+  <button class="submit-btn" id="quizSubmitBtn" onclick="submitQuiz()">Submit Quiz</button>
+  <button class="submit-btn blue-btn" id="quizRetryBtn" style="display:none;margin-left:10px;" onclick="retryQuiz()">Try Again</button>
+
+  <div class="score-card" id="scoreCard">
+    <div class="score-big" id="scoreDisplay">--</div>
+    <div class="score-sub" id="scoreSub">Check your answers below.</div>
+  </div>
+</div>
+
+<script>
+const quizData = [
+  { q:"Which of the following best defines natural selection?", options:["Random changes in DNA that are passed to offspring","Organisms with favorable traits survive and reproduce more","All members of a species change at the same rate","Organisms choose which traits to develop"], answer:1, explain:"Natural selection is the process where heritable traits that improve survival and reproduction become more common in a population over generations." },
+  { q:"Darwin observed 13 species of finches on the Galapagos Islands, each with differently shaped beaks suited to different food sources. This is an example of:", options:["Convergent evolution","Vestigial structures","Adaptive radiation","Genetic drift"], answer:2, explain:"Adaptive radiation occurs when one ancestral species rapidly diversifies into many species that fill different ecological niches — exactly what occurred with the Galapagos finches." },
+  { q:"Which type of natural selection favors BOTH extreme phenotypes over the intermediate phenotype?", options:["Directional selection","Stabilizing selection","Disruptive selection","Artificial selection"], answer:2, explain:"Disruptive selection favors both extremes and selects against the average phenotype. Over time this can lead to speciation as two distinct groups form." },
+  { q:"The human arm, a bat wing, and a whale flipper all share a similar underlying bone structure. These are called:", options:["Vestigial structures","Analogous structures","Homologous structures","Adaptive structures"], answer:2, explain:"Homologous structures share the same evolutionary origin (common ancestor) but may serve very different functions, providing strong evidence for common descent." },
+  { q:"Which of the following is NOT one of Darwin's four postulates for natural selection?", options:["Variation exists within populations","Traits are heritable","All organisms survive long enough to reproduce","Organisms overproduce offspring"], answer:2, explain:"Darwin's postulates are: (1) variation, (2) heritability, (3) overproduction, and (4) differential survival/reproduction. There is no guarantee all organisms survive to reproduce — that is the whole point of selection." },
+  { q:"Bacteria that survive antibiotic treatment and pass resistance to offspring is an example of:", options:["Stabilizing selection","Artificial selection","Directional natural selection","Lamarckian evolution"], answer:2, explain:"This is directional selection — the resistant phenotype is strongly favored, shifting the population toward higher antibiotic resistance over generations." },
+  { q:"According to Virginia SOL BIO.7, evolution is best described as:", options:["A theory with no supporting evidence","Change in a population's heritable traits over generations","The development of individual organisms during their lifetime","A process that only occurred in the distant past"], answer:1, explain:"Evolution is the change in heritable characteristics of a population over successive generations. It is ongoing and supported by multiple independent lines of evidence." },
+  { q:"The whale's pelvic bone serves no current function but was once used by a land-dwelling ancestor. This is an example of a:", options:["Homologous structure","Vestigial structure","Analogous structure","Adaptive radiation"], answer:1, explain:"Vestigial structures are remnants of structures that had a function in an ancestor but are no longer used, providing evidence of evolutionary history." },
+  { q:"Two populations of the same species become geographically separated by a mountain range. Over millions of years, they can no longer interbreed. This process is called:", options:["Natural selection","Genetic drift","Speciation","Mutation"], answer:2, explain:"Speciation occurs when populations become reproductively isolated — often first by geographic isolation — accumulate genetic changes, and eventually cannot interbreed successfully." },
+  { q:"Which evidence most directly shows that two species share a recent common ancestor?", options:["They live in the same habitat","Their DNA sequences are 98% identical","They are the same size","They eat similar food"], answer:1, explain:"Molecular evidence — especially highly similar DNA sequences — is among the strongest evidence for common ancestry, since DNA is inherited directly from ancestors and diverges gradually over evolutionary time." }
+];
+
+let userAnswers = new Array(quizData.length).fill(null);
+let quizSubmitted = false;
+
+function buildQuiz() {
+  const c = document.getElementById('quizContainer');
+  c.innerHTML = '';
+  quizData.forEach((item,i) => {
+    let opts = item.options.map((o,j) => `<button class="quiz-option" id="opt-${i}-${j}" onclick="selectOption(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('');
+    c.innerHTML += `<div class="quiz-q" id="qq-${i}"><div class="quiz-q-num">Question ${i+1} of ${quizData.length} &nbsp;·&nbsp; VA SOL BIO.7</div><div class="quiz-q-text">${item.q}</div>${opts}<div class="quiz-feedback" id="fb-${i}"></div></div>`;
+  });
+}
+
+function selectOption(qi,oi) {
+  if(quizSubmitted) return;
+  userAnswers[qi]=oi;
+  for(let j=0;j<quizData[qi].options.length;j++) {
+    document.getElementById(`opt-${qi}-${j}`).className='quiz-option'+(j===oi?' selected':'');
+  }
+}
+
+function submitQuiz() {
+  const unanswered = userAnswers.filter(a=>a===null).length;
+  if(unanswered>0){alert(`Please answer all ${unanswered} remaining question(s) before submitting.`);return;}
+  quizSubmitted=true;
+  let correct=0;
+  quizData.forEach((item,i) => {
+    const ua=userAnswers[i];
+    for(let j=0;j<item.options.length;j++){
+      document.getElementById(`opt-${i}-${j}`).className='quiz-option'+(j===item.answer?' correct':(j===ua&&ua!==item.answer?' wrong':''));
+    }
+    const fb=document.getElementById(`fb-${i}`);
+    if(ua===item.answer){correct++;fb.className='quiz-feedback show correct';fb.textContent='Correct! '+item.explain;}
+    else{fb.className='quiz-feedback show wrong';fb.textContent='The correct answer is '+String.fromCharCode(65+item.answer)+'. '+item.explain;}
+  });
+  const pct=Math.round(correct/quizData.length*100);
+  document.getElementById('scoreDisplay').textContent=`${correct}/${quizData.length}`;
+  const msg=pct>=90?'Outstanding! You have mastered this material.':pct>=70?'Good work! Review the questions you missed.':'Keep studying — review the slides and videos, then try again.';
+  document.getElementById('scoreSub').textContent=`${pct}% — ${msg}`;
+  document.getElementById('scoreCard').className='score-card show';
+  document.getElementById('quizSubmitBtn').style.display='none';
+  document.getElementById('quizRetryBtn').style.display='inline-block';
+  tabProgress.quiz=true; updateProgress();
+}
+
+function retryQuiz() {
+  userAnswers=new Array(quizData.length).fill(null); quizSubmitted=false;
+  buildQuiz();
+  document.getElementById('scoreCard').className='score-card';
+  document.getElementById('quizSubmitBtn').style.display='inline-block';
+  document.getElementById('quizRetryBtn').style.display='none';
+}
+
+// SLIDES
+let currentSlide=1; const totalSlides=5;
+function buildDots(){
+  const d=document.getElementById('slideDots'); d.innerHTML='';
+  for(let i=1;i<=totalSlides;i++) d.innerHTML+=`<div class="slide-dot ${i===currentSlide?'active':''}" onclick="goToSlide(${i})"></div>`;
+}
+function goToSlide(n){
+  document.getElementById(`slide-${currentSlide}`).style.display='none';
+  currentSlide=n;
+  document.getElementById(`slide-${currentSlide}`).style.display='block';
+  document.getElementById('slideCounter').textContent=`${currentSlide} / ${totalSlides}`;
+  document.getElementById('prevSlide').disabled=currentSlide===1;
+  document.getElementById('nextSlide').disabled=currentSlide===totalSlides;
+  buildDots();
+}
+function changeSlide(dir){ const n=currentSlide+dir; if(n>=1&&n<=totalSlides) goToSlide(n); }
+
+// TABS
+const tabProgress={slides:true,videos:false,vocab:false,simulation:false,quiz:false};
+function switchTab(tab){
+  document.querySelectorAll('.content-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    if(!b.getAttribute('onclick') || !b.getAttribute('onclick').includes('switchTab')) return;
+    b.classList.remove('active');
+  });
+  document.getElementById('panel-'+tab).classList.add('active');
+  event.currentTarget.classList.add('active');
+  tabProgress[tab]=true; updateProgress();
+}
+function updateProgress(){
+  const done=Object.values(tabProgress).filter(Boolean).length;
+  const pct=Math.round(done/5*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressLabel').textContent=`${done} of 5 sections visited`;
+}
+
+// SIMULATION
+let moths=[], simEnv='dark', simGen=1;
+const canvas=document.getElementById('pepperCanvas');
+const ctx=canvas?canvas.getContext('2d'):null;
+
+function setEnv(e){
+  simEnv=e;
+  document.getElementById('envLight').className='tab-btn'+(e==='light'?' active':'');
+  document.getElementById('envDark').className='tab-btn'+(e==='dark'?' active':'');
+  resetSim();
+}
+function resetSim(){
+  simGen=1;
+  moths=[];
+  const lc=simEnv==='dark'?8:12, dc=simEnv==='dark'?12:8;
+  for(let i=0;i<lc;i++) moths.push({type:'light',x:20+Math.random()*760,y:20+Math.random()*150,alive:true});
+  for(let i=0;i<dc;i++) moths.push({type:'dark',x:20+Math.random()*760,y:20+Math.random()*150,alive:true});
+  updateStats(); drawSim();
+  document.getElementById('statGen').textContent=simGen;
+  document.getElementById('simMessage').textContent=simEnv==='dark'
+    ?'Dark bark: light moths stand out and are easier to spot. Click to eat moths! Watch how the population color shifts across generations.'
+    :'Light bark: dark moths stand out. Click to eat moths! See directional selection in action.';
+}
+function drawSim(){
+  if(!ctx) return;
+  const W=canvas.width, H=canvas.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle=simEnv==='dark'?'#2C2C2A':'#D3D1C7';
+  ctx.fillRect(0,0,W,H);
+  if(simEnv==='dark'){
+    for(let i=0;i<30;i++){ctx.fillStyle='rgba(68,68,65,0.4)';ctx.fillRect(Math.random()*W,Math.random()*H,20+Math.random()*40,3+Math.random()*6);}
+  } else {
+    for(let i=0;i<30;i++){ctx.fillStyle='rgba(180,178,169,0.4)';ctx.fillRect(Math.random()*W,Math.random()*H,20+Math.random()*40,2+Math.random()*5);}
+  }
+  moths.filter(m=>m.alive).forEach(m=>{
+    ctx.save();
+    ctx.translate(m.x,m.y);
+    ctx.beginPath();
+    ctx.ellipse(0,0,14,8,0.4,0,Math.PI*2);
+    ctx.fillStyle=m.type==='light'?'#D3D1C7':'#2C2C2A';
+    ctx.fill();
+    ctx.strokeStyle=m.type==='light'?'#B4B2A9':'#444441';
+    ctx.lineWidth=1; ctx.stroke();
+    ctx.beginPath(); ctx.arc(0,0,3.5,0,Math.PI*2);
+    ctx.fillStyle='#888780'; ctx.fill();
+    ctx.restore();
+  });
+}
+if(canvas){
+  canvas.addEventListener('click',function(e){
+    const rect=canvas.getBoundingClientRect();
+    const sx=canvas.width/rect.width, sy=canvas.height/rect.height;
+    const mx=(e.clientX-rect.left)*sx, my=(e.clientY-rect.top)*sy;
+    for(let m of moths){
+      if(!m.alive) continue;
+      if(Math.sqrt((mx-m.x)**2+(my-m.y)**2)<18){m.alive=false;break;}
+    }
+    updateStats(); drawSim();
+    const alive=moths.filter(m=>m.alive);
+    if(alive.length<6){
+      const lc=alive.filter(m=>m.type==='light').length, dc=alive.filter(m=>m.type==='dark').length;
+      simGen++;
+      document.getElementById('statGen').textContent=simGen;
+      document.getElementById('simMessage').textContent=simEnv==='dark'
+        ?`Generation ${simGen}: ${dc} dark moths survived vs ${lc} light. Dark alleles increase in frequency — natural selection at work!`
+        :`Generation ${simGen}: ${lc} light moths survived vs ${dc} dark. Light alleles increase — directional selection shifting the population!`;
+      setTimeout(()=>spawnNext(lc,dc),1200);
+    }
+  });
+}
+function spawnNext(pl,pd){
+  moths=[];
+  const total=20;
+  const lf=simEnv==='dark'?Math.max(0.08,pl/(pl+pd)*0.75):Math.min(0.92,pl/(pl+pd)*1.25);
+  const lc=Math.round(total*lf), dc=total-lc;
+  for(let i=0;i<lc;i++) moths.push({type:'light',x:20+Math.random()*760,y:20+Math.random()*150,alive:true});
+  for(let i=0;i<dc;i++) moths.push({type:'dark',x:20+Math.random()*760,y:20+Math.random()*150,alive:true});
+  updateStats(); drawSim();
+}
+function updateStats(){
+  const alive=moths.filter(m=>m.alive);
+  document.getElementById('statLight').textContent=alive.filter(m=>m.type==='light').length;
+  document.getElementById('statDark').textContent=alive.filter(m=>m.type==='dark').length;
+}
+
+// INIT
+buildQuiz(); buildDots(); setEnv('dark');
+</script>
+<footer>
+  Virginia SOL Biology · Evolution & Natural Selection
+</footer>
+</body>
+</html>
