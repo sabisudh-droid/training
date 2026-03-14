@@ -822,6 +822,7 @@ function renderVideos(m) {
     <div class="video-slots">
       ${slots.map((slot, i) => {
         const v = saved[i] || {};
+        if (!v.url) return '';
         return `
         <div class="video-slot-card">
           <div class="slot-header">
