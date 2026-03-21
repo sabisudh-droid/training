@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experimental Design &amp; Lab Skills — Biology 9 | Virginia SOL BIO.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1D9E75;--gl:#E1F5EE;--gm:#9FE1CB;--gd:#085041;
+  --blue:#378ADD;--bl:#E6F1FB;--bd:#0C447C;
+  --amber:#BA7517;--al:#FAEEDA;
+  --purple:#534AB7;--pl:#EEEDFE;
+  --coral:#D85A30;--cl:#FAECE7;
+  --teal:#0E7490;--tl:#E0F7FA;
+  --bg:#F0F4F8;--white:#fff;
+  --card:#fff;--border:#E2E8F0;--text:#1A202C;--muted:#64748B;
+  --shadow:0 2px 8px rgba(0,0,0,.07);--shadow-md:0 4px 16px rgba(0,0,0,.1);
+  --accent:#0E7490;--acl:#E0F7FA;--acd:#094F62;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:24px 16px 80px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#002B36,#0E7490 50%,#22B8D1);border-radius:20px;padding:36px 40px;margin-bottom:24px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+.hero::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:rgba(255,255,255,.05);border-radius:50%}
+.hero-inner{display:flex;align-items:flex-start;gap:18px}
+.hero-icon{font-size:3rem;line-height:1;flex-shrink:0}
+.hero h1{font-size:1.9rem;color:#fff;line-height:1.2}
+.hero p{color:rgba(255,255,255,.75);font-size:13.5px;margin-top:5px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 13px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
+
+/* PROGRESS */
+.prog-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+.prog-row span:last-child{font-weight:700;color:var(--accent)}
+.prog-track{height:8px;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.08);margin-bottom:20px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),#22B8D1);border-radius:8px;transition:width .5s ease;width:0%}
+
+/* NAV */
+.module-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.nav-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:30px;border:2px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
+.nav-btn:hover{border-color:var(--accent);color:var(--acd)}
+.nav-btn.active{background:var(--acd);border-color:var(--acd);color:#fff;box-shadow:0 4px 14px rgba(14,116,144,.3)}
+.nav-check{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;opacity:.4;transition:all .2s;flex-shrink:0}
+.nav-btn.done .nav-check{background:#22C55E;border-color:#22C55E;color:#fff;opacity:1}
+
+/* SECTIONS */
+.section{display:none}.section.active{display:block}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-head h2{font-size:1.25rem}
+.stag{background:var(--tl);color:var(--acd);font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;font-family:'DM Sans',sans-serif}
+
+/* INFO BOXES */
+.info-box{background:var(--bl);border:1px solid #B5D4F4;border-radius:10px;padding:13px 16px;margin-bottom:18px;font-size:13px;color:var(--bd);line-height:1.7}
+.info-box strong{display:block;font-weight:600;font-size:14px;margin-bottom:2px}
+.vid-alert{background:var(--al);border:1px solid #FAC775;border-radius:10px;padding:13px 16px;font-size:13px;color:#4A2800;line-height:1.7;margin-bottom:18px}
+.vid-alert strong{font-weight:600}
+.safety-alert{background:#FEE2E2;border:1px solid #FCA5A5;border-radius:10px;padding:13px 16px;font-size:13px;color:#7F1D1D;line-height:1.7;margin-bottom:18px}
+.safety-alert strong{display:block;font-weight:700;font-size:14px;margin-bottom:4px}
+
+/* UPLOAD PANEL */
+.upload-panel{background:var(--card);border:2px dashed var(--border);border-radius:14px;padding:24px;margin-bottom:24px;transition:border-color .2s}
+.upload-panel:hover{border-color:var(--accent)}
+.upload-panel h3{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.upload-panel p{font-size:13px;color:var(--muted);margin-bottom:16px}
+.upload-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.upload-slot{background:#F8FAFC;border:1.5px solid var(--border);border-radius:10px;padding:14px}
+.upload-slot label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.upload-slot input[type=text]{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;margin-bottom:6px;background:#fff;color:var(--text)}
+.upload-slot input[type=text]:focus{outline:none;border-color:var(--accent)}
+.upload-slot input[type=file]{width:100%;font-size:12px;color:var(--muted)}
+.apply-btn{margin-top:14px;padding:9px 22px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
+.apply-btn:hover{background:var(--acd)}
+
+/* VIDEO GRID */
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px}
+.vid-card{background:var(--card);border-radius:14px;overflow:hidden;border:2px solid transparent;box-shadow:var(--shadow);transition:all .25s;cursor:pointer}
+.vid-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--accent)}
+.vid-thumb{height:162px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.vid-thumb-bg{position:absolute;inset:0;z-index:0;pointer-events:none;transition:opacity .2s}
+.vid-card:hover .vid-thumb-bg{opacity:.82}
+.vid-thumb-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+.play-btn{width:56px;height:56px;background:rgba(255,255,255,.93);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .2s}
+.vid-card:hover .play-btn{transform:scale(1.1)}
+.play-tri{border-left:22px solid var(--acd);border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px}
+.vid-thumb-label{color:rgba(255,255,255,.9);font-size:12px;font-family:'DM Sans',sans-serif;background:rgba(0,0,0,.4);padding:3px 10px;border-radius:5px}
+.vid-body{padding:12px 14px 14px}
+.vid-body h3{font-size:13.5px;font-weight:600;margin-bottom:4px;line-height:1.4;font-family:'DM Sans',sans-serif}
+.vid-body p{font-size:12px;color:var(--muted);line-height:1.5}
+.vid-meta{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.vbadge{font-size:10.5px;background:var(--tl);color:var(--acd);border-radius:10px;padding:2px 9px;font-weight:600}
+.vdur{font-size:11px;color:var(--muted)}
+.open-yt{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;font-weight:600;color:#CC0000;background:#FFF0F0;border:1px solid #FFAAAA;border-radius:6px;padding:4px 10px;transition:all .2s;position:relative;z-index:2}
+.open-yt:hover{background:#FFE0E0}
+
+/* VIDEO PLAYER */
+.vid-player{display:none;background:var(--card);border-radius:14px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.vid-player.show{display:block}
+.vp-head{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-bottom:1px solid var(--border);background:#F8FAFC}
+.vp-head h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.vp-close{background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.vp-close:hover{background:var(--border)}
+.iframe-wrap{position:relative;padding-bottom:56.25%;height:0}
+.iframe-wrap iframe,.iframe-wrap video{position:absolute;inset:0;width:100%;height:100%;border:none}
+.local-video-wrap{position:relative;padding-bottom:56.25%;height:0;background:#000}
+.kc-bar{padding:14px 18px;border-top:1px solid var(--border)}
+.kc-bar h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:5px;font-family:'DM Sans',sans-serif}
+.kc-bar p{font-size:13px;color:#475569;line-height:1.7}
+
+/* SLIDES */
+.slide-card{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:16px}
+.slide-body{min-height:370px;padding:30px 36px;display:flex;flex-direction:column;position:relative}
+.t1{background:linear-gradient(135deg,#002B36,#0E7490)}
+.t2{background:linear-gradient(135deg,#042C53,#378ADD)}
+.t3{background:linear-gradient(135deg,#1A1200,#BA7517)}
+.t4{background:linear-gradient(135deg,#04342C,#1D9E75)}
+.t5{background:linear-gradient(135deg,#411200,#D85A30)}
+.t6{background:linear-gradient(135deg,#26215C,#534AB7)}
+.t7{background:linear-gradient(135deg,#2C2C2A,#636060)}
+.t8{background:linear-gradient(135deg,#003B2E,#1D9E75)}
+.t9{background:linear-gradient(135deg,#002B36,#22B8D1)}
+.t10{background:linear-gradient(135deg,#042C53,#1D9E75)}
+.slide-num{position:absolute;top:14px;right:18px;font-size:11px;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif}
+.slide-body h3{font-size:1.45rem;color:#fff;margin-bottom:12px;line-height:1.2}
+.slide-content{color:rgba(255,255,255,.88);font-size:14px;line-height:1.85;flex:1}
+.slide-content ul{padding-left:18px}
+.slide-content li{margin-bottom:6px}
+.slide-content strong{color:#fff;font-weight:600}
+.slide-content p{margin-bottom:8px}
+.eq{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:11px 18px;text-align:center;font-size:14px;color:#fff;letter-spacing:.3px;margin:12px 0;font-weight:500}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:5px 12px;font-size:12px;color:#fff}
+.slide-nav{background:#fff;border-top:1px solid var(--border);padding:11px 18px;display:flex;align-items:center;justify-content:space-between}
+.s-btn{padding:8px 20px;border-radius:8px;border:2px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)}
+.s-btn:hover:not(:disabled){background:var(--acd);border-color:var(--acd);color:#fff}
+.s-btn:disabled{opacity:.35;cursor:not-allowed}
+.dots{display:flex;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+.dot.active{background:var(--accent);transform:scale(1.4)}
+
+/* EXPLORER (shared with vocab-like explorer) */
+.exp-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.exp-tab{padding:8px 18px;border-radius:20px;border:2px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--muted)}
+.exp-tab.v-tab.active,.exp-tab.v-tab:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.exp-tab.c-tab.active,.exp-tab.c-tab:hover{background:var(--green);border-color:var(--green);color:#fff}
+.exp-tab.g-tab.active,.exp-tab.g-tab:hover{background:var(--amber);border-color:var(--amber);color:#fff}
+.exp-tab.s-tab.active,.exp-tab.s-tab:hover{background:var(--coral);border-color:var(--coral);color:#fff}
+.exp-tab.cer-tab.active,.exp-tab.cer-tab:hover{background:var(--purple);border-color:var(--purple);color:#fff}
+.exp-tab.sf-tab.active,.exp-tab.sf-tab:hover{background:#D90000;border-color:#D90000;color:#fff}
+.exp-panel{display:none}.exp-panel.active{display:block}
+.exp-hero{border-radius:12px;padding:20px 24px;margin-bottom:16px;color:#fff;position:relative;overflow:hidden}
+.exp-hero::after{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:rgba(255,255,255,.07);border-radius:50%}
+.exp-hero h3{font-size:1.3rem;margin-bottom:4px}
+.exp-hero p{font-size:13px;opacity:.85;line-height:1.6}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:16px}
+.exp-card{background:#fff;border-radius:10px;border:1px solid var(--border);padding:14px;box-shadow:var(--shadow)}
+.exp-card .ec-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:6px;font-family:'DM Sans',sans-serif}
+.exp-card h4{font-size:13.5px;font-weight:600;margin-bottom:6px;font-family:'DM Sans',sans-serif;color:var(--text)}
+.exp-card p{font-size:12.5px;color:#475569;line-height:1.6}
+.exp-card ul{font-size:12.5px;color:#475569;line-height:1.7;padding-left:16px}
+.exp-card li{margin-bottom:3px}
+.tag-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.tag{background:#F8FAFC;border:1px solid var(--border);border-radius:6px;padding:3px 10px;font-size:12px;color:var(--text)}
+/* Safety cards */
+.safety-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:16px}
+.safety-card{border-radius:10px;padding:16px;border:1px solid;box-shadow:var(--shadow)}
+.safety-card h4{font-size:13.5px;font-weight:700;margin-bottom:8px;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:8px}
+.safety-card ul{font-size:12.5px;line-height:1.75;padding-left:16px}
+.safety-card li{margin-bottom:3px}
+.sc-fire{background:#FFF5F5;border-color:#FCA5A5;color:#7F1D1D}
+.sc-chem{background:#FFFBEB;border-color:#FCD34D;color:#4A2800}
+.sc-cut{background:#F0F9FF;border-color:#7DD3FC;color:#0C4A6E}
+.sc-bio{background:#F0FDF4;border-color:#86EFAC;color:#14532D}
+.sc-gen{background:#F5F3FF;border-color:#C4B5FD;color:#3B0764}
+.sc-ppe{background:#FFF7ED;border-color:#FDB976;color:#431407}
+
+/* LAB SIMULATOR */
+.card{background:var(--card);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.lab-top{background:linear-gradient(90deg,var(--acd),var(--accent));padding:18px 22px;display:flex;align-items:center;gap:14px;border-radius:14px 14px 0 0}
+.lab-top h3{font-size:1.05rem;color:#fff}
+.lab-top p{font-size:12px;color:rgba(255,255,255,.75);margin-top:2px}
+.lab-tabs{display:flex;border-bottom:1px solid var(--border);background:#F8FAFC;padding:0 16px;flex-wrap:wrap}
+.ltab{padding:11px 17px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;border:none;background:none;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-1px}
+.ltab:hover{color:var(--accent)}.ltab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.lpanel{display:none;padding:20px 22px}.lpanel.active{display:block}
+.cbox{background:#F8FAFC;border-radius:8px;padding:11px 13px;border:1px solid var(--border);margin-bottom:10px}
+.clbl{font-size:12px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:7px}
+.clbl .cv{color:var(--accent);font-weight:700}
+input[type=range]{-webkit-appearance:none;width:100%;height:5px;background:var(--border);border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.run-btn{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;margin-bottom:11px;transition:background .2s}
+.run-btn:hover{background:var(--acd)}
+.obs{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:11px 13px;font-size:13px;color:#475569;line-height:1.7;min-height:58px}
+.graph-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px}
+.graph-box h4{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;font-family:'DM Sans',sans-serif}
+.graph-box svg{width:100%;overflow:visible}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:13px}
+.dtable th{background:#F8FAFC;padding:8px 11px;text-align:left;font-weight:600;border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.dtable td{padding:8px 11px;border:1px solid var(--border)}
+.pos{color:#3B6D11;font-weight:500}.neg{color:#A32D2D;font-weight:500}.neu{color:var(--muted)}
+.concl{background:var(--tl);border:1px solid #7ECFE0;border-radius:8px;padding:13px 15px;font-size:13px;color:var(--acd);line-height:1.7}
+.concl strong{display:block;font-weight:600;margin-bottom:3px}
+
+/* VOCAB */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin-bottom:20px}
+.vc{background:#fff;border:2px solid var(--border);border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);min-height:78px}
+.vc:hover{border-color:var(--accent)}
+.vc.open{border-color:var(--accent);background:var(--tl)}
+.vterm{font-weight:600;font-size:14px;color:var(--acd);margin-bottom:2px}
+.vhint{font-size:11px;color:var(--muted)}
+.vdef{font-size:13px;color:#374151;line-height:1.6;margin-top:8px;border-top:1px solid rgba(14,116,144,.2);padding-top:8px;display:none}
+.vc.open .vdef{display:block}
+.vc.open .vhint{display:none}
+
+/* QUIZ */
+.qwrap{max-width:680px}
+.qmeta{font-size:13px;color:var(--muted);margin-bottom:13px;display:flex;align-items:center;gap:8px}
+.qc{font-weight:700;color:var(--accent)}
+.qcard{background:#fff;border-radius:14px;padding:22px;margin-bottom:13px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.qtext{font-size:15px;font-weight:600;margin-bottom:15px;line-height:1.6;font-family:'DM Sans',sans-serif}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{padding:11px 15px;border:2px solid var(--border);border-radius:10px;background:#FAFAFA;font-size:14px;font-family:'DM Sans',sans-serif;text-align:left;cursor:pointer;transition:all .18s;color:var(--text);line-height:1.4;width:100%}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--tl);color:var(--acd)}
+.opt.correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
+.opt.wrong{background:#FEE2E2;border-color:#DC2626;color:#7F1D1D}
+.opt.show-correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
+.opt:disabled{cursor:not-allowed}
+.fb{margin-top:11px;padding:10px 13px;border-radius:8px;font-size:13px;line-height:1.65;display:none}
+.fb.show{display:block}
+.fb.correct{background:#DCFCE7;color:#14532D;border:1px solid #86EFAC}
+.fb.wrong{background:#FEE2E2;color:#7F1D1D;border:1px solid #FCA5A5}
+.qbtns{display:flex;gap:10px;margin-top:4px}
+.qbtn{padding:10px 22px;border-radius:10px;border:2px solid var(--accent);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;background:var(--accent);color:#fff}
+.qbtn:hover{background:var(--acd);border-color:var(--acd)}
+.qbtn.ol{background:#fff;color:var(--accent)}
+.qbtn.ol:hover{background:var(--tl)}
+
+/* SCORE */
+.score-card{display:none;background:#fff;border-radius:14px;padding:34px;text-align:center;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.score-card.show{display:block}
+.score-ring{width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.9rem;font-weight:700;font-family:'Fraunces',serif}
+.sg{background:#DCFCE7;color:#14532D;border:4px solid #22C55E}
+.so{background:var(--al);color:#633806;border:4px solid #F59E0B}
+.sl{background:#FEE2E2;color:#7F1D1D;border:4px solid #EF4444}
+.sc-title{font-size:1.2rem;margin-bottom:5px}
+.sc-msg{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:22px}
+.stat{background:#F8FAFC;border-radius:8px;padding:13px 10px}
+.snum{font-size:1.45rem;font-weight:700;font-family:'Fraunces',serif}
+.slbl{font-size:11px;color:var(--muted);margin-top:2px}
+.sc-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* DONE BTN */
+.done-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:11px 26px;background:var(--accent);color:#fff;border:none;border-radius:30px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(14,116,144,.3);transition:all .2s}
+.done-btn:hover{background:var(--acd);transform:translateY(-1px)}
+.done-btn.finished{background:#22C55E;pointer-events:none}
+
+/* ASSIGNMENT */
+.assign-hero{background:linear-gradient(135deg,#002B36,#0E7490,#22B8D1);border-radius:14px;padding:24px 28px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden}
+.assign-hero::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%}
+.assign-hero h3{font-size:1.2rem;color:#fff;margin-bottom:4px}
+.assign-hero p{font-size:13px;color:rgba(255,255,255,.78);line-height:1.6}
+.assign-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.ameta{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
+.concept-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:22px}
+.concept-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.concept-card .cc-icon{font-size:1.6rem;margin-bottom:6px}
+.concept-card h4{font-size:13px;font-weight:700;color:var(--acd);margin-bottom:4px;font-family:'DM Sans',sans-serif}
+.concept-card p{font-size:12px;color:var(--muted);line-height:1.55}
+.part-card{background:#fff;border:1px solid var(--border);border-radius:14px;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
+.part-header{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);background:#F8FAFC;cursor:pointer;transition:background .2s;user-select:none}
+.part-header:hover{background:#F0F4F8}
+.part-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;flex-shrink:0;color:#fff}
+.pn1{background:var(--accent)}.pn2{background:var(--blue)}.pn3{background:var(--amber)}.pn4{background:var(--green)}.pn5{background:var(--coral)}.pn6{background:var(--purple)}
+.part-header h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;flex:1}
+.part-header .pts{font-size:11px;font-weight:600;padding:3px 9px;border-radius:8px;background:var(--tl);color:var(--acd)}
+.part-toggle{font-size:18px;color:var(--muted);transition:transform .3s;line-height:1}
+.part-body{padding:18px 20px;display:none}.part-body.open{display:block}
+.q-prompt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.5;font-family:'DM Sans',sans-serif}
+.q-hint{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.5;font-style:italic}
+.a-textarea{width:100%;min-height:90px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);resize:vertical;background:#FAFAFA;line-height:1.6;transition:border-color .2s}
+.a-textarea:focus{outline:none;border-color:var(--accent);background:#fff}
+.a-textarea.filled{border-color:var(--accent);background:#fff}
+.q-divider{border:none;border-top:1px dashed var(--border);margin:16px 0}
+.word-count{font-size:11px;color:var(--muted);text-align:right;margin-top:3px}
+.mc-opts{display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
+.mc-opt{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;background:#FAFAFA}
+.mc-opt:hover{border-color:var(--accent);background:var(--tl)}
+.mc-opt input[type=radio]{accent-color:var(--accent);width:15px;height:15px;flex-shrink:0}
+.mc-opt.selected{border-color:var(--accent);background:var(--tl)}
+.mc-opt label{font-size:13.5px;cursor:pointer;line-height:1.4}
+.matching-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
+.match-col h4{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-family:'DM Sans',sans-serif}
+.match-item{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:13.5px}
+.match-select{padding:5px 8px;border:1.5px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;background:#fff;color:var(--text);cursor:pointer;flex-shrink:0}
+.match-select:focus{outline:none;border-color:var(--accent)}
+.diagram-area{width:100%;min-height:220px;border:2px dashed var(--border);border-radius:10px;background:#FAFAFA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.diagram-area:hover{border-color:var(--accent);background:var(--tl)}
+.diagram-area.has-image .placeholder-text{display:none}
+.diagram-area img.diagram-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
+.diagram-area.has-image img.diagram-preview{display:block}
+.placeholder-text{text-align:center;color:var(--muted);font-size:13px;pointer-events:none}
+.placeholder-text span{font-size:2rem;display:block;margin-bottom:6px}
+.diagram-tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.dtool{padding:7px 14px;border-radius:7px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;color:var(--text);transition:all .2s}
+.dtool:hover{border-color:var(--accent);color:var(--accent)}
+.rubric-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px}
+.rubric-table th{background:#F8FAFC;padding:7px 10px;text-align:left;border:1px solid var(--border);font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.35px;font-size:11px;font-family:'DM Sans',sans-serif}
+.rubric-table td{padding:7px 10px;border:1px solid var(--border);vertical-align:top;line-height:1.5}
+.rubric-table tr:nth-child(even) td{background:#FAFAFA}
+.submit-bar{background:linear-gradient(135deg,#002B36,#0E7490);border-radius:14px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
+.submit-bar p{color:rgba(255,255,255,.8);font-size:13px;line-height:1.5}
+.submit-bar strong{color:#fff;display:block;font-size:15px;margin-bottom:2px}
+.submit-btns{display:flex;gap:10px;flex-wrap:wrap}
+.sbtn{padding:10px 22px;border-radius:10px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.sbtn.primary{background:var(--accent);color:#fff}
+.sbtn.primary:hover{background:#fff;color:var(--accent)}
+.sbtn.secondary{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff}
+.sbtn.secondary:hover{background:rgba(255,255,255,.25)}
+.saved-msg{font-size:12px;color:#7ECFE0;font-weight:600;display:none;align-items:center;gap:4px}
+.footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--muted)}
+
+@media print{
+  .module-nav,.prog-track,.prog-row,.hero-tags,.vid-alert,.upload-panel,.done-btn,.submit-bar,.nav-check,
+  .section:not(#sec-assignment){display:none!important}
+  #sec-assignment{display:block!important}
+  .part-body{display:block!important}
+  .hero{background:#0E7490!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .assign-hero{background:#0E7490!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .a-textarea{border:1px solid #ccc!important;min-height:60px}
+  body{background:#fff}.wrap{padding:10px}.part-card{break-inside:avoid}
+}
+@media(max-width:580px){
+  .hero{padding:22px 20px}.hero h1{font-size:1.4rem}
+  .stats{grid-template-columns:1fr 1fr}
+  .slide-body{padding:22px 20px}
+  .matching-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .safety-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
+      <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">BIO.1</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">🔬</div>
+    <div>
+      <h1>Experimental Design</h1>
+      <p>9th Grade Biology · Self-Paced Learning Module</p>
+      <div class="hero-tags">
+        <span class="htag">Variables &amp; Controls</span>
+        <span class="htag">Graphing &amp; Measurements</span>
+        <span class="htag">CER Framework</span>
+        <span class="htag">Lab Safety</span>
+        <span class="htag">6 Modules</span>
+        <span class="htag">10-Question Quiz</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="prog-row"><span>Module Progress</span><span id="progTxt">0 of 6 complete</span></div>
+<div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+
+<!-- NAV -->
+<div class="module-nav">
+  <button class="nav-btn active" data-s="videos" onclick="showSec('videos',this)">▶ Videos <span class="nav-check" id="chk-videos"></span></button>
+  <button class="nav-btn" data-s="slides" onclick="showSec('slides',this)">📊 Slides <span class="nav-check" id="chk-slides"></span></button>
+  <button class="nav-btn" data-s="explorer" onclick="showSec('explorer',this)">🧪 Concepts <span class="nav-check" id="chk-explorer"></span></button>
+  <button class="nav-btn" data-s="vocab" onclick="showSec('vocab',this)">📖 Vocabulary <span class="nav-check" id="chk-vocab"></span></button>
+  <button class="nav-btn" data-s="quiz" onclick="showSec('quiz',this)">✏️ Quiz <span class="nav-check" id="chk-quiz"></span></button>
+  <button class="nav-btn" data-s="assignment" onclick="showSec('assignment',this)">📋 Assignment <span class="nav-check" id="chk-assignment"></span></button>
+</div>
+
+<!-- ══════════════ VIDEOS ══════════════ -->
+<div class="section active" id="sec-videos">
+  <div class="sec-head"><h2>Video Lessons</h2><span class="stag">3 Videos</span></div>
+
+  <div class="info-box">
+    <strong>Learning Objectives — Experimental Design</strong>
+    Students will design a controlled experiment by identifying independent, dependent, and controlled variables; explain the purpose of a control group; construct and interpret appropriate graphs; use proper measurement tools and SI units; and write a complete Claim-Evidence-Reasoning (CER) response from experimental data.
+  </div>
+
+  <div class="vid-alert">
+    <strong>📺 How Videos Work in This Module:</strong>
+    Click a video card to open it in the player below. You can also <strong>upload your own video files</strong> or paste a YouTube URL using the panel below — perfect for classroom use without internet.
+  </div>
+
+  <!-- UPLOAD PANEL -->
+  <div class="upload-panel">
+    <h3>🎬 Upload Your Own Videos <span style="font-size:11px;background:var(--tl);color:var(--acd);padding:2px 8px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600">Optional</span></h3>
+    <p>Upload MP4, WebM, or any video file. Once applied, it plays inside the lesson — no internet needed.</p>
+    <div class="upload-slots">
+      <div class="upload-slot">
+        <label>Video 1 — Nature of Science</label>
+        <input type="text" id="url1" placeholder="Paste YouTube URL (optional)">
+        <input type="file" id="file1" accept="video/*" onchange="previewFile(1)">
+        <div id="file1name" style="font-size:11px;color:var(--accent);margin-top:4px"></div>
+      </div>
+      <div class="upload-slot">
+        <label>Video 2 — CER Framework</label>
+        <input type="text" id="url2" placeholder="Paste YouTube URL (optional)">
+        <input type="file" id="file2" accept="video/*" onchange="previewFile(2)">
+        <div id="file2name" style="font-size:11px;color:var(--accent);margin-top:4px"></div>
+      </div>
+      <div class="upload-slot">
+        <label>Video 3 — Lab Safety</label>
+        <input type="text" id="url3" placeholder="Paste YouTube URL (optional)">
+        <input type="file" id="file3" accept="video/*" onchange="previewFile(3)">
+        <div id="file3name" style="font-size:11px;color:var(--accent);margin-top:4px"></div>
+      </div>
+    </div>
+    <button class="apply-btn" onclick="applyCustomVideos()">✓ Apply Videos</button>
+    <span id="applyMsg" style="font-size:12px;color:var(--accent);margin-left:10px;display:none">✓ Applied!</span>
+  </div>
+
+  <!-- PLAYER -->
+  <div class="vid-player" id="vidPlayer">
+    <div class="vp-head"><h3 id="vpTitle">Video</h3><button class="vp-close" onclick="closeVid()">✕</button></div>
+    <div id="vpContent"></div>
+    <div class="kc-bar"><h4>Key Concepts</h4><p id="vpConcepts"></p></div>
+  </div>
+
+  <!-- VIDEO CARDS -->
+  <div class="vid-grid">
+    <div class="vid-card" id="vcard1">
+      <div class="vid-thumb" onclick="playVid(1)" style="cursor:pointer">
+        <div class="vid-thumb-bg" style="background:linear-gradient(135deg,#002B36,#0E7490)"></div>
+        <div class="vid-thumb-content">
+          <div style="font-size:2.4rem">🧪</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="vid-thumb-label">Amoeba Sisters · ~10 min</div>
+        </div>
+      </div>
+      <div class="vid-body">
+        <h3 onclick="playVid(1)" style="cursor:pointer">Nature of Science — Amoeba Sisters</h3>
+        <p>Scientific method, variables (IV, DV, controlled), hypothesis, control group, and graphing data</p>
+        <div class="vid-meta"><span class="vbadge">Amoeba Sisters</span><span class="vdur">~10 min</span></div>
+        <a class="open-yt" href="https://www.youtube.com/watch?v=3nAETHZTObk" target="_blank">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+    <div class="vid-card" id="vcard2">
+      <div class="vid-thumb" onclick="playVid(2)" style="cursor:pointer">
+        <div class="vid-thumb-bg" style="background:linear-gradient(135deg,#26215C,#534AB7)"></div>
+        <div class="vid-thumb-content">
+          <div style="font-size:2.4rem">✍️</div>
+          <div class="play-btn"><div class="play-tri" style="border-left-color:#26215C"></div></div>
+          <div class="vid-thumb-label">Amoeba Sisters · ~7 min</div>
+        </div>
+      </div>
+      <div class="vid-body">
+        <h3 onclick="playVid(2)" style="cursor:pointer">CER (Claim, Evidence, Reasoning) — Amoeba Sisters</h3>
+        <p>How to write a scientific explanation using the Claim, Evidence, and Reasoning framework</p>
+        <div class="vid-meta"><span class="vbadge">Amoeba Sisters</span><span class="vdur">~7 min</span></div>
+        <a class="open-yt" href="https://www.youtube.com/watch?v=15aWaGYheJs" target="_blank">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+    <div class="vid-card" id="vcard3">
+      <div class="vid-thumb" onclick="playVid(3)" style="cursor:pointer">
+        <div class="vid-thumb-bg" style="background:linear-gradient(135deg,#7F1D1D,#D90000)"></div>
+        <div class="vid-thumb-content">
+          <div style="font-size:2.4rem">🦺</div>
+          <div class="play-btn"><div class="play-tri" style="border-left-color:#7F1D1D"></div></div>
+          <div class="vid-thumb-label">Amoeba Sisters · ~8 min</div>
+        </div>
+      </div>
+      <div class="vid-body">
+        <h3 onclick="playVid(3)" style="cursor:pointer">General Lab Safety — Amoeba Sisters</h3>
+        <p>Proper lab attire, PPE, disposal of materials, heating precautions, and essential safety rules</p>
+        <div class="vid-meta"><span class="vbadge">Amoeba Sisters</span><span class="vdur">~8 min</span></div>
+        <a class="open-yt" href="https://www.youtube.com/watch?v=MEIXRLcC6RA" target="_blank">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+  </div>
+  <button class="done-btn" id="doneVideos" onclick="markDone('videos')">Mark Videos Complete ✓</button>
+</div>
+
+<!-- ══════════════ SLIDES ══════════════ -->
+<div class="section" id="sec-slides">
+  <div class="sec-head"><h2>Lesson Slides</h2><span class="stag">10 Slides</span></div>
+  <div class="slide-card">
+    <div class="slide-body" id="slideBody"></div>
+    <div class="slide-nav">
+      <button class="s-btn" id="prevBtn" onclick="prevSlide()" disabled>← Previous</button>
+      <div class="dots" id="slideDots"></div>
+      <button class="s-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+    </div>
+  </div>
+  <button class="done-btn" id="doneSlides" onclick="markDone('slides')">Mark Slides Complete ✓</button>
+</div>
+
+<!-- ══════════════ CONCEPT EXPLORER ══════════════ -->
+<div class="section" id="sec-explorer">
+  <div class="sec-head"><h2>Concept Explorer</h2><span class="stag">Interactive Reference</span></div>
+  <div class="info-box">
+    <strong>How to Use This Section</strong>
+    Click each tab to explore a key concept in depth — with definitions, examples, tips, and real-world connections. Use this alongside the slides as a study reference.
+  </div>
+
+  <div class="exp-tabs">
+    <button class="exp-tab v-tab active" onclick="switchExp('vars',this)">📐 Variables</button>
+    <button class="exp-tab c-tab" onclick="switchExp('control',this)">🎛 Control</button>
+    <button class="exp-tab g-tab" onclick="switchExp('graph',this)">📊 Graphing</button>
+    <button class="exp-tab s-tab" onclick="switchExp('meas',this)">📏 Measurements</button>
+    <button class="exp-tab cer-tab" onclick="switchExp('cer',this)">✍️ CER</button>
+    <button class="exp-tab sf-tab" onclick="switchExp('safety',this)">🦺 Lab Safety</button>
+  </div>
+
+  <!-- VARIABLES -->
+  <div class="exp-panel active" id="ep-vars">
+    <div class="exp-hero" style="background:linear-gradient(135deg,#002B36,#0E7490)">
+      <h3>Variables</h3>
+      <p>The factors in an experiment that can change. Identifying them correctly is the foundation of a valid scientific study.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="ec-label">Independent Variable (IV)</div>
+        <h4>What You Change</h4>
+        <p>The ONE factor a scientist deliberately changes to test its effect. Also called the <strong>manipulated variable</strong>. It goes on the <strong>X-axis</strong> of a graph.<br><br><em>Example: Amount of fertilizer given to plants</em></p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Dependent Variable (DV)</div>
+        <h4>What You Measure</h4>
+        <p>The factor that is <strong>observed and measured</strong> — it "depends" on the IV. Also called the <strong>responding variable</strong>. It goes on the <strong>Y-axis</strong>.<br><br><em>Example: Height of plants after 2 weeks</em></p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Controlled Variables</div>
+        <h4>What You Keep the Same</h4>
+        <p>All other factors held <strong>constant</strong> throughout the experiment so they don't affect results. Without controls, you can't know which variable caused the outcome.<br><br><em>Examples: Amount of water, light intensity, pot size, type of soil</em></p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Memory Trick</div>
+        <h4>IDAT — I Do A Test</h4>
+        <p><strong>I</strong> = Independent (what I change)<br><strong>D</strong> = Dependent (what I measure)<br><strong>A</strong> = All other things kept the same<br><strong>T</strong> = Test (one variable at a time)<br><br>Only change ONE variable at a time or results are invalid!</p>
+      </div>
+    </div>
+    <div style="background:var(--tl);border:1px solid #7ECFE0;border-radius:10px;padding:13px 16px;font-size:13px;color:var(--acd);line-height:1.7">
+      <strong>🔑 Hypothesis Format:</strong> "If [independent variable] is [changed in this way], then [dependent variable] will [predicted outcome], because [scientific reasoning]."<br>
+      Example: "If the amount of fertilizer given to plants is increased, then their height will increase, because fertilizer provides nutrients that fuel plant growth."
+    </div>
+  </div>
+
+  <!-- CONTROL GROUP -->
+  <div class="exp-panel" id="ep-control">
+    <div class="exp-hero" style="background:linear-gradient(135deg,#04342C,#1D9E75)">
+      <h3>Control Group</h3>
+      <p>The "standard" group that receives no treatment — the baseline for comparing experimental results.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="ec-label">Definition</div>
+        <h4>What is a Control Group?</h4>
+        <p>The group that is <strong>NOT exposed to the independent variable</strong>. It provides a baseline to compare against the experimental group(s) and shows what results look like without any manipulation.</p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Experimental Group</div>
+        <h4>vs. Experimental Group</h4>
+        <p>The <strong>experimental group</strong> receives the independent variable treatment. Everything else is kept identical to the control group. The difference in outcomes is attributed to the IV.</p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Example</div>
+        <h4>Plant Fertilizer Study</h4>
+        <p><strong>Control group:</strong> Plants given 0g of fertilizer (water only)<br><strong>Experimental groups:</strong> Plants given 5g, 10g, 15g of fertilizer<br><br>Comparing each group to the control tells us whether fertilizer actually caused a difference.</p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Why It Matters</div>
+        <h4>Validity & Reliability</h4>
+        <p><strong>Valid:</strong> The experiment actually tests what it claims to test (proper controls)<br><strong>Reliable:</strong> Results are consistent when repeated (multiple trials)<br><br>Without a control, you cannot claim causation — only correlation.</p>
+      </div>
+    </div>
+    <div style="background:var(--gl);border:1px solid #9FE1CB;border-radius:10px;padding:13px 16px;font-size:13px;color:var(--gd);line-height:1.7">
+      <strong>🔑 Placebo Effect:</strong> In human studies, the <strong>placebo</strong> is a special type of control — participants receive a "fake" treatment (sugar pill) to separate real effects from psychological expectations. This is why many medical trials are double-blind: neither patients nor researchers know who received the real treatment.
+    </div>
+  </div>
+
+  <!-- GRAPHING -->
+  <div class="exp-panel" id="ep-graph">
+    <div class="exp-hero" style="background:linear-gradient(135deg,#3B2A00,#BA7517)">
+      <h3>Graphing & Data Visualization</h3>
+      <p>Graphs are visual tools for communicating data patterns clearly. Choosing the right graph type matters.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="ec-label">Line Graph</div>
+        <h4>Continuous Data Over Time</h4>
+        <p>Best for showing <strong>trends over time</strong> or when both variables are continuous numbers.<br><br><em>Example: Plant height measured daily over 4 weeks</em><br><br>X-axis = Time (IV) · Y-axis = Height (DV)</p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Bar Graph</div>
+        <h4>Comparing Categories</h4>
+        <p>Best for comparing <strong>discrete categories</strong> or groups. Each bar represents one group or category.<br><br><em>Example: Average height of plants given 0g, 5g, 10g fertilizer</em><br><br>X-axis = Fertilizer amount · Y-axis = Height</p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Scatter Plot</div>
+        <h4>Correlation Between Variables</h4>
+        <p>Best for showing the <strong>relationship (correlation)</strong> between two continuous variables. A trend line (line of best fit) shows direction of relationship.<br><br><em>Example: Study hours vs. test score</em></p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">TAILS Checklist</div>
+        <h4>Every Graph Must Have:</h4>
+        <ul>
+          <li><strong>T</strong>itle (descriptive: "Effect of X on Y")</li>
+          <li><strong>A</strong>xes labeled with units</li>
+          <li><strong>I</strong>ntervals that are equal and consistent</li>
+          <li><strong>L</strong>egend (if more than one data set)</li>
+          <li><strong>S</strong>cale that fills the graph space</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:var(--al);border:1px solid #FAC775;border-radius:10px;padding:13px 16px;font-size:13px;color:#4A2800;line-height:1.7">
+      <strong>🔑 Graph Title Format:</strong> Always write titles as "The Effect of [Independent Variable] on [Dependent Variable]."<br>
+      Example: "The Effect of Fertilizer Concentration on Plant Height After 14 Days"
+    </div>
+  </div>
+
+  <!-- MEASUREMENTS -->
+  <div class="exp-panel" id="ep-meas">
+    <div class="exp-hero" style="background:linear-gradient(135deg,#411200,#D85A30)">
+      <h3>Measurements & SI Units</h3>
+      <p>Accurate, precise measurements in standard units are essential for reproducible science.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="ec-label">Accuracy vs. Precision</div>
+        <h4>Two Different Things</h4>
+        <p><strong>Accuracy:</strong> How close a measurement is to the <em>true</em> value<br><strong>Precision:</strong> How consistent/repeatable measurements are<br><br>Ideal: both accurate AND precise. You can be precise but wrong (systematic error).</p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">SI Units (Metric)</div>
+        <h4>Standard Units in Science</h4>
+        <ul>
+          <li><strong>Length:</strong> meter (m), cm, mm, km</li>
+          <li><strong>Mass:</strong> gram (g), kg, mg</li>
+          <li><strong>Volume:</strong> liter (L), mL, cm³</li>
+          <li><strong>Temperature:</strong> Celsius (°C) or Kelvin (K)</li>
+          <li><strong>Time:</strong> seconds (s), minutes, hours</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Measurement Tools</div>
+        <h4>Using the Right Tool</h4>
+        <ul>
+          <li><strong>Ruler/meter stick</strong> — length</li>
+          <li><strong>Triple-beam/digital balance</strong> — mass</li>
+          <li><strong>Graduated cylinder</strong> — liquid volume</li>
+          <li><strong>Thermometer</strong> — temperature</li>
+          <li><strong>Stopwatch</strong> — time</li>
+          <li><strong>pH meter/strips</strong> — acidity</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Reading a Graduated Cylinder</div>
+        <h4>Meniscus Rule</h4>
+        <p>Water in a graduated cylinder forms a curved surface called a <strong>meniscus</strong>. Always read the volume at the <strong>bottom of the meniscus</strong> at eye level. Parallax error occurs when you read from above or below.</p>
+      </div>
+    </div>
+    <div style="background:var(--cl);border:1px solid #F5B8A0;border-radius:10px;padding:13px 16px;font-size:13px;color:#411200;line-height:1.7">
+      <strong>🔑 Significant Figures:</strong> All measurements should be recorded to the smallest division of the tool, plus one estimated digit. Example: A ruler marked in mm should be read as X.X mm (estimating the tenths digit). Always include units — a number without units is meaningless in science.
+    </div>
+  </div>
+
+  <!-- CER -->
+  <div class="exp-panel" id="ep-cer">
+    <div class="exp-hero" style="background:linear-gradient(135deg,#26215C,#534AB7)">
+      <h3>Claim · Evidence · Reasoning (CER)</h3>
+      <p>The three-part framework scientists use to communicate conclusions drawn from data.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="ec-label">Claim</div>
+        <h4>Your Answer to the Question</h4>
+        <p>A <strong>concise statement</strong> that answers the experimental question. Does NOT include data or explanation — just the direct answer.<br><br><em>Example: "Increasing fertilizer concentration increases plant height."</em></p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Evidence</div>
+        <h4>Specific Data That Supports It</h4>
+        <p><strong>Specific, quantitative data</strong> from the experiment. Must include numbers and units. Reference the data table or graph directly.<br><br><em>Example: "Plants given 10g of fertilizer grew 24 cm, while control plants (0g) grew only 11 cm."</em></p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Reasoning</div>
+        <h4>Why the Evidence Supports the Claim</h4>
+        <p>Connects the evidence to the claim using <strong>scientific principles</strong>. This is the "because" — explaining the mechanism behind the data.<br><br><em>Example: "Fertilizer provides nitrogen and other minerals required for protein synthesis and cell growth in plants."</em></p>
+      </div>
+      <div class="exp-card">
+        <div class="ec-label">Common Mistakes</div>
+        <h4>What to Avoid</h4>
+        <ul>
+          <li>❌ Claim includes data ("because the numbers showed…")</li>
+          <li>❌ Evidence is vague ("the plant grew more")</li>
+          <li>❌ Reasoning restates the evidence instead of explaining it</li>
+          <li>❌ No scientific vocabulary in reasoning</li>
+          <li>✅ All three parts clearly separated and connected</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:var(--pl);border:1px solid #AFA9EC;border-radius:10px;padding:13px 16px;font-size:13px;color:#26215C;line-height:1.7">
+      <strong>🔑 Full CER Example:</strong><br>
+      <strong>Claim:</strong> Increasing light intensity increases the rate of photosynthesis.<br>
+      <strong>Evidence:</strong> At 100% light intensity, the plant produced 0.62 mol/hr of glucose, compared to only 0.18 mol/hr at 25% intensity.<br>
+      <strong>Reasoning:</strong> Light energy is required to power the light-dependent reactions in chloroplasts. More light provides more energy to split water molecules and generate ATP and NADPH, increasing the rate at which the Calvin Cycle can produce glucose.
+    </div>
+  </div>
+
+  <!-- LAB SAFETY -->
+  <div class="exp-panel" id="ep-safety">
+    <div class="exp-hero" style="background:linear-gradient(135deg,#7F1D1D,#D90000)">
+      <h3>🦺 Lab Safety</h3>
+      <p>Safety is not optional. Every person in the lab is responsible for their own safety AND the safety of others.</p>
+    </div>
+    <div class="safety-alert">
+      <strong>⚠️ Before Every Lab — You Must:</strong>
+      Read ALL instructions before touching anything · Know the location of fire extinguisher, eyewash station, safety shower, and first aid kit · Never work alone · Report ALL accidents immediately to your teacher.
+    </div>
+    <div class="safety-grid">
+      <div class="safety-card sc-ppe">
+        <h4>👓 Personal Protective Equipment (PPE)</h4>
+        <ul>
+          <li>Safety goggles must be worn whenever using chemicals, heat, or glassware</li>
+          <li>Lab coat or apron protects clothing from spills</li>
+          <li>Gloves required when handling hazardous chemicals or biological materials</li>
+          <li>Closed-toe shoes only — no sandals or open-toed footwear in lab</li>
+          <li>Tie back long hair and secure loose clothing before starting</li>
+        </ul>
+      </div>
+      <div class="safety-card sc-chem">
+        <h4>⚗️ Chemical Safety</h4>
+        <ul>
+          <li>Never smell chemicals directly — waft fumes toward you with your hand</li>
+          <li>Never taste any substance in the lab (even if it looks like food)</li>
+          <li>Read the label TWICE before using any chemical</li>
+          <li>Add acid to water — NEVER water to acid (exothermic reaction)</li>
+          <li>Dispose of chemicals only in designated waste containers</li>
+          <li>Know the location and use of the eyewash station</li>
+        </ul>
+      </div>
+      <div class="safety-card sc-fire">
+        <h4>🔥 Heat & Fire Safety</h4>
+        <ul>
+          <li>Never heat a sealed container — pressure can cause explosion</li>
+          <li>Point the opening of heated test tubes away from people</li>
+          <li>Use heat-resistant gloves or tongs when handling hot objects</li>
+          <li>Keep flammable materials away from open flames</li>
+          <li>Know the location and operation of the fire extinguisher</li>
+          <li>If clothing catches fire: Stop, Drop, and Roll</li>
+        </ul>
+      </div>
+      <div class="safety-card sc-cut">
+        <h4>🔪 Glassware & Sharp Instruments</h4>
+        <ul>
+          <li>Inspect glassware for cracks or chips before use — discard damaged items</li>
+          <li>Never use chipped or broken glassware</li>
+          <li>Carry glassware upright and with two hands</li>
+          <li>Cut away from yourself when using scalpels or dissection tools</li>
+          <li>Broken glass goes in a designated sharps container — NOT regular trash</li>
+        </ul>
+      </div>
+      <div class="safety-card sc-bio">
+        <h4>🧫 Biological Safety</h4>
+        <ul>
+          <li>Treat all biological specimens and cultures as potentially hazardous</li>
+          <li>Wash hands thoroughly with soap before AND after lab activities</li>
+          <li>Never remove biological samples from the laboratory</li>
+          <li>Dispose of biological waste in biohazard bags or designated containers</li>
+          <li>Report any cuts, punctures, or spills involving biological material immediately</li>
+        </ul>
+      </div>
+      <div class="safety-card sc-gen">
+        <h4>📋 General Lab Rules</h4>
+        <ul>
+          <li>No food or drink in the laboratory — ever</li>
+          <li>Never run, push, or engage in horseplay in the lab</li>
+          <li>Do not perform unauthorized experiments</li>
+          <li>Clean up your workspace completely before leaving</li>
+          <li>Wash hands before leaving the lab even if you wore gloves</li>
+          <li>Alert teacher immediately if you feel unwell during lab</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:#FEE2E2;border:1px solid #FCA5A5;border-radius:10px;padding:13px 16px;font-size:13px;color:#7F1D1D;line-height:1.7;margin-top:4px">
+      <strong>🚨 Emergency Procedures:</strong> Chemical splash to eyes → Go to eyewash station immediately (flush 15 min) · Chemical spill on skin → Remove clothing, flush with water · Fire → Evacuate, do not use elevators · Injury → Apply pressure, alert teacher immediately. You should know where ALL emergency equipment is located before starting any lab.
+    </div>
+  </div>
+
+  <button class="done-btn" id="doneExplorer" onclick="markDone('explorer')">Mark Concepts Complete ✓</button>
+</div>
+
+<!-- ══════════════ VOCABULARY ══════════════ -->
+<div class="section" id="sec-vocab">
+  <div class="sec-head"><h2>Key Vocabulary</h2><span class="stag">Tap to flip</span></div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+  <button class="done-btn" id="doneVocab" onclick="markDone('vocab')">Mark Vocabulary Complete ✓</button>
+</div>
+
+<!-- ══════════════ QUIZ ══════════════ -->
+<div class="section" id="sec-quiz">
+  <div class="sec-head"><h2>Knowledge Check</h2><span class="stag">10 Questions</span></div>
+  <div class="qwrap" id="qwrap">
+    <div class="qmeta"><span class="qc" id="qctr">Question 1 of 10</span></div>
+    <div class="qcard">
+      <div class="qtext" id="qtext"></div>
+      <div class="opts" id="qopts"></div>
+      <div class="fb" id="qfb"></div>
+    </div>
+    <div class="qbtns"><button class="qbtn" id="qnext" onclick="nextQ()" style="display:none">Next Question →</button></div>
+  </div>
+  <div class="score-card" id="scoreCard">
+    <div class="score-ring" id="sring"></div>
+    <div class="sc-title" id="stitle"></div>
+    <div class="sc-msg" id="smsg"></div>
+    <div class="stats">
+      <div class="stat"><div class="snum" style="color:#16A34A" id="sco">0</div><div class="slbl">Correct</div></div>
+      <div class="stat"><div class="snum" style="color:#DC2626" id="swr">0</div><div class="slbl">Incorrect</div></div>
+      <div class="stat"><div class="snum" style="color:var(--accent)" id="spct">0%</div><div class="slbl">Score</div></div>
+    </div>
+    <div class="sc-btns">
+      <button class="qbtn" onclick="restartQuiz()">↺ Retake Quiz</button>
+      <button class="qbtn ol" onclick="markDone('quiz')">Finish Module ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ASSIGNMENT ══════════════ -->
+<div class="section" id="sec-assignment">
+  <div class="sec-head"><h2>Assignment</h2><span class="stag">6 Parts · 50 Points Total</span></div>
+
+  <div class="assign-hero">
+    <h3>Experimental Design — Unit Assignment</h3>
+    <p>Complete all six parts using what you learned from the videos, slides, and concept explorer. Type answers directly in the boxes. Use the Print button to submit or follow your teacher's instructions.</p>
+    <div class="assign-meta">
+      <span class="ameta">📅 Due: See teacher</span>
+      <span class="ameta">🎯 50 Points Total</span>
+      <span class="ameta">⏱ ~55 minutes</span>
+    </div>
+  </div>
+
+  <!-- Key Concepts Reference -->
+  <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Key Concepts Reference</p>
+  <div class="concept-strip">
+    <div class="concept-card"><div class="cc-icon">📐</div><h4>Variables</h4><p>IV = what you change · DV = what you measure · Controlled = kept the same</p></div>
+    <div class="concept-card"><div class="cc-icon">🎛</div><h4>Control Group</h4><p>Baseline with no treatment · Compare experimental groups against it</p></div>
+    <div class="concept-card"><div class="cc-icon">📊</div><h4>Graphing</h4><p>IV on X-axis · DV on Y-axis · Title, labels, units, scale (TAILS)</p></div>
+    <div class="concept-card"><div class="cc-icon">📏</div><h4>Measurements</h4><p>SI units · Accuracy vs. precision · Right tool for each measurement</p></div>
+    <div class="concept-card"><div class="cc-icon">✍️</div><h4>CER</h4><p>Claim (answer) + Evidence (specific data) + Reasoning (scientific explanation)</p></div>
+    <div class="concept-card"><div class="cc-icon">🦺</div><h4>Lab Safety</h4><p>PPE always · Waft chemicals · Goggles on · Know emergency equipment</p></div>
+  </div>
+
+  <!-- PART 1: Multiple Choice -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p1')">
+      <div class="part-num pn1">1</div>
+      <h3>Multiple Choice — Core Concepts</h3>
+      <span class="pts">10 pts</span>
+      <span class="part-toggle" id="tog-p1">▼</span>
+    </div>
+    <div class="part-body open" id="p1">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Select the best answer for each question (2 pts each).</p>
+
+      <div class="q-prompt">1. A student tests whether the amount of sunlight affects plant growth. What is the independent variable?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc1" value="a" onchange="selectMC(this)"><label>A. Height of the plant</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="b" onchange="selectMC(this)"><label>B. Amount of sunlight</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="c" onchange="selectMC(this)"><label>C. Amount of water given</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="d" onchange="selectMC(this)"><label>D. Type of plant used</label></label>
+      </div><hr class="q-divider">
+
+      <div class="q-prompt">2. Which of the following would be placed on the X-axis of a graph?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc2" value="a" onchange="selectMC(this)"><label>A. The dependent variable</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="b" onchange="selectMC(this)"><label>B. The controlled variable</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="c" onchange="selectMC(this)"><label>C. The independent variable</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="d" onchange="selectMC(this)"><label>D. The average of all trials</label></label>
+      </div><hr class="q-divider">
+
+      <div class="q-prompt">3. A scientist measures a liquid volume as 24.6 mL every time she tries, but the true volume is 31.2 mL. Her measurements are:</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc3" value="a" onchange="selectMC(this)"><label>A. Accurate and precise</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="b" onchange="selectMC(this)"><label>B. Accurate but not precise</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="c" onchange="selectMC(this)"><label>C. Precise but not accurate</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="d" onchange="selectMC(this)"><label>D. Neither accurate nor precise</label></label>
+      </div><hr class="q-divider">
+
+      <div class="q-prompt">4. In an experiment testing the effect of caffeine on heart rate, which group would receive a drink with NO caffeine?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc4" value="a" onchange="selectMC(this)"><label>A. The experimental group</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="b" onchange="selectMC(this)"><label>C. The control group</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="c" onchange="selectMC(this)"><label>C. The dependent variable group</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="d" onchange="selectMC(this)"><label>D. The independent variable group</label></label>
+      </div><hr class="q-divider">
+
+      <div class="q-prompt">5. Which lab safety rule is MOST important when working with unknown chemicals?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc5" value="a" onchange="selectMC(this)"><label>A. Taste a small amount to identify it</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="b" onchange="selectMC(this)"><label>B. Smell it directly from the container</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="c" onchange="selectMC(this)"><label>C. Wear safety goggles and gloves at all times</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="d" onchange="selectMC(this)"><label>D. Mix it with water to dilute any hazard</label></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 2: Identify Variables -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p2')">
+      <div class="part-num pn2">2</div>
+      <h3>Identify Variables — Scenario Analysis</h3>
+      <span class="pts">9 pts</span>
+      <span class="part-toggle" id="tog-p2">▼</span>
+    </div>
+    <div class="part-body open" id="p2">
+      <div style="background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:13.5px;line-height:1.7;color:var(--text)">
+        <strong>Scenario:</strong> A student wants to investigate whether the type of music (classical, rock, or silence) affects how many math problems students solve correctly in 10 minutes. She tests three groups of 10 students each, all the same age, in the same classroom, on the same difficulty problems, at the same time of day.
+      </div>
+
+      <div class="q-prompt">1. What is the independent variable? (3 pts)</div>
+      <textarea class="a-textarea" style="min-height:60px" id="sa_iv" placeholder="State the IV and explain why it is the IV..." oninput="updateWC('sa_iv','wc_iv');autoSave()"></textarea>
+      <div class="word-count" id="wc_iv">0 words</div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">2. What is the dependent variable? (3 pts)</div>
+      <textarea class="a-textarea" style="min-height:60px" id="sa_dv" placeholder="State the DV and explain how it would be measured..." oninput="updateWC('sa_dv','wc_dv');autoSave()"></textarea>
+      <div class="word-count" id="wc_dv">0 words</div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">3. List THREE controlled variables from the scenario and explain why each one must be kept constant. (3 pts)</div>
+      <textarea class="a-textarea" id="sa_cv" placeholder="List 3 controlled variables and explain why each matters..." oninput="updateWC('sa_cv','wc_cv');autoSave()"></textarea>
+      <div class="word-count" id="wc_cv">0 words</div>
+    </div>
+  </div>
+
+  <!-- PART 3: Matching -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p3')">
+      <div class="part-num pn3">3</div>
+      <h3>Matching — Terms &amp; Definitions</h3>
+      <span class="pts">8 pts</span>
+      <span class="part-toggle" id="tog-p3">▼</span>
+    </div>
+    <div class="part-body open" id="p3">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Match each term to its correct definition.</p>
+      <div class="matching-grid">
+        <div class="match-col">
+          <h4>Term</h4>
+          <div class="match-item"><strong>1. Hypothesis</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>2. Control Group</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>3. Dependent Variable</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>4. Precision</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>5. CER</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>6. Meniscus</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>7. Line of Best Fit</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>8. Placebo</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+        </div>
+        <div class="match-col">
+          <h4>Definition</h4>
+          <p style="font-size:13px;line-height:2.1">
+            <strong>A.</strong> A testable prediction written in "if…then…because" format<br>
+            <strong>B.</strong> The group that receives no experimental treatment (baseline)<br>
+            <strong>C.</strong> The variable that is measured; responds to the IV<br>
+            <strong>D.</strong> Consistency of repeated measurements<br>
+            <strong>E.</strong> A framework: Claim + Evidence + Reasoning<br>
+            <strong>F.</strong> The curved surface of a liquid in a graduated cylinder<br>
+            <strong>G.</strong> A trend line on a scatter plot showing the data's general direction<br>
+            <strong>H.</strong> A fake treatment given to a control group in human studies
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 4: Graph Analysis -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p4')">
+      <div class="part-num pn4">4</div>
+      <h3>Graph Construction &amp; Analysis</h3>
+      <span class="pts">8 pts</span>
+      <span class="part-toggle" id="tog-p4">▼</span>
+    </div>
+    <div class="part-body open" id="p4">
+      <div style="background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px">
+        <strong style="font-size:13.5px;display:block;margin-bottom:8px">Data Table: Effect of Temperature on Enzyme Activity</strong>
+        <table class="dtable" style="margin-bottom:0">
+          <thead><tr><th>Temperature (°C)</th><th>Reaction Rate (products/min)</th></tr></thead>
+          <tbody>
+            <tr><td>10</td><td>4</td></tr>
+            <tr><td>20</td><td>12</td></tr>
+            <tr><td>30</td><td>22</td></tr>
+            <tr><td>37</td><td>28</td></tr>
+            <tr><td>45</td><td>16</td></tr>
+            <tr><td>55</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="q-prompt">1. Sketch a properly labeled graph of this data. Include a title, labeled axes with units, and a line connecting the data points. Draw on paper, photograph, and upload below. (4 pts)</div>
+      <div class="diagram-area" id="diagramArea" onclick="document.getElementById('diagramUpload').click()">
+        <img class="diagram-preview" id="diagramPreview" alt="Graph">
+        <div class="placeholder-text"><span>📈</span><strong style="font-size:14px;color:#475569">Draw graph on paper, photograph, and upload</strong><span style="font-size:12px">Click to upload image</span></div>
+        <input type="file" id="diagramUpload" accept="image/*" style="display:none" onchange="loadDiagram(event)">
+      </div>
+      <div class="diagram-tools">
+        <button class="dtool" onclick="document.getElementById('diagramUpload').click()">📷 Upload Photo</button>
+        <button class="dtool" onclick="clearDiagram()">🗑 Clear Image</button>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">2. Analyze the graph: Describe the trend in reaction rate as temperature increases, and explain what happens above 37°C and why. (4 pts)</div>
+      <div class="q-hint">Hint: Think about what happens to enzyme shape at high temperatures. What scientific term describes this?</div>
+      <textarea class="a-textarea" id="sa_graph" placeholder="Describe the trend and explain what happens above 37°C using scientific vocabulary..." oninput="updateWC('sa_graph','wc_g');autoSave()"></textarea>
+      <div class="word-count" id="wc_g">0 words</div>
+    </div>
+  </div>
+
+  <!-- PART 5: Write a CER -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p5')">
+      <div class="part-num pn5">5</div>
+      <h3>Write a CER — Scientific Explanation</h3>
+      <span class="pts">10 pts</span>
+      <span class="part-toggle" id="tog-p5">▼</span>
+    </div>
+    <div class="part-body open" id="p5">
+      <div style="background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.7;color:var(--text)">
+        <strong>Scenario:</strong> A student investigated whether the amount of salt added to water affects the time it takes to boil. She added 0g, 10g, 20g, and 30g of salt to 500 mL of water and recorded the boiling time. Results: 0g → 4.1 min, 10g → 4.3 min, 20g → 4.6 min, 30g → 4.9 min.
+      </div>
+
+      <div class="q-prompt">Write a complete CER response to the question: "Does increasing salt concentration affect the time water takes to boil?" (10 pts)</div>
+      <div class="q-hint">Your CER must include: Claim (1–2 sentences directly answering the question) · Evidence (specific data with numbers and units) · Reasoning (scientific explanation connecting evidence to claim — why does salt affect boiling point?)</div>
+
+      <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;margin-top:12px">Claim</div>
+      <textarea class="a-textarea" style="min-height:60px" id="cer_c" placeholder="Write your claim here — directly answer the question without including data..." oninput="updateWC('cer_c','wc_c');autoSave()"></textarea>
+      <div class="word-count" id="wc_c">0 words</div>
+
+      <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;margin-top:12px">Evidence</div>
+      <textarea class="a-textarea" style="min-height:70px" id="cer_e" placeholder="Cite specific data with numbers and units from the scenario..." oninput="updateWC('cer_e','wc_e');autoSave()"></textarea>
+      <div class="word-count" id="wc_e">0 words</div>
+
+      <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;margin-top:12px">Reasoning</div>
+      <textarea class="a-textarea" style="min-height:90px" id="cer_r" placeholder="Explain WHY the evidence supports the claim using scientific vocabulary (boiling point elevation, solute, solvent, intermolecular forces)..." oninput="updateWC('cer_r','wc_r');autoSave()"></textarea>
+      <div class="word-count" id="wc_r">0 words</div>
+
+      <details style="margin-top:14px">
+        <summary style="font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none">▶ View Scoring Rubric</summary>
+        <table class="rubric-table" style="margin-top:10px">
+          <thead><tr><th>Component</th><th>Full Credit</th><th>Partial Credit</th><th>No Credit</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Claim</strong> (2 pts)</td><td>Direct, concise answer; no data included</td><td>Answers but is vague or partially includes data</td><td>Missing, restates question, or includes data</td></tr>
+            <tr><td><strong>Evidence</strong> (4 pts)</td><td>Specific, quantitative data with numbers and units from all key data points</td><td>Uses data but lacks numbers/units or is incomplete</td><td>Vague ("the numbers showed…") or no data cited</td></tr>
+            <tr><td><strong>Reasoning</strong> (4 pts)</td><td>Explains mechanism using scientific vocab; clearly connects evidence to claim</td><td>Provides some explanation but lacks detail or vocabulary</td><td>Restates evidence or provides no scientific explanation</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+  </div>
+
+  <!-- PART 6: Extended Response -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p6')">
+      <div class="part-num pn6">6</div>
+      <h3>Extended Response — Design Your Own Experiment</h3>
+      <span class="pts">5 pts</span>
+      <span class="part-toggle" id="tog-p6">▼</span>
+    </div>
+    <div class="part-body open" id="p6">
+      <div class="q-prompt">Choose ONE of the following research questions and design a complete controlled experiment. Your response must include: a hypothesis, the IV and DV, at least three controlled variables, what the control group is, how you would collect and graph data, and what lab safety precautions are needed.</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin:12px 0 16px">
+        <label class="mc-opt"><input type="radio" name="scenario" value="A" onchange="selectMC(this)"><label><strong>Question A:</strong> Does the amount of sleep a student gets affect their performance on a memory test the next morning?</label></label>
+        <label class="mc-opt"><input type="radio" name="scenario" value="B" onchange="selectMC(this)"><label><strong>Question B:</strong> Does the color of light (red, blue, white) affect the growth rate of aquatic plants over two weeks?</label></label>
+        <label class="mc-opt"><input type="radio" name="scenario" value="C" onchange="selectMC(this)"><label><strong>Question C:</strong> Does the concentration of sugar in a yeast solution affect the rate of fermentation (CO₂ production)?</label></label>
+      </div>
+      <textarea class="a-textarea" id="ext1" style="min-height:160px" placeholder="Write your full experimental design here (minimum 6 sentences)..." oninput="updateWC('ext1','wc_ex');autoSave()"></textarea>
+      <div class="word-count" id="wc_ex">0 words</div>
+    </div>
+  </div>
+
+  <div class="submit-bar">
+    <div>
+      <strong>Ready to Submit?</strong>
+      <p>Review all six parts, then print or follow your teacher's submission instructions.</p>
+      <div class="saved-msg" id="savedMsg">✓ Progress auto-saved</div>
+    </div>
+    <div class="submit-btns">
+      <button class="sbtn secondary" onclick="window.print()">🖨 Print Assignment</button>
+      <button class="sbtn primary" onclick="markDone('assignment')">Mark Assignment Complete ✓</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Experimental Design · 9th Grade Biology · Science Process Skills</p>
+</div>
+</div>
+
+<script>
+/* ─── DATA ─── */
+const VIDS={
+  1:{title:'Nature of Science — Amoeba Sisters',ytUrl:'https://www.youtube.com/watch?v=3nAETHZTObk',embedId:'3nAETHZTObk',concepts:'Covers: the scientific method, experimental design, independent variable, dependent variable, controlled variables, control group, writing a hypothesis, graphing data (IV on X-axis, DV on Y-axis), and the importance of credible sources.',localSrc:null,customUrl:null},
+  2:{title:'CER (Claim, Evidence, Reasoning) — Amoeba Sisters',ytUrl:'https://www.youtube.com/watch?v=15aWaGYheJs',embedId:'15aWaGYheJs',concepts:'Covers: the CER framework, how to write a clear claim, how to identify and cite specific evidence, how to write reasoning that connects evidence to the claim, using credible/peer-reviewed sources, and applying CER to real biology investigations.',localSrc:null,customUrl:null},
+  3:{title:'General Lab Safety — Amoeba Sisters',ytUrl:'https://www.youtube.com/watch?v=MEIXRLcC6RA',embedId:'MEIXRLcC6RA',concepts:'Covers: proper lab attire (goggles, closed-toe shoes, tied hair), PPE, importance of reading directions, safe disposal of materials, precautions when heating substances, handling chemicals safely, and knowing where safety equipment is located.',localSrc:null,customUrl:null}
+};
+
+const SLIDES=[
+  {t:'t1',title:'What is Experimental Design?',html:`<ul><li>Science begins with a <strong>question</strong> about the natural world</li><li>A well-designed experiment tests ONE variable at a time to determine cause and effect</li><li>The <strong>scientific method</strong> is the process used to investigate questions systematically</li></ul><div class="eq">Question → Hypothesis → Experiment → Data → Analysis → Conclusion → Communicate</div><div class="chips"><div class="chip">🔍 Observation</div><div class="chip">❓ Question</div><div class="chip">💡 Hypothesis</div><div class="chip">🧪 Experiment</div><div class="chip">📊 Data</div><div class="chip">✍️ Conclusion</div></div>`},
+  {t:'t2',title:'Variables',html:`<ul><li><strong>Independent Variable (IV):</strong> The ONE factor you deliberately change. Goes on the X-axis. Also called the "manipulated variable"</li><li><strong>Dependent Variable (DV):</strong> What you observe and measure in response to the IV. Goes on the Y-axis. Also called the "responding variable"</li><li><strong>Controlled Variables:</strong> All other factors kept constant so they don't interfere with results</li></ul><div class="eq">IV → (causes change in) → DV, while all other factors are held constant</div><p style="margin-top:12px"><strong>Memory trick — DRY MIX:</strong> Dependent/Responding/Y-axis · Manipulated/Independent/X-axis</p>`},
+  {t:'t3',title:'Hypothesis & Control Group',html:`<ul><li>A <strong>hypothesis</strong> is a testable prediction: "If [IV change], then [DV response], because [reasoning]"</li><li>The <strong>control group</strong> receives NO treatment — it is the baseline for comparison</li><li>The <strong>experimental group</strong> receives the IV treatment</li><li>Running <strong>multiple trials</strong> increases reliability — accidental results are less likely to repeat</li></ul><div class="chips"><div class="chip">Control group = 0 treatment</div><div class="chip">Experimental = IV applied</div><div class="chip">Multiple trials = reliability</div><div class="chip">One variable at a time = validity</div></div>`},
+  {t:'t4',title:'Graphing Data',html:`<ul><li><strong>Line graph:</strong> Best for continuous data over time (IV and DV are both numbers)</li><li><strong>Bar graph:</strong> Best for comparing categories or groups</li><li><strong>Scatter plot:</strong> Best for showing correlation between two continuous variables; add a <strong>line of best fit</strong></li></ul><p style="margin-top:10px"><strong>TAILS checklist — every graph must have:</strong></p><ul><li><strong>T</strong>itle: "Effect of [IV] on [DV]"</li><li><strong>A</strong>xes labeled with units (e.g., Time (days), Height (cm))</li><li><strong>I</strong>ntervals that are equal and consistent</li><li><strong>L</strong>egend if more than one data set</li><li><strong>S</strong>cale that uses most of the graph space</li></ul>`},
+  {t:'t10',title:'Types of Graphs — Visual Guide',html:`<p style="margin-bottom:14px">Choose the right graph based on your data type. Each serves a different purpose:</p><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px"><div style="background:rgba(255,255,255,.1);border-radius:10px;padding:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.5px;opacity:.7;margin-bottom:8px;text-transform:uppercase">Line Graph</div><svg viewBox="0 0 120 80" style="width:100%;background:rgba(255,255,255,.08);border-radius:6px;display:block;margin-bottom:8px"><line x1="14" y1="8" x2="14" y2="68" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><line x1="14" y1="68" x2="112" y2="68" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><polyline points="20,58 40,46 60,32 80,20 100,14" fill="none" stroke="#22B8D1" stroke-width="2.5" stroke-linejoin="round"/><circle cx="20" cy="58" r="3" fill="#22B8D1"/><circle cx="40" cy="46" r="3" fill="#22B8D1"/><circle cx="60" cy="32" r="3" fill="#22B8D1"/><circle cx="80" cy="20" r="3" fill="#22B8D1"/><circle cx="100" cy="14" r="3" fill="#22B8D1"/><text x="60" y="78" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.6)" font-family="sans-serif">Time (days)</text><text x="7" y="40" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.6)" font-family="sans-serif" transform="rotate(-90,7,40)">Height (cm)</text></svg><div style="font-size:11px;opacity:.85;line-height:1.5"><strong>Use when:</strong> Both variables are continuous numbers or data is collected over time<br><em style="opacity:.7">e.g. Plant height over 10 days</em></div></div><div style="background:rgba(255,255,255,.1);border-radius:10px;padding:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.5px;opacity:.7;margin-bottom:8px;text-transform:uppercase">Bar Graph</div><svg viewBox="0 0 120 80" style="width:100%;background:rgba(255,255,255,.08);border-radius:6px;display:block;margin-bottom:8px"><line x1="14" y1="8" x2="14" y2="68" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><line x1="14" y1="68" x2="112" y2="68" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><rect x="22" y="44" width="16" height="24" fill="#1D9E75" rx="2"/><rect x="46" y="28" width="16" height="40" fill="#1D9E75" rx="2"/><rect x="70" y="18" width="16" height="50" fill="#1D9E75" rx="2"/><rect x="94" y="34" width="16" height="34" fill="#1D9E75" rx="2"/><text x="30" y="76" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.6)" font-family="sans-serif">0g</text><text x="54" y="76" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.6)" font-family="sans-serif">5g</text><text x="78" y="76" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.6)" font-family="sans-serif">10g</text><text x="102" y="76" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.6)" font-family="sans-serif">15g</text><text x="60" y="6" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.7)" font-family="sans-serif">Fertilizer (g)</text></svg><div style="font-size:11px;opacity:.85;line-height:1.5"><strong>Use when:</strong> Comparing separate, discrete categories or groups<br><em style="opacity:.7">e.g. Average height per fertilizer group</em></div></div><div style="background:rgba(255,255,255,.1);border-radius:10px;padding:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.5px;opacity:.7;margin-bottom:8px;text-transform:uppercase">Scatter Plot</div><svg viewBox="0 0 120 80" style="width:100%;background:rgba(255,255,255,.08);border-radius:6px;display:block;margin-bottom:8px"><line x1="14" y1="8" x2="14" y2="68" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><line x1="14" y1="68" x2="112" y2="68" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><line x1="18" y1="64" x2="108" y2="12" stroke="rgba(255,255,255,.3)" stroke-width="1.5" stroke-dasharray="4,3"/><circle cx="24" cy="60" r="3.5" fill="#D85A30"/><circle cx="35" cy="54" r="3.5" fill="#D85A30"/><circle cx="44" cy="50" r="3.5" fill="#D85A30"/><circle cx="55" cy="42" r="3.5" fill="#D85A30"/><circle cx="63" cy="38" r="3.5" fill="#D85A30"/><circle cx="74" cy="30" r="3.5" fill="#D85A30"/><circle cx="85" cy="25" r="3.5" fill="#D85A30"/><circle cx="96" cy="18" r="3.5" fill="#D85A30"/><text x="60" y="78" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.6)" font-family="sans-serif">Study Hours</text><text x="7" y="40" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.6)" font-family="sans-serif" transform="rotate(-90,7,40)">Test Score</text></svg><div style="font-size:11px;opacity:.85;line-height:1.5"><strong>Use when:</strong> Showing correlation between two continuous variables; add a line of best fit<br><em style="opacity:.7">e.g. Study hours vs. test score</em></div></div></div>`},
+  {t:'t5',title:'Measurements & SI Units',html:`<ul><li>Science uses the <strong>International System of Units (SI)</strong> — also called the metric system</li><li><strong>Length:</strong> meter (m) · <strong>Mass:</strong> gram (g) · <strong>Volume:</strong> liter (L) · <strong>Temperature:</strong> Celsius (°C) · <strong>Time:</strong> seconds (s)</li><li><strong>Accuracy:</strong> How close to the true value<br><strong>Precision:</strong> How consistent/repeatable the measurements are</li><li>Read a graduated cylinder at the bottom of the <strong>meniscus</strong>, at eye level</li><li>Always record measurements to the smallest tool division plus one estimated digit</li></ul><div class="chips"><div class="chip">Ruler → length</div><div class="chip">Balance → mass</div><div class="chip">Graduated cylinder → volume</div><div class="chip">Thermometer → temperature</div></div>`},
+  {t:'t6',title:'Claim · Evidence · Reasoning (CER)',html:`<ul><li><strong>Claim:</strong> A direct answer to the research question. NO data, no explanation — just the answer</li><li><strong>Evidence:</strong> Specific, quantitative data from your experiment (numbers + units)</li><li><strong>Reasoning:</strong> Explains WHY the evidence supports the claim using scientific principles and vocabulary</li></ul><div class="eq">CER = Answer + Data + Scientific Explanation</div><div class="chips"><div class="chip">Claim: "Increasing X increases Y"</div><div class="chip">Evidence: "Group A = 24 cm; Group B = 11 cm"</div><div class="chip">Reasoning: "Because X affects Y by…"</div></div>`},
+  {t:'t7',title:'Lab Safety — PPE & Chemical Rules',html:`<ul><li><strong>Always</strong> wear safety goggles when using chemicals, heat, or glassware</li><li>Wear a <strong>lab coat/apron</strong> and <strong>gloves</strong> when handling hazardous materials</li><li><strong>Closed-toe shoes only</strong> — no sandals</li><li>Tie back long hair before starting</li><li><strong>Never smell chemicals directly</strong> — waft fumes toward you with your hand</li><li><strong>Never taste</strong> anything in the lab</li><li>Add <strong>acid to water</strong> — never water to acid</li><li>Read labels <strong>twice</strong> before using any chemical</li></ul><div class="chips"><div class="chip">👓 Goggles always</div><div class="chip">🧤 Gloves for chemicals</div><div class="chip">👃 Waft, never sniff</div><div class="chip">🚫 Never taste</div></div>`},
+  {t:'t8',title:'Lab Safety — Heat, Glassware & Emergencies',html:`<ul><li>Point heated test tubes <strong>away from people</strong></li><li>Never heat a <strong>sealed container</strong> — pressure build-up can cause explosion</li><li>Use <strong>tongs or heat-resistant gloves</strong> for hot objects</li><li>Inspect glassware for <strong>cracks before use</strong> — discard damaged items</li><li>Broken glass goes in a <strong>designated sharps container</strong></li><li>Know the location of the <strong>eyewash station, safety shower, fire extinguisher, and first aid kit</strong></li><li>Chemical in eyes → eyewash station immediately (flush 15 min)</li><li><strong>Report ALL accidents</strong> to your teacher immediately — no exceptions</li></ul><div class="chips"><div class="chip">🔥 Away from people</div><div class="chip">🚿 Eyewash = 15 min</div><div class="chip">🧯 Know the extinguisher</div><div class="chip">📢 Report everything</div></div>`},
+  {t:'t9',title:'Putting It All Together',html:`<p>A well-designed experiment follows all of these principles:</p><ul><li><strong>One IV tested at a time</strong> — change only one thing</li><li><strong>Control group included</strong> — baseline for comparison</li><li><strong>Controlled variables held constant</strong> — so only the IV causes change</li><li><strong>Multiple trials run</strong> — for reliability</li><li><strong>Data collected with correct SI units</strong> — using appropriate tools</li><li><strong>Proper graph constructed</strong> with TAILS</li><li><strong>CER written</strong> from the data — Claim + Evidence + Reasoning</li><li><strong>Lab safety followed throughout</strong> — PPE, proper chemical handling, emergency readiness</li></ul><div class="chips"><div class="chip">✅ Valid experiment</div><div class="chip">✅ Reliable data</div><div class="chip">✅ Safe procedure</div><div class="chip">✅ Clear communication</div></div>`}
+];
+
+const VOCAB=[
+  {term:'Independent Variable (IV)',def:'The one factor a scientist deliberately changes to test its effect. Also called the manipulated variable. Placed on the X-axis of a graph.'},
+  {term:'Dependent Variable (DV)',def:'The factor that is observed and measured in response to the independent variable. Also called the responding variable. Placed on the Y-axis.'},
+  {term:'Controlled Variables',def:'All factors kept constant throughout an experiment to ensure that only the IV affects the DV. Essential for a valid experiment.'},
+  {term:'Hypothesis',def:'A testable, falsifiable prediction about the outcome of an experiment. Format: "If [IV] is [changed], then [DV] will [change], because [reasoning]."'},
+  {term:'Control Group',def:'The group in an experiment that receives no treatment. It serves as the baseline for comparison against the experimental group(s).'},
+  {term:'Experimental Group',def:'The group that receives the independent variable treatment. Its results are compared to the control group to determine the effect of the IV.'},
+  {term:'Accuracy',def:'How close a measured value is to the true or accepted value. High accuracy means low systematic error.'},
+  {term:'Precision',def:'How consistent and repeatable measurements are. High precision means measurements cluster closely together, even if they are not accurate.'},
+  {term:'Meniscus',def:'The curved surface of a liquid in a graduated cylinder due to surface tension. Liquid volume is read at the BOTTOM of the meniscus at eye level.'},
+  {term:'SI Units',def:'The International System of Units — the standard measurement system used in science worldwide. Includes meters, grams, liters, Celsius, and seconds.'},
+  {term:'Claim',def:'In a CER response, the claim is a direct, concise statement that answers the research question. It does not include data or explanation.'},
+  {term:'Evidence',def:'Specific, quantitative data from an experiment used to support a claim. Must include numbers and units. Referenced directly from data tables or graphs.'},
+  {term:'Reasoning',def:'The part of a CER response that explains WHY the evidence supports the claim using scientific principles and vocabulary.'},
+  {term:'Line of Best Fit',def:'A straight or curved line on a scatter plot that best represents the trend in the data. Used to show correlation and make predictions.'},
+  {term:'Reliability',def:'The degree to which an experiment produces consistent results when repeated. Improved by running multiple trials and controlling variables.'},
+  {term:'Validity',def:'The degree to which an experiment actually tests what it claims to test. Ensured by controlling all variables except the IV.'},
+  {term:'Placebo',def:'A fake treatment given to a control group in human studies to separate real effects from psychological expectations (placebo effect).'},
+  {term:'Wafting',def:'The safe technique for smelling chemicals in a lab — using your hand to gently wave vapors toward your nose rather than smelling directly from the container.'},
+  {term:'Bar Graph',def:'A type of graph used to compare discrete categories or groups. Each bar represents one category; bars do not touch.'},
+  {term:'Scatter Plot',def:'A type of graph that plots individual data points to show the relationship (correlation) between two continuous variables.'}
+];
+
+const QUESTIONS=[
+  {q:'A scientist tests whether the amount of water given to tomato plants affects fruit yield. What is the dependent variable?',opts:['Amount of water given','Type of tomato plant','Number of tomatoes produced','Amount of sunlight received'],ans:2,exp:'The dependent variable is what is measured — the outcome that "depends" on the independent variable. Here, the number of tomatoes produced responds to changes in watering amount.'},
+  {q:'In a well-designed experiment, why is it important to have a control group?',opts:['It eliminates the need for multiple trials','It provides a baseline for comparing results','It changes along with the independent variable','It ensures the data is accurate'],ans:1,exp:'The control group receives no treatment and serves as the baseline. By comparing experimental groups to the control, scientists can attribute differences to the independent variable, not other factors.'},
+  {q:'A student performs five measurements of the same object and gets: 10.1, 10.2, 10.1, 10.3, 10.2 cm. The true length is 14.7 cm. These measurements are:',opts:['Accurate and precise','Accurate but not precise','Precise but not accurate','Neither accurate nor precise'],ans:2,exp:'The measurements are very consistent with each other (precise) but all far from the true value of 14.7 cm (not accurate). This is a systematic error — the measurements are reliably wrong.'},
+  {q:'Which graph type is BEST for showing how plant height changes every day over three weeks?',opts:['Bar graph','Pie chart','Line graph','Scatter plot'],ans:2,exp:'A line graph is best for showing continuous data over time, such as daily measurements of plant height. The X-axis shows time and the Y-axis shows height, and connecting the points reveals the trend.'},
+  {q:'When reading a graduated cylinder, you should read the volume at:',opts:['The top of the meniscus from above','The bottom of the meniscus at eye level','The top of the meniscus at eye level','The middle of the meniscus from below'],ans:1,exp:'Always read the volume at the bottom of the meniscus (the curved dip of the liquid surface) at eye level to avoid parallax error — reading from above or below introduces inaccurate readings.'},
+  {q:'A proper graph title should be written as:',opts:['"Graph of My Results"','"The Effect of [IV] on [DV]"','"Data for the Lab"','The name of the experiment only'],ans:1,exp:'Graph titles should describe exactly what is being compared: "The Effect of [Independent Variable] on [Dependent Variable]." For example: "The Effect of Temperature on Enzyme Activity."'},
+  {q:'Which part of a CER response contains specific data with numbers and units?',opts:['Claim','Evidence','Reasoning','Hypothesis'],ans:1,exp:'The Evidence component contains specific, quantitative data from the experiment — numbers and units that directly support the claim. Without numbers, evidence is considered vague and insufficient.'},
+  {q:'Before working with an unknown chemical in the lab, you should FIRST:',opts:['Smell it to identify it','Read the label twice and put on PPE','Mix a small amount with water','Ask a classmate what it is'],ans:1,exp:'Lab safety requires reading the label twice before using any chemical and wearing appropriate PPE (goggles, gloves, apron). Never identify chemicals by smell or taste — these are dangerous practices.'},
+  {q:'A student changes the temperature, light, and water for three different plants. Why is this experiment poorly designed?',opts:['The experiment has no dependent variable','Too many variables are being changed at once','There is no hypothesis','The plants should not be used as subjects'],ans:1,exp:'A valid experiment changes only ONE variable at a time. Changing temperature, light, AND water simultaneously makes it impossible to determine which variable caused any differences in plant growth.'},
+  {q:'Which of the following is the REASONING component of a CER about the effect of salt on boiling point?',opts:['"Increasing salt increases boiling time."','"The water with 30g of salt took 4.9 minutes to boil."','"Salt dissolves in water, raising the boiling point by disrupting intermolecular forces between water molecules, requiring more energy to boil."','"The data clearly shows a trend."'],ans:2,exp:'Reasoning must explain WHY using scientific principles. Option C explains the mechanism — salt disrupts intermolecular forces, raising the boiling point — connecting the evidence to the claim scientifically.'}
+];
+
+/* ─── STATE ─── */
+const done={};
+let curSlide=0,qIdx=0,score=0,answered=false;
+
+/* ─── NAV ─── */
+function showSec(name,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='slides')renderSlide();
+  if(name==='quiz'){qIdx=0;score=0;answered=false;document.getElementById('qwrap').style.display='block';document.getElementById('scoreCard').classList.remove('show');renderQ();}
+}
+function markDone(name){
+  if(done[name])return;done[name]=true;
+  document.querySelector('[data-s="'+name+'"]').classList.add('done');
+  const n=Object.keys(done).length;
+  document.getElementById('progFill').style.width=(n/6*100)+'%';
+  document.getElementById('progTxt').textContent=n+' of 6 complete';
+  const b=document.getElementById('done'+name.charAt(0).toUpperCase()+name.slice(1));
+  if(b){b.textContent='✓ Complete!';b.classList.add('finished');}
+}
+
+/* ─── VIDEOS ─── */
+function previewFile(n){const f=document.getElementById('file'+n).files[0];if(f){document.getElementById('file'+n+'name').textContent='✓ '+f.name;VIDS[n].localSrc=URL.createObjectURL(f);}}
+function getYTId(url){const m=url.match(/(?:v=|youtu\.be\/)([^&\s?]+)/);return m?m[1]:null;}
+function applyCustomVideos(){
+  for(let n=1;n<=3;n++){const u=document.getElementById('url'+n).value.trim();if(u){const id=getYTId(u);if(id){VIDS[n].embedId=id;VIDS[n].customUrl=u;}else{VIDS[n].embedId=null;VIDS[n].customUrl=u;}}}
+  const msg=document.getElementById('applyMsg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2500);
+}
+function playVid(n){
+  const v=VIDS[n];
+  document.getElementById('vpTitle').textContent=v.title;
+  document.getElementById('vpConcepts').textContent=v.concepts;
+  const player=document.getElementById('vidPlayer');
+  const content=document.getElementById('vpContent');
+  player.classList.add('show');
+  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
+  document.getElementById('vcard'+n).style.borderColor='var(--accent)';
+  if(v.localSrc){
+    content.innerHTML=`<div class="local-video-wrap"><video controls autoplay style="position:absolute;inset:0;width:100%;height:100%;background:#000"><source src="${v.localSrc}">Your browser does not support this video.</video></div>`;
+  }else if(v.embedId){
+    content.innerHTML=`<div class="iframe-wrap"><iframe src="https://www.youtube.com/embed/${v.embedId}?autoplay=1&rel=0" allowfullscreen allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe></div>`;
+    setTimeout(()=>{const iframe=content.querySelector('iframe');if(!iframe)return;try{const b=iframe.contentDocument;if(b&&b.title&&b.title.includes('blocked'))showYtFallback(content,n);}catch(e){}},3000);
+  }else{showYtFallback(content,n);}
+  player.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function showYtFallback(container,n){
+  const v=VIDS[n];
+  container.innerHTML=`<div style="background:#111;padding:30px;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="font-size:3rem">▶</div><p style="color:rgba(255,255,255,.8);font-size:13px">This video cannot be embedded. Click below to watch on YouTube.</p><a href="${v.ytUrl}" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#CC0000;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif;text-decoration:none">▶ Watch on YouTube ↗</a><p style="color:rgba(255,255,255,.5);font-size:12px">Or upload your own video file using the panel above.</p></div>`;
+}
+function closeVid(){
+  document.getElementById('vidPlayer').classList.remove('show');
+  document.getElementById('vpContent').innerHTML='';
+  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
+}
+
+/* ─── SLIDES ─── */
+function renderSlide(){
+  const s=SLIDES[curSlide];
+  const b=document.getElementById('slideBody');
+  b.className='slide-body '+s.t;
+  b.innerHTML=`<div class="slide-num">Slide ${curSlide+1} of ${SLIDES.length}</div><h3>${s.title}</h3><div class="slide-content">${s.html}</div>`;
+  document.getElementById('prevBtn').disabled=curSlide===0;
+  document.getElementById('nextBtn').disabled=curSlide===SLIDES.length-1;
+  const dots=document.getElementById('slideDots');dots.innerHTML='';
+  SLIDES.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===curSlide?' active':'');d.onclick=()=>{curSlide=i;renderSlide()};dots.appendChild(d);});
+}
+function nextSlide(){if(curSlide<SLIDES.length-1){curSlide++;renderSlide();}}
+function prevSlide(){if(curSlide>0){curSlide--;renderSlide();}}
+
+/* ─── VOCAB ─── */
+(function(){
+  const g=document.getElementById('vocabGrid');
+  VOCAB.forEach(v=>{
+    const c=document.createElement('div');c.className='vc';
+    c.innerHTML=`<div class="vterm">${v.term}</div><div class="vhint">Tap to reveal →</div><div class="vdef">${v.def}</div>`;
+    c.onclick=()=>c.classList.toggle('open');
+    g.appendChild(c);
+  });
+})();
+
+/* ─── EXPLORER ─── */
+function switchExp(id,btn){
+  document.querySelectorAll('.exp-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.exp-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('ep-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ─── QUIZ ─── */
+function renderQ(){
+  if(qIdx>=QUESTIONS.length){showScore();return;}
+  const q=QUESTIONS[qIdx];
+  document.getElementById('qctr').textContent=`Question ${qIdx+1} of ${QUESTIONS.length}`;
+  document.getElementById('qtext').textContent=q.q;
+  const ol=document.getElementById('qopts');ol.innerHTML='';
+  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.onclick=()=>checkA(i,q.ans,q.exp);ol.appendChild(b);});
+  document.getElementById('qfb').className='fb';document.getElementById('qfb').textContent='';
+  document.getElementById('qnext').style.display='none';answered=false;
+}
+function checkA(chosen,correct,exp){
+  if(answered)return;answered=true;
+  document.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add(chosen===correct?'correct':'show-correct');else if(i===chosen)b.classList.add('wrong');});
+  if(chosen===correct)score++;
+  const fb=document.getElementById('qfb');
+  fb.className='fb show '+(chosen===correct?'correct':'wrong');
+  fb.textContent=(chosen===correct?'✓ Correct! ':'✗ Not quite. ')+exp;
+  document.getElementById('qnext').style.display='block';
+}
+function nextQ(){qIdx++;renderQ();}
+function showScore(){
+  document.getElementById('qwrap').style.display='none';
+  const pct=Math.round(score/QUESTIONS.length*100);
+  const ring=document.getElementById('sring');ring.textContent=pct+'%';ring.className='score-ring '+(pct>=80?'sg':pct>=60?'so':'sl');
+  const tiers=[['Keep Studying!','Review the slides and concept explorer, then try again.'],['Good Effort!','Review the vocabulary section and retry.'],['Well Done!','Good understanding of experimental design!'],['Excellent Work!','Great mastery — you can design a strong experiment!'],['Perfect Score! 🎉','Outstanding — you\'ve fully mastered experimental design!']];
+  const tier=pct<50?0:pct<65?1:pct<80?2:pct<100?3:4;
+  document.getElementById('stitle').textContent=tiers[tier][0];
+  document.getElementById('smsg').textContent=tiers[tier][1];
+  document.getElementById('sco').textContent=score;document.getElementById('swr').textContent=QUESTIONS.length-score;document.getElementById('spct').textContent=pct+'%';
+  document.getElementById('scoreCard').classList.add('show');
+}
+function restartQuiz(){qIdx=0;score=0;answered=false;document.getElementById('qwrap').style.display='block';document.getElementById('scoreCard').classList.remove('show');renderQ();}
+
+/* ─── ASSIGNMENT ─── */
+function togglePart(id){
+  const body=document.getElementById(id);
+  const tog=document.getElementById('tog-'+id);
+  const open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  tog.style.transform=open?'':'rotate(180deg)';
+}
+function selectMC(radio){
+  document.querySelectorAll('input[name="'+radio.name+'"]').forEach(r=>{r.closest('.mc-opt').classList.toggle('selected',r.checked);});
+  autoSave();
+}
+function updateWC(id,cid){
+  const txt=document.getElementById(id).value.trim();
+  const words=txt?txt.split(/\s+/).length:0;
+  document.getElementById(cid).textContent=words+' word'+(words!==1?'s':'');
+  document.getElementById(id).classList.toggle('filled',txt.length>0);
+}
+function loadDiagram(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();reader.onload=ev=>{document.getElementById('diagramPreview').src=ev.target.result;document.getElementById('diagramArea').classList.add('has-image');};
+  reader.readAsDataURL(file);
+}
+function clearDiagram(){document.getElementById('diagramPreview').src='';document.getElementById('diagramArea').classList.remove('has-image');document.getElementById('diagramUpload').value='';}
+let saveTimer=null;
+function autoSave(){
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{const msg=document.getElementById('savedMsg');if(msg){msg.style.display='flex';setTimeout(()=>msg.style.display='none',2000);}},800);
+}
+
+/* INIT */
+renderSlide();renderQ();
+</script>
+<footer>
+  Virginia SOL Biology · Experimental Design &amp; Lab Skills
+</footer>
+</body>
+</html>

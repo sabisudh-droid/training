@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biomolecules & Enzymes — Biology 9 | Virginia SOL BIO.2</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1D9E75;--gl:#E1F5EE;--gm:#9FE1CB;--gd:#085041;
+  --blue:#378ADD;--bl:#E6F1FB;--bd:#0C447C;
+  --amber:#BA7517;--al:#FAEEDA;
+  --purple:#534AB7;--pl:#EEEDFE;
+  --coral:#D85A30;--cl:#FAECE7;
+  --bg:#F0F4F8;--white:#fff;
+  --card:#fff;--border:#E2E8F0;--text:#1A202C;--muted:#64748B;
+  --shadow:0 2px 8px rgba(0,0,0,.07);--shadow-md:0 4px 16px rgba(0,0,0,.1);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+h1,h2,h3,h4{font-family:'Fraunces',serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:24px 16px 80px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1C0533,#4A1580 50%,#7B2FBE);border-radius:20px;padding:36px 40px;margin-bottom:24px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+.hero::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:rgba(255,255,255,.05);border-radius:50%}
+.hero-inner{display:flex;align-items:flex-start;gap:18px}
+.hero-icon{font-size:3rem;line-height:1;flex-shrink:0}
+.hero h1{font-size:1.9rem;color:#fff;line-height:1.2}
+.hero p{color:rgba(255,255,255,.75);font-size:13.5px;margin-top:5px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 13px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
+
+/* PROGRESS */
+.prog-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+.prog-row span:last-child{font-weight:700;color:var(--purple)}
+.prog-track{height:8px;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.08);margin-bottom:20px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--purple),#A98EE8);border-radius:8px;transition:width .5s ease;width:0%}
+
+/* NAV */
+.module-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.nav-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:30px;border:2px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
+.nav-btn:hover{border-color:var(--purple);color:var(--purple)}
+.nav-btn.active{background:#4A1580;border-color:#4A1580;color:#fff;box-shadow:0 4px 14px rgba(74,21,128,.3)}
+.nav-check{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;opacity:.4;transition:all .2s;flex-shrink:0}
+.nav-btn.done .nav-check{background:#22C55E;border-color:#22C55E;color:#fff;opacity:1}
+
+/* SECTIONS */
+.section{display:none}
+.section.active{display:block}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-head h2{font-size:1.25rem}
+.stag{background:var(--pl);color:var(--purple);font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;font-family:'DM Sans',sans-serif}
+
+/* INFO BOXES */
+.info-box{background:var(--bl);border:1px solid #B5D4F4;border-radius:10px;padding:13px 16px;margin-bottom:18px;font-size:13px;color:var(--bd);line-height:1.7}
+.info-box strong{display:block;font-weight:600;font-size:14px;margin-bottom:2px}
+.vid-alert{background:var(--al);border:1px solid #FAC775;border-radius:10px;padding:13px 16px;font-size:13px;color:#4A2800;line-height:1.7;margin-bottom:18px}
+.vid-alert strong{font-weight:600}
+
+/* UPLOAD PANEL */
+.upload-panel{background:var(--card);border:2px dashed var(--border);border-radius:14px;padding:24px;margin-bottom:24px;transition:border-color .2s}
+.upload-panel:hover{border-color:var(--purple)}
+.upload-panel h3{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.upload-panel p{font-size:13px;color:var(--muted);margin-bottom:16px}
+.upload-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.upload-slot{background:#F8FAFC;border:1.5px solid var(--border);border-radius:10px;padding:14px}
+.upload-slot label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.upload-slot input[type=text]{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;margin-bottom:6px;background:#fff;color:var(--text)}
+.upload-slot input[type=text]:focus{outline:none;border-color:var(--purple)}
+.upload-slot input[type=file]{width:100%;font-size:12px;color:var(--muted)}
+.apply-btn{margin-top:14px;padding:9px 22px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
+.apply-btn:hover{background:#4A1580}
+
+/* VIDEO GRID */
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px}
+.vid-card{background:var(--card);border-radius:14px;overflow:hidden;border:2px solid transparent;box-shadow:var(--shadow);transition:all .25s;cursor:pointer}
+.vid-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--purple)}
+.vid-thumb{height:162px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:opacity .2s}
+.vid-thumb-bg{position:absolute;inset:0;transition:opacity .2s}
+.vid-card:hover .vid-thumb-bg{opacity:.85}
+.vid-thumb-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
+.play-btn{width:56px;height:56px;background:rgba(255,255,255,.93);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .2s}
+.vid-card:hover .play-btn{transform:scale(1.1)}
+.play-tri{border-left:22px solid #4A1580;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px}
+.vid-thumb-label{color:rgba(255,255,255,.85);font-size:12px;font-family:'DM Sans',sans-serif;background:rgba(0,0,0,.35);padding:3px 10px;border-radius:5px}
+.vid-body{padding:12px 14px 14px}
+.vid-body h3{font-size:13.5px;font-weight:600;margin-bottom:4px;line-height:1.4;font-family:'DM Sans',sans-serif}
+.vid-body p{font-size:12px;color:var(--muted);line-height:1.5}
+.vid-meta{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.vbadge{font-size:10.5px;background:var(--pl);color:var(--purple);border-radius:10px;padding:2px 9px;font-weight:600}
+.vdur{font-size:11px;color:var(--muted)}
+.open-yt{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;font-weight:600;color:#CC0000;background:#FFF0F0;border:1px solid #FFAAAA;border-radius:6px;padding:4px 10px;transition:all .2s}
+.open-yt:hover{background:#FFE0E0}
+
+/* VIDEO PLAYER */
+.vid-player{display:none;background:var(--card);border-radius:14px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.vid-player.show{display:block}
+.vp-head{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-bottom:1px solid var(--border);background:#F8FAFC}
+.vp-head h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.vp-close{background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.vp-close:hover{background:var(--border)}
+.iframe-wrap{position:relative;padding-bottom:56.25%;height:0}
+.iframe-wrap iframe,.iframe-wrap video{position:absolute;inset:0;width:100%;height:100%;border:none}
+.local-video-wrap{position:relative;padding-bottom:56.25%;height:0;background:#000}
+.kc-bar{padding:14px 18px;border-top:1px solid var(--border)}
+.kc-bar h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:5px;font-family:'DM Sans',sans-serif}
+.kc-bar p{font-size:13px;color:#475569;line-height:1.7}
+
+/* SLIDES */
+.slide-card{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:16px}
+.slide-body{min-height:370px;padding:30px 36px;display:flex;flex-direction:column;position:relative}
+.t1{background:linear-gradient(135deg,#1C0533,#7B2FBE)}
+.t2{background:linear-gradient(135deg,#042C53,#378ADD)}
+.t3{background:linear-gradient(135deg,#1A1200,#BA7517)}
+.t4{background:linear-gradient(135deg,#04342C,#1D9E75)}
+.t5{background:linear-gradient(135deg,#411200,#D85A30)}
+.t6{background:linear-gradient(135deg,#26215C,#534AB7)}
+.t7{background:linear-gradient(135deg,#2C2C2A,#636060)}
+.t8{background:linear-gradient(135deg,#1C0533,#A855F7)}
+.slide-num{position:absolute;top:14px;right:18px;font-size:11px;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif}
+.slide-body h3{font-size:1.45rem;color:#fff;margin-bottom:12px;line-height:1.2}
+.slide-content{color:rgba(255,255,255,.88);font-size:14px;line-height:1.85;flex:1}
+.slide-content ul{padding-left:18px}
+.slide-content li{margin-bottom:6px}
+.slide-content strong{color:#fff;font-weight:600}
+.slide-content p{margin-bottom:8px}
+.eq{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:11px 18px;text-align:center;font-size:14px;color:#fff;letter-spacing:.3px;margin:12px 0;font-weight:500}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:5px 12px;font-size:12px;color:#fff}
+.slide-nav{background:#fff;border-top:1px solid var(--border);padding:11px 18px;display:flex;align-items:center;justify-content:space-between}
+.s-btn{padding:8px 20px;border-radius:8px;border:2px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)}
+.s-btn:hover:not(:disabled){background:#4A1580;border-color:#4A1580;color:#fff}
+.s-btn:disabled{opacity:.35;cursor:not-allowed}
+.dots{display:flex;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+.dot.active{background:var(--purple);transform:scale(1.4)}
+
+/* VOCAB */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin-bottom:20px}
+.vc{background:#fff;border:2px solid var(--border);border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);min-height:78px}
+.vc:hover{border-color:var(--purple)}
+.vc.open{border-color:var(--purple);background:var(--pl)}
+.vterm{font-weight:600;font-size:14px;color:var(--purple);margin-bottom:2px}
+.vhint{font-size:11px;color:var(--muted)}
+.vdef{font-size:13px;color:#374151;line-height:1.6;margin-top:8px;border-top:1px solid rgba(83,74,183,.2);padding-top:8px;display:none}
+.vc.open .vdef{display:block}
+.vc.open .vhint{display:none}
+
+/* VIRTUAL LAB */
+.card{background:var(--card);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.lab-top{background:linear-gradient(90deg,#4A1580,var(--purple));padding:18px 22px;display:flex;align-items:center;gap:14px;border-radius:14px 14px 0 0}
+.lab-top h3{font-size:1.05rem;color:#fff}
+.lab-top p{font-size:12px;color:rgba(255,255,255,.75);margin-top:2px}
+.lab-tabs{display:flex;border-bottom:1px solid var(--border);background:#F8FAFC;padding:0 16px}
+.ltab{padding:11px 17px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;border:none;background:none;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-1px}
+.ltab:hover{color:var(--purple)}
+.ltab.active{color:var(--purple);border-bottom-color:var(--purple)}
+.lpanel{display:none;padding:20px 22px}
+.lpanel.active{display:block}
+
+/* ENZYME SIM */
+.enz-stage{background:#F0EDF8;border:1px solid #C8B8EE;border-radius:12px;margin-bottom:14px;overflow:hidden;min-height:220px;display:flex;align-items:center;justify-content:center}
+.enz-stage svg{width:100%;max-width:680px;height:220px}
+.enz-controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.cbox{background:#F8FAFC;border-radius:8px;padding:11px 13px;border:1px solid var(--border)}
+.clbl{font-size:12px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:7px}
+.clbl .cv{color:var(--purple);font-weight:700}
+input[type=range]{-webkit-appearance:none;width:100%;height:5px;background:var(--border);border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--purple);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.meters{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:13px}
+.meter{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+.mlbl{font-size:11px;color:var(--muted);margin-bottom:2px}
+.mnum{font-size:1.35rem;font-weight:700;color:var(--purple);font-family:'Fraunces',serif}
+.munit{font-size:10px;color:var(--muted)}
+.run-btn{width:100%;padding:11px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;margin-bottom:11px;transition:background .2s}
+.run-btn:hover{background:#4A1580}
+.obs{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:11px 13px;font-size:13px;color:#475569;line-height:1.7;min-height:58px}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:13px}
+.dtable th{background:#F8FAFC;padding:8px 11px;text-align:left;font-weight:600;border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.dtable td{padding:8px 11px;border:1px solid var(--border)}
+.pos{color:#3B6D11;font-weight:500}.neg{color:#A32D2D;font-weight:500}.neu{color:var(--muted)}
+.concl{background:var(--pl);border:1px solid #AFA9EC;border-radius:8px;padding:13px 15px;font-size:13px;color:#26215C;line-height:1.7}
+.concl strong{display:block;font-weight:600;margin-bottom:3px}
+
+/* MACROMOLECULE EXPLORER */
+.macro-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.macro-tab{padding:8px 18px;border-radius:20px;border:2px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--muted)}
+.macro-tab.c-tab.active,.macro-tab.c-tab:hover{background:#BA7517;border-color:#BA7517;color:#fff}
+.macro-tab.l-tab.active,.macro-tab.l-tab:hover{background:#D85A30;border-color:#D85A30;color:#fff}
+.macro-tab.p-tab.active,.macro-tab.p-tab:hover{background:#1D9E75;border-color:#1D9E75;color:#fff}
+.macro-tab.n-tab.active,.macro-tab.n-tab:hover{background:#534AB7;border-color:#534AB7;color:#fff}
+.macro-panel{display:none}
+.macro-panel.active{display:block}
+.macro-hero{border-radius:12px;padding:20px 24px;margin-bottom:16px;color:#fff;position:relative;overflow:hidden}
+.macro-hero::after{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:rgba(255,255,255,.07);border-radius:50%}
+.macro-hero h3{font-size:1.3rem;margin-bottom:4px}
+.macro-hero p{font-size:13px;opacity:.85;line-height:1.6}
+.macro-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:16px}
+.macro-card{background:#fff;border-radius:10px;border:1px solid var(--border);padding:14px;box-shadow:var(--shadow)}
+.macro-card .mc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:6px;font-family:'DM Sans',sans-serif}
+.macro-card h4{font-size:13.5px;font-weight:600;margin-bottom:6px;font-family:'DM Sans',sans-serif;color:var(--text)}
+.macro-card p{font-size:12.5px;color:#475569;line-height:1.6}
+.food-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.food-tag{background:#F8FAFC;border:1px solid var(--border);border-radius:6px;padding:3px 10px;font-size:12px;color:var(--text)}
+
+/* QUIZ */
+.qwrap{max-width:680px}
+.qmeta{font-size:13px;color:var(--muted);margin-bottom:13px;display:flex;align-items:center;gap:8px}
+.qc{font-weight:700;color:var(--purple)}
+.qcard{background:#fff;border-radius:14px;padding:22px;margin-bottom:13px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.qtext{font-size:15px;font-weight:600;margin-bottom:15px;line-height:1.6;font-family:'DM Sans',sans-serif}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{padding:11px 15px;border:2px solid var(--border);border-radius:10px;background:#FAFAFA;font-size:14px;font-family:'DM Sans',sans-serif;text-align:left;cursor:pointer;transition:all .18s;color:var(--text);line-height:1.4;width:100%}
+.opt:hover:not(:disabled){border-color:var(--purple);background:var(--pl);color:var(--purple)}
+.opt.correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
+.opt.wrong{background:#FEE2E2;border-color:#DC2626;color:#7F1D1D}
+.opt.show-correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
+.opt:disabled{cursor:not-allowed}
+.fb{margin-top:11px;padding:10px 13px;border-radius:8px;font-size:13px;line-height:1.65;display:none}
+.fb.show{display:block}
+.fb.correct{background:#DCFCE7;color:#14532D;border:1px solid #86EFAC}
+.fb.wrong{background:#FEE2E2;color:#7F1D1D;border:1px solid #FCA5A5}
+.qbtns{display:flex;gap:10px;margin-top:4px}
+.qbtn{padding:10px 22px;border-radius:10px;border:2px solid var(--purple);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;background:var(--purple);color:#fff}
+.qbtn:hover{background:#4A1580;border-color:#4A1580}
+.qbtn.ol{background:#fff;color:var(--purple)}
+.qbtn.ol:hover{background:var(--pl)}
+
+/* SCORE */
+.score-card{display:none;background:#fff;border-radius:14px;padding:34px;text-align:center;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.score-card.show{display:block}
+.score-ring{width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.9rem;font-weight:700;font-family:'Fraunces',serif}
+.sg{background:#DCFCE7;color:#14532D;border:4px solid #22C55E}
+.so{background:var(--al);color:#633806;border:4px solid #F59E0B}
+.sl{background:#FEE2E2;color:#7F1D1D;border:4px solid #EF4444}
+.sc-title{font-size:1.2rem;margin-bottom:5px}
+.sc-msg{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:22px}
+.stat{background:#F8FAFC;border-radius:8px;padding:13px 10px}
+.snum{font-size:1.45rem;font-weight:700;font-family:'Fraunces',serif}
+.slbl{font-size:11px;color:var(--muted);margin-top:2px}
+.sc-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* DONE BTN */
+.done-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:11px 26px;background:var(--purple);color:#fff;border:none;border-radius:30px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(83,74,183,.3);transition:all .2s}
+.done-btn:hover{background:#4A1580;transform:translateY(-1px)}
+.done-btn.finished{background:#22C55E;pointer-events:none}
+
+/* ASSIGNMENT */
+.assign-hero{background:linear-gradient(135deg,#1C0533,#534AB7,#7B77DD);border-radius:14px;padding:24px 28px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden}
+.assign-hero::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%}
+.assign-hero h3{font-size:1.2rem;color:#fff;margin-bottom:4px}
+.assign-hero p{font-size:13px;color:rgba(255,255,255,.78);line-height:1.6}
+.assign-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.ameta{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
+.concept-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:22px}
+.concept-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.concept-card .cc-icon{font-size:1.6rem;margin-bottom:6px}
+.concept-card h4{font-size:13px;font-weight:700;color:var(--purple);margin-bottom:4px;font-family:'DM Sans',sans-serif}
+.concept-card p{font-size:12px;color:var(--muted);line-height:1.55}
+.part-card{background:#fff;border:1px solid var(--border);border-radius:14px;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
+.part-header{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);background:#F8FAFC;cursor:pointer;transition:background .2s;user-select:none}
+.part-header:hover{background:#F0F4F8}
+.part-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;flex-shrink:0;color:#fff}
+.pn1{background:var(--purple)}.pn2{background:var(--blue)}.pn3{background:var(--amber)}.pn4{background:var(--green)}.pn5{background:var(--coral)}
+.part-header h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;flex:1}
+.part-header .pts{font-size:11px;font-weight:600;padding:3px 9px;border-radius:8px;background:var(--pl);color:var(--purple)}
+.part-toggle{font-size:18px;color:var(--muted);transition:transform .3s;line-height:1}
+.part-body{padding:18px 20px;display:none}
+.part-body.open{display:block}
+.q-prompt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.5;font-family:'DM Sans',sans-serif}
+.q-hint{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.5;font-style:italic}
+.a-textarea{width:100%;min-height:90px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);resize:vertical;background:#FAFAFA;line-height:1.6;transition:border-color .2s}
+.a-textarea:focus{outline:none;border-color:var(--purple);background:#fff}
+.a-textarea.filled{border-color:var(--purple);background:#fff}
+.q-divider{border:none;border-top:1px dashed var(--border);margin:16px 0}
+.word-count{font-size:11px;color:var(--muted);text-align:right;margin-top:3px}
+.mc-opts{display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
+.mc-opt{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;background:#FAFAFA}
+.mc-opt:hover{border-color:var(--purple);background:var(--pl)}
+.mc-opt input[type=radio]{accent-color:var(--purple);width:15px;height:15px;flex-shrink:0}
+.mc-opt.selected{border-color:var(--purple);background:var(--pl)}
+.mc-opt label{font-size:13.5px;cursor:pointer;line-height:1.4}
+.matching-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
+.match-col h4{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-family:'DM Sans',sans-serif}
+.match-item{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:13.5px}
+.match-select{padding:5px 8px;border:1.5px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;background:#fff;color:var(--text);cursor:pointer;flex-shrink:0}
+.match-select:focus{outline:none;border-color:var(--purple)}
+.diagram-area{width:100%;min-height:220px;border:2px dashed var(--border);border-radius:10px;background:#FAFAFA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.diagram-area:hover{border-color:var(--purple);background:var(--pl)}
+.diagram-area.has-image .placeholder-text{display:none}
+.diagram-area img.diagram-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
+.diagram-area.has-image img.diagram-preview{display:block}
+.placeholder-text{text-align:center;color:var(--muted);font-size:13px;pointer-events:none}
+.placeholder-text span{font-size:2rem;display:block;margin-bottom:6px}
+.diagram-tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.dtool{padding:7px 14px;border-radius:7px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;color:var(--text);transition:all .2s}
+.dtool:hover{border-color:var(--purple);color:var(--purple)}
+.rubric-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px}
+.rubric-table th{background:#F8FAFC;padding:7px 10px;text-align:left;border:1px solid var(--border);font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.35px;font-size:11px;font-family:'DM Sans',sans-serif}
+.rubric-table td{padding:7px 10px;border:1px solid var(--border);vertical-align:top;line-height:1.5}
+.rubric-table tr:nth-child(even) td{background:#FAFAFA}
+.submit-bar{background:linear-gradient(135deg,#1C0533,#4A1580);border-radius:14px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
+.submit-bar p{color:rgba(255,255,255,.8);font-size:13px;line-height:1.5}
+.submit-bar strong{color:#fff;display:block;font-size:15px;margin-bottom:2px}
+.submit-btns{display:flex;gap:10px;flex-wrap:wrap}
+.sbtn{padding:10px 22px;border-radius:10px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.sbtn.primary{background:var(--purple);color:#fff}
+.sbtn.primary:hover{background:#fff;color:var(--purple)}
+.sbtn.secondary{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff}
+.sbtn.secondary:hover{background:rgba(255,255,255,.25)}
+.saved-msg{font-size:12px;color:#A98EE8;font-weight:600;display:none;align-items:center;gap:4px}
+.footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--muted)}
+
+@media print{
+  .module-nav,.prog-track,.prog-row,.hero-tags,.vid-alert,.upload-panel,.done-btn,.submit-bar,.nav-check,
+  .section:not(#sec-assignment){display:none!important}
+  #sec-assignment{display:block!important}
+  .part-body{display:block!important}
+  .hero{background:#4A1580!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .assign-hero{background:#534AB7!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .a-textarea{border:1px solid #ccc!important;min-height:60px}
+  body{background:#fff}
+  .wrap{padding:10px}
+  .part-card{break-inside:avoid}
+}
+@media(max-width:580px){
+  .hero{padding:22px 20px}.hero h1{font-size:1.4rem}
+  .enz-controls{grid-template-columns:1fr}
+  .meters{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .slide-body{padding:22px 20px}
+  .matching-grid{grid-template-columns:1fr}
+  .macro-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
+      <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">BIO.2</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">🧬</div>
+    <div>
+      <h1>Biomolecules &amp; Enzymes</h1>
+      <p>9th Grade Biology · Self-Paced Learning Module</p>
+      <div class="hero-tags">
+        <span class="htag">4 Macromolecules</span>
+        <span class="htag">Enzyme Mechanics</span>
+        <span class="htag">6 Modules</span>
+        <span class="htag">10-Question Quiz</span>
+        <span class="htag">Assignment</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="prog-row"><span>Module Progress</span><span id="progTxt">0 of 6 complete</span></div>
+<div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+
+<!-- NAV -->
+<div class="module-nav">
+  <button class="nav-btn active" data-s="videos" onclick="showSec('videos',this)">▶ Videos <span class="nav-check" id="chk-videos"></span></button>
+  <button class="nav-btn" data-s="slides" onclick="showSec('slides',this)">📊 Slides <span class="nav-check" id="chk-slides"></span></button>
+  <button class="nav-btn" data-s="macros" onclick="showSec('macros',this)">🔬 Macromolecules <span class="nav-check" id="chk-macros"></span></button>
+  <button class="nav-btn" data-s="vocab" onclick="showSec('vocab',this)">📖 Vocabulary <span class="nav-check" id="chk-vocab"></span></button>
+  <button class="nav-btn" data-s="quiz" onclick="showSec('quiz',this)">✏️ Quiz <span class="nav-check" id="chk-quiz"></span></button>
+  <button class="nav-btn" data-s="assignment" onclick="showSec('assignment',this)">📋 Assignment <span class="nav-check" id="chk-assignment"></span></button>
+</div>
+
+<!-- ═══════════════════════ VIDEOS ═══════════════════════ -->
+<div class="section active" id="sec-videos">
+  <div class="sec-head"><h2>Video Lessons</h2><span class="stag">3 Videos</span></div>
+
+  <div class="info-box">
+    <strong>Learning Objectives — Biomolecules &amp; Enzymes</strong>
+    Students will identify the four classes of macromolecules (carbohydrates, lipids, proteins, nucleic acids), describe their monomers, structure, functions, and food sources, and explain how enzymes catalyze biological reactions through induced fit, lowering activation energy, and the role of active sites.
+  </div>
+
+  <div class="vid-alert">
+    <strong>📺 How Videos Work in This Module:</strong>
+    Click a video card to watch on YouTube. You can also <strong>upload your own video files</strong> below — once applied, they play directly inside this lesson with no internet needed. Paste a YouTube URL to swap any video with your preferred source.
+  </div>
+
+  <!-- UPLOAD PANEL -->
+  <div class="upload-panel">
+    <h3>🎬 Upload Your Own Videos <span style="font-size:11px;background:var(--pl);color:var(--purple);padding:2px 8px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600">Optional</span></h3>
+    <p>Upload MP4, WebM, or any video file from your computer. Once applied, the video plays inside this lesson. You can also paste a custom YouTube URL for any embeddable video.</p>
+    <div class="upload-slots">
+      <div class="upload-slot">
+        <label>Video 1 — Macromolecules</label>
+        <input type="text" id="url1" placeholder="Paste YouTube URL here (optional)">
+        <input type="file" id="file1" accept="video/*" onchange="previewFile(1)">
+        <div id="file1name" style="font-size:11px;color:var(--purple);margin-top:4px"></div>
+      </div>
+      <div class="upload-slot">
+        <label>Video 2 — Enzymes</label>
+        <input type="text" id="url2" placeholder="Paste YouTube URL here (optional)">
+        <input type="file" id="file2" accept="video/*" onchange="previewFile(2)">
+        <div id="file2name" style="font-size:11px;color:var(--purple);margin-top:4px"></div>
+      </div>
+      <div class="upload-slot">
+        <label>Video 3 — Enzyme Kinetics / Other</label>
+        <input type="text" id="url3" placeholder="Paste YouTube URL here (optional)">
+        <input type="file" id="file3" accept="video/*" onchange="previewFile(3)">
+        <div id="file3name" style="font-size:11px;color:var(--purple);margin-top:4px"></div>
+      </div>
+    </div>
+    <button class="apply-btn" onclick="applyCustomVideos()">✓ Apply Videos</button>
+    <span id="applyMsg" style="font-size:12px;color:var(--purple);margin-left:10px;display:none">✓ Applied!</span>
+  </div>
+
+  <!-- PLAYER -->
+  <div class="vid-player" id="vidPlayer">
+    <div class="vp-head">
+      <h3 id="vpTitle">Video</h3>
+      <button class="vp-close" onclick="closeVid()">✕</button>
+    </div>
+    <div id="vpContent"></div>
+    <div class="kc-bar">
+      <h4>Key Concepts</h4>
+      <p id="vpConcepts"></p>
+    </div>
+  </div>
+
+  <!-- VIDEO CARDS -->
+  <div class="vid-grid" id="vidGrid">
+    <div class="vid-card" id="vcard1" onclick="playVid(1)">
+      <div class="vid-thumb">
+        <div class="vid-thumb-bg" style="background:linear-gradient(135deg,#1C0533,#7B2FBE)"></div>
+        <div class="vid-thumb-content">
+          <div style="font-size:2.4rem">🧬</div>
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="vid-thumb-label">CrashCourse · ~10 min</div>
+        </div>
+      </div>
+      <div class="vid-body">
+        <h3>Biological Macromolecules — CrashCourse</h3>
+        <p>Carbohydrates, lipids, proteins &amp; nucleic acids — structure, monomers, and functions</p>
+        <div class="vid-meta">
+          <span class="vbadge">CrashCourse</span>
+          <span class="vdur">~10 min</span>
+        </div>
+        <a class="open-yt" href="https://www.youtube.com/watch?v=H8WJ2KENlK0" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+    <div class="vid-card" id="vcard2" onclick="playVid(2)">
+      <div class="vid-thumb">
+        <div class="vid-thumb-bg" style="background:linear-gradient(135deg,#04342C,#1D9E75)"></div>
+        <div class="vid-thumb-content">
+          <div style="font-size:2.4rem">⚗️</div>
+          <div class="play-btn"><div class="play-tri" style="border-left-color:#085041"></div></div>
+          <div class="vid-thumb-label">Amoeba Sisters · ~9 min</div>
+        </div>
+      </div>
+      <div class="vid-body">
+        <h3>Enzymes — Amoeba Sisters</h3>
+        <p>Active site, induced fit, activation energy, enzyme-substrate specificity &amp; inhibition</p>
+        <div class="vid-meta">
+          <span class="vbadge">Amoeba Sisters</span>
+          <span class="vdur">~9 min</span>
+        </div>
+        <a class="open-yt" href="https://www.youtube.com/watch?v=qgVFkRn8f10" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+    <div class="vid-card" id="vcard3" onclick="playVid(3)">
+      <div class="vid-thumb">
+        <div class="vid-thumb-bg" style="background:linear-gradient(135deg,#042C53,#378ADD)"></div>
+        <div class="vid-thumb-content">
+          <div style="font-size:2.4rem">📉</div>
+          <div class="play-btn"><div class="play-tri" style="border-left-color:#0C447C"></div></div>
+          <div class="vid-thumb-label">CrashCourse · ~11 min</div>
+        </div>
+      </div>
+      <div class="vid-body">
+        <h3>Activation Energy &amp; Enzymes — CrashCourse</h3>
+        <p>How enzymes lower activation energy, energy diagrams, and enzyme regulation explained</p>
+        <div class="vid-meta">
+          <span class="vbadge">CrashCourse</span>
+          <span class="vdur">~11 min</span>
+        </div>
+        <a class="open-yt" href="https://www.youtube.com/watch?v=yk14dOOvwMk" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+      </div>
+    </div>
+  </div>
+  <button class="done-btn" id="doneVideos" onclick="markDone('videos')">Mark Videos Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════ SLIDES ═══════════════════════ -->
+<div class="section" id="sec-slides">
+  <div class="sec-head"><h2>Lesson Slides</h2><span class="stag">8 Slides</span></div>
+  <div class="slide-card">
+    <div class="slide-body" id="slideBody"></div>
+    <div class="slide-nav">
+      <button class="s-btn" id="prevBtn" onclick="prevSlide()" disabled>← Previous</button>
+      <div class="dots" id="slideDots"></div>
+      <button class="s-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+    </div>
+  </div>
+  <button class="done-btn" id="doneSlides" onclick="markDone('slides')">Mark Slides Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════ MACROMOLECULES EXPLORER ═══════════════════════ -->
+<div class="section" id="sec-macros">
+  <div class="sec-head"><h2>Macromolecule Explorer</h2><span class="stag">Interactive Reference</span></div>
+  <div class="info-box">
+    <strong>How to Use This Section</strong>
+    Click each macromolecule tab to explore its structure, function, examples, and food sources in detail. Use this as a study reference alongside the slides and vocabulary.
+  </div>
+  <div class="macro-tabs">
+    <button class="macro-tab c-tab active" onclick="switchMacro('carbs',this)">🍞 Carbohydrates</button>
+    <button class="macro-tab l-tab" onclick="switchMacro('lipids',this)">🧈 Lipids</button>
+    <button class="macro-tab p-tab" onclick="switchMacro('proteins',this)">🥩 Proteins</button>
+    <button class="macro-tab n-tab" onclick="switchMacro('nucleic',this)">🧬 Nucleic Acids</button>
+  </div>
+
+  <!-- CARBOHYDRATES -->
+  <div class="macro-panel active" id="mp-carbs">
+    <div class="macro-hero" style="background:linear-gradient(135deg,#5A3500,#BA7517)">
+      <h3>Carbohydrates</h3>
+      <p>The body's primary energy source — made of carbon, hydrogen, and oxygen in a 1:2:1 ratio. Monomer: <strong>monosaccharide (simple sugar)</strong></p>
+    </div>
+    <div class="macro-grid">
+      <div class="macro-card">
+        <div class="mc-label">Structure</div>
+        <h4>Monomer → Polymer</h4>
+        <p>Monosaccharides link by <strong>glycosidic bonds</strong> to form disaccharides and polysaccharides. Ring structures made of C, H, O. General formula: (CH₂O)ₙ</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Functions</div>
+        <h4>What They Do</h4>
+        <p>• Quick energy source (glucose → ATP)<br>• Energy storage (glycogen in animals; starch in plants)<br>• Structural support (cellulose in plant cell walls)<br>• Cell recognition (glycoproteins on cell surface)</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Examples</div>
+        <h4>Types of Carbohydrates</h4>
+        <p><strong>Monosaccharides:</strong> Glucose, Fructose, Galactose<br><strong>Disaccharides:</strong> Sucrose (table sugar), Lactose (milk sugar), Maltose<br><strong>Polysaccharides:</strong> Starch, Glycogen, Cellulose, Chitin</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Food Sources</div>
+        <h4>Where to Find Them</h4>
+        <div class="food-strip">
+          <span class="food-tag">🍞 Bread</span><span class="food-tag">🍚 Rice</span><span class="food-tag">🍝 Pasta</span><span class="food-tag">🍌 Bananas</span><span class="food-tag">🥔 Potatoes</span><span class="food-tag">🍎 Fruit</span><span class="food-tag">🧁 Sugar</span><span class="food-tag">🌽 Corn</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--al);border:1px solid #FAC775;border-radius:10px;padding:13px 16px;font-size:13px;color:#4A2800;line-height:1.7">
+      <strong>🔑 Key Distinction:</strong> Starch (plant energy storage) and glycogen (animal energy storage) are both polysaccharides made of glucose — but cellulose, also made of glucose, cannot be digested by humans because of its different glycosidic bond orientation (β-1,4 bonds). This is why fiber passes through the digestive system.
+    </div>
+  </div>
+
+  <!-- LIPIDS -->
+  <div class="macro-panel" id="mp-lipids">
+    <div class="macro-hero" style="background:linear-gradient(135deg,#411200,#D85A30)">
+      <h3>Lipids</h3>
+      <p>Hydrophobic molecules made of carbon, hydrogen, and oxygen. <strong>Not true polymers</strong> — built from glycerol + fatty acids (fats/oils) or other arrangements.</p>
+    </div>
+    <div class="macro-grid">
+      <div class="macro-card">
+        <div class="mc-label">Structure</div>
+        <h4>Building Blocks</h4>
+        <p><strong>Fats/Oils:</strong> 1 glycerol + 3 fatty acid chains (triglyceride) linked by ester bonds<br><strong>Phospholipids:</strong> Glycerol + 2 fatty acids + phosphate head (hydrophilic head, hydrophobic tails)<br><strong>Steroids:</strong> 4 fused carbon rings (e.g., cholesterol)</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Functions</div>
+        <h4>What They Do</h4>
+        <p>• Long-term energy storage (fats store 2× more energy per gram than carbs)<br>• Cell membrane structure (phospholipid bilayer)<br>• Hormone production (steroid hormones)<br>• Insulation and protection of organs<br>• Fat-soluble vitamin absorption (A, D, E, K)</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Examples</div>
+        <h4>Types of Lipids</h4>
+        <p><strong>Saturated fats:</strong> Butter, lard (solid at room temp — single bonds)<br><strong>Unsaturated fats:</strong> Olive oil, fish oil (liquid at room temp — double bonds)<br><strong>Phospholipids:</strong> Cell membranes<br><strong>Steroids:</strong> Cholesterol, estrogen, testosterone, cortisol<br><strong>Waxes:</strong> Cuticle on plant leaves</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Food Sources</div>
+        <h4>Where to Find Them</h4>
+        <div class="food-strip">
+          <span class="food-tag">🥑 Avocado</span><span class="food-tag">🧈 Butter</span><span class="food-tag">🫒 Olive oil</span><span class="food-tag">🐟 Fish</span><span class="food-tag">🥜 Nuts</span><span class="food-tag">🧀 Cheese</span><span class="food-tag">🥚 Egg yolk</span><span class="food-tag">🥩 Meat</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--cl);border:1px solid #F5B8A0;border-radius:10px;padding:13px 16px;font-size:13px;color:#411200;line-height:1.7">
+      <strong>🔑 Key Distinction:</strong> Saturated fatty acids have no double bonds between carbons — they pack tightly and are solid at room temperature. Unsaturated fats have one or more double bonds, creating kinks that prevent tight packing, making them liquid oils at room temperature. <strong>Trans fats</strong> are artificially hydrogenated unsaturated fats and are linked to cardiovascular disease.
+    </div>
+  </div>
+
+  <!-- PROTEINS -->
+  <div class="macro-panel" id="mp-proteins">
+    <div class="macro-hero" style="background:linear-gradient(135deg,#04342C,#1D9E75)">
+      <h3>Proteins</h3>
+      <p>The most diverse and versatile macromolecules. Monomer: <strong>amino acid</strong>. 20 different amino acids linked by peptide bonds form all proteins.</p>
+    </div>
+    <div class="macro-grid">
+      <div class="macro-card">
+        <div class="mc-label">Structure</div>
+        <h4>Four Levels of Structure</h4>
+        <p><strong>Primary:</strong> Sequence of amino acids (peptide bonds)<br><strong>Secondary:</strong> α-helices and β-pleated sheets (H-bonds)<br><strong>Tertiary:</strong> 3D folded shape — determines function<br><strong>Quaternary:</strong> Multiple polypeptide chains (e.g., hemoglobin)</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Functions</div>
+        <h4>What They Do</h4>
+        <p>• <strong>Enzymes</strong> — catalyze reactions<br>• <strong>Structural</strong> — collagen, keratin, actin<br>• <strong>Transport</strong> — hemoglobin carries O₂<br>• <strong>Hormones</strong> — insulin regulates blood sugar<br>• <strong>Antibodies</strong> — immune defense<br>• <strong>Movement</strong> — myosin in muscle cells<br>• <strong>Cell signaling</strong> — receptor proteins</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Examples</div>
+        <h4>Proteins in the Body</h4>
+        <p><strong>Enzymes:</strong> Amylase, lipase, DNA polymerase<br><strong>Structural:</strong> Collagen (connective tissue), Keratin (hair/nails)<br><strong>Transport:</strong> Hemoglobin, albumin<br><strong>Hormones:</strong> Insulin, glucagon<br><strong>Antibodies:</strong> Immunoglobulins<br><strong>Motor:</strong> Myosin, kinesin</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Food Sources</div>
+        <h4>Where to Find Them</h4>
+        <div class="food-strip">
+          <span class="food-tag">🥩 Meat</span><span class="food-tag">🐟 Fish</span><span class="food-tag">🥚 Eggs</span><span class="food-tag">🫘 Beans</span><span class="food-tag">🥛 Dairy</span><span class="food-tag">🥜 Nuts</span><span class="food-tag">🌾 Quinoa</span><span class="food-tag">🧆 Tofu</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--gl);border:1px solid #9FE1CB;border-radius:10px;padding:13px 16px;font-size:13px;color:#085041;line-height:1.7">
+      <strong>🔑 Key Concept — Denaturation:</strong> When proteins are exposed to extreme heat, pH changes, or chemicals, they lose their 3D shape (tertiary structure) — this is called <strong>denaturation</strong>. A denatured protein can no longer perform its function. This is why cooking changes the texture of egg whites (albumin denatures) and why high fever is dangerous (enzymes denature).
+    </div>
+  </div>
+
+  <!-- NUCLEIC ACIDS -->
+  <div class="macro-panel" id="mp-nucleic">
+    <div class="macro-hero" style="background:linear-gradient(135deg,#26215C,#534AB7)">
+      <h3>Nucleic Acids</h3>
+      <p>Carry genetic information and direct protein synthesis. Monomer: <strong>nucleotide</strong> (phosphate group + sugar + nitrogenous base).</p>
+    </div>
+    <div class="macro-grid">
+      <div class="macro-card">
+        <div class="mc-label">Structure</div>
+        <h4>DNA vs RNA</h4>
+        <p><strong>DNA:</strong> Double helix, deoxyribose sugar, bases A-T-G-C, stable, found in nucleus<br><strong>RNA:</strong> Single strand, ribose sugar, bases A-U-G-C, short-lived, multiple types (mRNA, tRNA, rRNA)<br>Nucleotides linked by phosphodiester bonds</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Functions</div>
+        <h4>What They Do</h4>
+        <p>• <strong>DNA</strong> — stores and transmits genetic information<br>• <strong>mRNA</strong> — carries instructions from DNA to ribosomes<br>• <strong>tRNA</strong> — brings amino acids to ribosomes during translation<br>• <strong>rRNA</strong> — makes up ribosome structure<br>• <strong>ATP</strong> — energy currency of the cell (nucleotide derivative)</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Examples</div>
+        <h4>Types of Nucleic Acids</h4>
+        <p><strong>DNA:</strong> Deoxyribonucleic acid — the genome<br><strong>mRNA:</strong> Messenger RNA — transcription product<br><strong>tRNA:</strong> Transfer RNA — translation adapter<br><strong>rRNA:</strong> Ribosomal RNA — ribozyme activity<br><strong>ATP:</strong> Adenosine triphosphate — energy carrier</p>
+      </div>
+      <div class="macro-card">
+        <div class="mc-label">Food Sources</div>
+        <h4>Where to Find Them</h4>
+        <p style="margin-bottom:8px;font-size:12px;color:#475569">Every cell contains nucleic acids — eating any whole food provides them.</p>
+        <div class="food-strip">
+          <span class="food-tag">🐟 Sardines</span><span class="food-tag">🫘 Lentils</span><span class="food-tag">🍖 Organ meats</span><span class="food-tag">🍄 Mushrooms</span><span class="food-tag">🥦 Broccoli</span><span class="food-tag">🌾 Whole grains</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--pl);border:1px solid #AFA9EC;border-radius:10px;padding:13px 16px;font-size:13px;color:#26215C;line-height:1.7">
+      <strong>🔑 Central Dogma:</strong> DNA → (transcription) → RNA → (translation) → Protein. Nucleic acids control which proteins are made, and proteins carry out virtually every function in the cell. This is why nucleic acids are considered the "master blueprint" of life.
+    </div>
+  </div>
+
+  <button class="done-btn" id="doneMacros" onclick="markDone('macros')">Mark Macromolecules Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════ VOCABULARY ═══════════════════════ -->
+<div class="section" id="sec-vocab">
+  <div class="sec-head"><h2>Key Vocabulary</h2><span class="stag">Tap to flip</span></div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+  <button class="done-btn" id="doneVocab" onclick="markDone('vocab')">Mark Vocabulary Complete ✓</button>
+</div>
+
+<!-- ═══════════════════════ QUIZ ═══════════════════════ -->
+<div class="section" id="sec-quiz">
+  <div class="sec-head"><h2>Knowledge Check</h2><span class="stag">10 Questions</span></div>
+  <div class="qwrap" id="qwrap">
+    <div class="qmeta"><span class="qc" id="qctr">Question 1 of 10</span></div>
+    <div class="qcard">
+      <div class="qtext" id="qtext"></div>
+      <div class="opts" id="qopts"></div>
+      <div class="fb" id="qfb"></div>
+    </div>
+    <div class="qbtns"><button class="qbtn" id="qnext" onclick="nextQ()" style="display:none">Next Question →</button></div>
+  </div>
+  <div class="score-card" id="scoreCard">
+    <div class="score-ring" id="sring"></div>
+    <div class="sc-title" id="stitle"></div>
+    <div class="sc-msg" id="smsg"></div>
+    <div class="stats">
+      <div class="stat"><div class="snum" style="color:#16A34A" id="sco">0</div><div class="slbl">Correct</div></div>
+      <div class="stat"><div class="snum" style="color:#DC2626" id="swr">0</div><div class="slbl">Incorrect</div></div>
+      <div class="stat"><div class="snum" style="color:var(--purple)" id="spct">0%</div><div class="slbl">Score</div></div>
+    </div>
+    <div class="sc-btns">
+      <button class="qbtn" onclick="restartQuiz()">↺ Retake Quiz</button>
+      <button class="qbtn ol" onclick="markDone('quiz')">Finish Module ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ASSIGNMENT ═══════════════════════ -->
+<div class="section" id="sec-assignment">
+  <div class="sec-head"><h2>Assignment</h2><span class="stag">5 Parts · 45 Points Total</span></div>
+
+  <div class="assign-hero">
+    <h3>Biomolecules &amp; Enzymes — Unit Assignment</h3>
+    <p>Complete all five parts using what you learned from the videos, slides, macromolecule explorer, and vocabulary. Type your answers directly in the boxes below. When finished, use the Print button to submit a paper copy.</p>
+    <div class="assign-meta">
+      <span class="ameta">📅 Due: See teacher</span>
+      <span class="ameta">🎯 45 Points Total</span>
+      <span class="ameta">⏱ ~50 minutes</span>
+    </div>
+  </div>
+
+  <!-- Key Concepts Reference -->
+  <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Key Concepts Reference</p>
+  <div class="concept-strip">
+    <div class="concept-card"><div class="cc-icon">🍞</div><h4>Carbohydrates</h4><p>Monomer: monosaccharide · Energy source · Starch, glycogen, cellulose</p></div>
+    <div class="concept-card"><div class="cc-icon">🧈</div><h4>Lipids</h4><p>Glycerol + fatty acids · Long-term energy · Cell membranes · Hormones</p></div>
+    <div class="concept-card"><div class="cc-icon">🥩</div><h4>Proteins</h4><p>Monomer: amino acid · Enzymes, structure, transport, immunity</p></div>
+    <div class="concept-card"><div class="cc-icon">🧬</div><h4>Nucleic Acids</h4><p>Monomer: nucleotide · DNA stores genome · RNA directs protein synthesis</p></div>
+    <div class="concept-card"><div class="cc-icon">⚗️</div><h4>Enzymes</h4><p>Biological catalysts · Lower activation energy · Active site + induced fit</p></div>
+    <div class="concept-card"><div class="cc-icon">🌡️</div><h4>Enzyme Factors</h4><p>Temperature, pH, substrate concentration · Denaturation above optimal</p></div>
+  </div>
+
+  <!-- PART 1 -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p1')">
+      <div class="part-num pn1">1</div>
+      <h3>Multiple Choice — Core Concepts</h3>
+      <span class="pts">10 pts</span>
+      <span class="part-toggle" id="tog-p1">▼</span>
+    </div>
+    <div class="part-body open" id="p1">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Select the best answer for each question.</p>
+
+      <div class="q-prompt">1. What is the monomer (building block) of proteins?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc1" value="a" onchange="selectMC(this)"><label>A. Glucose</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="b" onchange="selectMC(this)"><label>B. Nucleotide</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="c" onchange="selectMC(this)"><label>C. Amino acid</label></label>
+        <label class="mc-opt"><input type="radio" name="mc1" value="d" onchange="selectMC(this)"><label>D. Fatty acid</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">2. Which macromolecule makes up the cell membrane's bilayer?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc2" value="a" onchange="selectMC(this)"><label>A. Polysaccharide</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="b" onchange="selectMC(this)"><label>B. Phospholipid</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="c" onchange="selectMC(this)"><label>C. Polypeptide</label></label>
+        <label class="mc-opt"><input type="radio" name="mc2" value="d" onchange="selectMC(this)"><label>D. Polynucleotide</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">3. An enzyme lowers the activation energy of a reaction. What does this mean?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc3" value="a" onchange="selectMC(this)"><label>A. The enzyme is consumed during the reaction</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="b" onchange="selectMC(this)"><label>B. Less energy is needed to start the reaction</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="c" onchange="selectMC(this)"><label>C. The products have more energy than the reactants</label></label>
+        <label class="mc-opt"><input type="radio" name="mc3" value="d" onchange="selectMC(this)"><label>D. The reaction always releases heat</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">4. Which of the following is a polysaccharide used for energy storage in animals?</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc4" value="a" onchange="selectMC(this)"><label>A. Cellulose</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="b" onchange="selectMC(this)"><label>B. Sucrose</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="c" onchange="selectMC(this)"><label>C. Glycogen</label></label>
+        <label class="mc-opt"><input type="radio" name="mc4" value="d" onchange="selectMC(this)"><label>D. Chitin</label></label>
+      </div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">5. The monomer of nucleic acids is a:</div>
+      <div class="mc-opts">
+        <label class="mc-opt"><input type="radio" name="mc5" value="a" onchange="selectMC(this)"><label>A. Glucose molecule</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="b" onchange="selectMC(this)"><label>B. Amino acid</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="c" onchange="selectMC(this)"><label>C. Fatty acid</label></label>
+        <label class="mc-opt"><input type="radio" name="mc5" value="d" onchange="selectMC(this)"><label>D. Nucleotide</label></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p2')">
+      <div class="part-num pn2">2</div>
+      <h3>Fill in the Blank — Macromolecules Table</h3>
+      <span class="pts">8 pts</span>
+      <span class="part-toggle" id="tog-p2">▼</span>
+    </div>
+    <div class="part-body open" id="p2">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Complete the table by filling in each blank about the four macromolecules.</p>
+      <table class="dtable">
+        <thead><tr><th>Macromolecule</th><th>Monomer</th><th>Key Function</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Carbohydrates</strong></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="monomer..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="function..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="example..." oninput="autoSave()"></td></tr>
+          <tr><td><strong>Lipids</strong></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="monomer..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="function..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="example..." oninput="autoSave()"></td></tr>
+          <tr><td><strong>Proteins</strong></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="monomer..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="function..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="example..." oninput="autoSave()"></td></tr>
+          <tr><td><strong>Nucleic Acids</strong></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="monomer..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="function..." oninput="autoSave()"></td><td><input style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;font-family:'DM Sans',sans-serif;font-size:12px" placeholder="example..." oninput="autoSave()"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p3')">
+      <div class="part-num pn3">3</div>
+      <h3>Matching — Enzyme Concepts</h3>
+      <span class="pts">8 pts</span>
+      <span class="part-toggle" id="tog-p3">▼</span>
+    </div>
+    <div class="part-body open" id="p3">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Match each term on the left to its correct description on the right.</p>
+      <div class="matching-grid">
+        <div class="match-col">
+          <h4>Term</h4>
+          <div class="match-item"><strong>1. Active Site</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>2. Induced Fit</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>3. Substrate</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>4. Denaturation</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>5. Activation Energy</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>6. Catalyst</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>7. Inhibitor</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+          <div class="match-item"><strong>8. Enzyme</strong> →<select class="match-select" onchange="autoSave()"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></div>
+        </div>
+        <div class="match-col">
+          <h4>Description</h4>
+          <p style="font-size:13px;line-height:2.1">
+            <strong>A.</strong> Region on an enzyme where the substrate binds<br>
+            <strong>B.</strong> The enzyme slightly changes shape to fit the substrate<br>
+            <strong>C.</strong> The molecule that an enzyme acts upon<br>
+            <strong>D.</strong> Loss of protein shape due to heat or pH change<br>
+            <strong>E.</strong> Energy needed to start a chemical reaction<br>
+            <strong>F.</strong> Substance that speeds up a reaction without being consumed<br>
+            <strong>G.</strong> Molecule that blocks enzyme activity<br>
+            <strong>H.</strong> Biological catalyst made of protein
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 4 -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p4')">
+      <div class="part-num pn4">4</div>
+      <h3>Short Answer — Analysis &amp; Explanation</h3>
+      <span class="pts">14 pts</span>
+      <span class="part-toggle" id="tog-p4">▼</span>
+    </div>
+    <div class="part-body open" id="p4">
+
+      <div class="q-prompt">1. Explain the induced fit model of enzyme-substrate interaction. How does it differ from the older "lock and key" model? (4 pts)</div>
+      <div class="q-hint">Hint: Think about what happens to the enzyme's active site when a substrate approaches. What does the enzyme do that a rigid lock cannot?</div>
+      <textarea class="a-textarea" id="sa1" placeholder="Type your answer here..." oninput="updateWC('sa1','wc1');autoSave()"></textarea>
+      <div class="word-count" id="wc1">0 words</div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">2. How do enzymes lower activation energy? Draw or describe what an energy diagram looks like with and without an enzyme, and explain why this matters for cells. (5 pts)</div>
+      <div class="q-hint">Hint: Think about the energy "hill" a reaction must climb. What does the enzyme do to the height of that hill? Why would cells need reactions to happen quickly at body temperature?</div>
+      <textarea class="a-textarea" id="sa2" placeholder="Type your answer here..." oninput="updateWC('sa2','wc2');autoSave()"></textarea>
+      <div class="word-count" id="wc2">0 words</div>
+      <hr class="q-divider">
+
+      <div class="q-prompt">3. A student boils an enzyme and then tests its activity. She finds it no longer works. Explain why, using the terms denaturation, active site, and tertiary structure. (5 pts)</div>
+      <div class="q-hint">Hint: What does heat do to the protein's three-dimensional shape? Why does shape matter for an enzyme's function?</div>
+      <textarea class="a-textarea" id="sa3" placeholder="Type your answer here..." oninput="updateWC('sa3','wc3');autoSave()"></textarea>
+      <div class="word-count" id="wc3">0 words</div>
+    </div>
+  </div>
+
+  <!-- PART 5 -->
+  <div class="part-card">
+    <div class="part-header" onclick="togglePart('p5')">
+      <div class="part-num pn5">5</div>
+      <h3>Extended Response — Real World Application</h3>
+      <span class="pts">5 pts</span>
+      <span class="part-toggle" id="tog-p5">▼</span>
+    </div>
+    <div class="part-body open" id="p5">
+      <div class="q-prompt">Choose ONE scenario and write a well-developed paragraph (minimum 5 sentences) applying your knowledge of biomolecules and/or enzymes:</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin:12px 0 16px">
+        <label class="mc-opt"><input type="radio" name="scenario" value="A" onchange="selectMC(this)"><label><strong>Scenario A:</strong> A nutritionist is advising a marathon runner on their diet. Explain which macromolecules they should prioritize before, during, and after the race, and why — using your knowledge of each macromolecule's function.</label></label>
+        <label class="mc-opt"><input type="radio" name="scenario" value="B" onchange="selectMC(this)"><label><strong>Scenario B:</strong> A pharmaceutical company is designing a drug to treat a bacterial infection. The drug works by blocking a key bacterial enzyme. Explain the concept of enzyme inhibition and predict how the drug will affect the bacteria's cellular processes.</label></label>
+        <label class="mc-opt"><input type="radio" name="scenario" value="C" onchange="selectMC(this)"><label><strong>Scenario C:</strong> A person with lactose intolerance lacks the enzyme lactase. Explain how this enzyme normally works, why its absence causes symptoms, and how this illustrates the importance of enzyme specificity and the active site.</label></label>
+      </div>
+      <textarea class="a-textarea" id="er1" style="min-height:130px" placeholder="Type your extended response here (minimum 5 sentences)..." oninput="updateWC('er1','wc4');autoSave()"></textarea>
+      <div class="word-count" id="wc4">0 words</div>
+      <details style="margin-top:14px">
+        <summary style="font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none">▶ View Scoring Rubric</summary>
+        <table class="rubric-table" style="margin-top:10px">
+          <thead><tr><th>Criteria</th><th>Full Credit</th><th>Partial Credit</th><th>No Credit</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Accuracy</strong> (2 pts)</td><td>All scientific facts are correct and precisely stated</td><td>Minor factual errors that don't undermine main idea</td><td>Major errors or missing key concepts</td></tr>
+            <tr><td><strong>Depth</strong> (2 pts)</td><td>Thorough explanation with specific details (macromolecule names, enzyme terms, mechanisms)</td><td>Some detail but surface-level explanation</td><td>Very vague or no detail</td></tr>
+            <tr><td><strong>Connections</strong> (1 pt)</td><td>Clearly links to real-world context of chosen scenario</td><td>Weak or unclear connection to scenario</td><td>No connection to scenario</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+  </div>
+
+  <div class="submit-bar">
+    <div>
+      <strong>Ready to Submit?</strong>
+      <p>Review all five parts, then print this page or save a screenshot for your teacher.</p>
+      <div class="saved-msg" id="savedMsg">✓ Progress auto-saved</div>
+    </div>
+    <div class="submit-btns">
+      <button class="sbtn secondary" onclick="window.print()">🖨 Print Assignment</button>
+      <button class="sbtn primary" onclick="markDone('assignment')">Mark Assignment Complete ✓</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Biomolecules &amp; Enzymes · 9th Grade Biology</p>
+  <p style="margin-top:4px">Amoeba Sisters videos © Amoeba Sisters LLC — used for educational purposes</p>
+</div>
+</div><!-- /wrap -->
+
+<script>
+/* ──────── DATA ──────── */
+const VIDS={
+  1:{title:'Biological Macromolecules — CrashCourse',ytUrl:'https://www.youtube.com/watch?v=H8WJ2KENlK0',embedId:'H8WJ2KENlK0',concepts:'Covers: the four macromolecules (carbohydrates, lipids, proteins, nucleic acids), monomers and polymers, dehydration synthesis vs. hydrolysis, and examples of each class.',localSrc:null,customUrl:null},
+  2:{title:'Enzymes — Amoeba Sisters',ytUrl:'https://www.youtube.com/watch?v=qgVFkRn8f10',embedId:'qgVFkRn8f10',concepts:'Covers: enzyme definition, active site, substrate specificity, induced fit model, how enzymes are reusable, enzyme inhibition (competitive and non-competitive), and factors affecting enzyme activity.',localSrc:null,customUrl:null},
+  3:{title:'Activation Energy &amp; Enzymes — CrashCourse',ytUrl:'https://www.youtube.com/watch?v=yk14dOOvwMk',embedId:'yk14dOOvwMk',concepts:'Covers: activation energy, energy diagrams (with and without enzymes), how enzymes lower the energy barrier, enzyme regulation, allosteric regulation, and real-world enzyme applications.',localSrc:null,customUrl:null}
+};
+
+const SLIDES=[
+  {t:'t1',title:'What Are Biomolecules?',html:`<ul><li>Biomolecules are <strong>carbon-based (organic) molecules</strong> essential for life</li><li>There are four major classes called <strong>macromolecules</strong> — large molecules made of repeating subunits</li><li>Subunits (monomers) are linked together by <strong>dehydration synthesis</strong> (removes water) to form polymers</li><li>Polymers are broken apart by <strong>hydrolysis</strong> (adds water)</li></ul><div class="chips"><div class="chip">🍞 Carbohydrates</div><div class="chip">🧈 Lipids</div><div class="chip">🥩 Proteins</div><div class="chip">🧬 Nucleic Acids</div></div><div class="eq" style="margin-top:14px">Monomer + Monomer → Polymer (−H₂O) · Polymer + H₂O → Monomers</div>`},
+  {t:'t2',title:'Carbohydrates',html:`<ul><li><strong>Monomer:</strong> Monosaccharide (glucose, fructose, galactose)</li><li>General formula: <strong>(CH₂O)ₙ</strong> — made of C, H, O in 1:2:1 ratio</li><li><strong>Simple sugars</strong> (monosaccharides &amp; disaccharides) = quick energy</li><li><strong>Complex carbs</strong> (polysaccharides) = energy storage or structure</li></ul><div class="chips"><div class="chip">Starch — plant energy storage 🌾</div><div class="chip">Glycogen — animal energy storage 💪</div><div class="chip">Cellulose — plant cell walls 🌿</div><div class="chip">Chitin — insect/fungal exoskeleton 🦗</div></div><p style="margin-top:12px">Food sources: bread, rice, pasta, fruit, potatoes, sugar</p>`},
+  {t:'t3',title:'Lipids',html:`<ul><li><strong>Not true polymers</strong> — built from glycerol + fatty acids (triglycerides)</li><li>Insoluble in water (hydrophobic) — "like dissolves like"</li><li><strong>Saturated fats:</strong> single bonds, solid at room temp (butter, lard)</li><li><strong>Unsaturated fats:</strong> double bonds, liquid at room temp (olive oil, fish oil)</li><li><strong>Phospholipids</strong> form the cell membrane bilayer — hydrophilic head, hydrophobic tails</li><li><strong>Steroids</strong> (4 carbon rings): cholesterol, estrogen, testosterone, cortisol</li></ul><div class="chips"><div class="chip">Energy storage</div><div class="chip">Cell membranes</div><div class="chip">Steroid hormones</div><div class="chip">Insulation</div></div>`},
+  {t:'t4',title:'Proteins',html:`<ul><li><strong>Monomer:</strong> Amino acid (20 types) linked by <strong>peptide bonds</strong></li><li>Most diverse and versatile macromolecule — over 100,000 types in the human body</li><li><strong>4 levels of structure:</strong> Primary → Secondary → Tertiary → Quaternary</li><li>Shape = function: if shape changes, protein stops working (<strong>denaturation</strong>)</li></ul><div class="chips"><div class="chip">⚗️ Enzymes</div><div class="chip">🏗 Structure (collagen, keratin)</div><div class="chip">🚂 Transport (hemoglobin)</div><div class="chip">🛡 Antibodies</div><div class="chip">📡 Receptors</div><div class="chip">💉 Hormones (insulin)</div></div>`},
+  {t:'t5',title:'Nucleic Acids',html:`<ul><li><strong>Monomer:</strong> Nucleotide (phosphate + sugar + nitrogenous base)</li><li><strong>DNA</strong> — double helix, deoxyribose sugar, bases: A-T-G-C; stores genetic info</li><li><strong>RNA</strong> — single strand, ribose sugar, bases: A-U-G-C; carries out DNA instructions</li><li>Central Dogma: <strong>DNA → RNA → Protein</strong></li></ul><div class="eq">DNA (nucleus) → transcription → mRNA → translation → Protein</div><div class="chips"><div class="chip">mRNA — messenger</div><div class="chip">tRNA — transfer</div><div class="chip">rRNA — ribosomal</div><div class="chip">ATP — energy currency</div></div>`},
+  {t:'t6',title:'Enzymes — Biological Catalysts',html:`<ul><li>Enzymes are <strong>proteins</strong> that speed up chemical reactions without being consumed</li><li>They lower <strong>activation energy</strong> — the energy needed to start a reaction</li><li>The region where substrates bind is called the <strong>active site</strong></li><li>Enzymes are <strong>specific</strong> — each enzyme fits only certain substrates ("specificity")</li><li>After the reaction, the enzyme is <strong>released unchanged</strong> and can be reused</li></ul><div class="eq">Enzyme + Substrate → Enzyme-Substrate Complex → Products + Enzyme</div><div class="chips"><div class="chip">Amylase — breaks starch</div><div class="chip">Lipase — breaks fats</div><div class="chip">Helicase — unwinds DNA</div><div class="chip">Protease — breaks proteins</div></div>`},
+  {t:'t7',title:'Induced Fit Model',html:`<ul><li>The <strong>lock and key model</strong> (old): active site is rigid, like a lock that fits one key</li><li>The <strong>induced fit model</strong> (current): active site <em>flexibly changes shape</em> to better fit the substrate when it binds</li><li>This conformational change positions substrate correctly for the reaction to occur</li><li>After products are released, the enzyme returns to its original shape</li></ul><div class="chips" style="margin-top:12px"><div class="chip">Step 1: Substrate approaches active site</div><div class="chip">Step 2: Active site molds around substrate</div><div class="chip">Step 3: Reaction occurs, products form</div><div class="chip">Step 4: Products released, enzyme resets</div></div>`},
+  {t:'t8',title:'Factors Affecting Enzyme Activity',html:`<ul><li><strong>Temperature:</strong> Increasing temp speeds reactions — up to the optimum (~37°C for human enzymes). Above optimum, the enzyme <strong>denatures</strong> (shape is destroyed)</li><li><strong>pH:</strong> Each enzyme has an optimal pH (pepsin works at pH 2; trypsin at pH 8). Extreme pH causes denaturation</li><li><strong>Substrate concentration:</strong> More substrate = faster rate (until all active sites are occupied — saturation)</li><li><strong>Inhibitors:</strong> Competitive inhibitors block the active site. Non-competitive inhibitors bind elsewhere, changing enzyme shape</li></ul><div class="chips"><div class="chip">🌡 Optimal temp: ~37°C (human)</div><div class="chip">⚗️ pH varies by enzyme</div><div class="chip">🚫 Inhibitors slow reactions</div></div>`}
+];
+
+const VOCAB=[
+  {term:'Macromolecule',def:'A large biological molecule made of many smaller subunits (monomers) linked together. The four classes are carbohydrates, lipids, proteins, and nucleic acids.'},
+  {term:'Monomer',def:'The small, repeating subunit that makes up a polymer. Example: glucose is the monomer of starch; amino acids are the monomers of proteins.'},
+  {term:'Polymer',def:'A large molecule made of many monomers linked together by covalent bonds. Formed by dehydration synthesis; broken apart by hydrolysis.'},
+  {term:'Dehydration Synthesis',def:'A chemical reaction that joins monomers into a polymer by removing a water molecule. Also called condensation reaction.'},
+  {term:'Hydrolysis',def:'A chemical reaction that breaks polymers into monomers by adding water. The reverse of dehydration synthesis.'},
+  {term:'Monosaccharide',def:'The monomer of carbohydrates — a simple sugar such as glucose, fructose, or galactose. General formula (CH₂O)ₙ.'},
+  {term:'Polysaccharide',def:'A complex carbohydrate polymer made of many monosaccharides. Examples: starch (plant energy storage), glycogen (animal storage), cellulose (plant cell walls).'},
+  {term:'Lipid',def:'A hydrophobic (water-fearing) macromolecule including fats, oils, phospholipids, and steroids. Built from glycerol and fatty acids. Functions include energy storage, cell membranes, and hormones.'},
+  {term:'Phospholipid',def:'A lipid with a hydrophilic (water-loving) phosphate head and two hydrophobic fatty acid tails. Forms the bilayer structure of all cell membranes.'},
+  {term:'Amino Acid',def:'The monomer of proteins. There are 20 types, each with a different R-group (side chain). Linked by peptide bonds.'},
+  {term:'Peptide Bond',def:'The covalent bond formed between two amino acids during dehydration synthesis. Links the carboxyl group of one amino acid to the amino group of the next.'},
+  {term:'Denaturation',def:'The loss of a protein\'s three-dimensional shape due to extreme heat, pH, or chemicals. A denatured protein loses its function because shape determines function.'},
+  {term:'Nucleotide',def:'The monomer of nucleic acids (DNA and RNA). Made of three parts: a phosphate group, a 5-carbon sugar (deoxyribose or ribose), and a nitrogenous base (A, T/U, G, C).'},
+  {term:'Enzyme',def:'A biological catalyst — a protein that speeds up chemical reactions by lowering activation energy. Enzymes are specific to their substrates and are not consumed in reactions.'},
+  {term:'Active Site',def:'The specific region on an enzyme where substrates bind. Its unique three-dimensional shape determines which substrates can bind (enzyme specificity).'},
+  {term:'Substrate',def:'The specific molecule that an enzyme acts upon. Binds to the active site to form the enzyme-substrate complex.'},
+  {term:'Induced Fit',def:'The current model of enzyme action — the active site flexibly changes shape to better fit the substrate when it binds, improving the reaction efficiency.'},
+  {term:'Activation Energy',def:'The minimum energy needed to start a chemical reaction. Enzymes lower this energy barrier, allowing reactions to occur rapidly at normal cell temperatures.'},
+  {term:'Inhibitor',def:'A molecule that reduces enzyme activity. Competitive inhibitors block the active site; non-competitive inhibitors bind elsewhere and change the enzyme\'s shape.'},
+  {term:'Catalyst',def:'A substance that speeds up a chemical reaction without being consumed or permanently changed. Enzymes are biological catalysts.'}
+];
+
+const QUESTIONS=[
+  {q:'Which macromolecule serves as the PRIMARY immediate energy source for cells?',opts:['Lipids','Nucleic acids','Carbohydrates','Proteins'],ans:2,exp:'Carbohydrates, specifically glucose, are the cell\'s primary immediate energy source. Glucose is broken down in cellular respiration to produce ATP.'},
+  {q:'The monomer of proteins is a(n):',opts:['Glucose molecule','Nucleotide','Amino acid','Fatty acid'],ans:2,exp:'Amino acids are the monomers of proteins. There are 20 different amino acids, and they are linked by peptide bonds through dehydration synthesis.'},
+  {q:'A triglyceride (fat) is made of:',opts:['Three glucose molecules','One glycerol and three fatty acids','Three amino acids','Two nucleotides'],ans:1,exp:'Triglycerides (fats and oils) consist of one glycerol molecule attached to three fatty acid chains via ester bonds.'},
+  {q:'Which model of enzyme action states that the active site CHANGES SHAPE when a substrate binds?',opts:['Lock and key model','Fluid mosaic model','Induced fit model','Central dogma model'],ans:2,exp:'The induced fit model states that when a substrate enters the active site, the enzyme flexibly changes shape to better accommodate the substrate, improving reaction efficiency.'},
+  {q:'Enzymes speed up chemical reactions by:',opts:['Increasing the temperature of the cell','Providing energy to the reactants','Lowering the activation energy','Changing the products of the reaction'],ans:2,exp:'Enzymes lower activation energy — the energy barrier that must be overcome for a reaction to start. This allows reactions to occur rapidly at normal body temperatures without the need for extreme heat.'},
+  {q:'What happens to an enzyme at extremely high temperatures?',opts:['It works faster and more efficiently','It becomes permanently activated','It is denatured and loses its shape','It switches to a different substrate'],ans:2,exp:'High temperatures break the bonds that maintain a protein\'s 3D shape, causing denaturation. The enzyme\'s active site is destroyed, so it can no longer bind its substrate and is inactivated.'},
+  {q:'Cellulose and starch are both polymers of glucose, yet cellulose cannot be digested by humans. Why?',opts:['Cellulose contains different monomers','They have different glycosidic bond orientations (α vs β bonds)','Cellulose is a lipid, not a carbohydrate','Starch is made in animals, cellulose in plants'],ans:1,exp:'Cellulose has β-1,4 glycosidic bonds (straight chains), while starch has α-1,4 bonds (helical). Human digestive enzymes can only break α bonds, so cellulose (dietary fiber) passes through undigested.'},
+  {q:'Which macromolecule stores and transmits genetic information?',opts:['Proteins','Carbohydrates','Lipids','Nucleic acids'],ans:3,exp:'Nucleic acids — specifically DNA — store genetic information in the sequence of nitrogenous bases. RNA carries this information from DNA to the ribosomes to direct protein synthesis.'},
+  {q:'A competitive inhibitor blocks enzyme activity by:',opts:['Binding to a site other than the active site','Permanently destroying the enzyme','Binding to the active site and blocking the substrate','Increasing the activation energy'],ans:2,exp:'A competitive inhibitor has a shape similar to the substrate and binds directly to the active site, competing with the substrate for access. At high enough substrate concentrations, the inhibition can be overcome.'},
+  {q:'Which of the following correctly lists the four levels of protein structure in order from simplest to most complex?',opts:['Quaternary → Tertiary → Secondary → Primary','Primary → Secondary → Tertiary → Quaternary','Secondary → Primary → Quaternary → Tertiary','Tertiary → Quaternary → Primary → Secondary'],ans:1,exp:'The four levels are: (1) Primary — amino acid sequence, (2) Secondary — α-helices and β-sheets, (3) Tertiary — overall 3D folded shape, (4) Quaternary — multiple polypeptide chains combined.'}
+];
+
+/* ──────── STATE ──────── */
+const done={};
+let curSlide=0,qIdx=0,score=0,answered=false;
+
+/* ──────── NAV ──────── */
+function showSec(name,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='slides')renderSlide();
+  if(name==='quiz'){qIdx=0;score=0;answered=false;document.getElementById('qwrap').style.display='block';document.getElementById('scoreCard').classList.remove('show');renderQ();}
+}
+function markDone(name){
+  if(done[name])return;
+  done[name]=true;
+  document.querySelector('[data-s="'+name+'"]').classList.add('done');
+  const n=Object.keys(done).length;
+  document.getElementById('progFill').style.width=(n/6*100)+'%';
+  document.getElementById('progTxt').textContent=n+' of 6 complete';
+  const b=document.getElementById('done'+name.charAt(0).toUpperCase()+name.slice(1));
+  if(b){b.textContent='✓ Complete!';b.classList.add('finished');}
+}
+
+/* ──────── VIDEOS ──────── */
+function previewFile(n){
+  const f=document.getElementById('file'+n).files[0];
+  if(f){document.getElementById('file'+n+'name').textContent='✓ '+f.name;VIDS[n].localSrc=URL.createObjectURL(f);}
+}
+function getYTId(url){const m=url.match(/(?:v=|youtu\.be\/)([^&\s?]+)/);return m?m[1]:null;}
+function applyCustomVideos(){
+  for(let n=1;n<=3;n++){
+    const urlVal=document.getElementById('url'+n).value.trim();
+    if(urlVal){const id=getYTId(urlVal);if(id){VIDS[n].embedId=id;VIDS[n].customUrl=urlVal;}else{VIDS[n].embedId=null;VIDS[n].customUrl=urlVal;}}
+  }
+  const msg=document.getElementById('applyMsg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2500);
+}
+function playVid(n){
+  const v=VIDS[n];
+  document.getElementById('vpTitle').textContent=v.title;
+  document.getElementById('vpConcepts').textContent=v.concepts;
+  const player=document.getElementById('vidPlayer');
+  const content=document.getElementById('vpContent');
+  player.classList.add('show');
+  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
+  document.getElementById('vcard'+n).style.borderColor='var(--purple)';
+  if(v.localSrc){
+    content.innerHTML=`<div class="local-video-wrap"><video controls autoplay style="position:absolute;inset:0;width:100%;height:100%;background:#000"><source src="${v.localSrc}">Your browser does not support this video.</video></div>`;
+  }else if(v.embedId){
+    content.innerHTML=`<div class="iframe-wrap"><iframe src="https://www.youtube.com/embed/${v.embedId}?autoplay=1&rel=0" allowfullscreen allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe></div>`;
+    setTimeout(()=>{const iframe=content.querySelector('iframe');if(!iframe)return;try{const b=iframe.contentDocument;if(b&&b.title&&b.title.includes('blocked'))showYtFallback(content,n);}catch(e){}},3000);
+  }else{showYtFallback(content,n);}
+  player.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function showYtFallback(container,n){
+  const v=VIDS[n];
+  container.innerHTML=`<div style="background:#111;padding:30px;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="font-size:3rem">▶</div><p style="color:rgba(255,255,255,.8);font-size:13px">This video cannot be embedded. Click below to watch on YouTube.</p><a href="${v.ytUrl}" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#CC0000;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif;text-decoration:none">▶ Watch on YouTube ↗</a><p style="color:rgba(255,255,255,.5);font-size:12px">Or upload your own video file using the panel above.</p></div>`;
+}
+function closeVid(){
+  document.getElementById('vidPlayer').classList.remove('show');
+  document.getElementById('vpContent').innerHTML='';
+  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
+}
+
+/* ──────── SLIDES ──────── */
+function renderSlide(){
+  const s=SLIDES[curSlide];
+  const b=document.getElementById('slideBody');
+  b.className='slide-body '+s.t;
+  b.innerHTML=`<div class="slide-num">Slide ${curSlide+1} of ${SLIDES.length}</div><h3>${s.title}</h3><div class="slide-content">${s.html}</div>`;
+  document.getElementById('prevBtn').disabled=curSlide===0;
+  document.getElementById('nextBtn').disabled=curSlide===SLIDES.length-1;
+  const dots=document.getElementById('slideDots');dots.innerHTML='';
+  SLIDES.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===curSlide?' active':'');d.onclick=()=>{curSlide=i;renderSlide()};dots.appendChild(d);});
+}
+function nextSlide(){if(curSlide<SLIDES.length-1){curSlide++;renderSlide();}}
+function prevSlide(){if(curSlide>0){curSlide--;renderSlide();}}
+
+/* ──────── VOCAB ──────── */
+(function(){
+  const g=document.getElementById('vocabGrid');
+  VOCAB.forEach(v=>{
+    const c=document.createElement('div');c.className='vc';
+    c.innerHTML=`<div class="vterm">${v.term}</div><div class="vhint">Tap to reveal →</div><div class="vdef">${v.def}</div>`;
+    c.onclick=()=>c.classList.toggle('open');
+    g.appendChild(c);
+  });
+})();
+
+/* ──────── MACROMOLECULE EXPLORER ──────── */
+function switchMacro(id,btn){
+  document.querySelectorAll('.macro-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.macro-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('mp-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ──────── QUIZ ──────── */
+function renderQ(){
+  if(qIdx>=QUESTIONS.length){showScore();return;}
+  const q=QUESTIONS[qIdx];
+  document.getElementById('qctr').textContent=`Question ${qIdx+1} of ${QUESTIONS.length}`;
+  document.getElementById('qtext').textContent=q.q;
+  const ol=document.getElementById('qopts');ol.innerHTML='';
+  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.onclick=()=>checkA(i,q.ans,q.exp);ol.appendChild(b);});
+  document.getElementById('qfb').className='fb';document.getElementById('qfb').textContent='';
+  document.getElementById('qnext').style.display='none';answered=false;
+}
+function checkA(chosen,correct,exp){
+  if(answered)return;answered=true;
+  document.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add(chosen===correct?'correct':'show-correct');else if(i===chosen)b.classList.add('wrong');});
+  if(chosen===correct)score++;
+  const fb=document.getElementById('qfb');
+  fb.className='fb show '+(chosen===correct?'correct':'wrong');
+  fb.textContent=(chosen===correct?'✓ Correct! ':'✗ Not quite. ')+exp;
+  document.getElementById('qnext').style.display='block';
+}
+function nextQ(){qIdx++;renderQ();}
+function showScore(){
+  document.getElementById('qwrap').style.display='none';
+  const pct=Math.round(score/QUESTIONS.length*100);
+  const ring=document.getElementById('sring');ring.textContent=pct+'%';ring.className='score-ring '+(pct>=80?'sg':pct>=60?'so':'sl');
+  const tiers=[['Keep Studying!','Review the videos and slides, then try again!'],['Good Effort!','Review the vocabulary and macromolecule explorer, then try again.'],['Well Done!','Good understanding of biomolecules and enzymes!'],['Excellent Work!','Great mastery of this topic!'],['Perfect Score! 🎉','Outstanding — you\'ve mastered biomolecules and enzymes!']];
+  const tier=pct<50?0:pct<65?1:pct<80?2:pct<100?3:4;
+  document.getElementById('stitle').textContent=tiers[tier][0];
+  document.getElementById('smsg').textContent=tiers[tier][1];
+  document.getElementById('sco').textContent=score;document.getElementById('swr').textContent=QUESTIONS.length-score;document.getElementById('spct').textContent=pct+'%';
+  document.getElementById('scoreCard').classList.add('show');
+}
+function restartQuiz(){qIdx=0;score=0;answered=false;document.getElementById('qwrap').style.display='block';document.getElementById('scoreCard').classList.remove('show');renderQ();}
+
+/* ──────── ASSIGNMENT ──────── */
+function togglePart(id){
+  const body=document.getElementById(id);
+  const tog=document.getElementById('tog-'+id);
+  const open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  tog.style.transform=open?'':'rotate(180deg)';
+}
+function selectMC(radio){
+  const name=radio.name;
+  document.querySelectorAll('input[name="'+name+'"]').forEach(r=>{r.closest('.mc-opt').classList.toggle('selected',r.checked);});
+  autoSave();
+}
+function updateWC(textareaId,counterId){
+  const txt=document.getElementById(textareaId).value.trim();
+  const words=txt?txt.split(/\s+/).length:0;
+  document.getElementById(counterId).textContent=words+' word'+(words!==1?'s':'');
+  document.getElementById(textareaId).classList.toggle('filled',txt.length>0);
+}
+function loadDiagram(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();reader.onload=function(ev){document.getElementById('diagramPreview').src=ev.target.result;document.getElementById('diagramArea').classList.add('has-image');};
+  reader.readAsDataURL(file);
+}
+function clearDiagram(){document.getElementById('diagramPreview').src='';document.getElementById('diagramArea').classList.remove('has-image');document.getElementById('diagramUpload').value='';}
+let saveTimer=null;
+function autoSave(){
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{const msg=document.getElementById('savedMsg');if(msg){msg.style.display='flex';setTimeout(()=>msg.style.display='none',2000);}},800);
+}
+
+/* INIT */
+renderSlide();renderQ();
+</script>
+<footer>
+  Virginia SOL Biology · Biomolecules & Enzymes
+</footer>
+</body>
+</html>
