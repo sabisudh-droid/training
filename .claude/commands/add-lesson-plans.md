@@ -50,7 +50,8 @@ For each file that maps to an **existing** plan:
    - Must have the standard footer
    - All nav links must use absolute GitHub Pages URLs
 2. Fix only those violations. **Do not change the page's visual theme or color scheme** — if it has a dark theme or custom colors, preserve them.
-3. Save the corrected file.
+3. **Dark theme protection:** `theme.css` defines light values for `--bg`, `--text`, `--muted`, `--card`, `--border`, and `--green`. If the page uses a dark theme, its `<style>` block must explicitly override all of these variables in `:root` to prevent theme.css from washing them out. Check that the `:root` block inside `<style>` includes dark values for every variable the page relies on. If any are missing, add them.
+4. Save the corrected file.
 
 ---
 
@@ -59,14 +60,15 @@ For each file that maps to an **existing** plan:
 For each **new** file (raw upload or properly named but not yet in `index.html`):
 
 1. If the filename doesn't follow `bioN-slug.html`, determine the correct SOL number and topic slug and rename/copy it accordingly.
-2. Read the file carefully. **Preserve the existing visual theme and color scheme exactly** — do not convert dark themes to light or vice versa.
+2. **Detect the theme:** Before making changes, determine whether the source file uses a dark theme (e.g. `background: #0d1b2a`, `--navy`, dark card backgrounds) or the standard light theme. Check the `body` background color or the `:root` CSS variables.
 3. Ensure the file has:
    - `../theme.css` linked in `<head>` (in addition to any custom styles — do not replace custom styles)
    - The correct Google Fonts link: `Syne` + `DM Sans`
    - The standard header with the correct BIO.N badge
    - The standard footer: `Virginia SOL Biology · [Plan Title]`
    - All nav links using absolute GitHub Pages URLs
-4. Save to `grade-9/bioN-slug.html`.
+4. **If the file uses a dark theme:** ensure the `:root` block in `<style>` explicitly overrides every variable that `theme.css` sets to a light value — at minimum: the body background, `--text`, `--muted`, `--card`, `--border`, `--green`. Without these overrides, theme.css will replace dark values with light ones, making light-colored text unreadable on a light background.
+5. Save to `grade-9/bioN-slug.html`.
 
 ---
 
