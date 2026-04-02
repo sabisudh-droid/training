@@ -1,8 +1,3 @@
----
-name: add-lesson-plans
-description: Scans grade-9/ for new or updated lesson plan HTML files, integrates them into the BioLearn9 site design system, updates index.html, and commits + pushes to main. Use whenever new lesson files have been uploaded to the grade-9 folder.
----
-
 # /add-lesson-plans
 
 You are helping maintain the BioLearn9 self-paced biology training portal. Follow every step below in order. Do not skip steps.
@@ -54,7 +49,7 @@ For each file that maps to an **existing** plan:
    - Must have the standard header (BIOLEARN9 logo + nav links + `.catalog-badge` with correct BIO.X code)
    - Must have the standard footer
    - All nav links must use absolute GitHub Pages URLs
-2. Fix only those violations. **Do not change the page's visual theme or color scheme** — preserve dark themes and custom colors as-is.
+2. Fix only those violations. **Do not change the page's visual theme or color scheme** — if it has a dark theme or custom colors, preserve them.
 3. Save the corrected file.
 
 ---
@@ -64,14 +59,13 @@ For each file that maps to an **existing** plan:
 For each **new** file (raw upload or properly named but not yet in `index.html`):
 
 1. If the filename doesn't follow `bioN-slug.html`, determine the correct SOL number and topic slug and rename/copy it accordingly.
-2. Read `grade-9/bio5-photosynthesis.html` as the reference template.
-3. Rebuild or adapt the file so it:
-   - Links `../theme.css` (in addition to any custom styles — do not replace them)
-   - Uses the correct Google Fonts link (Syne + DM Sans)
-   - Has the standard header with the correct BIO.N badge
-   - Has the standard footer: `Virginia SOL Biology · [Plan Title]`
-   - **Preserves the existing visual theme and color scheme** — do not convert dark themes to light or vice versa
-   - Contains appropriate content (videos, slides, vocab, lab, quiz, assignment) for its topic
+2. Read the file carefully. **Preserve the existing visual theme and color scheme exactly** — do not convert dark themes to light or vice versa.
+3. Ensure the file has:
+   - `../theme.css` linked in `<head>` (in addition to any custom styles — do not replace custom styles)
+   - The correct Google Fonts link: `Syne` + `DM Sans`
+   - The standard header with the correct BIO.N badge
+   - The standard footer: `Virginia SOL Biology · [Plan Title]`
+   - All nav links using absolute GitHub Pages URLs
 4. Save to `grade-9/bioN-slug.html`.
 
 ---
@@ -81,7 +75,7 @@ For each **new** file (raw upload or properly named but not yet in `index.html`)
 Open `index.html` and make the following changes:
 
 ### Plan card
-Add a new `.plan-card` inside `<div class="plan-grid">`. Follow this template exactly:
+Add a new `.plan-card` inside `<div class="plan-grid">`. Follow this template:
 
 ```html
 <div class="plan-card">
