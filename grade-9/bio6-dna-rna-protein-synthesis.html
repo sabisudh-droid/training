@@ -3,1178 +3,2041 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DNA, RNA & Protein Synthesis | 9th Grade Biology</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>DNA, RNA & Protein Synthesis — Biology 9 | Virginia SOL BIO.6</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme.css">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#1D9E75;--gl:#E1F5EE;--gm:#9FE1CB;--gd:#085041;
-  --blue:#378ADD;--bl:#E6F1FB;--bd:#0C447C;
-  --amber:#BA7517;--al:#FAEEDA;
-  --purple:#534AB7;--pl:#EEEDFE;
-  --coral:#D85A30;--cl:#FAECE7;
-  --bg:#F0F4F8;--white:#fff;
-  --card:#fff;--border:#E2E8F0;--text:#1A202C;--muted:#64748B;
-  --shadow:0 2px 8px rgba(0,0,0,.07);--shadow-md:0 4px 16px rgba(0,0,0,.1);
-}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-h1,h2,h3,h4{font-family:'Syne',sans-serif}
-a{color:inherit;text-decoration:none}
+  :root {
+    --bg: #050d1a;
+    --surface: #0a1628;
+    --surface2: #0f1f3d;
+    --border: #1a3060;
+    --card: #0a1628;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent1: #00e5ff;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --accent4: #f59e0b;
+    --accent5: #ef4444;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+    --glow: 0 0 20px rgba(0,229,255,0.3);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(0,229,255,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.wrap{max-width:980px;margin:0 auto;padding:24px 16px 80px}
+  .app { display: flex; min-height: 100vh; }
 
-/* HEADER */
-header{position:relative;z-index:10;background:#F8FAFC;border-bottom:1px solid var(--border)}
-.top-bar{max-width:980px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.06em;color:var(--gd);text-transform:uppercase;display:inline-block;cursor:pointer}
-.logo span{color:var(--green)}
-.nav-links{display:flex;gap:0.8rem;flex-wrap:wrap;align-items:center}
-.nav-link{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid var(--border);padding:0.35rem 0.8rem;border-radius:999px}
-.nav-link:hover{border-color:var(--green);color:var(--green)}
-.catalog-badge{background:linear-gradient(135deg,var(--green),var(--gm));color:#0b2b22;font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;padding:.3rem .8rem;border-radius:999px;letter-spacing:.08em;display:inline-block}
+  /* SIDEBAR */
+  .sidebar {
+    width: 270px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
+  .sidebar-logo {
+    padding: 22px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-logo .logo-mark {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent1);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .sidebar-logo h1 {
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sol-badge {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(16,185,129,0.12);
+    border: 1px solid rgba(16,185,129,0.3);
+    color: var(--accent3);
+    font-size: 10px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
 
-/* HERO */
-.hero{background:linear-gradient(135deg,#1A0040,#3B0080 50%,#534AB7);border-radius:20px;padding:36px 40px;margin-bottom:24px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
-.hero::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:rgba(255,255,255,.05);border-radius:50%}
-.hero-inner{display:flex;align-items:flex-start;gap:18px}
-.hero-icon{font-size:3rem;line-height:1;flex-shrink:0}
-.hero h1{font-size:1.9rem;color:#fff;line-height:1.2}
-.hero p{color:rgba(255,255,255,.75);font-size:13.5px;margin-top:5px}
-.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 13px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
+  .progress-bar-wrap {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .progress-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .progress-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
 
-/* PROGRESS */
-.prog-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
-.prog-row span:last-child{font-weight:700;color:var(--green)}
-.prog-track{height:8px;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.08);margin-bottom:20px}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--blue));border-radius:8px;transition:width .5s ease;width:0%}
+  .sidebar-nav { padding: 10px 0; }
+  .nav-section {
+    padding: 8px 20px 4px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+  .nav-item:hover { background: var(--surface2); color: var(--text); }
+  .nav-item.active { color: var(--accent1); background: rgba(0,229,255,0.06); border-left-color: var(--accent1); }
+  .nav-item.completed { color: var(--accent3); }
+  .nav-item .nav-icon { font-size: 16px; width: 20px; text-align: center; }
+  .nav-item .nav-check { margin-left: auto; font-size: 12px; color: var(--accent3); display: none; }
+  .nav-item.completed .nav-check { display: block; }
 
-/* NAV */
-.module-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.nav-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:30px;border:1px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
-.nav-btn:hover{border-color:var(--green);color:var(--gd)}
-.nav-btn.active{background:var(--gd);border-color:var(--gd);color:#fff;box-shadow:0 4px 14px rgba(8,80,65,.3)}
-.nav-check{width:18px;height:18px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;opacity:.4;transition:all .2s;flex-shrink:0}
-.nav-btn.done .nav-check{background:#22C55E;border-color:#22C55E;color:#fff;opacity:1}
+  /* MAIN */
+  .main { margin-left: 270px; flex: 1; position: relative; z-index: 1; min-width: 0; }
 
-/* SECTIONS */
-.section{display:none}
-.section.active{display:block}
-.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.sec-head h2{font-size:1.25rem}
-.stag{background:var(--gl);color:var(--gd);font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;font-family:'DM Sans',sans-serif}
+  .topbar {
+    position: sticky; top: 0;
+    background: rgba(5,13,26,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 13px 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 50;
+  }
+  .topbar-title { font-size: 13px; color: var(--text-muted); font-family: 'Space Mono', monospace; }
+  .topbar-title span { color: var(--accent1); }
+  .topbar-actions { margin-left: auto; display: flex; gap: 10px; }
+  .btn {
+    padding: 8px 18px; border-radius: 6px; font-size: 13px;
+    font-weight: 600; cursor: pointer; transition: all 0.2s;
+    font-family: 'Outfit', sans-serif; border: none;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--accent1), var(--accent2)); color: #000; }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent1); color: var(--accent1); }
 
-/* CARDS */
-.card{background:var(--card);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow)}
-.info-box{background:var(--bl);border:1px solid #B5D4F4;border-radius:10px;padding:13px 16px;margin-bottom:18px;font-size:13px;color:var(--bd);line-height:1.7}
-.info-box strong{display:block;font-weight:600;font-size:14px;margin-bottom:2px}
+  /* MODULES */
+  .module { display: none; padding: 44px 36px; max-width: 100%; width: 100%; box-sizing: border-box; }
+  .module-inner { max-width: 860px; width: 100%; }
+  .module.active { display: block; animation: fadeInUp 0.35s ease; }
+  @keyframes fadeInUp {
+    from { opacity:0; transform: translateY(14px); }
+    to { opacity:1; transform: translateY(0); }
+  }
 
-/* VIDEO SECTION */
-.vid-alert{background:var(--al);border:1px solid #FAC775;border-radius:10px;padding:13px 16px;font-size:13px;color:#4A2800;line-height:1.7;margin-bottom:18px}
-.vid-alert strong{font-weight:600}
+  .module-hero { margin-bottom: 36px; }
+  .module-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,229,255,0.1);
+    border: 1px solid rgba(0,229,255,0.3);
+    color: var(--accent1);
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .module-hero h2 { font-size: 36px; font-weight: 900; line-height: 1.1; margin-bottom: 10px; color: #ffffff; }
+  .module-hero p { font-size: 16px; color: #c4cdd9; line-height: 1.7; max-width: 640px; }
 
-/* Upload panel */
-.upload-panel{background:var(--card);border:1px dashed var(--border);border-radius:14px;padding:24px;margin-bottom:24px;transition:border-color .2s}
-.upload-panel:hover{border-color:var(--green)}
-.upload-panel h3{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-.upload-panel p{font-size:13px;color:var(--muted);margin-bottom:16px}
-.upload-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.upload-slot{background:#F8FAFC;border:1.5px solid var(--border);border-radius:10px;padding:14px}
-.upload-slot label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
-.upload-slot input[type=text]{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;margin-bottom:6px;background:#fff;color:var(--text)}
-.upload-slot input[type=text]:focus{outline:none;border-color:var(--green)}
-.upload-slot input[type=file]{width:100%;font-size:12px;color:var(--muted)}
-.apply-btn{margin-top:14px;padding:9px 22px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
-.apply-btn:hover{background:var(--gd)}
+  /* SOL FOCUS BOX */
+  .sol-focus {
+    background: rgba(16,185,129,0.06);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .sol-focus-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .sol-focus-text { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .sol-focus-text strong { color: var(--accent3); }
 
-/* Video cards grid */
-.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px}
-.vid-card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid transparent;box-shadow:var(--shadow);transition:all .25s;cursor:pointer}
-.vid-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--green)}
-.vid-thumb{height:162px;position:relative;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center}
-.vid-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.vid-thumb .fallback{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.vid-thumb .overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;transition:background .2s}
-.vid-card:hover .overlay{background:rgba(0,0,0,.1)}
-.play-btn{width:56px;height:56px;background:rgba(255,255,255,.93);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.play-tri{border-left:22px solid var(--gd);border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px}
-.vid-body{padding:12px 14px 14px}
-.vid-body h3{font-size:13.5px;font-weight:600;margin-bottom:4px;line-height:1.4;font-family:'DM Sans',sans-serif}
-.vid-body p{font-size:12px;color:var(--muted);line-height:1.5}
-.vid-meta{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap}
-.vbadge{font-size:10.5px;background:var(--gl);color:var(--gd);border-radius:10px;padding:2px 9px;font-weight:600}
-.vdur{font-size:11px;color:var(--muted)}
-.open-yt{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;font-weight:600;color:#CC0000;background:#FFF0F0;border:1px solid #FFAAAA;border-radius:6px;padding:4px 10px;transition:all .2s}
-.open-yt:hover{background:#FFE0E0}
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(0,229,255,0.25); }
+  .card-title {
+    font-size: 15px; font-weight: 700; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+    color: #ffffff;
+  }
+  .card p { color: var(--text-dim); line-height: 1.7; font-size: 14px; }
 
-/* Video player modal area */
-.vid-player{display:none;background:var(--card);border-radius:14px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
-.vid-player.show{display:block}
-.vp-head{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-bottom:1px solid var(--border);background:#F8FAFC}
-.vp-head h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
-.vp-close{background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.vp-close:hover{background:var(--border)}
-.iframe-wrap{position:relative;padding-bottom:56.25%;height:0}
-.iframe-wrap iframe,.iframe-wrap video{position:absolute;inset:0;width:100%;height:100%;border:none}
-.local-video-wrap{position:relative;padding-bottom:56.25%;height:0;background:#000}
-.kc-bar{padding:14px 18px;border-top:1px solid var(--border)}
-.kc-bar h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:5px;font-family:'DM Sans',sans-serif}
-.kc-bar p{font-size:13px;color:#475569;line-height:1.7}
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before {
+    content:''; position:absolute; left:8px; top:0; bottom:0;
+    width:2px; background: linear-gradient(to bottom, var(--accent1), var(--accent2));
+  }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before {
+    content:''; position:absolute; left:-22px; top:4px;
+    width:12px; height:12px; border-radius:50%;
+    background: var(--accent1); border:2px solid var(--bg);
+    box-shadow: 0 0 8px var(--accent1);
+  }
+  .timeline-year { font-family:'Space Mono',monospace; font-size:12px; color:var(--accent1); margin-bottom:3px; }
+  .timeline-title { font-size:14px; font-weight:700; margin-bottom:5px; color: #ffffff; }
+  .timeline-desc { font-size:13px; color:var(--text-dim); line-height:1.6; }
 
-/* SLIDES */
-.slide-card{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:16px}
-.slide-body{min-height:350px;padding:30px 36px;display:flex;flex-direction:column;position:relative}
-.t1{background:linear-gradient(135deg,#1A0040,#534AB7)}
-.t2{background:linear-gradient(135deg,#042C53,#378ADD)}
-.t3{background:linear-gradient(135deg,#04342C,#1D9E75)}
-.t4{background:linear-gradient(135deg,#411200,#D85A30)}
-.t5{background:linear-gradient(135deg,#26215C,#7F77DD)}
-.t6{background:linear-gradient(135deg,#173404,#639922)}
-.slide-num{position:absolute;top:14px;right:18px;font-size:11px;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif}
-.slide-body h3{font-size:1.45rem;color:#fff;margin-bottom:12px;line-height:1.2}
-.slide-content{color:rgba(255,255,255,.88);font-size:14px;line-height:1.85;flex:1}
-.slide-content ul{padding-left:18px}
-.slide-content li{margin-bottom:6px}
-.slide-content strong{color:#fff;font-weight:600}
-.eq{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:11px 18px;text-align:center;font-size:15px;color:#fff;letter-spacing:.5px;margin:12px 0;font-weight:500}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:5px 12px;font-size:12px;color:#fff}
-.slide-nav{background:#fff;border-top:1px solid var(--border);padding:11px 18px;display:flex;align-items:center;justify-content:space-between}
-.s-btn{padding:8px 20px;border-radius:8px;border:1px solid var(--border);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)}
-.s-btn:hover:not(:disabled){background:var(--gd);border-color:var(--gd);color:#fff}
-.s-btn:disabled{opacity:.35;cursor:not-allowed}
-.dots{display:flex;gap:6px}
-.dot{width:9px;height:9px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
-.dot.active{background:var(--purple);transform:scale(1.4)}
+  /* SLIDE VIEWER */
+  .slide-viewer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .slide-display {
+    background: linear-gradient(135deg, #0a1628 0%, #0f1f3d 100%);
+    min-height: 340px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .slide-content {
+    display: none; text-align: center; padding: 36px;
+    width: 100%;
+  }
+  .slide-content.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInUp 0.3s ease;
+  }
+  .slide-num { font-family:'Space Mono',monospace; font-size:11px; color:var(--accent1); letter-spacing:2px; margin-bottom:14px; }
+  .slide-content h3 { font-size:24px; font-weight:800; margin-bottom:14px; line-height:1.2; color: #ffffff; }
+  .slide-content .slide-body { font-size:14px; color: #c4cdd9; line-height:1.7; max-width:560px; }
+  .slide-visual { font-size:64px; margin-bottom:16px; filter:drop-shadow(0 0 16px rgba(0,229,255,0.4)); }
+  .slide-controls {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 22px; border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .slide-dots { display:flex; gap:7px; }
+  .slide-dot { width:7px; height:7px; border-radius:50%; background:var(--border); cursor:pointer; transition:all 0.2s; }
+  .slide-dot.active { background:var(--accent1); transform:scale(1.3); }
+  .slide-nav { display:flex; gap:8px; }
+  .slide-btn {
+    width:34px; height:34px; border-radius:7px;
+    background:var(--border); border:none; color:var(--text);
+    cursor:pointer; font-size:16px; transition:all 0.2s;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .slide-btn:hover { background:var(--accent1); color:#000; }
 
-/* VOCAB */
-.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin-bottom:20px}
-.vc{background:#fff;border:1px solid var(--border);border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);min-height:78px}
-.vc:hover{border-color:var(--purple)}
-.vc.open{border-color:var(--purple);background:var(--pl)}
-.vterm{font-weight:600;font-size:14px;color:var(--purple);margin-bottom:2px}
-.vhint{font-size:11px;color:var(--muted)}
-.vdef{font-size:13px;color:#374151;line-height:1.6;margin-top:8px;border-top:1px solid rgba(83,74,183,.2);padding-top:8px;display:none}
-.vc.open .vdef{display:block}
-.vc.open .vhint{display:none}
+  /* DNA DIAGRAM */
+  .dna-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .dna-helix-svg { width:100%; max-width:580px; height:260px; }
 
-/* LAB */
-.lab-top{background:linear-gradient(90deg,#1A0040,#534AB7);padding:18px 22px;display:flex;align-items:center;gap:14px;border-radius:14px 14px 0 0}
-.lab-top h3{font-size:1.05rem;color:#fff}
-.lab-top p{font-size:12px;color:rgba(255,255,255,.75);margin-top:2px}
-.lab-tabs{display:flex;border-bottom:1px solid var(--border);background:#F8FAFC;padding:0 16px}
-.ltab{padding:11px 17px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;border:none;background:none;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-1px}
-.ltab:hover{color:var(--gd)}
-.ltab.active{color:var(--purple);border-bottom-color:var(--purple)}
-.lpanel{display:none;padding:20px 22px}
-.lpanel.active{display:block}
-.sim-box{background:var(--pl);border:1px solid #AFA9EC;border-radius:12px;min-height:200px;margin-bottom:13px;overflow:hidden;padding:16px}
-.dna-strand{font-family:monospace;font-size:15px;letter-spacing:2px;line-height:2;color:var(--purple)}
-.codon-row{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
-.codon{background:rgba(83,74,183,.15);border:1px solid var(--purple);border-radius:6px;padding:4px 10px;font-family:monospace;font-size:13px;color:var(--purple);font-weight:600}
-.aa-chip{background:var(--gl);border:1px solid var(--green);border-radius:6px;padding:4px 10px;font-size:12px;color:var(--gd);font-weight:600}
-.ctrls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.cbox{background:#F8FAFC;border-radius:8px;padding:11px 13px;border:1px solid var(--border)}
-.clbl{font-size:12px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:7px}
-.clbl .cv{color:var(--purple);font-weight:700}
-input[type=range]{-webkit-appearance:none;width:100%;height:5px;background:var(--border);border-radius:3px;outline:none}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--purple);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.meters{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:13px}
-.meter{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
-.mlbl{font-size:11px;color:var(--muted);margin-bottom:2px}
-.mnum{font-size:1.35rem;font-weight:700;color:var(--purple);font-family:'Syne',sans-serif}
-.munit{font-size:10px;color:var(--muted)}
-.run-btn{width:100%;padding:11px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;margin-bottom:11px;transition:background .2s}
-.run-btn:hover{background:#26215C}
-.obs{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:11px 13px;font-size:13px;color:#475569;line-height:1.7;min-height:58px}
-.dtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:13px}
-.dtable th{background:#F8FAFC;padding:8px 11px;text-align:left;font-weight:600;border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
-.dtable td{padding:8px 11px;border:1px solid var(--border)}
-.pos{color:#3B6D11;font-weight:500}.neg{color:#A32D2D;font-weight:500}.neu{color:var(--muted)}
-.concl{background:var(--pl);border:1px solid #AFA9EC;border-radius:8px;padding:13px 15px;font-size:13px;color:#26215C;line-height:1.7}
-.concl strong{display:block;font-weight:600;margin-bottom:3px}
+  /* COMPARE TABLE */
+  .compare-table { width:100%; border-collapse:collapse; margin-bottom:20px; font-size:14px; }
+  .compare-table th {
+    padding: 12px 18px; text-align:left; font-size:12px;
+    font-weight:700; letter-spacing:1px; border-bottom:2px solid var(--border);
+  }
+  .compare-table th:first-child { color:var(--text-muted); }
+  .compare-table th:nth-child(2) { color:var(--accent1); background:rgba(0,229,255,0.05); }
+  .compare-table th:nth-child(3) { color:var(--accent2); background:rgba(124,58,237,0.05); }
+  .compare-table td { padding:11px 18px; border-bottom:1px solid var(--border); color:var(--text-dim); }
+  .compare-table td:first-child { font-weight:600; color:var(--text); font-size:13px; }
+  .compare-table td:nth-child(2) { background:rgba(0,229,255,0.03); }
+  .compare-table td:nth-child(3) { background:rgba(124,58,237,0.03); }
 
-/* Sequence builder */
-.seq-input{width:100%;padding:10px 12px;border:2px solid var(--purple);border-radius:8px;font-size:15px;font-family:monospace;color:var(--text);letter-spacing:2px;text-transform:uppercase;background:#fff;margin-bottom:8px}
-.seq-input:focus{outline:none;border-color:#26215C}
-.seq-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;display:block}
+  /* VOCAB */
+  .vocab-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; margin-bottom:20px; }
+  .vocab-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; padding:18px; cursor:pointer; transition:all 0.2s;
+    position:relative; overflow:hidden;
+  }
+  .vocab-card::before {
+    content:''; position:absolute; top:0; left:0; right:0;
+    height:3px; background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  }
+  .vocab-card:hover { border-color:var(--accent1); transform:translateY(-2px); box-shadow:var(--glow); }
+  .vocab-term { font-family:'Space Mono',monospace; font-size:13px; font-weight:700; color:var(--accent1); margin-bottom:7px; }
+  .vocab-def { font-size:13px; color:var(--text-dim); line-height:1.5; }
+  .vocab-category {
+    display:inline-block; font-size:10px; padding:2px 7px;
+    border-radius:3px; margin-top:8px;
+    font-family:'Space Mono',monospace; letter-spacing:1px; text-transform:uppercase;
+  }
 
-/* QUIZ */
-.qwrap{max-width:680px}
-.qmeta{font-size:13px;color:var(--muted);margin-bottom:13px;display:flex;align-items:center;gap:8px}
-.qc{font-weight:700;color:var(--purple)}
-.qcard{background:#fff;border-radius:14px;padding:22px;margin-bottom:13px;box-shadow:var(--shadow);border:1px solid var(--border)}
-.qtext{font-size:15px;font-weight:600;margin-bottom:15px;line-height:1.6;font-family:'DM Sans',sans-serif}
-.opts{display:flex;flex-direction:column;gap:8px}
-.opt{padding:11px 15px;border:1px solid var(--border);border-radius:10px;background:#FAFAFA;font-size:14px;font-family:'DM Sans',sans-serif;text-align:left;cursor:pointer;transition:all .18s;color:var(--text);line-height:1.4}
-.opt:hover:not(:disabled){border-color:var(--purple);background:var(--pl);color:var(--purple)}
-.opt.correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
-.opt.wrong{background:#FEE2E2;border-color:#DC2626;color:#7F1D1D}
-.opt.show-correct{background:#DCFCE7;border-color:#16A34A;color:#14532D}
-.opt:disabled{cursor:not-allowed}
-.fb{margin-top:11px;padding:10px 13px;border-radius:8px;font-size:13px;line-height:1.65;display:none}
-.fb.show{display:block}
-.fb.correct{background:#DCFCE7;color:#14532D;border:1px solid #86EFAC}
-.fb.wrong{background:#FEE2E2;color:#7F1D1D;border:1px solid #FCA5A5}
-.qbtns{display:flex;gap:10px;margin-top:4px}
-.qbtn{padding:10px 22px;border-radius:10px;border:1px solid var(--purple);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;background:var(--purple);color:#fff}
-.qbtn:hover{background:#26215C;border-color:#26215C}
-.qbtn.ol{background:#fff;color:var(--purple)}
-.qbtn.ol:hover{background:var(--pl)}
+  /* VIDEO */
+  .video-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+  .video-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; overflow:hidden; transition:all 0.2s;
+    text-decoration:none; display:block; cursor:pointer;
+  }
+  .video-card:hover { border-color:var(--accent1); transform:translateY(-2px); box-shadow:var(--glow); }
+  .video-thumb {
+    aspect-ratio:16/9; background:var(--surface2);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+    flex-direction:column; gap:8px;
+  }
+  .video-thumb-img {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; opacity:0.5;
+  }
+  .video-play-btn {
+    position:relative; z-index:2;
+    width:56px; height:56px; border-radius:50%;
+    background:rgba(255,0,0,0.9);
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; color:#fff;
+    box-shadow:0 4px 20px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+  }
+  .video-card:hover .video-play-btn { transform:scale(1.1); }
+  .video-thumb-label {
+    position:relative; z-index:2;
+    font-size:11px; color:rgba(255,255,255,0.8);
+    font-family:'Space Mono',monospace;
+    letter-spacing:1px;
+    background:rgba(0,0,0,0.5);
+    padding:3px 10px; border-radius:10px;
+  }
+  .video-info { padding:12px 14px; }
+  .video-title { font-size:13px; font-weight:600; margin-bottom:3px; color:var(--text); }
+  .video-meta { font-size:11px; color:var(--text-muted); font-family:'Space Mono',monospace; }
 
-/* SCORE */
-.score-card{display:none;background:#fff;border-radius:14px;padding:34px;text-align:center;box-shadow:var(--shadow-md);border:1px solid var(--border)}
-.score-card.show{display:block}
-.score-ring{width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.9rem;font-weight:700;font-family:'Syne',sans-serif}
-.sg{background:#DCFCE7;color:#14532D;border:4px solid #22C55E}
-.so{background:var(--al);color:#633806;border:4px solid #F59E0B}
-.sl{background:#FEE2E2;color:#7F1D1D;border:4px solid #EF4444}
-.sc-title{font-size:1.2rem;margin-bottom:5px}
-.sc-msg{font-size:13.5px;color:var(--muted);margin-bottom:22px}
-.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:22px}
-.stat{background:#F8FAFC;border-radius:8px;padding:13px 10px}
-.snum{font-size:1.45rem;font-weight:700;font-family:'Syne',sans-serif}
-.slbl{font-size:11px;color:var(--muted);margin-top:2px}
-.sc-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  /* LAB */
+  .lab-container {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:14px; overflow:visible; margin-bottom:20px;
+  }
+  .lab-header {
+    background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(0,229,255,0.08));
+    padding:18px 24px; border-bottom:1px solid var(--border);
+    display:flex; align-items:center; gap:10px;
+  }
+  .lab-badge {
+    background:var(--accent3); color:#000; font-size:10px; font-weight:700;
+    padding:3px 8px; border-radius:3px;
+    font-family:'Space Mono',monospace; letter-spacing:1px;
+  }
+  .lab-title { font-size:16px; font-weight:700; color: #ffffff; }
+  .lab-body { padding:24px; position:relative; z-index:5; }
+  .lab-instructions {
+    background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.2);
+    border-radius:8px; padding:14px; font-size:14px;
+    color:var(--text-dim); line-height:1.6; margin-bottom:20px;
+  }
+  .dna-builder { display:grid; grid-template-columns:1fr 1fr; gap:20px; position:relative; z-index:5; }
+  .nucleotide-palette { background:var(--surface2); border-radius:10px; padding:18px; }
+  .palette-title { font-size:11px; font-weight:700; margin-bottom:12px; color:var(--text-muted); font-family:'Space Mono',monospace; letter-spacing:1px; text-transform:uppercase; }
+  .nucleotides { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .nucleotide {
+    width:48px; height:48px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:18px; cursor:pointer; transition:all 0.2s;
+    font-family:'Space Mono',monospace; border:2px solid transparent; user-select:none;
+    pointer-events:auto; position:relative; z-index:10;
+  }
+  .nucleotide:hover { transform:scale(1.1); }
+  .n-A { background:rgba(239,68,68,0.18); color:#ef4444; border-color:rgba(239,68,68,0.35); }
+  .n-T { background:rgba(245,158,11,0.18); color:#f59e0b; border-color:rgba(245,158,11,0.35); }
+  .n-G { background:rgba(16,185,129,0.18); color:#10b981; border-color:rgba(16,185,129,0.35); }
+  .n-C { background:rgba(0,229,255,0.18); color:#00e5ff; border-color:rgba(0,229,255,0.35); }
+  .n-U { background:rgba(124,58,237,0.18); color:#7c3aed; border-color:rgba(124,58,237,0.35); }
+  .strand-display { background:var(--surface2); border-radius:10px; padding:18px; min-height:180px; }
+  .strand-row { display:flex; gap:5px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+  .strand-label { font-size:11px; color:var(--text-muted); font-family:'Space Mono',monospace; width:65px; }
+  .strand-nt {
+    width:32px; height:32px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:13px; font-family:'Space Mono',monospace;
+  }
+  .lab-result {
+    margin-top:14px; background:rgba(0,229,255,0.06);
+    border:1px solid rgba(0,229,255,0.2); border-radius:8px;
+    padding:12px; font-size:13px; color:var(--accent1);
+    font-family:'Space Mono',monospace; min-height:44px;
+    line-height: 1.5;
+  }
+  .lab-actions { display:flex; gap:10px; margin-top:14px; }
+  .lab-btn {
+    padding:8px 14px; border-radius:6px; font-size:13px;
+    font-weight:600; cursor:pointer; border:none;
+    font-family:'Outfit',sans-serif; transition:all 0.2s;
+  }
+  .lab-btn-primary { background:var(--accent3); color:#000; pointer-events:auto; position:relative; z-index:10; }
+  .lab-btn-primary:hover { opacity:0.85; }
+  .lab-btn-ghost { background:var(--surface); color:var(--text-dim); border:1px solid var(--border); }
+  .lab-btn-ghost:hover { border-color:var(--accent3); color:var(--accent3); }
 
-/* COMPLETE BTN */
-.done-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:11px 26px;background:var(--purple);color:#fff;border:none;border-radius:30px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(83,74,183,.3);transition:all .2s}
-.done-btn:hover{background:#26215C;transform:translateY(-1px)}
-.done-btn.finished{background:#22C55E;pointer-events:none}
+  /* STEPS */
+  .process-steps { margin-bottom:20px; }
+  .step-item { display:flex; gap:16px; margin-bottom:18px; align-items:flex-start; }
+  .step-num {
+    width:38px; height:38px; border-radius:9px;
+    background:linear-gradient(135deg,var(--accent1),var(--accent2));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:15px; color:#000; flex-shrink:0;
+    font-family:'Space Mono',monospace;
+  }
+  .step-content { flex:1; }
+  .step-title { font-size:14px; font-weight:700; margin-bottom:5px; color: #ffffff; }
+  .step-desc { font-size:13px; color:var(--text-dim); line-height:1.6; }
 
-/* ASSIGNMENT */
-.assign-hero{background:linear-gradient(135deg,#1A0040,#3B0080,#534AB7);border-radius:14px;padding:24px 28px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden}
-.assign-hero::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%}
-.assign-hero h3{font-size:1.2rem;color:#fff;margin-bottom:4px}
-.assign-hero p{font-size:13px;color:rgba(255,255,255,.78);line-height:1.6}
-.assign-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.ameta{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.9);font-weight:500}
-.concept-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:22px}
-.concept-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
-.concept-card .cc-icon{font-size:1.6rem;margin-bottom:6px}
-.concept-card h4{font-size:13px;font-weight:700;color:var(--purple);margin-bottom:4px;font-family:'DM Sans',sans-serif}
-.concept-card p{font-size:12px;color:var(--muted);line-height:1.55}
-.part-card{background:#fff;border:1px solid var(--border);border-radius:14px;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
-.part-header{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);background:#F8FAFC;cursor:pointer;transition:background .2s;user-select:none}
-.part-header:hover{background:#F0F4F8}
-.part-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;flex-shrink:0;color:#fff}
-.pn1{background:var(--purple)}.pn2{background:var(--blue)}.pn3{background:var(--green)}.pn4{background:var(--coral)}.pn5{background:var(--amber)}
-.part-header h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;flex:1}
-.part-header .pts{font-size:11px;font-weight:600;padding:3px 9px;border-radius:8px;background:var(--pl);color:var(--purple)}
-.part-toggle{font-size:18px;color:var(--muted);transition:transform .3s;line-height:1}
-.part-body{padding:18px 20px;display:none}
-.part-body.open{display:block}
-.q-prompt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.5;font-family:'DM Sans',sans-serif}
-.q-hint{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.5;font-style:italic}
-.a-textarea{width:100%;min-height:90px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);resize:vertical;background:#FAFAFA;line-height:1.6;transition:border-color .2s}
-.a-textarea:focus{outline:none;border-color:var(--purple);background:#fff}
-.a-textarea.filled{border-color:var(--purple);background:#fff}
-.q-divider{border:none;border-top:1px dashed var(--border);margin:16px 0}
-.rubric-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px}
-.rubric-table th{background:#F8FAFC;padding:7px 10px;text-align:left;border:1px solid var(--border);font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.35px;font-size:11px;font-family:'DM Sans',sans-serif}
-.rubric-table td{padding:7px 10px;border:1px solid var(--border);vertical-align:top;line-height:1.5}
-.rubric-table tr:nth-child(even) td{background:#FAFAFA}
-.submit-bar{background:linear-gradient(135deg,#1A0040,#3B0080);border-radius:14px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
-.submit-bar p{color:rgba(255,255,255,.8);font-size:13px;line-height:1.5}
-.submit-bar strong{color:#fff;display:block;font-size:15px;margin-bottom:2px}
-.submit-btns{display:flex;gap:10px;flex-wrap:wrap}
-.sbtn{padding:10px 22px;border-radius:10px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
-.sbtn.primary{background:var(--purple);color:#fff}
-.sbtn.primary:hover{background:#fff;color:var(--purple)}
-.sbtn.secondary{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff}
-.sbtn.secondary:hover{background:rgba(255,255,255,.25)}
-.saved-msg{font-size:12px;color:var(--green);font-weight:600;display:none;align-items:center;gap:4px}
-.word-count{font-size:11px;color:var(--muted);text-align:right;margin-top:3px}
-.mc-opts{display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
-.mc-opt{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;background:#FAFAFA}
-.mc-opt:hover{border-color:var(--purple);background:var(--pl)}
-.mc-opt input[type=radio]{accent-color:var(--purple);width:15px;height:15px;flex-shrink:0}
-.mc-opt.selected{border-color:var(--purple);background:var(--pl)}
-.mc-opt label{font-size:13.5px;cursor:pointer;line-height:1.4}
-.fill-blank{display:inline-block;width:160px;border:none;border-bottom:2px solid var(--purple);background:transparent;font-size:14px;font-family:'DM Sans',sans-serif;padding:2px 6px;color:var(--purple);outline:none;vertical-align:middle;font-weight:600}
-.fill-blank:focus{border-bottom-color:var(--blue)}
-.fill-sent{font-size:14px;line-height:2.2;margin-bottom:8px}
-.matching-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
-.match-col h4{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-family:'DM Sans',sans-serif}
-.match-item{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:13.5px}
-.match-select{padding:5px 8px;border:1.5px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;background:#fff;color:var(--text);cursor:pointer;flex-shrink:0}
-.match-select:focus{outline:none;border-color:var(--purple)}
-.footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--muted)}
+  /* RNA CARDS */
+  .rna-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
+  .rna-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:20px; transition:all 0.2s;
+  }
+  .rna-card:hover { transform:translateY(-3px); }
+  .rna-icon { font-size:28px; margin-bottom:10px; }
+  .rna-name { font-size:14px; font-weight:700; margin-bottom:3px; color: #ffffff; }
+  .rna-abbr { font-family:'Space Mono',monospace; font-size:12px; color:var(--accent1); margin-bottom:8px; }
+  .rna-desc { font-size:13px; color:var(--text-dim); line-height:1.5; }
 
-@media print{
-  .module-nav,.prog-track,.prog-row,.hero-tags,.vid-alert,.upload-panel,.done-btn,.submit-bar,.nav-check,
-  .section:not(#sec-assignment){display:none!important}
-  #sec-assignment{display:block!important}
-  .part-body{display:block!important}
-  .hero{background:#1A0040!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .assign-hero{background:#3B0080!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .a-textarea{border:1px solid #ccc!important;min-height:60px}
-  body{background:#fff}
-  .wrap{padding:10px}
-  .part-card{break-inside:avoid}
-}
-@media(max-width:580px){
-  .hero{padding:22px 20px}.hero h1{font-size:1.4rem}
-  .ctrls{grid-template-columns:1fr}
-  .meters{grid-template-columns:1fr 1fr}
-  .stats{grid-template-columns:1fr 1fr}
-  .slide-body{padding:22px 20px}
-  .matching-grid{grid-template-columns:1fr}
-}
+  /* QUIZ */
+  .quiz-header {
+    background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(239,68,68,0.08));
+    border:1px solid rgba(124,58,237,0.3); border-radius:12px;
+    padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:14px;
+  }
+  .quiz-icon { font-size:32px; }
+  .quiz-meta h3 { font-size:18px; font-weight:800; margin-bottom:4px; color: #ffffff; }
+  .quiz-meta p { color:var(--text-dim); font-size:13px; }
+  .quiz-stats { margin-left:auto; text-align:right; }
+  .quiz-score-display { font-family:'Space Mono',monospace; font-size:26px; font-weight:700; color:var(--accent2); }
+  .quiz-stats p { font-size:12px; color:var(--text-muted); }
+  .question-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:22px; margin-bottom:14px; transition:border-color 0.2s;
+  }
+  .question-card.answered-correct { border-color:var(--accent3); background:rgba(16,185,129,0.04); }
+  .question-card.answered-wrong { border-color:var(--accent5); background:rgba(239,68,68,0.04); }
+  .question-num { font-family:'Space Mono',monospace; font-size:10px; color:var(--text-muted); letter-spacing:2px; margin-bottom:8px; }
+  .question-text { font-size:15px; font-weight:600; margin-bottom:16px; line-height:1.5; color: #ffffff; }
+  .options { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .option {
+    padding:10px 14px; background:var(--surface2); border:1px solid var(--border);
+    border-radius:8px; cursor:pointer; font-size:13px; transition:all 0.2s;
+    color:var(--text-dim); display:flex; align-items:center; gap:8px;
+  }
+  .option:hover { border-color:var(--accent2); color:var(--text); }
+  .option.selected-correct { background:rgba(16,185,129,0.1); border-color:var(--accent3); color:var(--accent3); }
+  .option.selected-wrong { background:rgba(239,68,68,0.1); border-color:var(--accent5); color:var(--accent5); }
+  .option.show-correct { background:rgba(16,185,129,0.1); border-color:var(--accent3); color:var(--accent3); }
+  .option-letter {
+    width:22px; height:22px; border-radius:50%; background:var(--border);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700; font-family:'Space Mono',monospace; flex-shrink:0;
+  }
+  .feedback {
+    margin-top:10px; padding:10px 14px; border-radius:6px;
+    font-size:13px; line-height:1.5; display:none;
+  }
+  .feedback.show { display:block; }
+  .feedback.correct { background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); color:var(--accent3); }
+  .feedback.wrong { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:var(--accent5); }
+  .quiz-submit-wrap { text-align:center; margin-top:22px; }
+  .quiz-results {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:14px; padding:36px; text-align:center;
+    margin-top:20px; display:none;
+  }
+  .quiz-results.show { display:block; animation:fadeInUp 0.4s ease; }
+  .result-score { font-size:64px; font-weight:900; font-family:'Space Mono',monospace; line-height:1; }
+  .result-label { font-size:18px; font-weight:700; margin:10px 0 6px; color: #ffffff; }
+  .result-sub { color:var(--text-dim); font-size:14px; margin-bottom:20px; }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.05));
+    border:1px solid rgba(0,229,255,0.18); border-radius:10px;
+    padding:20px; margin-bottom:20px;
+  }
+  .highlight-box h4 { font-size:14px; font-weight:700; margin-bottom:9px; color:var(--accent1); }
+  .highlight-box ul { list-style:none; padding:0; }
+  .highlight-box li {
+    padding:5px 0; color:var(--text-dim); font-size:13px;
+    display:flex; align-items:flex-start; gap:8px;
+  }
+  .highlight-box li::before { content:'→'; color:var(--accent1); flex-shrink:0; }
+
+  /* INFO BOX */
+  .info-box {
+    background:rgba(245,158,11,0.06); border:1px solid rgba(245,158,11,0.22);
+    border-radius:10px; padding:16px; font-size:13px;
+    line-height:1.6; color:var(--text-dim); margin-bottom:18px;
+    display:flex; gap:10px;
+  }
+  .info-box-icon { font-size:18px; flex-shrink:0; }
+
+  /* CODON TABLE */
+  .codon-table-wrap { overflow-x:auto; }
+  .codon-table { width:100%; border-collapse:collapse; font-family:'Space Mono',monospace; font-size:12px; }
+  .codon-table th, .codon-table td { padding:7px 10px; border:1px solid var(--border); text-align:center; }
+  .codon-table th { background:var(--surface2); color:var(--accent1); }
+  .codon-table td { color:var(--text-dim); }
+
+  /* MOBILE */
+  .menu-toggle {
+    display:none; position:fixed; top:12px; left:12px;
+    width:38px; height:38px; background:var(--surface);
+    border:1px solid var(--border); border-radius:8px;
+    cursor:pointer; z-index:200; align-items:center;
+    justify-content:center; font-size:17px; color:var(--text);
+  }
+  @media (max-width:768px) {
+    .sidebar { transform:translateX(-100%); }
+    .sidebar.open { transform:translateX(0); }
+    .main { margin-left:0; }
+    .menu-toggle { display:flex; }
+    .module { padding:22px 18px; }
+    .topbar { padding:13px 18px; }
+    .dna-builder, .options, .rna-cards, .video-grid { grid-template-columns:1fr; }
+    .module-hero h2 { font-size:26px; }
+  }
+  ::-webkit-scrollbar { width:5px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+  ::-webkit-scrollbar-thumb:hover { background:var(--accent1); }
+
+  /* BioLearn9 site header integration — offset fixed/sticky elements */
+  .sidebar { top: 56px; height: calc(100vh - 56px); }
+  .topbar { top: 56px; }
+  .menu-toggle { top: 68px; }
 </style>
 </head>
 <body>
-  <header>
-    <div class="top-bar">
-      <a class="logo" href="https://sabisudh-droid.github.io/training/" aria-label="Back to training catalog">BIOLEARN<span>9</span></a>
-      <div class="nav-links">
-        <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
-        <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
-        <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
-        <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">BIO.6</a>
-      </div>
-    </div>
-  </header>
-<div class="wrap">
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-icon">🧬</div>
-    <div>
-      <h1>DNA, RNA &amp; Protein Synthesis</h1>
-      <p>9th Grade Biology · Self-Paced Learning Module</p>
-      <div class="hero-tags">
-        <span class="htag">Virginia SOL BIO.6</span>
-        <span class="htag">6 Modules</span>
-        <span class="htag">10-Question Quiz</span>
-        <span class="htag">Virtual Lab</span>
-        <span class="htag">Assignment</span>
-      </div>
+<header>
+  <div class="top-bar">
+    <a class="logo" href="https://sabisudh-droid.github.io/training/">BIOLEARN<span>9</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/">Catalog</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/about.html">About</a>
+      <a class="nav-link" href="https://sabisudh-droid.github.io/training/contact.html">Contact</a>
+      <a class="catalog-badge" href="https://sabisudh-droid.github.io/training/#catalog">BIO.6</a>
     </div>
   </div>
-</div>
+</header>
 
-<!-- PROGRESS -->
-<div class="prog-row"><span>Module Progress</span><span id="progTxt">0 of 6 complete</span></div>
-<div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
 
-<!-- NAV -->
-<div class="module-nav">
-  <button class="nav-btn active" data-s="videos" onclick="showSec('videos',this)">▶ Videos <span class="nav-check" id="chk-videos"></span></button>
-  <button class="nav-btn" data-s="slides" onclick="showSec('slides',this)">📊 Slides <span class="nav-check" id="chk-slides"></span></button>
-  <button class="nav-btn" data-s="vocab" onclick="showSec('vocab',this)">📖 Vocabulary <span class="nav-check" id="chk-vocab"></span></button>
-  <button class="nav-btn" data-s="lab" onclick="showSec('lab',this)">🔬 Virtual Lab <span class="nav-check" id="chk-lab"></span></button>
-  <button class="nav-btn" data-s="quiz" onclick="showSec('quiz',this)">✏️ Quiz <span class="nav-check" id="chk-quiz"></span></button>
-  <button class="nav-btn" data-s="assignment" onclick="showSec('assignment',this)">📋 Assignment <span class="nav-check" id="chk-assignment"></span></button>
-</div>
-
-<!-- ═══════════════════════════════════════
-     VIDEOS
-═══════════════════════════════════════ -->
-<div class="section active" id="sec-videos">
-  <div class="sec-head"><h2>Video Lessons</h2><span class="stag">3 Videos</span></div>
-
-  <div class="info-box">
-    <strong>Learning Objectives — Virginia SOL BIO.6</strong>
-    Students will understand the structure of DNA, explain how DNA is replicated, describe how genetic information flows from DNA to RNA to protein (the Central Dogma), and explain how mutations affect proteins and traits.
+<div class="app">
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">🧬 BioLearn</div>
+    <h1>DNA & Protein Synthesis</h1>
+    <span class="sol-badge">Virginia Biology SOL</span>
   </div>
-
-  <div class="vid-alert">
-    <strong>📺 How Videos Work in This Module:</strong>
-    The default videos are Amoeba Sisters links that open directly on YouTube (their videos are not embeddable by design). You can also <strong>upload your own video files</strong> below — once uploaded, they play right inside this page with no YouTube needed. This is the best option for classroom use.
+  <div class="progress-bar-wrap">
+    <div class="progress-label"><span>PROGRESS</span><span id="progressPct">0%</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
   </div>
-
-  <!-- UPLOAD PANEL -->
-  <div class="upload-panel">
-    <h3>🎬 Upload Your Own Videos <span style="font-size:11px;background:var(--pl);color:var(--purple);padding:2px 8px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600">Optional</span></h3>
-    <p>Upload MP4, WebM, or any video file from your computer. Once applied, the video plays inside this lesson — no internet needed. You can also paste a custom YouTube URL for any embeddable video.</p>
-    <div class="upload-slots">
-      <div class="upload-slot">
-        <label>Video 1 — DNA Structure &amp; Replication</label>
-        <input type="text" id="url1" placeholder="Paste YouTube URL here (optional)">
-        <input type="file" id="file1" accept="video/*" onchange="previewFile(1)">
-        <div id="file1name" style="font-size:11px;color:var(--green);margin-top:4px"></div>
-      </div>
-      <div class="upload-slot">
-        <label>Video 2 — Transcription &amp; Translation</label>
-        <input type="text" id="url2" placeholder="Paste YouTube URL here (optional)">
-        <input type="file" id="file2" accept="video/*" onchange="previewFile(2)">
-        <div id="file2name" style="font-size:11px;color:var(--green);margin-top:4px"></div>
-      </div>
-      <div class="upload-slot">
-        <label>Video 3 — Mutations</label>
-        <input type="text" id="url3" placeholder="Paste YouTube URL here (optional)">
-        <input type="file" id="file3" accept="video/*" onchange="previewFile(3)">
-        <div id="file3name" style="font-size:11px;color:var(--green);margin-top:4px"></div>
-      </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">Start Here</div>
+    <div class="nav-item active" onclick="showModule('intro')">
+      <span class="nav-icon">🏠</span><span>Overview</span><span class="nav-check">✓</span>
     </div>
-    <button class="apply-btn" onclick="applyCustomVideos()">✓ Apply Videos</button>
-    <span id="applyMsg" style="font-size:12px;color:var(--green);margin-left:10px;display:none">✓ Applied!</span>
-  </div>
-
-  <!-- PLAYER -->
-  <div class="vid-player" id="vidPlayer">
-    <div class="vp-head">
-      <h3 id="vpTitle">Video</h3>
-      <button class="vp-close" onclick="closeVid()">✕</button>
+    <div class="nav-item" onclick="showModule('vocab')">
+      <span class="nav-icon">📖</span><span>Vocabulary</span><span class="nav-check">✓</span>
     </div>
-    <div id="vpContent"></div>
-    <div class="kc-bar">
-      <h4>Key Concepts</h4>
-      <p id="vpConcepts"></p>
+
+    <div class="nav-section">Modules</div>
+    <div class="nav-item" onclick="showModule('discovery')">
+      <span class="nav-icon">🔬</span><span>Discovery of DNA</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('models')">
+      <span class="nav-icon">🧪</span><span>Models of DNA</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('structure')">
+      <span class="nav-icon">🔩</span><span>DNA Structure</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('replication')">
+      <span class="nav-icon">♻️</span><span>DNA Replication</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('dna-rna')">
+      <span class="nav-icon">⚖️</span><span>DNA vs RNA</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('rna-types')">
+      <span class="nav-icon">🧵</span><span>Types of RNA</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('transcription')">
+      <span class="nav-icon">✏️</span><span>Transcription</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('translation')">
+      <span class="nav-icon">🔄</span><span>Translation</span><span class="nav-check">✓</span>
+    </div>
+
+    <div class="nav-section">Practice</div>
+    <div class="nav-item" onclick="showModule('lab')">
+      <span class="nav-icon">⚗️</span><span>Virtual Lab</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="showModule('quiz')">
+      <span class="nav-icon">📝</span><span>SOL Quiz</span><span class="nav-check">✓</span>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title">Module: <span id="currentModuleTitle">Overview</span></div>
+    <div class="topbar-actions">
+      <button class="btn btn-ghost" onclick="prevModule()">← Prev</button>
+      <button class="btn btn-primary" onclick="nextModule()">Next →</button>
     </div>
   </div>
 
-  <!-- VIDEO CARDS -->
-  <div class="vid-grid" id="vidGrid">
-    <div class="vid-card" id="vcard1" onclick="playVid(1)">
-      <div class="vid-thumb">
-        <img src="https://img.youtube.com/vi/JQByjprj_mU/hqdefault.jpg" alt="DNA vs RNA" onerror="this.outerHTML='<div class=\'fallback\' style=\'background:linear-gradient(135deg,#1A0040,#534AB7);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px\'><span style=\'font-size:2.5rem\'>🧬</span><span style=\'color:rgba(255,255,255,.7);font-size:11px\'>DNA Structure</span></div>'">
-        <div class="overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+  <!-- INTRO -->
+  <div class="module active" id="mod-intro">
+    <div class="module-hero">
+      <div class="module-tag">🧬 Virginia Biology SOL</div>
+      <h2>DNA & Protein Synthesis</h2>
+      <p>A self-paced lesson aligned to Virginia Biology SOL BIO.3 — exploring how DNA stores genetic information and directs protein synthesis.</p>
+    </div>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text">
+        <strong>SOL BIO.3 Focus:</strong> The student will investigate and understand that DNA has structure and is the foundation for protein synthesis, and that the structural model of DNA has developed over time.
       </div>
-      <div class="vid-body">
-        <h3 id="vtitle1">DNA vs. RNA — Amoeba Sisters</h3>
-        <p id="vdesc1">Double helix structure, nucleotides, base pairing rules, DNA replication, and differences between DNA and RNA</p>
-        <div class="vid-meta">
-          <span class="vbadge" id="vsource1">Amoeba Sisters</span>
-          <span class="vdur">~8 min</span>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 What You Will Learn</div>
+      <div class="highlight-box" style="margin-bottom:0;border:none;padding:0;background:none;">
+        <ul>
+          <li>How scientists discovered that DNA is the genetic material</li>
+          <li>How the double helix model of DNA was developed</li>
+          <li>The structure of DNA — nucleotides, base pairing, and the double helix</li>
+          <li>How DNA replicates (copies itself) before cell division</li>
+          <li>The differences between DNA and RNA</li>
+          <li>The three types of RNA: mRNA, tRNA, and rRNA</li>
+          <li>How transcription converts DNA → mRNA</li>
+          <li>How translation converts mRNA → protein</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:6px;">📚</div>
+        <div style="font-weight:700;margin-bottom:3px;">8 Modules</div>
+        <div style="color:var(--text-muted);font-size:12px;">Self-paced content</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:6px;">⚗️</div>
+        <div style="font-weight:700;margin-bottom:3px;">Virtual Lab</div>
+        <div style="color:var(--text-muted);font-size:12px;">DNA Builder & Codon Decoder</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:6px;">📝</div>
+        <div style="font-weight:700;margin-bottom:3px;">SOL Quiz</div>
+        <div style="color:var(--text-muted);font-size:12px;">10 SOL-style questions</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button class="btn btn-primary" style="padding:13px 32px;font-size:15px;" onclick="showModule('vocab')">Start Learning →</button>
+    </div>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="module" id="mod-vocab">
+    <div class="module-hero">
+      <div class="module-tag">📖 Vocabulary</div>
+      <h2>Key Terms</h2>
+      <p>Learn these terms — they appear on the Virginia Biology SOL and are essential for understanding DNA and protein synthesis.</p>
+    </div>
+    <div class="vocab-grid">
+      <div class="vocab-card">
+        <div class="vocab-term">DNA</div>
+        <div class="vocab-def">Deoxyribonucleic Acid — the molecule that carries genetic instructions for the growth, development, and function of all living things.</div>
+        <span class="vocab-category" style="background:rgba(0,229,255,0.1);color:var(--accent1);">Core</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Nucleotide</div>
+        <div class="vocab-def">The building block (monomer) of DNA and RNA. Each nucleotide has three parts: a sugar, a phosphate group, and a nitrogenous base.</div>
+        <span class="vocab-category" style="background:rgba(0,229,255,0.1);color:var(--accent1);">Structure</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Double Helix</div>
+        <div class="vocab-def">The twisted ladder shape of DNA. Two strands of nucleotides are held together by hydrogen bonds between base pairs.</div>
+        <span class="vocab-category" style="background:rgba(0,229,255,0.1);color:var(--accent1);">Structure</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Base Pairing</div>
+        <div class="vocab-def">The rule that A pairs with T, and G pairs with C in DNA. In RNA, A pairs with U. These are held together by hydrogen bonds.</div>
+        <span class="vocab-category" style="background:rgba(0,229,255,0.1);color:var(--accent1);">Structure</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Complementary Strand</div>
+        <div class="vocab-def">A strand of DNA or RNA whose base sequence matches and pairs with another strand following base pairing rules.</div>
+        <span class="vocab-category" style="background:rgba(0,229,255,0.1);color:var(--accent1);">Structure</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">DNA Replication</div>
+        <div class="vocab-def">The process by which DNA makes an exact copy of itself before a cell divides, so each new cell gets complete genetic information.</div>
+        <span class="vocab-category" style="background:rgba(16,185,129,0.1);color:var(--accent3);">Process</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">RNA</div>
+        <div class="vocab-def">Ribonucleic Acid — a single-stranded molecule that carries information from DNA and helps build proteins. Contains uracil (U) instead of thymine.</div>
+        <span class="vocab-category" style="background:rgba(124,58,237,0.1);color:var(--accent2);">RNA</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">mRNA</div>
+        <div class="vocab-def">Messenger RNA — copies the DNA code and carries it from the nucleus to the ribosome where proteins are made.</div>
+        <span class="vocab-category" style="background:rgba(124,58,237,0.1);color:var(--accent2);">RNA</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">tRNA</div>
+        <div class="vocab-def">Transfer RNA — carries amino acids to the ribosome and matches them to the correct codon on the mRNA during translation.</div>
+        <span class="vocab-category" style="background:rgba(124,58,237,0.1);color:var(--accent2);">RNA</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">rRNA</div>
+        <div class="vocab-def">Ribosomal RNA — makes up the ribosome structure. The ribosome is where proteins are assembled during translation.</div>
+        <span class="vocab-category" style="background:rgba(124,58,237,0.1);color:var(--accent2);">RNA</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Transcription</div>
+        <div class="vocab-def">The first step of protein synthesis — DNA is used as a template to make mRNA. Happens in the nucleus.</div>
+        <span class="vocab-category" style="background:rgba(16,185,129,0.1);color:var(--accent3);">Process</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Translation</div>
+        <div class="vocab-def">The second step of protein synthesis — the ribosome reads the mRNA and uses tRNA to build a chain of amino acids (a protein).</div>
+        <span class="vocab-category" style="background:rgba(16,185,129,0.1);color:var(--accent3);">Process</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Codon</div>
+        <div class="vocab-def">A group of three mRNA bases that codes for one specific amino acid. AUG is the start codon; UAA, UAG, UGA are stop codons.</div>
+        <span class="vocab-category" style="background:rgba(245,158,11,0.1);color:var(--accent4);">Genetic Code</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Amino Acid</div>
+        <div class="vocab-def">The building blocks of proteins. Each codon on mRNA codes for one amino acid. Amino acids are linked together to form a protein chain.</div>
+        <span class="vocab-category" style="background:rgba(245,158,11,0.1);color:var(--accent4);">Protein</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">RNA Polymerase</div>
+        <div class="vocab-def">The enzyme that reads the DNA template and builds the mRNA strand during transcription.</div>
+        <span class="vocab-category" style="background:rgba(16,185,129,0.1);color:var(--accent3);">Enzyme</span>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-term">Protein Synthesis</div>
+        <div class="vocab-def">The two-step process (transcription + translation) by which cells use genetic information in DNA to make proteins.</div>
+        <span class="vocab-category" style="background:rgba(16,185,129,0.1);color:var(--accent3);">Process</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCOVERY -->
+  <div class="module" id="mod-discovery">
+    <div class="module-hero">
+      <div class="module-tag">🔬 Module 1</div>
+      <h2>Discovery of DNA</h2>
+      <p>How did scientists figure out that DNA — not protein — is the molecule that carries genetic information? It took several key experiments over many decades.</p>
+    </div>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> The structural model of DNA has developed over time through scientific investigation.</div>
+    </div>
+
+    <div class="video-grid">
+      
+      <a class="video-card" href="https://www.youtube.com/watch?v=BIP0lYrdirI" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/BIP0lYrdirI/hqdefault.jpg" alt="Rosalind Franklin Photo 51" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
         </div>
-        <a class="open-yt" id="vlink1" href="https://www.youtube.com/watch?v=JQByjprj_mU" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+        <div class="video-info">
+          <div class="video-title">Rosalind Franklin &amp; Photo 51</div>
+          <div class="video-meta">X-ray evidence for the helix</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Discovery Slide Viewer -->
+    <div class="slide-viewer">
+      <div class="slide-display">
+
+        <div class="slide-content active" id="disc-s0">
+          <div class="slide-num">SLIDE 01 / 05</div>
+          <div class="slide-visual">🧫</div>
+          <h3>Griffith's Experiment (1928)</h3>
+          <div class="slide-body">Frederick Griffith studied two strains of bacteria — a <strong>harmless strain (R)</strong> and a <strong>deadly strain (S)</strong> that killed mice.<br><br>He killed the deadly S bacteria with heat, then mixed the dead S with live R bacteria. Surprisingly, the mice <em>still died</em>.<br><br>Griffith concluded that a <strong>"transforming principle"</strong> had passed from the dead S bacteria into the live R bacteria, making them deadly. He did not know what that substance was.</div>
+        </div>
+
+        <div class="slide-content" id="disc-s1">
+          <div class="slide-num">SLIDE 02 / 05</div>
+          <div class="slide-visual">🔬</div>
+          <h3>Avery, MacLeod &amp; McCarty (1944)</h3>
+          <div class="slide-body">Picking up from Griffith, this team systematically destroyed different molecules — proteins, RNA, then DNA — to find what the "transforming principle" was.<br><br>When they destroyed <strong>DNA</strong>, the transformation stopped. When they destroyed proteins or RNA, transformation still occurred.<br><br>✅ Conclusion: <strong>DNA</strong> — not protein — is the molecule that carries genetic information. This was the first strong scientific evidence, though many scientists remained skeptical.</div>
+        </div>
+
+        <div class="slide-content" id="disc-s2">
+          <div class="slide-num">SLIDE 03 / 05</div>
+          <div class="slide-visual">🧪</div>
+          <h3>Hershey &amp; Chase Experiment (1952)</h3>
+          <div class="slide-body">Alfred Hershey and Martha Chase used viruses (bacteriophages) that infect bacteria. They labeled the virus's <strong>DNA with radioactive phosphorus (³²P)</strong> and its <strong>protein with radioactive sulfur (³⁵S)</strong>.<br><br>After the virus infected bacteria, they found ³²P (DNA) inside the bacteria and ³⁵S (protein) outside.<br><br>✅ Conclusion: The virus injects its <strong>DNA</strong> — not protein — into the host cell. DNA is the genetic material. This was <em>definitive proof</em>.</div>
+        </div>
+
+        <div class="slide-content" id="disc-s3">
+          <div class="slide-num">SLIDE 04 / 05</div>
+          <div class="slide-visual">📐</div>
+          <h3>Chargaff's Rules (1950)</h3>
+          <div class="slide-body">Erwin Chargaff analyzed DNA from many different organisms and found a consistent pattern:<br><br>🔴 Amount of <strong>Adenine (A)</strong> always = amount of <strong>Thymine (T)</strong><br>🟢 Amount of <strong>Guanine (G)</strong> always = amount of <strong>Cytosine (C)</strong><br><br>This became known as <strong>Chargaff's Rules</strong>. Although he wasn't sure why, these ratios strongly hinted that A-T and G-C were paired together in the molecule — a clue Watson and Crick used to build the correct model.</div>
+        </div>
+
+        <div class="slide-content" id="disc-s4">
+          <div class="slide-num">SLIDE 05 / 05</div>
+          <div class="slide-visual">📸</div>
+          <h3>Photo 51 — Rosalind Franklin (1952)</h3>
+          <div class="slide-body">Rosalind Franklin used a technique called <strong>X-ray crystallography</strong> to study the structure of DNA. She fired X-rays at crystallized DNA and captured the diffraction pattern.<br><br>Her image — <strong>Photo 51</strong> — revealed:<br>• DNA has a <strong>helical (spiral) shape</strong><br>• The helix repeats every <strong>3.4 Å</strong> (10 base pairs per turn)<br>• The width of the helix is <strong>20 Å</strong><br><br>This data was shared with Watson and Crick without Franklin's knowledge and was essential for building the correct double helix model.</div>
+        </div>
+
+      </div>
+      <div class="slide-controls">
+        <div class="slide-dots" id="discoveryDots"></div>
+        <div class="slide-nav">
+          <button class="slide-btn" onclick="changeDiscoverySlide(-1)">&#8249;</button>
+          <button class="slide-btn" onclick="changeDiscoverySlide(1)">&#8250;</button>
+        </div>
       </div>
     </div>
-    <div class="vid-card" id="vcard2" onclick="playVid(2)">
-      <div class="vid-thumb">
-        <img src="https://img.youtube.com/vi/itsb2SqR-R0/hqdefault.jpg" alt="Protein Synthesis" onerror="this.outerHTML='<div class=\'fallback\' style=\'background:linear-gradient(135deg,#042C53,#378ADD);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px\'><span style=\'font-size:2.5rem\'>⚙️</span><span style=\'color:rgba(255,255,255,.7);font-size:11px\'>Protein Synthesis</span></div>'">
-        <div class="overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
-      </div>
-      <div class="vid-body">
-        <h3 id="vtitle2">Protein Synthesis — Amoeba Sisters</h3>
-        <p id="vdesc2">Transcription, translation, codons, anticodons, ribosomes, and how mRNA carries the genetic code to build proteins</p>
-        <div class="vid-meta">
-          <span class="vbadge" id="vsource2">Amoeba Sisters</span>
-          <span class="vdur">~10 min</span>
+
+    <div class="card">
+      <div class="card-title">📅 Key Experiments Timeline</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1928</div>
+          <div class="timeline-title">Griffith's Experiment</div>
+          <div class="timeline-desc">Frederick Griffith showed that something from dead, disease-causing bacteria could permanently transform harmless bacteria into dangerous ones. He called this the "transforming principle" — but did not know what it was.</div>
         </div>
-        <a class="open-yt" id="vlink2" href="https://www.youtube.com/watch?v=itsb2SqR-R0" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
-      </div>
-    </div>
-    <div class="vid-card" id="vcard3" onclick="playVid(3)">
-      <div class="vid-thumb">
-        <img src="https://img.youtube.com/vi/qpQf3ODdyGk/hqdefault.jpg" alt="Mutations" onerror="this.outerHTML='<div class=\'fallback\' style=\'background:linear-gradient(135deg,#411200,#D85A30);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px\'><span style=\'font-size:2.5rem\'>🔬</span><span style=\'color:rgba(255,255,255,.7);font-size:11px\'>Mutations</span></div>'">
-        <div class="overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
-      </div>
-      <div class="vid-body">
-        <h3 id="vtitle3">Mutations — Amoeba Sisters</h3>
-        <p id="vdesc3">Point mutations, frameshift mutations, chromosomal mutations, how mutations affect proteins, and when mutations are harmful or neutral</p>
-        <div class="vid-meta">
-          <span class="vbadge" id="vsource3">Amoeba Sisters</span>
-          <span class="vdur">~9 min</span>
+        <div class="timeline-item">
+          <div class="timeline-year">1944</div>
+          <div class="timeline-title">Avery, MacLeod & McCarty</div>
+          <div class="timeline-desc">Using Griffith's experiment, this team identified the "transforming principle" as DNA. This was the first strong scientific evidence that DNA — not protein — carries genetic information.</div>
         </div>
-        <a class="open-yt" id="vlink3" href="https://www.youtube.com/watch?v=qpQf3ODdyGk" target="_blank" onclick="event.stopPropagation()">▶ Open on YouTube ↗</a>
+        <div class="timeline-item">
+          <div class="timeline-year">1950</div>
+          <div class="timeline-title">Chargaff's Rules</div>
+          <div class="timeline-desc">Erwin Chargaff discovered that in any sample of DNA, the amount of Adenine always equals Thymine, and the amount of Guanine always equals Cytosine. This hinted at a paired structure.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1952</div>
+          <div class="timeline-title">Hershey & Chase Experiment</div>
+          <div class="timeline-desc">Using viruses to infect bacteria, Hershey and Chase proved that DNA — not protein — is injected into cells and acts as genetic material. This was the definitive proof the scientific community needed.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1952</div>
+          <div class="timeline-title">Photo 51 — Rosalind Franklin</div>
+          <div class="timeline-desc">Rosalind Franklin used X-ray crystallography to capture Photo 51 — an image showing DNA's helical shape and key measurements. Her data was essential to building the correct model.</div>
+        </div>
+        <div class="timeline-item" style="margin-bottom:0">
+          <div class="timeline-year">1953</div>
+          <div class="timeline-title">Watson & Crick's Double Helix Model</div>
+          <div class="timeline-desc">James Watson and Francis Crick used Franklin's data and Chargaff's rules to build the correct model of DNA — a double helix. Published in the journal Nature, April 1953. They received the Nobel Prize in 1962.</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <button class="done-btn" id="doneVideos" onclick="markDone('videos')">Mark Videos Complete ✓</button>
-</div>
+  <!-- MODELS -->
+  <div class="module" id="mod-models">
+    <div class="module-hero">
+      <div class="module-tag">🧪 Module 2</div>
+      <h2>Models of DNA</h2>
+      <p>Science improves over time as new evidence is gathered. Before Watson and Crick's accepted model, other scientists proposed different structures for DNA.</p>
+    </div>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> The structural model of DNA has developed over time — science is a process of testing and revising ideas with evidence.</div>
+    </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDES
-═══════════════════════════════════════ -->
-<div class="section" id="sec-slides">
-  <div class="sec-head"><h2>Lesson Slides</h2><span class="stag">6 Slides</span></div>
-  <div class="slide-card">
-    <div class="slide-body" id="slideBody"></div>
-    <div class="slide-nav">
-      <button class="s-btn" id="prevBtn" onclick="prevSlide()" disabled>← Previous</button>
-      <div class="dots" id="slideDots"></div>
-      <button class="s-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+    <div class="slide-viewer">
+      <div class="slide-display">
+        <div class="slide-content active" id="slide-0">
+          <div class="slide-num">SLIDE 01 / 03</div>
+          <div class="slide-visual">🧬</div>
+          <h3>Early Ideas: Tetranucleotide Model</h3>
+          <div class="slide-body">Phoebus Levene (1910s–1930s) believed DNA was a simple, repeating unit of the four bases in equal amounts. He thought it was too boring to carry genetic information — a conclusion that later turned out to be wrong.</div>
+        </div>
+
+        <div class="slide-content" id="slide-1">
+          <div class="slide-num">SLIDE 02 / 03</div>
+          <div class="slide-visual">📸</div>
+          <h3>Franklin's X-ray Evidence</h3>
+          <div class="slide-body">Rosalind Franklin's Photo 51 (1952) gave crucial evidence: DNA is a helix, the distance between base pairs is 3.4 Å, and the helix is 20 Å wide. This experimental data made it possible to build the correct model — yet her contribution was not fully recognized at the time.</div>
+        </div>
+        <div class="slide-content" id="slide-2">
+          <div class="slide-num">SLIDE 03 / 03</div>
+          <div class="slide-visual">🏆</div>
+          <h3>Watson & Crick's Double Helix (1953)</h3>
+          <div class="slide-body">Combining Franklin's X-ray data and Chargaff's base-pairing rules, Watson and Crick built the accepted double helix model: two antiparallel strands with bases pointing inward (A–T, G–C) and the sugar-phosphate backbone on the outside. This model correctly predicted how DNA could be copied.</div>
+        </div>
+      </div>
+      <div class="slide-controls">
+        <div class="slide-dots" id="slideDots"></div>
+        <div class="slide-nav">
+          <button class="slide-btn" onclick="changeSlide(-1)">‹</button>
+          <button class="slide-btn" onclick="changeSlide(1)">›</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <span class="info-box-icon">💡</span>
+      <span>Science works by building on evidence. Watson and Crick succeeded because they combined evidence from multiple sources — X-ray data, base-pairing rules, and chemical knowledge — rather than working from assumptions alone.</span>
     </div>
   </div>
-  <button class="done-btn" id="doneSlides" onclick="markDone('slides')">Mark Slides Complete ✓</button>
-</div>
 
-<!-- ═══════════════════════════════════════
-     VOCABULARY
-═══════════════════════════════════════ -->
-<div class="section" id="sec-vocab">
-  <div class="sec-head"><h2>Key Vocabulary</h2><span class="stag">Tap to flip</span></div>
-  <div class="vocab-grid" id="vocabGrid"></div>
-  <button class="done-btn" id="doneVocab" onclick="markDone('vocab')">Mark Vocabulary Complete ✓</button>
-</div>
+  <!-- STRUCTURE -->
+  <div class="module" id="mod-structure">
+    <div class="module-hero">
+      <div class="module-tag">🔩 Module 3</div>
+      <h2>DNA Structure</h2>
+      <p>DNA looks like a twisted ladder. Understanding its structure explains how it stores information and copies itself.</p>
+    </div>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> DNA is a double-stranded molecule made of nucleotides. Free nucleotides bond to the template using base-pairing rules (A–T and G–C).</div>
+    </div>
 
-<!-- ═══════════════════════════════════════
-     VIRTUAL LAB
-═══════════════════════════════════════ -->
-<div class="section" id="sec-lab">
-  <div class="sec-head"><h2>Virtual Lab</h2><span class="stag">Interactive Simulation</span></div>
-  <div class="card">
-    <div class="lab-top">
-      <div style="font-size:2rem">🧬</div>
-      <div>
-        <h3>DNA &amp; Protein Synthesis Lab</h3>
-        <p>Transcribe DNA to mRNA, translate codons to amino acids, and explore how mutations change the final protein</p>
+    <!-- Amoeba Sisters video -->
+    <div class="video-grid" style="margin-bottom:20px;">
+            <a class="video-card" href="https://www.youtube.com/watch?v=_POdWsii7AI" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/_POdWsii7AI/hqdefault.jpg" alt="🐾 Amoeba Sisters: DNA Structure" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">🐾 Amoeba Sisters: DNA Structure</div>
+          <div class="video-meta">Nucleotides ▸ Double Helix ▸ Base Pairs</div>
+        </div>
+      </a>
+      
+    </div>
+
+    <!-- Structure Slide Viewer -->
+    <div class="slide-viewer" id="structure-slides">
+      <div class="slide-display">
+
+        <div class="slide-content active" id="ss-0">
+          <div class="slide-num">SLIDE 01 / 05</div>
+          <div class="slide-visual">🧱</div>
+          <h3>The Building Block: A Nucleotide</h3>
+          <div class="slide-body">DNA is a <strong>polymer</strong> — a long chain of repeating units. Each unit is called a <strong>nucleotide</strong>. Every nucleotide has three parts:<br><br>
+          1️⃣ A <strong>deoxyribose sugar</strong> (5 carbons)<br>
+          2️⃣ A <strong>phosphate group</strong> (gives the backbone)<br>
+          3️⃣ A <strong>nitrogenous base</strong> (carries the genetic code)</div>
+        </div>
+
+        <div class="slide-content" id="ss-1">
+          <div class="slide-num">SLIDE 02 / 05</div>
+          <div class="slide-visual">🔤</div>
+          <h3>The Four Bases of DNA</h3>
+          <div class="slide-body">The four nitrogenous bases in DNA are the "letters" of the genetic code:<br><br>
+          🔴 <strong>Adenine (A)</strong><br>
+          🟡 <strong>Thymine (T)</strong><br>
+          🟢 <strong>Guanine (G)</strong><br>
+          🔵 <strong>Cytosine (C)</strong><br><br>
+          The order of these bases along the DNA strand spells out the genetic instructions for building proteins.</div>
+        </div>
+
+        <div class="slide-content" id="ss-2">
+          <div class="slide-num">SLIDE 03 / 05</div>
+          <div class="slide-visual">🔗</div>
+          <h3>Base Pairing Rules</h3>
+          <div class="slide-body">The two strands of DNA are held together by <strong>hydrogen bonds</strong> between complementary base pairs. The rules are always:<br><br>
+          🔴 <strong>A</strong> always pairs with 🟡 <strong>T</strong> (2 hydrogen bonds)<br>
+          🟢 <strong>G</strong> always pairs with 🔵 <strong>C</strong> (3 hydrogen bonds)<br><br>
+          This is called <strong>complementary base pairing</strong>. A can NEVER pair with G or C — only T!</div>
+        </div>
+
+        <div class="slide-content" id="ss-3">
+          <div class="slide-num">SLIDE 04 / 05</div>
+          <div class="slide-visual">🪜</div>
+          <h3>The Double Helix: A Twisted Ladder</h3>
+          <div class="slide-body">The two strands of DNA twist around each other to form the famous <strong>double helix</strong> — like a spiral staircase.<br><br>
+          🔵 The <strong>sides</strong> of the ladder = sugar-phosphate backbone<br>
+          🟡 The <strong>rungs</strong> of the ladder = base pairs (A-T and G-C)<br><br>
+          The two strands run in <strong>opposite directions</strong> — this is called <strong>antiparallel</strong>. One strand runs 5'→3' and the other runs 3'→5'.</div>
+        </div>
+
+        <div class="slide-content" id="ss-4">
+          <div class="slide-num">SLIDE 05 / 05</div>
+          <div class="slide-visual">💡</div>
+          <h3>Why Structure Matters</h3>
+          <div class="slide-body">DNA's structure directly explains how it works:<br><br>
+          ✅ <strong>Base pairing</strong> allows DNA to be copied accurately during replication<br>
+          ✅ The <strong>sequence of bases</strong> is the actual genetic code (like letters spelling words)<br>
+          ✅ The <strong>double strand</strong> protects the genetic information<br>
+          ✅ The <strong>sugar-phosphate backbone</strong> keeps the molecule stable<br><br>
+          <em>"Form fits function"</em> — DNA's structure is perfectly designed for its job.</div>
+        </div>
+
+      </div>
+      <div class="slide-controls">
+        <div class="slide-dots" id="structureSlideDots"></div>
+        <div class="slide-nav">
+          <button class="slide-btn" onclick="changeStructureSlide(-1)">‹</button>
+          <button class="slide-btn" onclick="changeStructureSlide(1)">›</button>
+        </div>
       </div>
     </div>
-    <div class="lab-tabs">
-      <button class="ltab active" onclick="switchLab('transcribe',this)">Transcription Sim</button>
-      <button class="ltab" onclick="switchLab('translate',this)">Translation Sim</button>
-      <button class="ltab" onclick="switchLab('data',this)">Reference Table</button>
-    </div>
 
-    <!-- TRANSCRIPTION SIM -->
-    <div class="lpanel active" id="lab-transcribe">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Enter a DNA template strand (use only A, T, G, C — up to 18 bases) to see the complementary DNA strand and the mRNA transcript produced during transcription.</p>
-      <label class="seq-label">DNA Template Strand (3' → 5')</label>
-      <input class="seq-input" type="text" id="dnaInput" placeholder="e.g. TACGGATCAATGCCTA" maxlength="18" oninput="runTranscription()">
-      <div class="sim-box" id="transcribeSim">
-        <p style="color:var(--purple);font-size:13px">Type a DNA sequence above to see transcription in action.</p>
+    <div class="dna-diagram">
+      <div class="card-title" style="justify-content:center;margin-bottom:18px;">🔩 The DNA Double Helix</div>
+      <svg class="dna-helix-svg" viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg">
+        <path d="M140,18 C190,56 190,96 140,136 C90,176 90,216 140,256" stroke="#00e5ff" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M440,18 C390,56 390,96 440,136 C490,176 490,216 440,256" stroke="#7c3aed" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <g><line x1="148" y1="34" x2="432" y2="34" stroke="#ef4444" stroke-width="4" stroke-dasharray="4,4"/>
+          <circle cx="148" cy="34" r="11" fill="#ef4444" opacity="0.85"/>
+          <circle cx="432" cy="34" r="11" fill="#f59e0b" opacity="0.85"/>
+          <text x="148" y="39" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">A</text>
+          <text x="432" y="39" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">T</text></g>
+        <g><line x1="165" y1="68" x2="415" y2="68" stroke="#10b981" stroke-width="4" stroke-dasharray="4,4"/>
+          <circle cx="165" cy="68" r="11" fill="#10b981" opacity="0.85"/>
+          <circle cx="415" cy="68" r="11" fill="#00e5ff" opacity="0.85"/>
+          <text x="165" y="73" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">G</text>
+          <text x="415" y="73" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">C</text></g>
+        <g><line x1="160" y1="104" x2="420" y2="104" stroke="#f59e0b" stroke-width="4" stroke-dasharray="4,4"/>
+          <circle cx="160" cy="104" r="11" fill="#f59e0b" opacity="0.85"/>
+          <circle cx="420" cy="104" r="11" fill="#ef4444" opacity="0.85"/>
+          <text x="160" y="109" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">T</text>
+          <text x="420" y="109" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">A</text></g>
+        <g><line x1="142" y1="140" x2="438" y2="140" stroke="#00e5ff" stroke-width="4" stroke-dasharray="4,4"/>
+          <circle cx="142" cy="140" r="11" fill="#00e5ff" opacity="0.85"/>
+          <circle cx="438" cy="140" r="11" fill="#10b981" opacity="0.85"/>
+          <text x="142" y="145" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">C</text>
+          <text x="438" y="145" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">G</text></g>
+        <g><line x1="158" y1="176" x2="422" y2="176" stroke="#ef4444" stroke-width="4" stroke-dasharray="4,4"/>
+          <circle cx="158" cy="176" r="11" fill="#ef4444" opacity="0.85"/>
+          <circle cx="422" cy="176" r="11" fill="#f59e0b" opacity="0.85"/>
+          <text x="158" y="181" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">A</text>
+          <text x="422" y="181" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">T</text></g>
+        <g><line x1="168" y1="212" x2="412" y2="212" stroke="#10b981" stroke-width="4" stroke-dasharray="4,4"/>
+          <circle cx="168" cy="212" r="11" fill="#10b981" opacity="0.85"/>
+          <circle cx="412" cy="212" r="11" fill="#00e5ff" opacity="0.85"/>
+          <text x="168" y="217" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">G</text>
+          <text x="412" y="217" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="12" fill="white">C</text></g>
+        <text x="72" y="136" text-anchor="middle" font-family="Outfit,sans-serif" font-size="11" fill="#00e5ff">5'→3'</text>
+        <text x="508" y="136" text-anchor="middle" font-family="Outfit,sans-serif" font-size="11" fill="#7c3aed">3'→5'</text>
+        <text x="290" y="14" text-anchor="middle" font-family="Outfit,sans-serif" font-size="11" fill="#64748b">Hydrogen Bonds</text>
+        <!-- Backbone labels -->
+        <text x="72" y="30" text-anchor="middle" font-family="Outfit,sans-serif" font-size="10" fill="#00e5ff88">Sugar-Phosphate</text>
+        <text x="72" y="42" text-anchor="middle" font-family="Outfit,sans-serif" font-size="10" fill="#00e5ff88">Backbone</text>
+      </svg>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+        <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-dim);"><span style="width:12px;height:12px;border-radius:50%;background:#ef4444;display:inline-block;"></span>Adenine (A)</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-dim);"><span style="width:12px;height:12px;border-radius:50%;background:#f59e0b;display:inline-block;"></span>Thymine (T)</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-dim);"><span style="width:12px;height:12px;border-radius:50%;background:#10b981;display:inline-block;"></span>Guanine (G)</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-dim);"><span style="width:12px;height:12px;border-radius:50%;background:#00e5ff;display:inline-block;"></span>Cytosine (C)</div>
       </div>
-      <div class="obs" id="transcribeLog">Enter a DNA sequence to begin. Remember: A pairs with T (in DNA) or U (in RNA), and G pairs with C.</div>
     </div>
 
-    <!-- TRANSLATION SIM -->
-    <div class="lpanel" id="lab-translate">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Enter an mRNA sequence (use A, U, G, C — up to 18 bases) to see how codons are read and which amino acids are assembled at the ribosome.</p>
-      <label class="seq-label">mRNA Sequence (5' → 3')</label>
-      <input class="seq-input" type="text" id="mrnaInput" placeholder="e.g. AUGGCUUCACGA" maxlength="18" oninput="runTranslation()">
-      <div class="sim-box" id="translateSim">
-        <p style="color:var(--purple);font-size:13px">Type an mRNA sequence above to see translation in action.</p>
+    <div class="highlight-box">
+      <h4>Key Things to Know About DNA Structure</h4>
+      <ul>
+        <li>DNA is made of <strong>nucleotides</strong>, each with a sugar (deoxyribose), a phosphate group, and a nitrogenous base</li>
+        <li>The four bases are <strong>Adenine (A), Thymine (T), Guanine (G), and Cytosine (C)</strong></li>
+        <li>Base pairing rules: <strong>A always pairs with T</strong>, and <strong>G always pairs with C</strong></li>
+        <li>The two strands run in <strong>opposite directions</strong> (antiparallel) and are held by hydrogen bonds</li>
+        <li>The outside of the ladder is the <strong>sugar-phosphate backbone</strong>; the rungs are the base pairs</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- REPLICATION -->
+  <div class="module" id="mod-replication">
+    <div class="module-hero">
+      <div class="module-tag">♻️ Module 4</div>
+      <h2>DNA Replication</h2>
+      <p>Before a cell divides, it must copy its entire DNA so each new cell gets a complete set of genetic instructions.</p>
+    </div>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> Free nucleotides bond to the template strand (A–T and G–C), forming a complementary strand. The final result is two identical DNA molecules.</div>
+    </div>
+
+    <div class="video-grid">
+            <a class="video-card" href="https://www.youtube.com/watch?v=Qqe4thU-os8" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/Qqe4thU-os8/hqdefault.jpg" alt="🐾 Amoeba Sisters: DNA Replication" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">🐾 Amoeba Sisters: DNA Replication</div>
+          <div class="video-meta">Helicase ▸ DNA Polymerase ▸ Two copies</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=bee6PWUgPo8" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/bee6PWUgPo8/hqdefault.jpg" alt="DNA Replication (3D Animation)" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">DNA Replication (3D Animation)</div>
+          <div class="video-meta">HHMI BioInteractive</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="card-title" style="margin-bottom:14px;">⚙️ How Replication Works</div>
+    <div class="process-steps">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">The DNA "Unzips"</div>
+          <div class="step-desc">An enzyme called <strong>helicase</strong> breaks the hydrogen bonds between base pairs. The two strands separate — like unzipping a zipper — creating a replication fork where copying begins.</div>
+        </div>
       </div>
-      <div class="obs" id="translateLog">Enter an mRNA sequence to begin. Codons are read in triplets from the 5' end. AUG is the start codon.</div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Each Strand Acts as a Template</div>
+          <div class="step-desc">Each separated strand serves as a <strong>template</strong> (a pattern) for building a new complementary strand. Free nucleotides floating in the nucleus line up opposite each template base using base-pairing rules: A with T, and G with C.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">New Strands Are Built</div>
+          <div class="step-desc"><strong>DNA polymerase</strong> is the enzyme that connects the free nucleotides together to form the new strand. It "reads" the template and adds the correct matching nucleotide each time.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Two Identical DNA Molecules</div>
+          <div class="step-desc">When replication is complete, there are <strong>two identical DNA molecules</strong>. Each molecule has one original strand and one newly made strand. This is called <strong>semiconservative replication</strong>.</div>
+        </div>
+      </div>
     </div>
 
-    <!-- REFERENCE TABLE -->
-    <div class="lpanel" id="lab-data">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Use these tables during the lab and quiz as reference.</p>
-      <table class="dtable">
-        <thead><tr><th>Process</th><th>Template</th><th>Product</th><th>Location in Cell</th><th>Enzyme/Machine</th></tr></thead>
+    <div class="highlight-box">
+      <h4>Key Enzymes (Know These!)</h4>
+      <ul>
+        <li><strong>Helicase</strong> — unzips the DNA double helix by breaking hydrogen bonds</li>
+        <li><strong>DNA Polymerase</strong> — builds the new complementary strand using base-pairing rules</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <span class="info-box-icon">💡</span>
+      <span><strong>Semiconservative</strong> means each new DNA molecule keeps ("conserves") one original strand and gains one new strand. This ensures faithful copying of genetic information.</span>
+    </div>
+  </div>
+
+  <!-- DNA vs RNA -->
+  <div class="module" id="mod-dna-rna">
+    <div class="module-hero">
+      <div class="module-tag">⚖️ Module 5</div>
+      <h2>DNA vs RNA</h2>
+      <p>DNA and RNA are both nucleic acids, but they have important differences in structure and function.</p>
+    </div>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> DNA molecules are double-stranded and RNA molecules are single-stranded. One strand of DNA serves as a template to make complementary RNA.</div>
+    </div>
+
+    <div class="video-grid" style="margin-bottom:20px;">
+            <a class="video-card" href="https://www.youtube.com/watch?v=JQByjprj_mA" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/JQByjprj_mA/hqdefault.jpg" alt="🐾 Amoeba Sisters: DNA vs. RNA" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">🐾 Amoeba Sisters: DNA vs. RNA</div>
+          <div class="video-meta">Similarities ▸ Differences ▸ Base Pairing</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=oefAI2x2CQM" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/oefAI2x2CQM/hqdefault.jpg" alt="Amoeba Sisters Protein Synthesis Updated" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">🐾 Amoeba Sisters: Protein Synthesis</div>
+          <div class="video-meta">Transcription ▸ Translation ▸ mRNA/tRNA/rRNA</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 DNA vs RNA Comparison</div>
+      <div style="overflow-x:auto;"><table class="compare-table" style="min-width:500px;">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>🧬 DNA</th>
+            <th>🔴 RNA</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><strong>DNA Replication</strong></td><td>DNA (both strands)</td><td>2 identical DNA molecules</td><td>Nucleus</td><td>DNA polymerase</td></tr>
-          <tr><td><strong>Transcription</strong></td><td>DNA template strand</td><td>mRNA</td><td>Nucleus</td><td>RNA polymerase</td></tr>
-          <tr><td><strong>Translation</strong></td><td>mRNA (codons)</td><td>Protein (polypeptide)</td><td>Ribosome (cytoplasm)</td><td>Ribosome + tRNA</td></tr>
+          <tr><td>Full Name</td><td>Deoxyribonucleic Acid</td><td>Ribonucleic Acid</td></tr>
+          <tr><td>Sugar</td><td>Deoxyribose</td><td>Ribose</td></tr>
+          <tr><td>Bases</td><td>A, T, G, C</td><td>A, <strong>U</strong> (Uracil), G, C</td></tr>
+          <tr><td>Strands</td><td>Double-stranded</td><td>Single-stranded</td></tr>
+          <tr><td>Shape</td><td>Double helix</td><td>Single strand (various shapes)</td></tr>
+          <tr><td>Location</td><td>Nucleus</td><td>Nucleus and cytoplasm</td></tr>
+          <tr><td>Function</td><td>Stores genetic information</td><td>Carries and uses genetic information to make proteins</td></tr>
         </tbody>
-      </table>
-      <table class="dtable" style="margin-top:16px">
-        <thead><tr><th>Base Pairing Rules</th><th>DNA ↔ DNA</th><th>DNA → RNA (Transcription)</th></tr></thead>
-        <tbody>
-          <tr><td>Adenine (A)</td><td class="pos">pairs with T</td><td class="pos">→ U in mRNA</td></tr>
-          <tr><td>Thymine (T)</td><td class="pos">pairs with A</td><td class="pos">→ A in mRNA</td></tr>
-          <tr><td>Guanine (G)</td><td class="pos">pairs with C</td><td class="pos">→ C in mRNA</td></tr>
-          <tr><td>Cytosine (C)</td><td class="pos">pairs with G</td><td class="pos">→ G in mRNA</td></tr>
-          <tr><td>Uracil (U)</td><td class="neu">RNA only — no T</td><td class="neu">pairs with A in tRNA</td></tr>
-        </tbody>
-      </table>
-      <div class="concl" style="margin-top:16px">
-        <strong>📝 Lab Conclusion Prompt (write in your notebook):</strong>
-        A mutation changes one DNA base from G to A in the middle of a gene. Trace the effect of this change through transcription and translation. How might the final protein be affected? Use the terms codon, amino acid, and polypeptide in your answer.
+      </table></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div class="card">
+        <div class="card-title" style="color:var(--accent1)">🧬 DNA Uses Thymine (T)</div>
+        <p>In DNA, Thymine (T) pairs with Adenine (A). DNA is very stable because it needs to store information for a long time in the nucleus.</p>
       </div>
-    </div>
-  </div>
-  <button class="done-btn" id="doneLab" onclick="markDone('lab')">Mark Lab Complete ✓</button>
-</div>
-
-<!-- ═══════════════════════════════════════
-     QUIZ
-═══════════════════════════════════════ -->
-<div class="section" id="sec-quiz">
-  <div class="sec-head"><h2>Knowledge Check</h2><span class="stag">10 Questions</span></div>
-  <div class="qwrap" id="qwrap">
-    <div class="qmeta"><span class="qc" id="qctr">Question 1 of 10</span></div>
-    <div class="qcard">
-      <div class="qtext" id="qtext"></div>
-      <div class="opts" id="qopts"></div>
-      <div class="fb" id="qfb"></div>
-    </div>
-    <div class="qbtns"><button class="qbtn" id="qnext" onclick="nextQ()" style="display:none">Next Question →</button></div>
-  </div>
-  <div class="score-card" id="scoreCard">
-    <div class="score-ring" id="sring"></div>
-    <div class="sc-title" id="stitle"></div>
-    <div class="sc-msg" id="smsg"></div>
-    <div class="stats">
-      <div class="stat"><div class="snum" style="color:#16A34A" id="sco">0</div><div class="slbl">Correct</div></div>
-      <div class="stat"><div class="snum" style="color:#DC2626" id="swr">0</div><div class="slbl">Incorrect</div></div>
-      <div class="stat"><div class="snum" style="color:var(--purple)" id="spct">0%</div><div class="slbl">Score</div></div>
-    </div>
-    <div class="sc-btns">
-      <button class="qbtn" onclick="restartQuiz()">↺ Retake Quiz</button>
-      <button class="qbtn ol" onclick="markDone('quiz')">Finish Module ✓</button>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     ASSIGNMENT
-═══════════════════════════════════════ -->
-<div class="section" id="sec-assignment">
-  <div class="sec-head"><h2>Assignment</h2><span class="stag">5 Parts · 50 Points Total</span></div>
-
-  <div class="assign-hero">
-    <h3>DNA, RNA &amp; Protein Synthesis — Unit Assignment</h3>
-    <p>Complete all five parts using what you learned from the videos, slides, vocabulary, and virtual lab. Type your answers directly in the boxes below. When finished, use the Print button to submit a paper copy or ask your teacher for the Google Classroom link.</p>
-    <div class="assign-meta">
-      <span class="ameta">📅 Due: See teacher</span>
-      <span class="ameta">🎯 50 Points Total</span>
-      <span class="ameta">📖 Virginia SOL BIO.6</span>
-      <span class="ameta">⏱ ~45 minutes</span>
-    </div>
-  </div>
-
-  <p style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Key Concepts Reference</p>
-  <div class="concept-strip">
-    <div class="concept-card"><div class="cc-icon">🧬</div><h4>DNA Structure</h4><p>Double helix · nucleotides (sugar + phosphate + base) · A-T and G-C base pairs · antiparallel strands</p></div>
-    <div class="concept-card"><div class="cc-icon">📋</div><h4>Transcription</h4><p>DNA → mRNA · occurs in nucleus · RNA polymerase · A→U, T→A, G→C, C→G substitutions</p></div>
-    <div class="concept-card"><div class="cc-icon">⚙️</div><h4>Translation</h4><p>mRNA → protein · occurs at ribosome · tRNA brings amino acids · codons read in triplets</p></div>
-    <div class="concept-card"><div class="cc-icon">🔄</div><h4>Central Dogma</h4><p>DNA → RNA → Protein · information flows in one direction (normally)</p></div>
-    <div class="concept-card"><div class="cc-icon">⚡</div><h4>Mutations</h4><p>Substitution · insertion · deletion · frameshift mutations alter reading frame; nonsense mutations create stop codons</p></div>
-    <div class="concept-card"><div class="cc-icon">🔁</div><h4>DNA Replication</h4><p>Semi-conservative · each strand is a template · DNA polymerase · occurs before cell division</p></div>
-  </div>
-
-  <!-- PART 1: Multiple Choice -->
-  <div class="part-card">
-    <div class="part-header" onclick="togglePart('p1')">
-      <div class="part-num pn1">1</div>
-      <h3>Multiple Choice — Core Concepts</h3>
-      <span class="pts">10 pts</span>
-      <span class="part-toggle" id="tog-p1">▼</span>
-    </div>
-    <div class="part-body open" id="p1">
-      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Select the best answer for each question.</p>
-
-      <div class="q-prompt">1. Which of the following correctly describes the structure of DNA?</div>
-      <div class="mc-opts">
-        <label class="mc-opt"><input type="radio" name="mc1" value="a" onchange="selectMC(this)"><label>A. Single-stranded helix made of amino acids</label></label>
-        <label class="mc-opt"><input type="radio" name="mc1" value="b" onchange="selectMC(this)"><label>B. Double helix made of nucleotides with base pairs A-T and G-C</label></label>
-        <label class="mc-opt"><input type="radio" name="mc1" value="c" onchange="selectMC(this)"><label>C. Double helix made of amino acids with base pairs A-U and G-C</label></label>
-        <label class="mc-opt"><input type="radio" name="mc1" value="d" onchange="selectMC(this)"><label>D. Single-stranded molecule found only in the cytoplasm</label></label>
-      </div>
-      <hr class="q-divider">
-
-      <div class="q-prompt">2. During transcription, which molecule is produced?</div>
-      <div class="mc-opts">
-        <label class="mc-opt"><input type="radio" name="mc2" value="a" onchange="selectMC(this)"><label>A. tRNA</label></label>
-        <label class="mc-opt"><input type="radio" name="mc2" value="b" onchange="selectMC(this)"><label>B. Protein</label></label>
-        <label class="mc-opt"><input type="radio" name="mc2" value="c" onchange="selectMC(this)"><label>C. mRNA</label></label>
-        <label class="mc-opt"><input type="radio" name="mc2" value="d" onchange="selectMC(this)"><label>D. DNA polymerase</label></label>
-      </div>
-      <hr class="q-divider">
-
-      <div class="q-prompt">3. Translation takes place at which cellular structure?</div>
-      <div class="mc-opts">
-        <label class="mc-opt"><input type="radio" name="mc3" value="a" onchange="selectMC(this)"><label>A. Nucleus</label></label>
-        <label class="mc-opt"><input type="radio" name="mc3" value="b" onchange="selectMC(this)"><label>B. Mitochondria</label></label>
-        <label class="mc-opt"><input type="radio" name="mc3" value="c" onchange="selectMC(this)"><label>C. Chloroplast</label></label>
-        <label class="mc-opt"><input type="radio" name="mc3" value="d" onchange="selectMC(this)"><label>D. Ribosome</label></label>
-      </div>
-      <hr class="q-divider">
-
-      <div class="q-prompt">4. A DNA template strand reads: 3'–TACGGA–5'. What is the complementary mRNA sequence?</div>
-      <div class="mc-opts">
-        <label class="mc-opt"><input type="radio" name="mc4" value="a" onchange="selectMC(this)"><label>A. ATGCCT</label></label>
-        <label class="mc-opt"><input type="radio" name="mc4" value="b" onchange="selectMC(this)"><label>B. AUGCCU</label></label>
-        <label class="mc-opt"><input type="radio" name="mc4" value="c" onchange="selectMC(this)"><label>C. UACGGA</label></label>
-        <label class="mc-opt"><input type="radio" name="mc4" value="d" onchange="selectMC(this)"><label>D. TACGGA</label></label>
-      </div>
-      <hr class="q-divider">
-
-      <div class="q-prompt">5. A mutation that inserts one extra nucleotide into a gene is called a __________ mutation, and it changes the reading frame for all codons after the insertion.</div>
-      <div class="mc-opts">
-        <label class="mc-opt"><input type="radio" name="mc5" value="a" onchange="selectMC(this)"><label>A. Substitution</label></label>
-        <label class="mc-opt"><input type="radio" name="mc5" value="b" onchange="selectMC(this)"><label>B. Silent</label></label>
-        <label class="mc-opt"><input type="radio" name="mc5" value="c" onchange="selectMC(this)"><label>C. Frameshift (insertion)</label></label>
-        <label class="mc-opt"><input type="radio" name="mc5" value="d" onchange="selectMC(this)"><label>D. Missense</label></label>
+      <div class="card">
+        <div class="card-title" style="color:var(--accent2)">🔴 RNA Uses Uracil (U)</div>
+        <p>In RNA, Uracil (U) replaces Thymine and pairs with Adenine (A). RNA is single-stranded and shorter-lived than DNA — it is made, used, then broken down.</p>
       </div>
     </div>
   </div>
 
-  <!-- PART 2: Fill in the Blank -->
-  <div class="part-card">
-    <div class="part-header" onclick="togglePart('p2')">
-      <div class="part-num pn2">2</div>
-      <h3>Fill in the Blank — Vocabulary &amp; Processes</h3>
-      <span class="pts">10 pts</span>
-      <span class="part-toggle" id="tog-p2">▼</span>
+  <!-- RNA TYPES -->
+  <div class="module" id="mod-rna-types">
+    <div class="module-hero">
+      <div class="module-tag">🧵 Module 6</div>
+      <h2>Types of RNA</h2>
+      <p>There are three main types of RNA involved in protein synthesis. Each has a specific job.</p>
     </div>
-    <div class="part-body open" id="p2">
-      <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Complete each sentence using the correct term.</p>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> Protein synthesis involves mRNA, tRNA, and rRNA working together to build proteins at the ribosome.</div>
+    </div>
 
-      <div class="fill-sent">1. The two strands of DNA are held together by <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> bonds between complementary bases.</div>
-      <div class="fill-sent">2. In RNA, the base <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> replaces thymine and pairs with adenine.</div>
-      <div class="fill-sent">3. The process of copying DNA into mRNA is called <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()">.</div>
-      <div class="fill-sent">4. A sequence of three mRNA bases that codes for one amino acid is called a <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()">.</div>
-      <div class="fill-sent">5. The <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> RNA molecule carries a specific amino acid to the ribosome during translation.</div>
-      <div class="fill-sent">6. The Central Dogma of molecular biology states that information flows from DNA → <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> → Protein.</div>
-      <div class="fill-sent">7. DNA replication is described as <input class="fill-blank" type="text" placeholder="________" oninput="autoSave()"> because each new molecule contains one original strand and one new strand.</div>
-    </div>
-  </div>
-
-  <!-- PART 3: Matching -->
-  <div class="part-card">
-    <div class="part-header" onclick="togglePart('p3')">
-      <div class="part-num pn3">3</div>
-      <h3>Matching — Molecules &amp; Functions</h3>
-      <span class="pts">8 pts</span>
-      <span class="part-toggle" id="tog-p3">▼</span>
-    </div>
-    <div class="part-body open" id="p3">
-      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Match each molecule or term to its correct description.</p>
-      <div class="matching-grid">
-        <div class="match-col">
-          <h4>Term</h4>
-          <div class="match-item"><strong>1. DNA polymerase</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
-          <div class="match-item"><strong>2. RNA polymerase</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
-          <div class="match-item"><strong>3. mRNA</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
-          <div class="match-item"><strong>4. tRNA</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
-          <div class="match-item"><strong>5. Ribosome</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
-          <div class="match-item"><strong>6. Codon</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
-          <div class="match-item"><strong>7. Anticodon</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
-          <div class="match-item"><strong>8. Nucleotide</strong> →
-            <select class="match-select" onchange="autoSave()"><option value="">-- select --</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select>
-          </div>
+    <div class="video-grid" style="margin-bottom:20px;">
+            <a class="video-card" href="https://www.youtube.com/watch?v=oefAI2x2CQM" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/oefAI2x2CQM/hqdefault.jpg" alt="Amoeba Sisters Protein Synthesis Updated" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
         </div>
-        <div class="match-col">
-          <h4>Description</h4>
-          <p style="font-size:13px;line-height:2"><strong>A.</strong> Enzyme that builds new DNA strands during replication<br>
-          <strong>B.</strong> Enzyme that builds mRNA from a DNA template<br>
-          <strong>C.</strong> Carries genetic code from nucleus to ribosome<br>
-          <strong>D.</strong> Brings amino acids to the ribosome; has anticodon<br>
-          <strong>E.</strong> Site where translation (protein building) occurs<br>
-          <strong>F.</strong> Three-base sequence on mRNA that codes for one amino acid<br>
-          <strong>G.</strong> Three-base sequence on tRNA complementary to a codon<br>
-          <strong>H.</strong> Monomer of DNA/RNA: sugar + phosphate + nitrogenous base</p>
+        <div class="video-info">
+          <div class="video-title">🐾 Amoeba Sisters: Protein Synthesis</div>
+          <div class="video-meta">Transcription ▸ Translation ▸ mRNA/tRNA/rRNA</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=JQByjprj_mA" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/JQByjprj_mA/hqdefault.jpg" alt="🐾 Amoeba Sisters: DNA vs. RNA" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">🐾 Amoeba Sisters: DNA vs. RNA</div>
+          <div class="video-meta">Similarities ▸ Differences ▸ Base Pairing</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="rna-cards">
+      <div class="rna-card" style="border-top:3px solid var(--accent1);">
+        <div class="rna-icon">📨</div>
+        <div class="rna-name">Messenger RNA</div>
+        <div class="rna-abbr">mRNA</div>
+        <div class="rna-desc">Carries the genetic code from DNA in the nucleus out to the ribosome in the cytoplasm. It acts as the "message" or blueprint for building a protein. Each set of three bases on mRNA is called a <strong>codon</strong>.</div>
+      </div>
+      <div class="rna-card" style="border-top:3px solid var(--accent2);">
+        <div class="rna-icon">🚚</div>
+        <div class="rna-name">Transfer RNA</div>
+        <div class="rna-abbr">tRNA</div>
+        <div class="rna-desc">Brings the correct amino acid to the ribosome. Each tRNA matches a specific mRNA codon using its <strong>anticodon</strong>. It acts like a delivery truck — bringing the right building block at the right time.</div>
+      </div>
+      <div class="rna-card" style="border-top:3px solid var(--accent3);">
+        <div class="rna-icon">🏭</div>
+        <div class="rna-name">Ribosomal RNA</div>
+        <div class="rna-abbr">rRNA</div>
+        <div class="rna-desc">Makes up the structure of the <strong>ribosome</strong> — the organelle where proteins are assembled. The ribosome has two subunits (large and small) that work together to read mRNA and connect amino acids.</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h4>Easy Way to Remember</h4>
+      <ul>
+        <li><strong>mRNA</strong> = the <em>Message</em> (carries the code)</li>
+        <li><strong>tRNA</strong> = the <em>Truck</em> (delivers amino acids)</li>
+        <li><strong>rRNA</strong> = the <em>Ribosome</em> (the factory where it all happens)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TRANSCRIPTION -->
+  <div class="module" id="mod-transcription">
+    <div class="module-hero">
+      <div class="module-tag">✏️ Module 7</div>
+      <h2>Transcription</h2>
+      <p>Transcription is Step 1 of protein synthesis. A section of DNA is copied into mRNA. This happens in the <strong>nucleus</strong>.</p>
+    </div>
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> One strand of the double-stranded DNA chain serves as a template for the synthesis of a single strand of RNA that is complementary to the DNA strand.</div>
+    </div>
+
+    <div class="video-grid">
+      <a class="video-card" href="https://www.youtube.com/watch?v=oefAI2x2CQM" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img class="video-thumb-img" src="https://img.youtube.com/vi/oefAI2x2CQM/hqdefault.jpg" alt="Amoeba Sisters Protein Synthesis" loading="lazy">
+          <div class="video-play-btn">▶</div>
+          <div class="video-thumb-label">▸ Open in YouTube</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">🐾 Amoeba Sisters: Protein Synthesis</div>
+          <div class="video-meta">Transcription ▸ Translation ▸ Full overview</div>
+        </div>
+      </a>
+      
+    </div>
+
+    <div class="process-steps">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">RNA Polymerase Binds to DNA</div>
+          <div class="step-desc">The enzyme <strong>RNA polymerase</strong> attaches to the beginning of a gene on the DNA strand (a region called the promoter). The DNA double helix unwinds in that region, exposing the template strand.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">mRNA Is Built Using the DNA Template</div>
+          <div class="step-desc">RNA polymerase reads the DNA template strand and builds a complementary mRNA strand. Free RNA nucleotides pair with the DNA bases using modified base-pairing rules: <strong>A → U, T → A, G → C, C → G</strong>. (Notice: wherever the DNA has A, the mRNA gets U — not T.)</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">mRNA Is Released and Leaves the Nucleus</div>
+          <div class="step-desc">When RNA polymerase reaches the end of the gene, the mRNA strand is released. The DNA zips back up. The completed mRNA travels out of the nucleus through a nuclear pore and into the cytoplasm, where translation occurs.</div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- PART 4: Short Answer -->
-  <div class="part-card">
-    <div class="part-header" onclick="togglePart('p4')">
-      <div class="part-num pn4">4</div>
-      <h3>Short Answer — Analysis &amp; Explanation</h3>
-      <span class="pts">14 pts</span>
-      <span class="part-toggle" id="tog-p4">▼</span>
+    <div class="card">
+      <div class="card-title">🔤 Transcription Base-Pairing Example</div>
+      <div style="font-family:'Space Mono',monospace;font-size:14px;line-height:2;padding:8px 0;overflow-x:auto;">
+        <div style="color:var(--accent1);white-space:nowrap;">DNA Template:&nbsp; 3'— T — A — C — G — A — T — 5'</div>
+        <div style="color:var(--text-muted);font-size:12px;padding:0 0 4px 120px;white-space:nowrap;">↓ &nbsp;↓ &nbsp;↓ &nbsp;↓ &nbsp;↓ &nbsp;↓</div>
+        <div style="color:var(--accent2);white-space:nowrap;">mRNA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5'— A — U — G — C — U — A — 3'</div>
+      </div>
+      <p style="margin-top:12px;font-size:13px;color:var(--text-dim);">Notice: wherever DNA has <strong style="color:#ef4444">A</strong>, mRNA gets <strong style="color:#7c3aed">U</strong> — not T. This is the key difference between DNA replication and transcription.</p>
     </div>
-    <div class="part-body open" id="p4">
 
-      <div class="q-prompt">1. Explain the Central Dogma of molecular biology. In your answer, describe what happens during transcription and translation, including where each process occurs in the cell and what molecule is produced. (4 pts)</div>
-      <div class="q-hint">Hint: Think about which molecule is made first, then where it goes and what happens next. Include the nucleus and ribosome in your answer.</div>
-      <textarea class="a-textarea" id="sa1" placeholder="Type your answer here..." oninput="updateWC('sa1','wc1');autoSave()"></textarea>
-      <div class="word-count" id="wc1">0 words</div>
-      <hr class="q-divider">
-
-      <div class="q-prompt">2. A gene has the following DNA template strand: 3'–TACGCAATG–5'. Write the corresponding mRNA sequence, then identify each codon and the type of mutation that would result if the 4th base (G) were changed to A. (5 pts)</div>
-      <div class="q-hint">Hint: Step 1 — transcribe the DNA to mRNA. Step 2 — split mRNA into codons. Step 3 — think about how one base change affects just one codon vs. the whole reading frame.</div>
-      <textarea class="a-textarea" id="sa2" placeholder="Type your answer here..." oninput="updateWC('sa2','wc2');autoSave()"></textarea>
-      <div class="word-count" id="wc2">0 words</div>
-      <hr class="q-divider">
-
-      <div class="q-prompt">3. Compare substitution mutations and frameshift mutations. Why are frameshift mutations generally more damaging to a protein than substitution mutations? (5 pts)</div>
-      <div class="q-hint">Hint: Think about how many codons are affected. A substitution changes one codon; what does an insertion or deletion do to every codon that follows?</div>
-      <textarea class="a-textarea" id="sa3" placeholder="Type your answer here..." oninput="updateWC('sa3','wc3');autoSave()"></textarea>
-      <div class="word-count" id="wc3">0 words</div>
+    <div class="info-box">
+      <span class="info-box-icon">📍</span>
+      <span><strong>Where does transcription happen?</strong> In the <strong>nucleus</strong>. The DNA stays in the nucleus — only the mRNA copy travels out to the ribosome.</span>
     </div>
   </div>
 
-  <!-- PART 5: Extended Response -->
-  <div class="part-card">
-    <div class="part-header" onclick="togglePart('p5')">
-      <div class="part-num pn5">5</div>
-      <h3>Extended Response — Real-World Application</h3>
-      <span class="pts">8 pts</span>
-      <span class="part-toggle" id="tog-p5">▼</span>
+  <!-- TRANSLATION -->
+  <div class="module" id="mod-translation">
+    <div class="module-hero">
+      <div class="module-tag">🔄 Module 8</div>
+      <h2>Translation</h2>
+      <p>Translation is Step 2 of protein synthesis. The ribosome reads the mRNA and builds a protein. This happens in the <strong>cytoplasm</strong>.</p>
     </div>
-    <div class="part-body open" id="p5">
+    <div class="sol-focus">
+      <span class="sol-focus-icon">🎯</span>
+      <div class="sol-focus-text"><strong>SOL Connection:</strong> Protein synthesis is the process of forming proteins. The mRNA sequence is read three bases at a time (codons) to assemble a chain of amino acids.</div>
+    </div>
 
-      <div class="q-prompt">Sickle cell anemia is caused by a single base substitution in the gene for hemoglobin. The mutation changes one amino acid in the protein, causing red blood cells to form an abnormal sickle shape. Using what you know about the Central Dogma, trace exactly how a single DNA mutation can cause such a dramatic change in cell shape and function. Your answer should include DNA, mRNA, codon, amino acid, protein, and trait. (8 pts)</div>
-      <div class="q-hint">Hint: Start at the DNA level and work your way through every step to the visible trait. Be specific about each transformation: DNA → mRNA → protein → trait.</div>
-      <textarea class="a-textarea" id="sa4" style="min-height:140px" placeholder="Type your extended response here..." oninput="updateWC('sa4','wc4');autoSave()"></textarea>
-      <div class="word-count" id="wc4">0 words</div>
+    <div class="video-grid">
+            
+      
+    </div>
 
-      <table class="rubric-table" style="margin-top:16px">
-        <thead><tr><th>Criterion</th><th>Full Credit</th><th>Partial Credit</th><th>No Credit</th></tr></thead>
-        <tbody>
-          <tr><td>Central Dogma pathway</td><td>Correctly traces DNA→mRNA→protein→trait (2 pts)</td><td>Misses one step (1 pt)</td><td>Missing or incorrect (0 pts)</td></tr>
-          <tr><td>Codon &amp; amino acid</td><td>Explains how one codon change → one amino acid change (2 pts)</td><td>Vague reference (1 pt)</td><td>Not mentioned (0 pts)</td></tr>
-          <tr><td>Protein → phenotype</td><td>Explains how abnormal protein alters cell shape/function (2 pts)</td><td>Partially explained (1 pt)</td><td>Not mentioned (0 pts)</td></tr>
-          <tr><td>Vocabulary use</td><td>Uses all 6 required terms correctly (2 pts)</td><td>Uses 3–5 terms (1 pt)</td><td>Fewer than 3 terms (0 pts)</td></tr>
-        </tbody>
-      </table>
+    <div class="process-steps">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Ribosome Attaches to mRNA</div>
+          <div class="step-desc">The ribosome (made of rRNA and protein) attaches to the mRNA strand in the cytoplasm. It finds the <strong>start codon</strong> — the sequence AUG — and begins reading there. AUG codes for the amino acid methionine.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">tRNA Brings Amino Acids</div>
+          <div class="step-desc">tRNA molecules carry specific amino acids to the ribosome. Each tRNA has an <strong>anticodon</strong> — three bases that match (are complementary to) a codon on the mRNA. When a tRNA anticodon matches the mRNA codon, the correct amino acid is added to the growing protein chain.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Amino Acids Are Linked Together</div>
+          <div class="step-desc">As the ribosome moves along the mRNA one codon at a time, amino acids are linked together by <strong>peptide bonds</strong>. The chain grows longer with each new amino acid added.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Protein Is Released at a Stop Codon</div>
+          <div class="step-desc">When the ribosome reaches a <strong>stop codon</strong> (UAA, UAG, or UGA), translation ends. No tRNA matches a stop codon. The completed protein chain is released from the ribosome and folds into its functional shape.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🗝️ Key Codons to Know</div>
+      <div class="codon-table-wrap">
+        <table class="codon-table">
+          <thead><tr><th>Codon</th><th>Meaning</th><th>Codon</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td style="color:#10b981;font-weight:bold;">AUG</td><td style="color:#10b981;">START (Methionine)</td><td>UUU / UUC</td><td>Phenylalanine</td></tr>
+            <tr><td style="color:#ef4444;font-weight:bold;">UAA</td><td style="color:#ef4444;">STOP</td><td>GGU / GGC / GGA / GGG</td><td>Glycine</td></tr>
+            <tr><td style="color:#ef4444;font-weight:bold;">UAG</td><td style="color:#ef4444;">STOP</td><td>GCU / GCC / GCA / GCG</td><td>Alanine</td></tr>
+            <tr><td style="color:#ef4444;font-weight:bold;">UGA</td><td style="color:#ef4444;">STOP</td><td>AAA / AAG</td><td>Lysine</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:10px;font-size:13px;color:var(--text-dim);">The complete genetic code has 64 codons for 20 amino acids. Most amino acids have more than one codon — this is called <strong>redundancy</strong>.</p>
+    </div>
+
+    <div class="highlight-box">
+      <h4>Central Dogma of Molecular Biology</h4>
+      <ul>
+        <li><strong>DNA → mRNA</strong> (Transcription, in the nucleus)</li>
+        <li><strong>mRNA → Protein</strong> (Translation, at the ribosome in the cytoplasm)</li>
+        <li>DNA is the master copy — it stays in the nucleus and never leaves</li>
+      </ul>
     </div>
   </div>
 
-  <!-- SUBMIT BAR -->
-  <div class="submit-bar">
-    <div>
-      <strong>Assignment Complete?</strong>
-      <p>Review all parts, then save a draft or print for submission.</p>
+  <!-- VIRTUAL LAB -->
+  <div class="module" id="mod-lab">
+    <div class="module-hero">
+      <div class="module-tag">⚗️ Virtual Lab</div>
+      <h2>Interactive Lab</h2>
+      <p>Practice base pairing and codon decoding — two core skills on the Virginia Biology SOL.</p>
     </div>
-    <div class="submit-btns">
-      <span class="saved-msg" id="savedMsg">✓ Draft saved!</span>
-      <button class="sbtn secondary" onclick="saveDraft()">💾 Save Draft</button>
-      <button class="sbtn primary" onclick="window.print()">🖨️ Print / Submit</button>
+
+    <!-- LAB 1 -->
+    <div class="lab-container">
+      <div class="lab-header">
+        <span class="lab-badge">LAB 1</span>
+        <div class="lab-title">DNA Complementary Strand Builder</div>
+      </div>
+      <div class="lab-body">
+        <div class="lab-instructions">
+          <strong>Directions:</strong> Click DNA nucleotides to build a template strand (up to 8 bases). Then click <em>Build Complement</em> to see the complementary DNA strand and the mRNA transcript that would be made from this template.
+        </div>
+        <div class="dna-builder">
+          <div class="nucleotide-palette">
+            <div class="palette-title">DNA Nucleotides</div>
+            <div class="nucleotides">
+              <div class="nucleotide n-A" onclick="addNucleotide('A')" title="Adenine">A</div>
+              <div class="nucleotide n-T" onclick="addNucleotide('T')" title="Thymine">T</div>
+              <div class="nucleotide n-G" onclick="addNucleotide('G')" title="Guanine">G</div>
+              <div class="nucleotide n-C" onclick="addNucleotide('C')" title="Cytosine">C</div>
+            </div>
+            <div class="lab-actions">
+              <button class="lab-btn lab-btn-primary" onclick="buildComplement()">Build Complement</button>
+              <button class="lab-btn lab-btn-ghost" onclick="clearStrand()">Clear</button>
+            </div>
+          </div>
+          <div class="strand-display">
+            <div class="palette-title">Your Strands</div>
+            <div class="strand-row">
+              <span class="strand-label">Template:</span>
+              <div id="templateStrand" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+            </div>
+            <div class="strand-row">
+              <span class="strand-label">DNA Comp:</span>
+              <div id="complementStrand" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+            </div>
+            <div class="strand-row">
+              <span class="strand-label">mRNA:</span>
+              <div id="mrnaStrand" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+            </div>
+            <div class="lab-result" id="labResult1">Click nucleotides to build your template strand...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAB 2 -->
+    <div class="lab-container">
+      <div class="lab-header">
+        <span class="lab-badge">LAB 2</span>
+        <div class="lab-title">mRNA Codon → Amino Acid Decoder</div>
+      </div>
+      <div class="lab-body">
+        <div class="lab-instructions">
+          <strong>Directions:</strong> Click RNA nucleotides (A, U, G, C) to build an mRNA sequence. Include the start codon AUG to begin translation. Then click <em>Translate</em> to see which amino acids are coded for.
+        </div>
+        <div class="dna-builder">
+          <div class="nucleotide-palette">
+            <div class="palette-title">RNA Nucleotides</div>
+            <div class="nucleotides">
+              <div class="nucleotide n-A" onclick="addRNA('A')">A</div>
+              <div class="nucleotide n-U" onclick="addRNA('U')">U</div>
+              <div class="nucleotide n-G" onclick="addRNA('G')">G</div>
+              <div class="nucleotide n-C" onclick="addRNA('C')">C</div>
+            </div>
+            <div class="lab-actions">
+              <button class="lab-btn lab-btn-primary" onclick="translateRNA()">Translate</button>
+              <button class="lab-btn lab-btn-ghost" onclick="clearRNA()">Clear</button>
+            </div>
+            <div style="margin-top:10px;font-size:11px;color:var(--text-muted);font-family:'Space Mono',monospace;line-height:1.6;">
+              Try: AUG-UUU-GAA-UAA<br>= Start-Phe-Glu-Stop
+            </div>
+          </div>
+          <div class="strand-display">
+            <div class="palette-title">mRNA & Translation</div>
+            <div class="strand-row">
+              <span class="strand-label">mRNA:</span>
+              <div id="rnaInput" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+            </div>
+            <div class="strand-row">
+              <span class="strand-label">Codons:</span>
+              <div id="codonDisplay" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+            </div>
+            <div class="strand-row">
+              <span class="strand-label">Protein:</span>
+              <div id="proteinDisplay" style="display:flex;gap:5px;flex-wrap:wrap;"></div>
+            </div>
+            <div class="lab-result" id="labResult2">Add RNA nucleotides to begin...</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <button class="done-btn" id="doneAssignment" onclick="markDone('assignment')" style="margin-top:16px">Mark Assignment Complete ✓</button>
+  <!-- QUIZ -->
+  <div class="module" id="mod-quiz">
+    <div class="module-hero">
+      <div class="module-tag">📝 SOL Practice Quiz</div>
+      <h2>Knowledge Check</h2>
+      <p>10 questions written in Virginia Biology SOL style. Answer all questions, then click Submit to see your score and explanations.</p>
+    </div>
+
+    <div class="quiz-header">
+      <div class="quiz-icon">🧬</div>
+      <div class="quiz-meta">
+        <h3>DNA & Protein Synthesis — SOL Quiz</h3>
+        <p>10 questions · Virginia Biology BIO.3</p>
+      </div>
+      <div class="quiz-stats">
+        <div class="quiz-score-display" id="quizScoreDisplay">—/10</div>
+        <p>Your Score</p>
+      </div>
+    </div>
+
+    <div id="quizQuestions"></div>
+
+    <div class="quiz-submit-wrap">
+      <button class="btn btn-primary" style="padding:13px 36px;font-size:15px;" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
+
+    <div class="quiz-results" id="quizResults">
+      <div class="result-score" id="resultScore">0/10</div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-sub" id="resultSub"></div>
+      <button class="btn btn-ghost" onclick="resetQuiz()" style="margin-top:8px;">Retake Quiz</button>
+    </div>
+  </div>
+
+</main>
 </div>
 
-<div class="footer">Virginia SOL Biology · BIO.6 DNA, RNA &amp; Protein Synthesis</div>
-
-</div><!-- /wrap -->
+<footer>
+  Virginia SOL Biology · DNA, RNA &amp; Protein Synthesis
+</footer>
 
 <script>
-/* ──────────────── DATA ──────────────── */
-const VIDS={
-  1:{title:'DNA vs. RNA — Amoeba Sisters',concepts:'Nucleotide structure, DNA double helix, base pairing (A-T, G-C), antiparallel strands, DNA vs RNA differences, semi-conservative replication.',ytUrl:'https://www.youtube.com/watch?v=JQByjprj_mU',embedId:null},
-  2:{title:'Protein Synthesis — Amoeba Sisters',concepts:'Central Dogma, transcription (DNA→mRNA in nucleus), translation (mRNA→protein at ribosome), codons, anticodons, tRNA, amino acids, polypeptide.',ytUrl:'https://www.youtube.com/watch?v=itsb2SqR-R0',embedId:null},
-  3:{title:'Mutations — Amoeba Sisters',concepts:'Point mutations (substitution, insertion, deletion), frameshift mutations, nonsense mutations, silent mutations, how mutations affect proteins, causes of mutations.',ytUrl:'https://www.youtube.com/watch?v=qpQf3ODdyGk',embedId:null},
+// ===== MODULE NAVIGATION =====
+const modules = ['intro','vocab','discovery','models','structure','replication','dna-rna','rna-types','transcription','translation','lab','quiz'];
+const moduleTitles = {
+  'intro':'Overview','vocab':'Vocabulary','discovery':'Discovery of DNA',
+  'models':'Models of DNA','structure':'DNA Structure','replication':'DNA Replication',
+  'dna-rna':'DNA vs RNA','rna-types':'Types of RNA','transcription':'Transcription',
+  'translation':'Translation','lab':'Virtual Lab','quiz':'SOL Quiz'
 };
+let currentModuleIdx = 0;
+let completedModules = new Set(['intro']);
 
-const SLIDES=[
-  {t:'t1',title:'DNA Structure: The Double Helix',html:`<ul><li>DNA stands for <strong>deoxyribonucleic acid</strong> — the molecule that carries genetic information</li><li>Structure: <strong>double helix</strong> — two strands twisted around each other like a twisted ladder</li><li>Each strand is made of <strong>nucleotides</strong>, each containing a sugar (deoxyribose), a phosphate group, and a nitrogenous base</li><li>The four bases: <strong>A</strong>denine, <strong>T</strong>hymine, <strong>G</strong>uanine, <strong>C</strong>ytosine</li><li><strong>Base pairing rules:</strong> A pairs with T (2 bonds) · G pairs with C (3 bonds)</li><li>The two strands run <strong>antiparallel</strong> — 3'→5' on one side, 5'→3' on the other</li></ul><div class="chips"><div class="chip">🧬 A—T pairs</div><div class="chip">🔗 G—C pairs</div><div class="chip">🌀 Double Helix</div></div>`},
-  {t:'t2',title:'DNA Replication',html:`<ul><li>Before a cell divides, it must copy all its DNA so each daughter cell gets a full set</li><li>Process: <strong>semi-conservative replication</strong> — each strand serves as a template for a new strand</li><li>Enzyme: <strong>DNA polymerase</strong> reads the template and adds complementary nucleotides</li><li>Result: two identical DNA molecules, each with one original strand + one new strand</li></ul><div class="eq">Original DNA → [Helicase unwinds] → [DNA polymerase builds] → 2 identical DNA molecules</div><ul><li>Occurs in the <strong>nucleus</strong> before mitosis or meiosis</li><li>Errors during replication can cause <strong>mutations</strong></li></ul><div class="chips"><div class="chip">🔬 Nucleus</div><div class="chip">⚙️ DNA Polymerase</div><div class="chip">🔄 Semi-Conservative</div></div>`},
-  {t:'t3',title:'Transcription — DNA to mRNA',html:`<ul><li><strong>Transcription:</strong> copying the genetic information from DNA into mRNA</li><li>Occurs in the <strong>nucleus</strong></li><li>Enzyme: <strong>RNA polymerase</strong> binds to DNA and builds the mRNA strand</li><li><strong>Base substitution rules</strong> (DNA template → mRNA):<br>A → U · T → A · G → C · C → G</li><li>The resulting <strong>messenger RNA (mRNA)</strong> carries the code out of the nucleus to ribosomes</li></ul><div class="eq">DNA (template strand) → [RNA polymerase] → mRNA transcript</div><div class="chips"><div class="chip">🏭 RNA Polymerase</div><div class="chip">📨 mRNA Product</div><div class="chip">🔵 In Nucleus</div></div>`},
-  {t:'t4',title:'Translation — mRNA to Protein',html:`<ul><li><strong>Translation:</strong> reading the mRNA code to build a protein (polypeptide chain)</li><li>Occurs at <strong>ribosomes</strong> in the cytoplasm</li><li>mRNA is read in <strong>codons</strong> — groups of 3 bases, each coding for one amino acid</li><li><strong>tRNA</strong> (transfer RNA) delivers amino acids; each tRNA has an <strong>anticodon</strong> complementary to the mRNA codon</li><li><strong>AUG</strong> = start codon (methionine); UAA, UAG, UGA = stop codons</li><li>Amino acids are joined by peptide bonds to form the polypeptide (protein)</li></ul><div class="chips"><div class="chip">📖 Codons (triplets)</div><div class="chip">🚚 tRNA delivers AA</div><div class="chip">⛓ Peptide bonds</div></div>`},
-  {t:'t5',title:'The Central Dogma',html:`<ul><li>The <strong>Central Dogma</strong> describes the flow of genetic information in cells</li></ul><div class="eq">DNA → Transcription → RNA → Translation → Protein</div><ul><li>DNA stores the master instructions — never leaves the nucleus</li><li>mRNA is a temporary copy that carries code to ribosomes</li><li>Proteins carry out cellular functions — enzymes, structural proteins, receptors</li><li>A gene is a segment of DNA that codes for a specific protein</li><li>Different genes are expressed in different cell types — all cells have the same DNA but different proteins</li></ul><div class="chips"><div class="chip">📚 DNA = master copy</div><div class="chip">📬 mRNA = messenger</div><div class="chip">🏗️ Protein = product</div></div>`},
-  {t:'t6',title:'Mutations and Their Effects',html:`<ul><li>A <strong>mutation</strong> is a change in the DNA sequence</li><li><strong>Substitution:</strong> one base replaced by another — may change one amino acid (missense) or create a stop codon (nonsense) or have no effect (silent)</li><li><strong>Insertion/Deletion:</strong> adds or removes a base → <strong>frameshift mutation</strong> — shifts the reading frame for ALL subsequent codons → usually disrupts the whole protein</li><li>Effects on the protein determine effects on the <strong>phenotype</strong></li><li>Mutations can be caused by: radiation, chemicals (mutagens), or errors in DNA replication</li><li>Not all mutations are harmful — some are neutral (silent), some drive evolution</li></ul><div class="chips"><div class="chip">🔸 Substitution</div><div class="chip">➕ Insertion</div><div class="chip">➖ Deletion</div><div class="chip">🔀 Frameshift</div></div>`}
-];
-
-const VOCAB=[
-  {term:'DNA (Deoxyribonucleic Acid)',def:'The double-stranded molecule that stores genetic information; made of nucleotides with bases A, T, G, and C.'},
-  {term:'RNA (Ribonucleic Acid)',def:'Single-stranded nucleic acid that carries or executes genetic instructions; uses uracil (U) instead of thymine (T).'},
-  {term:'Nucleotide',def:'The monomer (building block) of DNA and RNA; consists of a sugar, a phosphate group, and a nitrogenous base.'},
-  {term:'Double Helix',def:'The twisted-ladder shape of DNA; two complementary antiparallel strands held together by hydrogen bonds between base pairs.'},
-  {term:'Base Pairing Rules',def:'In DNA: A pairs with T; G pairs with C. In RNA: A pairs with U; G pairs with C. These rules govern both replication and transcription.'},
-  {term:'DNA Replication',def:'The process of copying DNA before cell division; semi-conservative — each new molecule has one original and one new strand. Enzyme: DNA polymerase.'},
-  {term:'Transcription',def:'The process of making mRNA from a DNA template; occurs in the nucleus; enzyme: RNA polymerase.'},
-  {term:'mRNA (Messenger RNA)',def:'RNA molecule that carries the genetic code from the nucleus to ribosomes for protein synthesis.'},
-  {term:'Translation',def:'The process of building a protein from an mRNA sequence; occurs at ribosomes; reads codons and assembles amino acids into a polypeptide.'},
-  {term:'Codon',def:'A sequence of three mRNA bases that codes for one specific amino acid (or a start/stop signal). There are 64 possible codons.'},
-  {term:'tRNA (Transfer RNA)',def:'RNA molecule that delivers specific amino acids to the ribosome during translation; has an anticodon complementary to an mRNA codon.'},
-  {term:'Anticodon',def:'A three-base sequence on tRNA that is complementary to an mRNA codon; allows tRNA to bring the correct amino acid to the ribosome.'},
-  {term:'Central Dogma',def:'The principle that genetic information flows in one direction: DNA → RNA → Protein.'},
-  {term:'Mutation',def:'A change in the DNA nucleotide sequence; types include substitution, insertion, and deletion. Can affect protein structure and function.'},
-  {term:'Frameshift Mutation',def:'A mutation caused by inserting or deleting a number of bases not divisible by three; shifts the reading frame and changes all codons downstream.'},
-];
-
-const QUESTIONS=[
-  {q:'What are the base pairing rules in DNA?',opts:['A-C and G-T','A-T and G-C','A-U and G-C','A-G and T-C'],ans:1,exp:'In DNA, adenine (A) pairs with thymine (T) via 2 hydrogen bonds, and guanine (G) pairs with cytosine (C) via 3 hydrogen bonds.'},
-  {q:'During transcription, which enzyme builds the mRNA strand?',opts:['DNA polymerase','Helicase','RNA polymerase','Ribosome'],ans:2,exp:'RNA polymerase binds to the DNA template and synthesizes a complementary mRNA strand during transcription.'},
-  {q:'Which of the following correctly describes the Central Dogma?',opts:['Protein → RNA → DNA','DNA → RNA → Protein','RNA → DNA → Protein','Protein → DNA → RNA'],ans:1,exp:'The Central Dogma states that genetic information flows from DNA to RNA (transcription) to Protein (translation).'},
-  {q:'What is a codon?',opts:['A three-base sequence on tRNA','A two-base sequence on mRNA','A three-base sequence on mRNA that codes for one amino acid','The complete sequence of all genes in an organism'],ans:2,exp:'A codon is a sequence of three consecutive mRNA bases that specifies a particular amino acid (or a start/stop signal) during translation.'},
-  {q:'Where does translation occur?',opts:['In the nucleus','At the ribosome','In the mitochondria','In the chloroplast'],ans:1,exp:'Translation occurs at ribosomes, which can be free in the cytoplasm or attached to the rough ER.'},
-  {q:'A DNA template strand reads 3\'–ATCGTA–5\'. What is the mRNA sequence transcribed from this strand?',opts:['ATCGTA','TAGCAT','UAGCAU','UACGAU'],ans:2,exp:'Transcription substitutes RNA bases: A→U, T→A, G→C, C→G. So A-T-C-G-T-A becomes U-A-G-C-A-U.'},
-  {q:'Which type of mutation shifts the reading frame for all codons that follow?',opts:['Substitution','Silent mutation','Frameshift (insertion or deletion)','Missense mutation'],ans:2,exp:'Inserting or deleting a number of bases not divisible by three causes a frameshift — every codon after the change is altered, usually destroying the protein\'s function.'},
-  {q:'What does tRNA do during translation?',opts:['Copies DNA into mRNA','Carries the genetic code to ribosomes','Brings specific amino acids to the ribosome and matches its anticodon to the mRNA codon','Unwinds the DNA double helix'],ans:2,exp:'tRNA has two key parts: an anticodon (complementary to the mRNA codon) and an attached amino acid. It delivers the correct amino acid to the ribosome.'},
-  {q:'DNA replication is described as "semi-conservative" because:',opts:['Both strands of the original DNA are destroyed','Each new DNA molecule has two completely new strands','Each new DNA molecule contains one original strand and one newly synthesized strand','Only half of the DNA is copied'],ans:2,exp:'Semi-conservative replication means each of the two new DNA molecules consists of one original (conserved) strand and one newly made strand.'},
-  {q:'A silent mutation is one that:',opts:['Changes the amino acid sequence of the protein','Creates a stop codon early in the sequence','Changes a DNA base but does not change the amino acid (due to the redundancy of the genetic code)','Deletes an entire chromosome'],ans:2,exp:'Because the genetic code is redundant (multiple codons can specify the same amino acid), some base substitutions don\'t change the amino acid — these are called silent mutations.'},
-];
-
-/* ──────────────── STATE ──────────────── */
-const done={};
-let curSlide=0,qIdx=0,score=0,answered=false;
-
-/* ──────────────── NAV ──────────────── */
-function showSec(name,btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sec-'+name).classList.add('active');
-  btn.classList.add('active');
-  if(name==='slides')renderSlide();
-  if(name==='quiz'){qIdx=0;score=0;answered=false;document.getElementById('qwrap').style.display='block';document.getElementById('scoreCard').classList.remove('show');renderQ();}
+function showModule(id) {
+  document.querySelectorAll('.module').forEach(m => m.classList.remove('active'));
+  document.getElementById('mod-'+id).classList.add('active');
+  currentModuleIdx = modules.indexOf(id);
+  document.getElementById('currentModuleTitle').textContent = moduleTitles[id];
+  completedModules.add(id);
+  updateNav();
+  updateProgress();
+  if (window.innerWidth < 768) document.getElementById('sidebar').classList.remove('open');
+  window.scrollTo(0,0);
+  if (id === 'models') setTimeout(initSlides, 50);
+  if (id === 'structure') setTimeout(initStructureSlides, 50);
+  if (id === 'discovery') setTimeout(initDiscoverySlides, 50);
 }
 
-function markDone(name){
-  if(done[name])return;
-  done[name]=true;
-  document.querySelector('[data-s="'+name+'"]').classList.add('done');
-  const n=Object.keys(done).length;
-  document.getElementById('progFill').style.width=(n/6*100)+'%';
-  document.getElementById('progTxt').textContent=n+' of 6 complete';
-  const b=document.getElementById('done'+name.charAt(0).toUpperCase()+name.slice(1));
-  if(b){b.textContent='✓ Complete!';b.classList.add('finished')}
-}
-
-/* ──────────────── VIDEOS ──────────────── */
-function previewFile(n){
-  const f=document.getElementById('file'+n).files[0];
-  if(f){document.getElementById('file'+n+'name').textContent='✓ '+f.name;VIDS[n].localSrc=URL.createObjectURL(f);}
-}
-
-function getYTId(url){
-  const m=url.match(/(?:v=|youtu\.be\/)([^&\s?]+)/);
-  return m?m[1]:null;
-}
-
-function applyCustomVideos(){
-  for(let n=1;n<=3;n++){
-    const urlVal=document.getElementById('url'+n).value.trim();
-    if(urlVal){
-      const id=getYTId(urlVal);
-      if(id){VIDS[n].embedId=id;VIDS[n].customUrl=urlVal;}
-      else{VIDS[n].embedId=null;VIDS[n].customUrl=urlVal;}
-    }
-  }
-  const msg=document.getElementById('applyMsg');
-  msg.style.display='inline';
-  setTimeout(()=>msg.style.display='none',2500);
-}
-
-function playVid(n){
-  const v=VIDS[n];
-  document.getElementById('vpTitle').textContent=v.title;
-  document.getElementById('vpConcepts').textContent=v.concepts;
-  const player=document.getElementById('vidPlayer');
-  const content=document.getElementById('vpContent');
-  player.classList.add('show');
-  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
-  document.getElementById('vcard'+n).style.borderColor='var(--purple)';
-
-  if(v.localSrc){
-    content.innerHTML=`<div class="local-video-wrap"><video controls autoplay style="position:absolute;inset:0;width:100%;height:100%;background:#000"><source src="${v.localSrc}">Your browser does not support this video.</video></div>`;
-  } else if(v.embedId){
-    content.innerHTML=`<div class="iframe-wrap"><iframe src="https://www.youtube.com/embed/${v.embedId}?autoplay=1&rel=0" allowfullscreen allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe></div>`;
-    setTimeout(()=>{
-      const iframe=content.querySelector('iframe');
-      if(!iframe)return;
-      try{const b=iframe.contentDocument;if(b&&b.title&&b.title.includes('blocked'))showYtFallback(content,n);}catch(e){}
-    },3000);
-  } else {
-    showYtFallback(content,n);
-  }
-  player.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function showYtFallback(container,n){
-  const v=VIDS[n];
-  container.innerHTML=`<div style="background:#111;padding:30px;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
-    <div style="font-size:3rem">▶</div>
-    <p style="color:rgba(255,255,255,.8);font-size:13px">This video cannot be embedded. Click below to watch on YouTube.</p>
-    <a href="${v.ytUrl}" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#CC0000;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif;text-decoration:none">▶ Watch on YouTube ↗</a>
-    <p style="color:rgba(255,255,255,.5);font-size:12px">Or upload your own video file using the panel above.</p>
-  </div>`;
-}
-
-function closeVid(){
-  document.getElementById('vidPlayer').classList.remove('show');
-  document.getElementById('vpContent').innerHTML='';
-  document.querySelectorAll('.vid-card').forEach(c=>c.style.borderColor='transparent');
-}
-
-/* ──────────────── SLIDES ──────────────── */
-function renderSlide(){
-  const s=SLIDES[curSlide];
-  const b=document.getElementById('slideBody');
-  b.className='slide-body '+s.t;
-  b.innerHTML=`<div class="slide-num">Slide ${curSlide+1} of ${SLIDES.length}</div><h3>${s.title}</h3><div class="slide-content">${s.html}</div>`;
-  document.getElementById('prevBtn').disabled=curSlide===0;
-  document.getElementById('nextBtn').disabled=curSlide===SLIDES.length-1;
-  const dots=document.getElementById('slideDots');
-  dots.innerHTML='';
-  SLIDES.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===curSlide?' active':'');d.onclick=()=>{curSlide=i;renderSlide()};dots.appendChild(d);});
-}
-function nextSlide(){if(curSlide<SLIDES.length-1){curSlide++;renderSlide();}}
-function prevSlide(){if(curSlide>0){curSlide--;renderSlide();}}
-
-/* ──────────────── VOCAB ──────────────── */
-(function(){
-  const g=document.getElementById('vocabGrid');
-  VOCAB.forEach(v=>{
-    const c=document.createElement('div');c.className='vc';
-    c.innerHTML=`<div class="vterm">${v.term}</div><div class="vhint">Tap to reveal →</div><div class="vdef">${v.def}</div>`;
-    c.onclick=()=>c.classList.toggle('open');
-    g.appendChild(c);
-  });
-})();
-
-/* ──────────────── LAB ──────────────── */
-function switchLab(name,btn){
-  document.querySelectorAll('.lpanel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.ltab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('lab-'+name).classList.add('active');
-  btn.classList.add('active');
-}
-
-const DNA_TO_RNA={A:'U',T:'A',G:'C',C:'G'};
-const RNA_TO_AA={
-  UUU:'Phe',UUC:'Phe',UUA:'Leu',UUG:'Leu',
-  UCU:'Ser',UCC:'Ser',UCA:'Ser',UCG:'Ser',
-  UAU:'Tyr',UAC:'Tyr',UAA:'Stop',UAG:'Stop',
-  UGU:'Cys',UGC:'Cys',UGA:'Stop',UGG:'Trp',
-  CUU:'Leu',CUC:'Leu',CUA:'Leu',CUG:'Leu',
-  CCU:'Pro',CCC:'Pro',CCA:'Pro',CCG:'Pro',
-  CAU:'His',CAC:'His',CAA:'Gln',CAG:'Gln',
-  CGU:'Arg',CGC:'Arg',CGA:'Arg',CGG:'Arg',
-  AUU:'Ile',AUC:'Ile',AUA:'Ile',AUG:'Met(Start)',
-  ACU:'Thr',ACC:'Thr',ACA:'Thr',ACG:'Thr',
-  AAU:'Asn',AAC:'Asn',AAA:'Lys',AAG:'Lys',
-  AGU:'Ser',AGC:'Ser',AGA:'Arg',AGG:'Arg',
-  GUU:'Val',GUC:'Val',GUA:'Val',GUG:'Val',
-  GCU:'Ala',GCC:'Ala',GCA:'Ala',GCG:'Ala',
-  GAU:'Asp',GAC:'Asp',GAA:'Glu',GAG:'Glu',
-  GGU:'Gly',GGC:'Gly',GGA:'Gly',GGG:'Gly',
-};
-
-function runTranscription(){
-  const raw=document.getElementById('dnaInput').value.toUpperCase().replace(/[^ATGC]/g,'');
-  document.getElementById('dnaInput').value=raw;
-  const sim=document.getElementById('transcribeSim');
-  const log=document.getElementById('transcribeLog');
-  if(!raw){sim.innerHTML='<p style="color:var(--purple);font-size:13px">Type a DNA sequence above to see transcription in action.</p>';log.textContent='Enter a DNA sequence to begin.';return;}
-  const mrna=raw.split('').map(b=>DNA_TO_RNA[b]||'?').join('');
-  const complement=raw.split('').map(b=>({A:'T',T:'A',G:'C',C:'G'}[b]||'?')).join('');
-  sim.innerHTML=`
-    <p style="font-family:monospace;font-size:13px;color:#26215C;margin-bottom:8px"><strong>DNA Template (3'→5'):</strong> <span style="letter-spacing:3px">${raw}</span></p>
-    <p style="font-family:monospace;font-size:13px;color:#26215C;margin-bottom:8px"><strong>DNA Complement (5'→3'):</strong> <span style="letter-spacing:3px">${complement}</span></p>
-    <hr style="border:none;border-top:1px solid #AFA9EC;margin:10px 0">
-    <p style="font-family:monospace;font-size:14px;color:#0C447C;font-weight:600"><strong>mRNA Transcript (5'→3'):</strong> <span style="letter-spacing:3px;background:rgba(55,138,221,.1);border-radius:4px;padding:2px 6px">${mrna}</span></p>
-  `;
-  log.textContent=`DNA (${raw.length} bases) → mRNA (${mrna.length} bases). Template: ${raw} | mRNA: ${mrna}. Remember: each A in DNA becomes U in mRNA; T→A; G→C; C→G.`;
-}
-
-function runTranslation(){
-  const raw=document.getElementById('mrnaInput').value.toUpperCase().replace(/[^AUGC]/g,'');
-  document.getElementById('mrnaInput').value=raw;
-  const sim=document.getElementById('translateSim');
-  const log=document.getElementById('translateLog');
-  if(!raw){sim.innerHTML='<p style="color:var(--purple);font-size:13px">Type an mRNA sequence above to see translation in action.</p>';log.textContent='Enter an mRNA sequence to begin.';return;}
-  const codons=[];for(let i=0;i<raw.length-2;i+=3){codons.push(raw.slice(i,i+3));}
-  const codonHTML=codons.map(c=>`<span class="codon">${c}</span>`).join('');
-  const aas=codons.map(c=>RNA_TO_AA[c]||'?');
-  const aaHTML=aas.map(a=>`<span class="aa-chip">${a}</span>`).join('');
-  const stopIdx=aas.findIndex(a=>a==='Stop');
-  const peptide=stopIdx>=0?aas.slice(0,stopIdx):aas;
-  sim.innerHTML=`
-    <p style="font-size:12px;font-weight:600;color:#26215C;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px">mRNA Codons:</p>
-    <div class="codon-row">${codonHTML}</div>
-    <p style="font-size:12px;font-weight:600;color:#085041;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px">Amino Acids:</p>
-    <div class="codon-row">${aaHTML}</div>
-    ${peptide.length>0?`<p style="font-size:12px;color:#26215C;margin-top:10px"><strong>Polypeptide:</strong> ${peptide.join(' — ')}</p>`:''}
-  `;
-  log.textContent=`Read ${codons.length} codon(s) from ${raw.length} bases. ${stopIdx>=0?'Stop codon found at codon '+(stopIdx+1)+' — translation terminates.':'No stop codon in this sequence yet.'} Polypeptide: ${peptide.join('-')}.`;
-}
-
-/* ──────────────── QUIZ ──────────────── */
-function renderQ(){
-  if(qIdx>=QUESTIONS.length){showScore();return;}
-  const q=QUESTIONS[qIdx];
-  document.getElementById('qctr').textContent=`Question ${qIdx+1} of ${QUESTIONS.length}`;
-  document.getElementById('qtext').textContent=q.q;
-  const ol=document.getElementById('qopts');ol.innerHTML='';
-  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.onclick=()=>checkA(i,q.ans,q.exp);ol.appendChild(b);});
-  document.getElementById('qfb').className='fb';document.getElementById('qfb').textContent='';
-  document.getElementById('qnext').style.display='none';answered=false;
-}
-
-function checkA(chosen,correct,exp){
-  if(answered)return;answered=true;
-  document.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add(chosen===correct?'correct':'show-correct');else if(i===chosen)b.classList.add('wrong');});
-  if(chosen===correct)score++;
-  const fb=document.getElementById('qfb');
-  fb.className='fb show '+(chosen===correct?'correct':'wrong');
-  fb.textContent=(chosen===correct?'✓ Correct! ':'✗ Not quite. ')+exp;
-  document.getElementById('qnext').style.display='block';
-}
-
-function nextQ(){qIdx++;renderQ();}
-
-function showScore(){
-  document.getElementById('qwrap').style.display='none';
-  const pct=Math.round(score/QUESTIONS.length*100);
-  const ring=document.getElementById('sring');
-  ring.textContent=pct+'%';ring.className='score-ring '+(pct>=80?'sg':pct>=60?'so':'sl');
-  const tiers=[['Keep Studying!','Review the videos and slides, then try again!'],['Good Effort!','Review the vocabulary flashcards and try again.'],['Well Done!','Good understanding of DNA and protein synthesis!'],['Excellent Work!','Great mastery of the Central Dogma!'],['Perfect Score! 🎉','Outstanding — you\'ve mastered BIO.6!']];
-  const tier=pct<50?0:pct<65?1:pct<80?2:pct<100?3:4;
-  document.getElementById('stitle').textContent=tiers[tier][0];
-  document.getElementById('smsg').textContent=tiers[tier][1];
-  document.getElementById('sco').textContent=score;document.getElementById('swr').textContent=QUESTIONS.length-score;document.getElementById('spct').textContent=pct+'%';
-  document.getElementById('scoreCard').classList.add('show');
-}
-
-function restartQuiz(){
-  qIdx=0;score=0;answered=false;
-  document.getElementById('qwrap').style.display='block';
-  document.getElementById('scoreCard').classList.remove('show');
-  renderQ();
-}
-
-/* ──────────────── ASSIGNMENT ──────────────── */
-function togglePart(id){
-  const body=document.getElementById(id);
-  const tog=document.getElementById('tog-'+id);
-  const open=body.classList.contains('open');
-  body.classList.toggle('open',!open);
-  tog.style.transform=open?'':'rotate(180deg)';
-}
-
-function selectMC(el){
-  const name=el.name;
-  document.querySelectorAll(`input[name="${name}"]`).forEach(r=>{r.closest('.mc-opt').classList.remove('selected');});
-  el.closest('.mc-opt').classList.add('selected');
-  autoSave();
-}
-
-function updateWC(taId,wcId){
-  const val=document.getElementById(taId).value.trim();
-  const wc=val?val.split(/\s+/).length:0;
-  document.getElementById(wcId).textContent=wc+' word'+(wc!==1?'s':'');
-  document.getElementById(taId).classList.toggle('filled',val.length>0);
-}
-
-function autoSave(){
-  clearTimeout(autoSave._t);
-  autoSave._t=setTimeout(()=>{
-    try{
-      const data={};
-      document.querySelectorAll('.a-textarea').forEach(t=>{if(t.id)data[t.id]=t.value;});
-      document.querySelectorAll('.fill-blank').forEach((b,i)=>{data['fill'+i]=b.value;});
-      document.querySelectorAll('.match-select').forEach((s,i)=>{data['match'+i]=s.value;});
-      document.querySelectorAll('input[type=radio]:checked').forEach(r=>{data[r.name]=r.value;});
-      localStorage.setItem('bio6_draft',JSON.stringify(data));
-    }catch(e){}
-  },800);
-}
-
-function saveDraft(){
-  autoSave();
-  const msg=document.getElementById('savedMsg');
-  msg.style.display='inline-flex';
-  setTimeout(()=>msg.style.display='none',2500);
-}
-
-(function loadDraft(){
-  try{
-    const raw=localStorage.getItem('bio6_draft');
-    if(!raw)return;
-    const data=JSON.parse(raw);
-    document.querySelectorAll('.a-textarea').forEach(t=>{if(t.id&&data[t.id]!==undefined){t.value=data[t.id];t.classList.toggle('filled',t.value.length>0);}});
-    document.querySelectorAll('.fill-blank').forEach((b,i)=>{if(data['fill'+i]!==undefined)b.value=data['fill'+i];});
-    document.querySelectorAll('.match-select').forEach((s,i)=>{if(data['match'+i])s.value=data['match'+i];});
-    Object.keys(data).forEach(k=>{
-      if(k.startsWith('mc')){
-        const r=document.querySelector(`input[name="${k}"][value="${data[k]}"]`);
-        if(r){r.checked=true;r.closest('.mc-opt').classList.add('selected');}
+function updateNav() {
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active','completed');
+    const onclick = item.getAttribute('onclick');
+    if (onclick) {
+      const match = onclick.match(/showModule\('(.+?)'\)/);
+      if (match) {
+        const id = match[1];
+        if (id === modules[currentModuleIdx]) item.classList.add('active');
+        else if (completedModules.has(id)) item.classList.add('completed');
       }
-    });
-    ['sa1','sa2','sa3','sa4'].forEach((id,i)=>{const wcs=['wc1','wc2','wc3','wc4'];if(data[id])updateWC(id,wcs[i]);});
-  }catch(e){}
-})();
+    }
+  });
+}
+
+function updateProgress() {
+  const pct = Math.round((completedModules.size / modules.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+function nextModule() { if (currentModuleIdx < modules.length-1) showModule(modules[currentModuleIdx+1]); }
+function prevModule() { if (currentModuleIdx > 0) showModule(modules[currentModuleIdx-1]); }
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+
+// ===== DISCOVERY SLIDES =====
+let currentDiscoverySlide = 0;
+
+function initDiscoverySlides() {
+  const slides = document.querySelectorAll('#mod-discovery .slide-content');
+  const dotsEl = document.getElementById('discoveryDots');
+  if (!dotsEl || slides.length === 0) return;
+  dotsEl.innerHTML = '';
+  slides.forEach((s, i) => {
+    s.classList.toggle('active', i === 0);
+    const d = document.createElement('div');
+    d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goToDiscoverySlide(i);
+    dotsEl.appendChild(d);
+  });
+  currentDiscoverySlide = 0;
+}
+
+function goToDiscoverySlide(n) {
+  const slides = document.querySelectorAll('#mod-discovery .slide-content');
+  const dots = document.querySelectorAll('#discoveryDots .slide-dot');
+  slides.forEach((s, i) => s.classList.toggle('active', i === n));
+  dots.forEach((d, i) => d.classList.toggle('active', i === n));
+  currentDiscoverySlide = n;
+}
+
+function changeDiscoverySlide(dir) {
+  const total = document.querySelectorAll('#mod-discovery .slide-content').length;
+  let next = currentDiscoverySlide + dir;
+  if (next < 0) next = total - 1;
+  if (next >= total) next = 0;
+  goToDiscoverySlide(next);
+}
+
+// ===== STRUCTURE SLIDES =====
+let currentStructureSlide = 0;
+
+function initStructureSlides() {
+  const slides = document.querySelectorAll('#mod-structure .slide-content');
+  const dotsEl = document.getElementById('structureSlideDots');
+  if (!dotsEl || slides.length === 0) return;
+  dotsEl.innerHTML = '';
+  slides.forEach((s, i) => {
+    s.classList.toggle('active', i === 0);
+    const d = document.createElement('div');
+    d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goToStructureSlide(i);
+    dotsEl.appendChild(d);
+  });
+  currentStructureSlide = 0;
+}
+
+function goToStructureSlide(n) {
+  const slides = document.querySelectorAll('#mod-structure .slide-content');
+  const dots = document.querySelectorAll('#structureSlideDots .slide-dot');
+  slides.forEach((s, i) => s.classList.toggle('active', i === n));
+  dots.forEach((d, i) => d.classList.toggle('active', i === n));
+  currentStructureSlide = n;
+}
+
+function changeStructureSlide(dir) {
+  const total = document.querySelectorAll('#mod-structure .slide-content').length;
+  let next = currentStructureSlide + dir;
+  if (next < 0) next = total - 1;
+  if (next >= total) next = 0;
+  goToStructureSlide(next);
+}
+
+function initSlides() {
+  const slides = document.querySelectorAll('#mod-models .slide-content');
+  const dotsEl = document.getElementById('slideDots');
+  if (!dotsEl || slides.length === 0) return;
+  dotsEl.innerHTML = '';
+  slides.forEach((s, i) => {
+    s.classList.toggle('active', i === 0);
+    const d = document.createElement('div');
+    d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goToSlide(i);
+    dotsEl.appendChild(d);
+  });
+  currentSlide = 0;
+}
+
+function goToSlide(n) {
+  const slides = document.querySelectorAll('#mod-models .slide-content');
+  const dots = document.querySelectorAll('#slideDots .slide-dot');
+  slides.forEach((s, i) => s.classList.toggle('active', i === n));
+  dots.forEach((d, i) => d.classList.toggle('active', i === n));
+  currentSlide = n;
+}
+
+function changeSlide(dir) {
+  const total = document.querySelectorAll('#mod-models .slide-content').length;
+  let next = currentSlide + dir;
+  if (next < 0) next = total - 1;
+  if (next >= total) next = 0;
+  goToSlide(next);
+}
+
+// ===== LAB 1: DNA BUILDER =====
+let templateSeq = [];
+const complement = {A:'T',T:'A',G:'C',C:'G'};
+const rnaOf = {A:'U',T:'A',G:'C',C:'G'};
+const colors = {A:'#ef4444',T:'#f59e0b',G:'#10b981',C:'#00e5ff',U:'#7c3aed'};
+
+function addNucleotide(base) {
+  if (templateSeq.length >= 8) { document.getElementById('labResult1').textContent='Max 8 nucleotides reached.'; return; }
+  templateSeq.push(base);
+  renderNts('templateStrand', templateSeq.map(b=>b));
+  document.getElementById('complementStrand').innerHTML='';
+  document.getElementById('mrnaStrand').innerHTML='';
+  document.getElementById('labResult1').textContent='Template: 3\'–'+templateSeq.join('–')+'–5\'';
+}
+function renderNts(elId, bases) {
+  const el = document.getElementById(elId);
+  el.innerHTML = bases.map(b=>`<div class="strand-nt" style="background:${colors[b]}22;color:${colors[b]};border:1px solid ${colors[b]}44;">${b}</div>`).join('');
+}
+function buildComplement() {
+  if (!templateSeq.length) { document.getElementById('labResult1').textContent='Add nucleotides first!'; return; }
+  const comp = templateSeq.map(b=>complement[b]);
+  const mrna = templateSeq.map(b=>rnaOf[b]);
+  renderNts('templateStrand', templateSeq);
+  renderNts('complementStrand', comp);
+  renderNts('mrnaStrand', mrna);
+  document.getElementById('labResult1').innerHTML =
+    `Template DNA: 3'–${templateSeq.join('')}–5'\nComp. DNA:    5'–${comp.join('')}–3'\nmRNA:         5'–${mrna.join('')}–3'`;
+}
+function clearStrand() {
+  templateSeq=[];
+  ['templateStrand','complementStrand','mrnaStrand'].forEach(id=>document.getElementById(id).innerHTML='');
+  document.getElementById('labResult1').textContent='Click nucleotides to build your template strand...';
+}
+
+// ===== LAB 2: CODON DECODER =====
+let rnaSeq = [];
+const codonTable = {
+  'AUG':'Met(Start)','UUU':'Phe','UUC':'Phe','UUA':'Leu','UUG':'Leu',
+  'CUU':'Leu','CUC':'Leu','CUA':'Leu','CUG':'Leu',
+  'AUU':'Ile','AUC':'Ile','AUA':'Ile',
+  'GUU':'Val','GUC':'Val','GUA':'Val','GUG':'Val',
+  'UCU':'Ser','UCC':'Ser','UCA':'Ser','UCG':'Ser',
+  'CCU':'Pro','CCC':'Pro','CCA':'Pro','CCG':'Pro',
+  'ACU':'Thr','ACC':'Thr','ACA':'Thr','ACG':'Thr',
+  'GCU':'Ala','GCC':'Ala','GCA':'Ala','GCG':'Ala',
+  'UAU':'Tyr','UAC':'Tyr','CAU':'His','CAC':'His',
+  'CAA':'Gln','CAG':'Gln','AAU':'Asn','AAC':'Asn',
+  'AAA':'Lys','AAG':'Lys','GAU':'Asp','GAC':'Asp',
+  'GAA':'Glu','GAG':'Glu','UGU':'Cys','UGC':'Cys',
+  'UGG':'Trp','CGU':'Arg','CGC':'Arg','CGA':'Arg','CGG':'Arg',
+  'AGA':'Arg','AGG':'Arg','AGU':'Ser','AGC':'Ser',
+  'GGU':'Gly','GGC':'Gly','GGA':'Gly','GGG':'Gly',
+  'UAA':'STOP','UAG':'STOP','UGA':'STOP'
+};
+const aaColors=['#ef4444','#f59e0b','#10b981','#00e5ff','#7c3aed','#ec4899','#14b8a6','#f97316'];
+
+function addRNA(base) {
+  if (rnaSeq.length >= 18) { document.getElementById('labResult2').textContent='Max 18 nucleotides (6 codons).'; return; }
+  rnaSeq.push(base);
+  const el = document.getElementById('rnaInput');
+  const div = document.createElement('div');
+  div.className='strand-nt';
+  div.style.cssText=`background:${colors[base]}22;color:${colors[base]};border:1px solid ${colors[base]}44;`;
+  div.textContent=base;
+  el.appendChild(div);
+  document.getElementById('labResult2').textContent='mRNA: 5\'–'+rnaSeq.join('')+'–3\'';
+}
+function translateRNA() {
+  if (rnaSeq.length<3) { document.getElementById('labResult2').textContent='Need at least 3 nucleotides.'; return; }
+  const codons=[];
+  for (let i=0;i+2<rnaSeq.length;i+=3) codons.push(rnaSeq.slice(i,i+3).join(''));
+  const codonEl=document.getElementById('codonDisplay');
+  const protEl=document.getElementById('proteinDisplay');
+  codonEl.innerHTML=''; protEl.innerHTML='';
+  let protein=[]; let started=false;
+  codons.forEach((c,i)=>{
+    const aa=codonTable[c]||'???';
+    const col=aaColors[i%aaColors.length];
+    const cdiv=document.createElement('div');
+    cdiv.style.cssText=`padding:3px 7px;border-radius:5px;background:${col}22;color:${col};border:1px solid ${col}44;font-family:'Space Mono',monospace;font-size:11px;`;
+    cdiv.textContent=c;
+    codonEl.appendChild(cdiv);
+    if (aa==='Met(Start)') started=true;
+    if (started) {
+      const pdiv=document.createElement('div');
+      pdiv.style.cssText=`padding:3px 9px;border-radius:5px;background:${col}33;color:${col};border:1px solid ${col}66;font-size:12px;font-weight:700;`;
+      pdiv.textContent=aa;
+      protEl.appendChild(pdiv);
+      protein.push(aa);
+    }
+  });
+  document.getElementById('labResult2').textContent=
+    started?'✅ Protein: '+protein.join(' → '):'⚠️ No AUG start codon found. Translation requires AUG to begin.';
+}
+function clearRNA() {
+  rnaSeq=[];
+  ['rnaInput','codonDisplay','proteinDisplay'].forEach(id=>document.getElementById(id).innerHTML='');
+  document.getElementById('labResult2').textContent='Add RNA nucleotides to begin...';
+}
+
+// ===== QUIZ =====
+const quizData = [
+  {
+    q:"Which scientist's experiment was the FIRST to show that a 'transforming principle' could change the traits of bacteria — providing early evidence for DNA?",
+    opts:["Hershey & Chase","Rosalind Franklin","Frederick Griffith","James Watson"],
+    ans:2,
+    fb:"Griffith's 1928 experiment showed that something from dead bacteria could permanently transform living bacteria. He called it the 'transforming principle,' which was later identified as DNA."
+  },
+  {
+    q:"A DNA sample contains 20% Adenine. According to Chargaff's Rules, what percentage is Cytosine?",
+    opts:["20%","30%","40%","10%"],
+    ans:1,
+    fb:"Chargaff's Rules: A = T and G = C. If A = 20%, then T = 20%. That leaves 60% for G + C, so G = C = 30%."
+  },
+  {
+    q:"What is the complementary DNA strand for the template strand 3'–ATCG–5'?",
+    opts:["5'–TAGC–3'","3'–UAGC–5'","5'–ATCG–3'","3'–TAGC–5'"],
+    ans:0,
+    fb:"Using base-pairing rules (A–T and G–C), the complement of ATCG is TAGC. Since strands are antiparallel, it runs 5'→3'."
+  },
+  {
+    q:"Which of the following best describes what happens during DNA replication?",
+    opts:[
+      "One strand of DNA is destroyed and a new double helix is made",
+      "The two DNA strands separate and each serves as a template for a new complementary strand",
+      "DNA is converted directly into a protein",
+      "RNA polymerase copies both DNA strands at the same time"
+    ],
+    ans:1,
+    fb:"During replication, helicase unzips the double helix. Each strand acts as a template, and DNA polymerase builds a new complementary strand using base-pairing rules. The result is two identical DNA molecules."
+  },
+  {
+    q:"Which base does RNA contain that DNA does NOT?",
+    opts:["Adenine","Thymine","Guanine","Uracil"],
+    ans:3,
+    fb:"RNA contains Uracil (U) instead of Thymine (T). Uracil pairs with Adenine, just as Thymine does in DNA. This is one of the key differences between DNA and RNA."
+  },
+  {
+    q:"During transcription, the DNA template strand reads 3'–TAC–5'. What is the mRNA sequence produced?",
+    opts:["5'–TAC–3'","5'–AUG–3'","3'–AUG–5'","5'–ATG–3'"],
+    ans:1,
+    fb:"Using transcription base-pairing: T→A, A→U, C→G. The mRNA produced is 5'–AUG–3'. Notice that AUG is the start codon — this is how it often appears on the SOL!"
+  },
+  {
+    q:"What is the role of tRNA during translation?",
+    opts:[
+      "Carries the genetic code from the nucleus to the ribosome",
+      "Makes up the structure of the ribosome",
+      "Brings specific amino acids to the ribosome to match mRNA codons",
+      "Unwinds the mRNA strand before it is read"
+    ],
+    ans:2,
+    fb:"tRNA brings amino acids to the ribosome. Each tRNA has an anticodon that matches a specific mRNA codon, ensuring the correct amino acid is added to the growing protein chain."
+  },
+  {
+    q:"Which codon on mRNA signals the START of translation?",
+    opts:["UAA","UGA","UAG","AUG"],
+    ans:3,
+    fb:"AUG is the universal start codon. It codes for the amino acid methionine and tells the ribosome where to begin reading the mRNA. UAA, UAG, and UGA are stop codons."
+  },
+  {
+    q:"Where does transcription take place, and where does translation take place?",
+    opts:[
+      "Both occur in the nucleus",
+      "Transcription in the cytoplasm; translation in the nucleus",
+      "Transcription in the nucleus; translation at the ribosome in the cytoplasm",
+      "Both occur at the ribosome in the cytoplasm"
+    ],
+    ans:2,
+    fb:"Transcription happens in the nucleus (DNA → mRNA). The mRNA then leaves the nucleus and goes to the ribosome in the cytoplasm, where translation occurs (mRNA → protein)."
+  },
+  {
+    q:"Which correctly shows the central dogma of molecular biology (the flow of genetic information)?",
+    opts:[
+      "Protein → RNA → DNA",
+      "RNA → DNA → Protein",
+      "DNA → RNA → Protein",
+      "DNA → Protein → RNA"
+    ],
+    ans:2,
+    fb:"The central dogma: DNA is transcribed into mRNA, which is then translated into a protein. This is the fundamental flow of genetic information in all living cells."
+  }
+];
+
+function buildQuiz() {
+  const el=document.getElementById('quizQuestions');
+  el.innerHTML='';
+  quizData.forEach((q,qi)=>{
+    const letters=['A','B','C','D'];
+    const card=document.createElement('div');
+    card.className='question-card'; card.id='q'+qi;
+    card.innerHTML=`
+      <div class="question-num">QUESTION ${String(qi+1).padStart(2,'0')} / ${quizData.length}</div>
+      <div class="question-text">${q.q}</div>
+      <div class="options" id="opts${qi}">
+        ${q.opts.map((o,oi)=>`
+          <div class="option" id="opt${qi}-${oi}" onclick="selectOption(${qi},${oi})">
+            <div class="option-letter">${letters[oi]}</div>${o}
+          </div>`).join('')}
+      </div>
+      <div class="feedback" id="fb${qi}"></div>
+    `;
+    el.appendChild(card);
+  });
+}
+
+let userAnswers = new Array(quizData.length).fill(null);
+
+function selectOption(qi,oi) {
+  if (userAnswers[qi]!==null) return;
+  userAnswers[qi]=oi;
+  const opts=document.querySelectorAll(`#opts${qi} .option`);
+  opts.forEach((o,i)=>{
+    if (i===quizData[qi].ans) o.classList.add('show-correct');
+    if (i===oi&&oi!==quizData[qi].ans) o.classList.add('selected-wrong');
+    if (i===oi&&oi===quizData[qi].ans) { o.classList.remove('show-correct'); o.classList.add('selected-correct'); }
+  });
+  const fb=document.getElementById('fb'+qi);
+  const correct=oi===quizData[qi].ans;
+  fb.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+quizData[qi].fb;
+  fb.className='feedback show '+(correct?'correct':'wrong');
+  document.getElementById('q'+qi).className='question-card '+(correct?'answered-correct':'answered-wrong');
+}
+
+function submitQuiz() {
+  let score=0;
+  quizData.forEach((q,qi)=>{
+    if (userAnswers[qi]===q.ans) score++;
+    if (userAnswers[qi]===null) {
+      document.querySelectorAll(`#opts${qi} .option`)[q.ans].classList.add('show-correct');
+      const fb=document.getElementById('fb'+qi);
+      fb.textContent='⬆ Correct answer shown. '+q.fb;
+      fb.className='feedback show wrong';
+    }
+  });
+  document.getElementById('quizScoreDisplay').textContent=score+'/'+quizData.length;
+  const pct=Math.round(score/quizData.length*100);
+  const scoreEl=document.getElementById('resultScore');
+  scoreEl.textContent=score+'/'+quizData.length;
+  scoreEl.style.color=pct>=80?'var(--accent3)':pct>=60?'var(--accent4)':'var(--accent5)';
+  const labels={100:'Perfect Score! 🎉',80:'Great Job! 🌟',60:'Good Effort! 💪',0:'Keep Reviewing! 📚'};
+  const subs={100:'You are ready for the Virginia Biology SOL on DNA and protein synthesis!',80:'Review any missed questions and you\'ll be SOL-ready.',60:'Go back through the modules for the topics you missed, then retake.',0:'Review all modules carefully before retaking the quiz.'};
+  const tier=pct===100?100:pct>=80?80:pct>=60?60:0;
+  document.getElementById('resultLabel').textContent=labels[tier];
+  document.getElementById('resultSub').textContent=subs[tier];
+  document.getElementById('quizResults').classList.add('show');
+  document.getElementById('quizResults').scrollIntoView({behavior:'smooth'});
+}
+
+function resetQuiz() {
+  userAnswers=new Array(quizData.length).fill(null);
+  document.getElementById('quizScoreDisplay').textContent='—/10';
+  document.getElementById('quizResults').classList.remove('show');
+  buildQuiz();
+  window.scrollTo(0,0);
+}
+
+buildQuiz();
+updateNav();
+initSlides();
+initStructureSlides();
+initDiscoverySlides();
 </script>
 </body>
 </html>
