@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8th Grade Physical Science | Virginia SOL | Course Overview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy:    #080c18;
+    --navy2:   #0d1225;
+    --navy3:   #111828;
+    --navy4:   #161f36;
+    --cyan:    #00d4ff;
+    --cyan2:   #00b8e0;
+    --purple:  #8b5cf6;
+    --purple2: #7c3aed;
+    --accent:  #00ffcc;
+    --amber:   #fbbf24;
+    --rose:    #fb7185;
+    --text:    #e2e8f0;
+    --text-dim:#94a3b8;
+    --border:  rgba(0,212,255,0.18);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── animated background grid ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(180deg, rgba(0,212,255,0.06) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 48px 32px;
+    text-align: center;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    margin-bottom: 18px;
+  }
+
+  .header-badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 6px var(--cyan);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:0.4; transform:scale(0.8); }
+  }
+
+  header h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  header h1 span { color: var(--cyan); }
+
+  header p {
+    font-size: 15px;
+    color: var(--text-dim);
+    max-width: 580px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .stat-chip .val {
+    font-family: 'Orbitron', monospace;
+    font-size: 15px;
+    color: var(--cyan);
+    font-weight: 700;
+  }
+
+  .stat-chip .lbl { color: var(--text-dim); }
+
+  /* ── MAIN ── */
+  main {
+    position: relative;
+    z-index: 5;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+
+  /* ── UNIT SECTION LABELS ── */
+  .unit-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 36px 0 18px;
+  }
+
+  .unit-label-text {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .unit-label-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── LESSON GRID ── */
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+
+  /* ── LESSON CARD ── */
+  .lesson-card {
+    background: var(--navy3);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    position: relative;
+  }
+
+  .lesson-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    box-shadow: 0 8px 32px rgba(0,212,255,0.12);
+  }
+
+  .lesson-card.available:hover { border-color: var(--cyan); }
+  .lesson-card.placeholder { cursor: default; opacity: 0.65; }
+  .lesson-card.placeholder:hover {
+    transform: none;
+    border-color: rgba(255,255,255,0.07);
+    box-shadow: none;
+  }
+
+  /* card top accent band */
+  .card-band {
+    height: 4px;
+    width: 100%;
+  }
+
+  .band-cyan    { background: linear-gradient(90deg, var(--cyan), var(--purple)); }
+  .band-purple  { background: linear-gradient(90deg, var(--purple), var(--cyan2)); }
+  .band-amber   { background: linear-gradient(90deg, var(--amber), #f97316); }
+  .band-rose    { background: linear-gradient(90deg, var(--rose), #e879f9); }
+  .band-green   { background: linear-gradient(90deg, var(--accent), var(--cyan2)); }
+  .band-muted   { background: rgba(255,255,255,0.08); }
+
+  .card-body { padding: 18px 20px 16px; }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+
+  .card-sol-tag {
+    font-family: 'Orbitron', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--cyan);
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .card-sol-tag.purple { color: var(--purple); background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.25); }
+  .card-sol-tag.amber  { color: var(--amber);  background: rgba(251,191,36,0.1);  border-color: rgba(251,191,36,0.25); }
+  .card-sol-tag.rose   { color: var(--rose);   background: rgba(251,113,133,0.1); border-color: rgba(251,113,133,0.25); }
+  .card-sol-tag.green  { color: var(--accent); background: rgba(0,255,204,0.08); border-color: rgba(0,255,204,0.2); }
+
+  .card-status {
+    font-size: 10px;
+    font-family: 'Orbitron', monospace;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .status-ready {
+    background: rgba(0,255,204,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(0,255,204,0.25);
+  }
+
+  .status-soon {
+    background: rgba(251,191,36,0.08);
+    color: var(--amber);
+    border: 1px solid rgba(251,191,36,0.2);
+  }
+
+  .status-planned {
+    background: rgba(255,255,255,0.04);
+    color: var(--text-dim);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .card-icon { font-size: 28px; margin-bottom: 10px; }
+
+  .card-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  .card-footer {
+    padding: 10px 20px 14px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .open-btn {
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .lesson-card:hover .open-btn { gap: 10px; }
+
+  .open-btn .arrow {
+    font-size: 14px;
+    color: var(--cyan);
+    transition: transform 0.2s;
+  }
+
+  .lesson-card:hover .open-btn .arrow { transform: translateX(3px); }
+
+  .modules-count {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  /* ── MODAL ── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 560px;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.25s ease;
+    position: relative;
+  }
+
+  .modal-backdrop.open .modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-band { height: 5px; }
+
+  .modal-header {
+    padding: 24px 26px 0;
+  }
+
+  .modal-tag {
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .modal-icon { font-size: 34px; margin-bottom: 10px; }
+
+  .modal-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+
+  .modal-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+  }
+
+  .modal-body { padding: 0 26px 6px; }
+
+  .modal-desc {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+
+  .modal-objectives {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+
+  .modal-objectives h4 {
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--purple);
+    margin-bottom: 10px;
+  }
+
+  .obj-item {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 7px;
+    line-height: 1.55;
+  }
+
+  .obj-check { color: var(--cyan); flex-shrink: 0; }
+
+  .modal-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .m-chip {
+    font-size: 12px;
+    background: rgba(0,212,255,0.07);
+    border: 1px solid rgba(0,212,255,0.2);
+    color: var(--cyan);
+    border-radius: 6px;
+    padding: 4px 10px;
+  }
+
+  .m-chip.purple { background: rgba(139,92,246,0.07); border-color: rgba(139,92,246,0.2); color: var(--purple); }
+
+  .modal-footer {
+    padding: 16px 26px 22px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .btn {
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: all 0.18s;
+  }
+
+  .btn-launch {
+    background: linear-gradient(135deg, var(--cyan2), var(--purple2));
+    color: #fff;
+    flex: 1;
+  }
+
+  .btn-launch:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-launch:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+  .btn-close {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-dim);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .btn-close:hover { background: rgba(255,255,255,0.09); color: var(--text); }
+
+  .close-x {
+    position: absolute;
+    top: 16px; right: 18px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: none;
+    color: var(--text-dim);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .close-x:hover { background: rgba(255,255,255,0.12); color: var(--text); }
+
+  .coming-soon-banner {
+    background: rgba(251,191,36,0.08);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: var(--amber);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 32px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 28px 20px 24px; }
+    main { padding: 24px 16px 60px; }
+    .lesson-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="header-badge">
+    <div class="dot"></div>
+    VIRGINIA SOL · PHYSICAL SCIENCE
+  </div>
+  <h1>8th Grade <span>Physical Science</span></h1>
+  <p>A complete self-paced course aligned to the 2018 Virginia Standards of Learning. Select any lesson to preview its content and launch your study session.</p>
+  <div class="stats-bar">
+    <div class="stat-chip"><span class="val">11</span><span class="lbl">SOL Standards</span></div>
+    <div class="stat-chip"><span class="val">11</span><span class="lbl">Lessons</span></div>
+    <div class="stat-chip"><span class="val">1</span><span class="lbl">Ready Now</span></div>
+    <div class="stat-chip"><span class="val">~45</span><span class="lbl">min / lesson</span></div>
+  </div>
+</header>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent);box-shadow:0 0 6px var(--accent);"></div> Ready to study</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--amber);box-shadow:0 0 6px var(--amber);"></div> Coming soon</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.2);"></div> Planned</div>
+  </div>
+
+  <!-- ── UNIT 1: Scientific Investigation ── -->
+  <div class="unit-label">
+    <span class="unit-label-text">Unit 1 · Scientific Investigation</span>
+    <div class="unit-label-line"></div>
+  </div>
+  <div class="lesson-grid">
+
+    <div class="lesson-card placeholder" onclick="openModal('ps1')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag">PS.1</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">🔭</div>
+        <div class="card-title">Scientific Investigation &amp; Experimental Design</div>
+        <div class="card-desc">Scientific methodology, variables, data analysis, measurement, and engineering design process.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~8 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── UNIT 2: Matter ── -->
+  <div class="unit-label">
+    <span class="unit-label-text">Unit 2 · Matter &amp; Its Properties</span>
+    <div class="unit-label-line"></div>
+  </div>
+  <div class="lesson-grid">
+
+    <!-- PS.2 — READY -->
+    <div class="lesson-card available" onclick="openModal('ps2')">
+      <div class="card-band band-cyan"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag">PS.2</div>
+          <div class="card-status status-ready">✦ READY</div>
+        </div>
+        <div class="card-icon">⚗️</div>
+        <div class="card-title">Matter &amp; Its Properties</div>
+        <div class="card-desc">Physical and chemical properties, physical and chemical changes, and conservation of matter.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 11 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+          <div class="meta-pill">🔬 Virtual lab</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Vocab cards + 10-Q quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <!-- PS.3 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps3')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag">PS.3</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">🧬</div>
+        <div class="card-title">Atomic Structure &amp; the Periodic Table</div>
+        <div class="card-desc">Atomic structure, periodic table organization, elements classified as metals, metalloids, and nonmetals.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~9 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <!-- PS.4 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps4')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag">PS.4</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">🔗</div>
+        <div class="card-title">Chemical Bonding &amp; Compounds</div>
+        <div class="card-desc">Ionic and covalent bonding, compound formation, balanced chemical equations, and conservation of matter in reactions.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~9 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── UNIT 3: Energy ── -->
+  <div class="unit-label">
+    <span class="unit-label-text">Unit 3 · Energy</span>
+    <div class="unit-label-line"></div>
+  </div>
+  <div class="lesson-grid">
+
+    <!-- PS.5 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps5')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag amber">PS.5</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Energy Transfer &amp; Transformations</div>
+        <div class="card-desc">Conservation of energy, energy transfer by conduction, convection, and radiation; kinetic and potential energy.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~9 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── UNIT 4: Waves ── -->
+  <div class="unit-label">
+    <span class="unit-label-text">Unit 4 · Waves, Sound &amp; Light</span>
+    <div class="unit-label-line"></div>
+  </div>
+  <div class="lesson-grid">
+
+    <!-- PS.6 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps6')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag purple">PS.6</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">〰️</div>
+        <div class="card-title">Waves</div>
+        <div class="card-desc">Longitudinal and transverse waves, wave properties: frequency, wavelength, amplitude, speed; wave interactions.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~8 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <!-- PS.7 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps7')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag purple">PS.7</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">🔊</div>
+        <div class="card-title">Sound</div>
+        <div class="card-desc">Sound as a longitudinal wave, pitch and loudness, Doppler effect, sound wave interactions and applications.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~8 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <!-- PS.8 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps8')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag purple">PS.8</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">💡</div>
+        <div class="card-title">Light &amp; the Electromagnetic Spectrum</div>
+        <div class="card-desc">Light as electromagnetic radiation, electromagnetic spectrum, reflection, refraction, absorption, and transmission.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~9 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── UNIT 5: Electricity & Magnetism ── -->
+  <div class="unit-label">
+    <span class="unit-label-text">Unit 5 · Electricity &amp; Magnetism</span>
+    <div class="unit-label-line"></div>
+  </div>
+  <div class="lesson-grid">
+
+    <!-- PS.9 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps9')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag rose">PS.9</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">🧲</div>
+        <div class="card-title">Electricity &amp; Magnetism</div>
+        <div class="card-desc">Static and current electricity, circuits, the relationship between electric and magnetic fields, electromagnets.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~9 modules</div>
+          <div class="meta-pill">⏱ ~45 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── UNIT 6: Force, Motion & Energy ── -->
+  <div class="unit-label">
+    <span class="unit-label-text">Unit 6 · Force, Motion &amp; Energy</span>
+    <div class="unit-label-line"></div>
+  </div>
+  <div class="lesson-grid">
+
+    <!-- PS.10 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps10')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag green">PS.10</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">🚀</div>
+        <div class="card-title">Work, Force &amp; Motion</div>
+        <div class="card-desc">Newton's laws of motion, speed, velocity, acceleration, net force, work, and simple machines.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~10 modules</div>
+          <div class="meta-pill">⏱ ~50 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <!-- PS.11 -->
+    <div class="lesson-card placeholder" onclick="openModal('ps11')">
+      <div class="card-band band-muted"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-sol-tag green">PS.11</div>
+          <div class="card-status status-planned">PLANNED</div>
+        </div>
+        <div class="card-icon">🌌</div>
+        <div class="card-title">Modern Physics Concepts</div>
+        <div class="card-desc">Introduction to concepts that extend beyond Newtonian physics — relativity, quantum ideas, subatomic phenomena.</div>
+        <div class="card-meta">
+          <div class="meta-pill">📚 ~7 modules</div>
+          <div class="meta-pill">⏱ ~40 min</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="modules-count">Includes virtual lab + quiz</div>
+        <div class="open-btn">PREVIEW <span class="arrow">→</span></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ═══════════════ MODAL ═══════════════ -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="handleBackdropClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-band" id="modalBand"></div>
+    <button class="close-x" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <div class="modal-tag" id="modalTag"></div>
+      <div class="modal-icon" id="modalIcon"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-subtitle" id="modalSubtitle"></div>
+    </div>
+    <div class="modal-body">
+      <div class="coming-soon-banner" id="modalComingSoon" style="display:none;">
+        ⏳ This lesson is not yet available. Check back soon!
+      </div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-objectives" id="modalObjectives"></div>
+      <div class="modal-chips" id="modalChips"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-close" onclick="closeModal()">Close</button>
+      <button class="btn btn-launch" id="modalLaunchBtn" onclick="launchLesson()">🚀 Launch Lesson</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const lessons = {
+  ps1: {
+    sol: 'PS.1',
+    icon: '🔭',
+    title: 'Scientific Investigation & Experimental Design',
+    subtitle: 'Unit 1 · Scientific Investigation',
+    status: 'planned',
+    bandClass: 'band-muted',
+    tagClass: '',
+    file: null,
+    desc: 'This lesson covers the foundations of scientific inquiry used throughout the entire Physical Science course. Students learn how to design controlled experiments, identify variables, collect and analyze data, use SI measurement, and apply the engineering design process to solve real-world problems.',
+    objectives: [
+      'Plan and conduct investigations using appropriate controls and variables',
+      'Collect, record, analyze, and interpret data using SI units',
+      'Construct and interpret graphs, tables, and models',
+      'Apply the engineering design process to define problems and test solutions',
+      'Distinguish between scientific hypotheses, theories, and laws'
+    ],
+    chips: ['Scientific Method', 'Variables', 'SI Units', 'Graphing', 'Engineering Design'],
+    modules: '~8 modules', time: '~45 min'
+  },
+  ps2: {
+    sol: 'PS.2',
+    icon: '⚗️',
+    title: 'Matter & Its Properties',
+    subtitle: 'Unit 2 · Matter & Its Properties',
+    status: 'ready',
+    bandClass: 'band-cyan',
+    tagClass: '',
+    file: 'matter-properties-ps2.html',
+    desc: 'This fully interactive lesson explores how matter is identified and how it changes. Students investigate physical and chemical properties, distinguish between physical and chemical changes, and discover how matter is conserved in all processes. Includes a virtual classification lab and SOL-style quiz.',
+    objectives: [
+      'Identify pure substances using their physical and chemical properties',
+      'Distinguish between intensive and extensive physical properties',
+      'Classify changes in matter as physical or chemical using evidence',
+      'Explain how matter is conserved in both physical and chemical changes',
+      'Apply the Law of Conservation of Matter to balanced equations'
+    ],
+    chips: ['Physical Properties', 'Chemical Properties', 'Physical Changes', 'Chemical Changes', 'Conservation of Matter'],
+    modules: '11 modules', time: '~45 min'
+  },
+  ps3: {
+    sol: 'PS.3',
+    icon: '🧬',
+    title: 'Atomic Structure & the Periodic Table',
+    subtitle: 'Unit 2 · Matter & Its Properties',
+    status: 'planned',
+    bandClass: 'band-muted',
+    tagClass: '',
+    file: null,
+    desc: 'Students explore the particle nature of matter, diving into atomic structure — protons, neutrons, and electrons. They learn how the periodic table organizes elements by atomic structure and predict properties of elements based on their position. Elements are classified as metals, metalloids, and nonmetals.',
+    objectives: [
+      'Describe the structure of an atom including protons, neutrons, and electrons',
+      'Use the periodic table to identify atomic number, atomic mass, and chemical groups',
+      'Classify elements as metals, metalloids, and nonmetals based on their properties',
+      'Explain how the periodic table predicts chemical and physical properties',
+      'Use the kinetic molecular theory to describe states of matter'
+    ],
+    chips: ['Atomic Structure', 'Periodic Table', 'Metals & Nonmetals', 'Kinetic Molecular Theory'],
+    modules: '~9 modules', time: '~45 min'
+  },
+  ps4: {
+    sol: 'PS.4',
+    icon: '🔗',
+    title: 'Chemical Bonding & Compounds',
+    subtitle: 'Unit 2 · Matter & Its Properties',
+    status: 'planned',
+    bandClass: 'band-muted',
+    tagClass: '',
+    file: null,
+    desc: 'This lesson examines how atoms bond to form compounds. Students explore ionic and covalent bonding, write and interpret chemical formulas, and practice balancing chemical equations as a model for conservation of matter. Real-world compound examples connect chemistry to everyday life.',
+    objectives: [
+      'Explain how ionic bonds form between metals and nonmetals',
+      'Describe covalent bonding between nonmetal atoms',
+      'Interpret and write chemical formulas for common compounds',
+      'Balance simple chemical equations to model conservation of matter',
+      'Identify reactants and products in a chemical reaction'
+    ],
+    chips: ['Ionic Bonds', 'Covalent Bonds', 'Chemical Formulas', 'Balancing Equations'],
+    modules: '~9 modules', time: '~45 min'
+  },
+  ps5: {
+    sol: 'PS.5',
+    icon: '⚡',
+    title: 'Energy Transfer & Transformations',
+    subtitle: 'Unit 3 · Energy',
+    status: 'planned',
+    bandClass: 'band-amber',
+    tagClass: 'amber',
+    file: null,
+    desc: 'Energy is explored as it transfers and transforms through systems. Students investigate kinetic and potential energy, conduction, convection, and radiation, and trace energy transformations in everyday devices. The law of conservation of energy is a central theme.',
+    objectives: [
+      'Distinguish between kinetic and potential energy with real-world examples',
+      'Explain how energy is transferred by conduction, convection, and radiation',
+      'Describe energy transformations in common devices (e.g., light bulb, engine)',
+      'Apply the Law of Conservation of Energy to physical systems',
+      'Analyze energy flow diagrams and interpret energy changes'
+    ],
+    chips: ['Kinetic Energy', 'Potential Energy', 'Conduction', 'Convection', 'Radiation', 'Conservation of Energy'],
+    modules: '~9 modules', time: '~45 min'
+  },
+  ps6: {
+    sol: 'PS.6',
+    icon: '〰️',
+    title: 'Waves',
+    subtitle: 'Unit 4 · Waves, Sound & Light',
+    status: 'planned',
+    bandClass: 'band-purple',
+    tagClass: 'purple',
+    file: null,
+    desc: 'Students explore waves as mechanisms for energy transfer. They compare longitudinal and transverse waves, measure and calculate wave properties, and investigate wave behaviors including reflection, refraction, diffraction, and interference.',
+    objectives: [
+      'Compare and contrast longitudinal and transverse waves',
+      'Define and calculate frequency, wavelength, amplitude, and wave speed',
+      'Describe wave interactions: reflection, refraction, diffraction, absorption',
+      'Explain the relationship between frequency and wavelength',
+      'Apply wave concepts to real-world technologies'
+    ],
+    chips: ['Transverse Waves', 'Longitudinal Waves', 'Frequency', 'Wavelength', 'Wave Interactions'],
+    modules: '~8 modules', time: '~45 min'
+  },
+  ps7: {
+    sol: 'PS.7',
+    icon: '🔊',
+    title: 'Sound',
+    subtitle: 'Unit 4 · Waves, Sound & Light',
+    status: 'planned',
+    bandClass: 'band-purple',
+    tagClass: 'purple',
+    file: null,
+    desc: 'Sound is explored as a longitudinal mechanical wave. Students investigate how sound is produced, transmitted, and detected; examine pitch and loudness; and explore the Doppler effect, resonance, and how sound is used in technology from music to medicine.',
+    objectives: [
+      'Describe sound as a longitudinal wave that requires a medium',
+      'Relate frequency to pitch and amplitude to loudness',
+      'Explain the Doppler effect and provide real-world examples',
+      'Compare how sound travels through different materials',
+      'Investigate applications of sound including sonar and ultrasound'
+    ],
+    chips: ['Longitudinal Wave', 'Pitch', 'Loudness', 'Doppler Effect', 'Sound Applications'],
+    modules: '~8 modules', time: '~45 min'
+  },
+  ps8: {
+    sol: 'PS.8',
+    icon: '💡',
+    title: 'Light & the Electromagnetic Spectrum',
+    subtitle: 'Unit 4 · Waves, Sound & Light',
+    status: 'planned',
+    bandClass: 'band-purple',
+    tagClass: 'purple',
+    file: null,
+    desc: 'Light is examined as electromagnetic radiation that travels without a medium. Students explore the full electromagnetic spectrum, investigate the behaviors of light (reflection, refraction, absorption, transmission), and connect light phenomena to real-world optical technologies.',
+    objectives: [
+      'Describe light as electromagnetic radiation that does not require a medium',
+      'Identify and order regions of the electromagnetic spectrum by wavelength/frequency',
+      'Explain reflection, refraction, absorption, and transmission of light',
+      'Predict how light behaves when it encounters different materials',
+      'Investigate applications of electromagnetic radiation (e.g., X-rays, radio waves)'
+    ],
+    chips: ['EM Spectrum', 'Reflection', 'Refraction', 'Absorption', 'Transmission'],
+    modules: '~9 modules', time: '~45 min'
+  },
+  ps9: {
+    sol: 'PS.9',
+    icon: '🧲',
+    title: 'Electricity & Magnetism',
+    subtitle: 'Unit 5 · Electricity & Magnetism',
+    status: 'planned',
+    bandClass: 'band-rose',
+    tagClass: 'rose',
+    file: null,
+    desc: 'This lesson investigates both static and current electricity, the structure of circuits, and the fundamental relationship between electricity and magnetism. Students build conceptual understanding of how electromagnets and generators work and explore applications across technology.',
+    objectives: [
+      'Distinguish between static electricity and current electricity',
+      'Describe series and parallel circuits using models and diagrams',
+      'Explain the relationship between electric current and magnetic fields',
+      'Describe how electromagnets are constructed and applied',
+      'Investigate how generators convert mechanical energy to electrical energy'
+    ],
+    chips: ['Static Electricity', 'Current', 'Circuits', 'Electromagnetism', 'Generators'],
+    modules: '~9 modules', time: '~45 min'
+  },
+  ps10: {
+    sol: 'PS.10',
+    icon: '🚀',
+    title: 'Work, Force & Motion',
+    subtitle: 'Unit 6 · Force, Motion & Energy',
+    status: 'planned',
+    bandClass: 'band-green',
+    tagClass: 'green',
+    file: null,
+    desc: 'Students explore the relationship between forces and motion through Newton\'s three laws and apply mathematical relationships between speed, velocity, and acceleration. Work and power are defined and calculated, and simple machines are analyzed as force multipliers.',
+    objectives: [
+      'Describe motion using position, speed, velocity, and acceleration',
+      'Apply Newton\'s three laws of motion to real-world situations',
+      'Calculate net force, work, and power using equations',
+      'Analyze motion graphs including position-time and velocity-time',
+      'Identify and explain the mechanical advantage of simple machines'
+    ],
+    chips: ['Newton\'s Laws', 'Speed & Velocity', 'Acceleration', 'Work & Power', 'Simple Machines'],
+    modules: '~10 modules', time: '~50 min'
+  },
+  ps11: {
+    sol: 'PS.11',
+    icon: '🌌',
+    title: 'Modern Physics Concepts',
+    subtitle: 'Unit 6 · Force, Motion & Energy',
+    status: 'planned',
+    bandClass: 'band-green',
+    tagClass: 'green',
+    file: null,
+    desc: 'An introductory exploration of physics beyond Newtonian mechanics. Students are introduced to concepts from relativity and quantum theory that describe phenomena at extreme speeds or subatomic scales — building scientific curiosity and a bridge to advanced physics.',
+    objectives: [
+      'Identify phenomena that Newtonian physics cannot fully explain',
+      'Describe basic ideas from Einstein\'s theory of relativity',
+      'Explain the concept of quantized energy and the photoelectric effect',
+      'Describe subatomic phenomena and the scale of particle physics',
+      'Connect modern physics discoveries to current technologies'
+    ],
+    chips: ['Relativity', 'Quantum Theory', 'Subatomic Particles', 'Modern Applications'],
+    modules: '~7 modules', time: '~40 min'
+  }
+};
+
+let currentLesson = null;
+
+function openModal(id) {
+  const d = lessons[id];
+  if (!d) return;
+  currentLesson = d;
+
+  document.getElementById('modalBand').className = 'modal-band ' + d.bandClass;
+
+  const tagColor = d.tagClass ? `color:var(--${d.tagClass || 'cyan'})` : 'color:var(--cyan)';
+  document.getElementById('modalTag').innerHTML =
+    `<span style="${tagColor}; font-family:'Orbitron',monospace; font-size:10px; letter-spacing:2px;">${d.sol}</span>
+     <span style="color:var(--text-dim); font-size:11px;">${d.subtitle}</span>`;
+
+  document.getElementById('modalIcon').textContent = d.icon;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalSubtitle').textContent = d.modules + ' · ' + d.time;
+
+  const comingSoon = document.getElementById('modalComingSoon');
+  comingSoon.style.display = d.status !== 'ready' ? 'flex' : 'none';
+
+  document.getElementById('modalDesc').textContent = d.desc;
+
+  document.getElementById('modalObjectives').innerHTML = `
+    <h4>📋 SOL OBJECTIVES</h4>
+    ${d.objectives.map(o => `<div class="obj-item"><span class="obj-check">◆</span><span>${o}</span></div>`).join('')}
+  `;
+
+  document.getElementById('modalChips').innerHTML =
+    d.chips.map((c, i) =>
+      `<span class="m-chip ${i % 3 === 0 ? '' : i % 3 === 1 ? 'purple' : ''}">${c}</span>`
+    ).join('');
+
+  const btn = document.getElementById('modalLaunchBtn');
+  if (d.status === 'ready') {
+    btn.disabled = false;
+    btn.textContent = '🚀 Launch Lesson';
+  } else {
+    btn.disabled = true;
+    btn.textContent = '⏳ Coming Soon';
+  }
+
+  document.getElementById('modalBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+  currentLesson = null;
+}
+
+function handleBackdropClick(e) {
+  if (e.target === document.getElementById('modalBackdrop')) closeModal();
+}
+
+function launchLesson() {
+  if (currentLesson && currentLesson.file) {
+    window.open(currentLesson.file, '_blank');
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>
