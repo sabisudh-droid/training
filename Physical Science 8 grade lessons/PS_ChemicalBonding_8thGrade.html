@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Bonding | 8th Grade Physical Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1923;
+    --surface: #162032;
+    --surface2: #1c2d42;
+    --border: #253b56;
+    --accent: #00c9a7;
+    --accent2: #ff7b54;
+    --accent3: #a78bfa;
+    --accent4: #38bdf8;
+    --text: #e2eaf4;
+    --muted: #7a9bb8;
+    --ionic: #ff7b54;
+    --covalent: #00c9a7;
+    --metallic: #a78bfa;
+    --correct: #22c55e;
+    --wrong: #ef4444;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Nunito',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0b2545 0%, #162032 60%, #1e1040 100%);
+    padding: 0 0 0 0;
+    border-bottom: 2px solid var(--border);
+    position: sticky; top:0; z-index:100;
+  }
+  .header-inner {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+  }
+  .header-brand { display:flex; align-items:center; gap:12px; }
+  .header-icon { width:42px; height:42px; background:var(--accent); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; }
+  .header-title { font-size:1.15rem; font-weight:800; color:#fff; line-height:1.2; }
+  .header-sub { font-size:0.72rem; color:var(--muted); font-family:'Space Mono',monospace; }
+  .sol-badge {
+    background: rgba(0,201,167,0.12); border:1px solid rgba(0,201,167,0.35);
+    color:var(--accent); font-family:'Space Mono',monospace; font-size:0.7rem;
+    padding:5px 12px; border-radius:20px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap { background:rgba(0,0,0,0.3); padding:8px 28px; }
+  .progress-info { display:flex; justify-content:space-between; font-size:0.72rem; color:var(--muted); margin-bottom:5px; }
+  .progress-bar { background:var(--border); border-radius:10px; height:6px; }
+  .progress-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--accent),var(--accent4)); transition:width 0.5s ease; }
+
+  /* ── LAYOUT ── */
+  .layout { display:flex; min-height:calc(100vh - 100px); }
+
+  /* ── SIDEBAR ── */
+  nav.sidebar {
+    width:240px; flex-shrink:0;
+    background:var(--surface); border-right:1px solid var(--border);
+    padding:20px 0; position:sticky; top:100px; height:calc(100vh - 100px); overflow-y:auto;
+  }
+  .nav-section { font-family:'Space Mono',monospace; font-size:0.62rem; color:var(--muted); padding:0 20px 8px; letter-spacing:0.08em; text-transform:uppercase; }
+  .nav-item {
+    display:flex; align-items:center; gap:10px;
+    padding:10px 20px; cursor:pointer; border-left:3px solid transparent;
+    transition:all 0.2s; font-size:0.85rem; color:var(--muted);
+  }
+  .nav-item:hover { background:rgba(0,201,167,0.06); color:var(--text); }
+  .nav-item.active { background:rgba(0,201,167,0.1); color:var(--accent); border-left-color:var(--accent); font-weight:700; }
+  .nav-item.done .nav-dot { background:var(--correct); }
+  .nav-dot { width:8px; height:8px; border-radius:50%; background:var(--border); flex-shrink:0; transition:background 0.3s; }
+  .nav-item.active .nav-dot { background:var(--accent); }
+  .nav-spacer { height:1px; background:var(--border); margin:12px 16px; }
+
+  /* ── MAIN ── */
+  main { flex:1; padding:32px 36px; max-width:900px; }
+
+  /* ── SECTION CARDS ── */
+  .section { display:none; animation:fadeIn 0.4s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  .section-header { margin-bottom:28px; }
+  .section-tag { font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px; }
+  .section-title { font-size:1.9rem; font-weight:900; color:#fff; line-height:1.2; }
+  .section-desc { color:var(--muted); font-size:0.92rem; margin-top:8px; line-height:1.6; }
+
+  /* ── SLIDES ── */
+  .slide-deck { position:relative; }
+  .slide { display:none; }
+  .slide.active { display:block; }
+  .slide-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+    padding:30px 32px; margin-bottom:20px;
+  }
+  .slide-num { font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); margin-bottom:8px; }
+  .slide-title { font-size:1.3rem; font-weight:800; color:#fff; margin-bottom:14px; }
+  .slide-body { font-size:0.93rem; line-height:1.75; color:var(--text); }
+  .slide-body p { margin-bottom:12px; }
+  .slide-body ul { margin:0 0 12px 20px; }
+  .slide-body li { margin-bottom:6px; }
+  .highlight { color:var(--accent); font-weight:700; }
+  .highlight2 { color:var(--accent2); font-weight:700; }
+  .highlight3 { color:var(--accent3); font-weight:700; }
+  .highlight4 { color:var(--accent4); font-weight:700; }
+
+  .slide-nav { display:flex; align-items:center; justify-content:space-between; }
+  .slide-dots { display:flex; gap:6px; }
+  .slide-dot { width:8px; height:8px; border-radius:50%; background:var(--border); cursor:pointer; transition:background 0.2s; }
+  .slide-dot.active { background:var(--accent); }
+
+  /* bond type cards */
+  .bond-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; }
+  .bond-card {
+    border-radius:12px; padding:20px; text-align:center;
+    border:1px solid transparent; transition:transform 0.2s;
+  }
+  .bond-card:hover { transform:translateY(-4px); }
+  .bond-card.ionic { background:rgba(255,123,84,0.1); border-color:rgba(255,123,84,0.3); }
+  .bond-card.covalent { background:rgba(0,201,167,0.1); border-color:rgba(0,201,167,0.3); }
+  .bond-card.metallic { background:rgba(167,139,250,0.1); border-color:rgba(167,139,250,0.3); }
+  .bond-card .bond-icon { font-size:2.2rem; margin-bottom:8px; }
+  .bond-card .bond-name { font-weight:800; font-size:0.95rem; }
+  .bond-card.ionic .bond-name { color:var(--ionic); }
+  .bond-card.covalent .bond-name { color:var(--covalent); }
+  .bond-card.metallic .bond-name { color:var(--metallic); }
+  .bond-card .bond-desc { font-size:0.78rem; color:var(--muted); margin-top:6px; line-height:1.5; }
+
+  /* info box */
+  .info-box {
+    background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.25);
+    border-radius:10px; padding:14px 18px; margin:16px 0; font-size:0.88rem;
+    line-height:1.65; color:var(--text);
+  }
+  .info-box .ib-label { color:var(--accent4); font-weight:800; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
+
+  /* atom diagram */
+  .atom-diagram { display:flex; justify-content:center; margin:20px 0; }
+
+  /* ── VIDEO SECTION ── */
+  .video-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .video-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    overflow:hidden; cursor:pointer; transition:all 0.25s;
+  }
+  .video-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,201,167,0.12); }
+  .video-thumb { position:relative; background:#0a141e; height:150px; display:flex; align-items:center; justify-content:center; font-size:2.5rem; }
+  .video-thumb img { width:100%; height:100%; object-fit:cover; }
+  .play-btn {
+    position:absolute; width:46px; height:46px; background:rgba(0,201,167,0.9);
+    border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:#fff;
+  }
+  .video-info { padding:14px 16px; }
+  .video-title { font-weight:700; font-size:0.88rem; color:#fff; margin-bottom:4px; }
+  .video-meta { font-size:0.74rem; color:var(--muted); }
+  .video-tag { display:inline-block; background:rgba(0,201,167,0.15); color:var(--accent); font-size:0.65rem; padding:2px 8px; border-radius:10px; margin-bottom:6px; font-family:'Space Mono',monospace; }
+  .yt-note { background:rgba(255,123,84,0.08); border:1px solid rgba(255,123,84,0.2); border-radius:8px; padding:8px 14px; font-size:0.78rem; color:#ffb99a; margin-top:12px; }
+
+  /* ── VOCAB CARDS ── */
+  .vocab-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .flip-card { height:130px; perspective:800px; cursor:pointer; }
+  .flip-inner { position:relative; width:100%; height:100%; transition:transform 0.55s; transform-style:preserve-3d; }
+  .flip-card.flipped .flip-inner { transform:rotateY(180deg); }
+  .flip-front, .flip-back {
+    position:absolute; width:100%; height:100%; backface-visibility:hidden;
+    border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:16px; text-align:center;
+  }
+  .flip-front { background:var(--surface2); border:1px solid var(--border); }
+  .flip-back { background:var(--surface); border:1px solid var(--accent); transform:rotateY(180deg); }
+  .flip-term { font-weight:800; font-size:0.98rem; color:#fff; }
+  .flip-hint { font-size:0.68rem; color:var(--muted); margin-top:4px; }
+  .flip-def { font-size:0.82rem; color:var(--text); line-height:1.5; }
+  .flip-icon { font-size:1.6rem; margin-bottom:6px; }
+
+  /* ── VIRTUAL LAB ── */
+  .lab-container { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+  .lab-header { background:linear-gradient(90deg,rgba(0,201,167,0.15),rgba(56,189,248,0.1)); padding:18px 24px; border-bottom:1px solid var(--border); }
+  .lab-title { font-weight:800; font-size:1.1rem; color:#fff; }
+  .lab-subtitle { font-size:0.8rem; color:var(--muted); margin-top:3px; }
+  .lab-body { padding:24px; }
+  .lab-controls { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px; }
+  .lab-btn {
+    padding:9px 18px; border-radius:10px; border:none; cursor:pointer;
+    font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem; transition:all 0.2s;
+  }
+  .lab-btn-ionic { background:rgba(255,123,84,0.2); color:var(--ionic); border:1px solid rgba(255,123,84,0.4); }
+  .lab-btn-ionic:hover, .lab-btn-ionic.active { background:var(--ionic); color:#fff; }
+  .lab-btn-covalent { background:rgba(0,201,167,0.2); color:var(--covalent); border:1px solid rgba(0,201,167,0.4); }
+  .lab-btn-covalent:hover, .lab-btn-covalent.active { background:var(--covalent); color:#0f1923; }
+  .lab-btn-metallic { background:rgba(167,139,250,0.2); color:var(--metallic); border:1px solid rgba(167,139,250,0.4); }
+  .lab-btn-metallic:hover, .lab-btn-metallic.active { background:var(--metallic); color:#fff; }
+
+  .lab-display { background:#0a141e; border-radius:12px; min-height:280px; display:flex; align-items:center; justify-content:center; margin-bottom:16px; position:relative; overflow:hidden; }
+  .lab-info-panel { background:var(--surface2); border-radius:10px; padding:16px; font-size:0.86rem; line-height:1.65; }
+  .lab-info-panel strong { color:var(--accent); }
+  .lab-observation { margin-top:12px; background:rgba(0,201,167,0.06); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--muted); }
+
+  /* SVG atoms */
+  .svg-lab { width:100%; max-width:480px; }
+
+  /* ── ASSIGNMENT ── */
+  .assignment-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:26px;
+    margin-bottom:18px;
+  }
+  .assign-q { font-weight:700; font-size:0.93rem; color:#fff; margin-bottom:10px; line-height:1.5; }
+  .assign-q span { color:var(--accent4); font-family:'Space Mono',monospace; font-size:0.75rem; display:block; margin-bottom:4px; }
+  textarea.assign-input {
+    width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:8px;
+    padding:12px 14px; color:var(--text); font-family:'Nunito',sans-serif; font-size:0.88rem;
+    resize:vertical; min-height:80px; transition:border 0.2s;
+  }
+  textarea.assign-input:focus { outline:none; border-color:var(--accent); }
+  input.assign-short {
+    background:var(--surface2); border:1px solid var(--border); border-radius:8px;
+    padding:10px 14px; color:var(--text); font-family:'Nunito',sans-serif; font-size:0.88rem;
+    width:100%; transition:border 0.2s;
+  }
+  input.assign-short:focus { outline:none; border-color:var(--accent); }
+  .assign-table { width:100%; border-collapse:collapse; margin-top:10px; font-size:0.84rem; }
+  .assign-table th { background:rgba(0,201,167,0.12); color:var(--accent); padding:8px 12px; text-align:left; border:1px solid var(--border); }
+  .assign-table td { padding:8px 12px; border:1px solid var(--border); }
+  .assign-table td input { background:transparent; border:none; color:var(--text); font-family:'Nunito',sans-serif; font-size:0.84rem; width:100%; outline:none; }
+  .assign-submit { margin-top:18px; display:flex; justify-content:flex-end; }
+
+  /* ── QUIZ ── */
+  .quiz-progress { font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--muted); margin-bottom:20px; }
+  .quiz-q-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:26px; margin-bottom:20px; }
+  .quiz-q-num { font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--muted); margin-bottom:8px; }
+  .quiz-q-text { font-size:1rem; font-weight:700; color:#fff; line-height:1.55; margin-bottom:18px; }
+  .quiz-options { display:flex; flex-direction:column; gap:10px; }
+  .quiz-opt {
+    display:flex; align-items:center; gap:12px;
+    padding:12px 16px; border-radius:10px; cursor:pointer;
+    background:var(--surface2); border:1px solid var(--border);
+    transition:all 0.2s; font-size:0.89rem;
+  }
+  .quiz-opt:hover:not(.disabled) { border-color:var(--accent4); background:rgba(56,189,248,0.06); }
+  .quiz-opt.selected { border-color:var(--accent4); background:rgba(56,189,248,0.1); color:var(--accent4); }
+  .quiz-opt.correct { border-color:var(--correct); background:rgba(34,197,94,0.1); color:var(--correct); }
+  .quiz-opt.wrong { border-color:var(--wrong); background:rgba(239,68,68,0.1); color:var(--wrong); }
+  .quiz-opt.disabled { cursor:default; }
+  .opt-letter { width:26px; height:26px; border-radius:6px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; flex-shrink:0; }
+  .quiz-feedback { margin-top:12px; padding:12px 16px; border-radius:8px; font-size:0.85rem; line-height:1.55; display:none; }
+  .quiz-feedback.show { display:block; }
+  .quiz-feedback.correct-fb { background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); color:#86efac; }
+  .quiz-feedback.wrong-fb { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#fca5a5; }
+
+  .quiz-score {
+    text-align:center; background:var(--surface); border:1px solid var(--border);
+    border-radius:16px; padding:40px; display:none;
+  }
+  .score-big { font-size:3.5rem; font-weight:900; color:var(--accent); font-family:'Space Mono',monospace; }
+  .score-label { color:var(--muted); margin-top:6px; font-size:0.9rem; }
+  .score-msg { font-size:1.1rem; font-weight:700; margin-top:16px; color:#fff; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px; border-radius:10px; border:none; cursor:pointer;
+    font-family:'Nunito',sans-serif; font-weight:700; font-size:0.88rem; transition:all 0.2s;
+  }
+  .btn-primary { background:var(--accent); color:#0f1923; }
+  .btn-primary:hover { background:#00e5be; }
+  .btn-outline { background:transparent; border:1px solid var(--border); color:var(--text); }
+  .btn-outline:hover { border-color:var(--accent); color:var(--accent); }
+  .btn-small { padding:8px 16px; font-size:0.8rem; }
+
+  .nav-footer { display:flex; justify-content:space-between; margin-top:28px; padding-top:20px; border-top:1px solid var(--border); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:740px){
+    nav.sidebar { display:none; }
+    .bond-cards, .video-grid, .vocab-grid { grid-template-columns:1fr; }
+    main { padding:20px 18px; }
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+  /* completed checkmark */
+  .check { display:none; margin-left:auto; color:var(--correct); font-size:0.85rem; }
+  .nav-item.done .check { display:block; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">⚛️</div>
+      <div>
+        <div class="header-title">Chemical Bonding</div>
+        <div class="header-sub">8th Grade Physical Science</div>
+      </div>
+    </div>
+    <div class="sol-badge">VA SOL PS.4c</div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-info">
+      <span id="progressLabel">0% Complete</span>
+      <span id="progressModules">0 / 8 Modules</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- ── SIDEBAR ── -->
+<nav class="sidebar">
+  <div class="nav-section">Modules</div>
+  <div class="nav-item active" onclick="goSection('intro')" id="nav-intro">
+    <div class="nav-dot"></div> Introduction <div class="check">✓</div>
+  </div>
+  <div class="nav-item" onclick="goSection('slides')" id="nav-slides">
+    <div class="nav-dot"></div> Slides <div class="check">✓</div>
+  </div>
+  <div class="nav-item" onclick="goSection('vocab')" id="nav-vocab">
+    <div class="nav-dot"></div> Vocabulary <div class="check">✓</div>
+  </div>
+  <div class="nav-item" onclick="goSection('videos')" id="nav-videos">
+    <div class="nav-dot"></div> Videos <div class="check">✓</div>
+  </div>
+  <div class="nav-spacer"></div>
+  <div class="nav-section">Activities</div>
+  <div class="nav-item" onclick="goSection('lab')" id="nav-lab">
+    <div class="nav-dot"></div> Virtual Lab <div class="check">✓</div>
+  </div>
+  <div class="nav-item" onclick="goSection('assignment')" id="nav-assignment">
+    <div class="nav-dot"></div> Assignment <div class="check">✓</div>
+  </div>
+  <div class="nav-spacer"></div>
+  <div class="nav-section">Assessment</div>
+  <div class="nav-item" onclick="goSection('quiz')" id="nav-quiz">
+    <div class="nav-dot"></div> SOL Quiz <div class="check">✓</div>
+  </div>
+  <div class="nav-item" onclick="goSection('summary')" id="nav-summary">
+    <div class="nav-dot"></div> Summary <div class="check">✓</div>
+  </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<main>
+
+<!-- ══ INTRO ══ -->
+<div class="section active" id="section-intro">
+  <div class="section-header">
+    <div class="section-tag">Module 1 · Introduction</div>
+    <div class="section-title">What Holds Matter Together?</div>
+    <div class="section-desc">In this lesson, you'll explore how atoms form chemical bonds, the types of bonds that exist, and why bonding determines the properties of substances — all aligned to Virginia SOL PS.4c.</div>
+  </div>
+
+  <div class="slide-card">
+    <div class="slide-body">
+      <p>Everything around you — the desk you sit at, the water you drink, the air you breathe — is made of atoms joined together by <span class="highlight">chemical bonds</span>. A chemical bond is a force of attraction that holds two atoms together.</p>
+      <p>Atoms bond because doing so makes them more stable. Most atoms seek a full outer electron shell — usually <span class="highlight2">8 valence electrons</span> (the octet rule). They achieve this by sharing, gaining, or losing electrons.</p>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="bond-cards">
+        <div class="bond-card ionic">
+          <div class="bond-icon">⚡</div>
+          <div class="bond-name">Ionic Bond</div>
+          <div class="bond-desc">Transfer of electrons between metal and nonmetal</div>
+        </div>
+        <div class="bond-card covalent">
+          <div class="bond-icon">🔗</div>
+          <div class="bond-name">Covalent Bond</div>
+          <div class="bond-desc">Sharing electrons between two nonmetals</div>
+        </div>
+        <div class="bond-card metallic">
+          <div class="bond-icon">🪙</div>
+          <div class="bond-name">Metallic Bond</div>
+          <div class="bond-desc">Sea of electrons shared across metal atoms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="ib-label">🎯 Learning Objectives — VA SOL PS.4c</div>
+    After completing this lesson, you will be able to: <br>
+    • Identify and describe ionic, covalent, and metallic bonds<br>
+    • Explain how valence electrons determine bond type<br>
+    • Distinguish properties of ionic vs. covalent compounds<br>
+    • Interpret simple chemical formulas and bond diagrams
+  </div>
+
+  <div class="nav-footer">
+    <div></div>
+    <button class="btn btn-primary" onclick="goSection('slides');markDone('intro')">Start Slides →</button>
+  </div>
+</div>
+
+<!-- ══ SLIDES ══ -->
+<div class="section" id="section-slides">
+  <div class="section-header">
+    <div class="section-tag">Module 2 · Slides</div>
+    <div class="section-title">Chemical Bonding Explained</div>
+    <div class="section-desc">Navigate through 10 content slides — includes detailed diagrams of NaCl &amp; H₂O (ionic/polar), and Cl₂ &amp; O₂ (covalent bond formation).</div>
+  </div>
+
+  <div class="slide-deck">
+    <!-- Slide 1 -->
+    <div class="slide active" id="slide-1">
+      <div class="slide-card">
+        <div class="slide-num">Slide 1 of 10</div>
+        <div class="slide-title">⚛️ Valence Electrons — The Key to Bonding</div>
+        <div class="slide-body">
+          <p>Atoms have electrons arranged in energy levels called <span class="highlight">electron shells</span>. The outermost shell holds the <span class="highlight">valence electrons</span> — these are the only electrons involved in bonding.</p>
+          <ul>
+            <li>Sodium (Na) has <span class="highlight2">1</span> valence electron → wants to lose it</li>
+            <li>Chlorine (Cl) has <span class="highlight2">7</span> valence electrons → wants to gain 1</li>
+            <li>Oxygen (O) has <span class="highlight2">6</span> valence electrons → wants to gain 2</li>
+          </ul>
+          <p>The number of valence electrons determines how an atom will bond. You can find this from the group number on the Periodic Table!</p>
+          <div class="info-box">
+            <div class="ib-label">🔑 Octet Rule</div>
+            Atoms are most stable when they have <strong>8 valence electrons</strong> (like noble gases). Bonding is atoms' way of achieving this stability.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 — Ionic bonds intro -->
+    <div class="slide" id="slide-2">
+      <div class="slide-card">
+        <div class="slide-num">Slide 2 of 10</div>
+        <div class="slide-title">⚡ Ionic Bonds — Electron Transfer</div>
+        <div class="slide-body">
+          <p>An <span class="highlight2">ionic bond</span> forms when one atom <strong>transfers</strong> one or more electrons to another atom, creating oppositely charged <span class="highlight2">ions</span> that attract each other.</p>
+          <ul>
+            <li><strong>Cations (+):</strong> atoms that LOSE electrons → usually metals</li>
+            <li><strong>Anions (−):</strong> atoms that GAIN electrons → usually nonmetals</li>
+          </ul>
+          <div class="info-box">
+            <div class="ib-label">🔬 Properties of Ionic Compounds</div>
+            • Form rigid crystal (lattice) structures<br>
+            • Very high melting &amp; boiling points<br>
+            • Conduct electricity when dissolved in water<br>
+            • Often soluble in water — examples: NaCl, MgO, CaCl₂
+          </div>
+          <p style="margin-top:10px;">➡ The next two slides show <strong>step-by-step diagrams</strong> of how ionic bonds form in <strong>NaCl</strong> and <strong>MgO</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 — NaCl diagram -->
+    <div class="slide" id="slide-3">
+      <div class="slide-card">
+        <div class="slide-num">Slide 3 of 10</div>
+        <div class="slide-title">⚡ Ionic Bond Diagram: Formation of NaCl (Table Salt)</div>
+        <div class="slide-body">
+          <!-- NaCl SVG diagram -->
+          <svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;display:block;margin:0 auto 14px;">
+            <defs>
+              <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ffd700"/></marker>
+            </defs>
+            <!-- LABELS -->
+            <text x="390" y="18" text-anchor="middle" fill="#7a9bb8" font-size="11" font-family="Nunito" font-style="italic">Electron Transfer: Na donates 1 electron → Cl accepts 1 electron → Ionic bond (NaCl) forms</text>
+
+            <!-- ── Na ATOM (left) ── -->
+            <!-- outer shell (3rd) -->
+            <circle cx="130" cy="140" r="68" fill="none" stroke="#ff7b54" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- 2nd shell -->
+            <circle cx="130" cy="140" r="44" fill="none" stroke="#ff7b54" stroke-width="1" stroke-dasharray="3,3" opacity="0.35"/>
+            <!-- nucleus -->
+            <circle cx="130" cy="140" r="22" fill="rgba(255,123,84,0.35)" stroke="#ff7b54" stroke-width="2"/>
+            <text x="130" y="145" text-anchor="middle" fill="#ff7b54" font-size="15" font-weight="800" font-family="Nunito">Na</text>
+            <!-- 1 valence electron on outer shell -->
+            <circle cx="198" cy="140" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.2"/>
+            <text x="198" y="145" text-anchor="middle" fill="#1a1a1a" font-size="9" font-weight="800" font-family="Nunito">e⁻</text>
+            <!-- inner electrons (2nd shell) simplified -->
+            <circle cx="130" cy="96"  r="5" fill="#ff7b54" opacity="0.5"/>
+            <circle cx="174" cy="140" r="5" fill="#ff7b54" opacity="0.5"/>
+            <circle cx="130" cy="184" r="5" fill="#ff7b54" opacity="0.5"/>
+            <circle cx="86"  cy="140" r="5" fill="#ff7b54" opacity="0.5"/>
+            <!-- label -->
+            <text x="130" y="228" text-anchor="middle" fill="#ff7b54" font-size="12" font-weight="700" font-family="Nunito">Na atom</text>
+            <text x="130" y="243" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">1 valence e⁻</text>
+
+            <!-- ── ARROW ── -->
+            <path d="M212 135 Q270 100 310 135" stroke="#ffd700" stroke-width="2" fill="none" marker-end="url(#arr1)"/>
+            <text x="258" y="108" text-anchor="middle" fill="#ffd700" font-size="10" font-weight="700" font-family="Nunito">transfers e⁻</text>
+
+            <!-- ── Cl ATOM (middle) ── -->
+            <circle cx="420" cy="140" r="68" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="420" cy="140" r="44" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,3" opacity="0.35"/>
+            <circle cx="420" cy="140" r="22" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="2"/>
+            <text x="420" y="145" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="800" font-family="Nunito">Cl</text>
+            <!-- 7 valence electrons on outer shell -->
+            <circle cx="488" cy="140" r="6" fill="#38bdf8" stroke="#fff" stroke-width="1"/>
+            <circle cx="468" cy="93"  r="6" fill="#38bdf8" stroke="#fff" stroke-width="1"/>
+            <circle cx="420" cy="72"  r="6" fill="#38bdf8" stroke="#fff" stroke-width="1"/>
+            <circle cx="372" cy="93"  r="6" fill="#38bdf8" stroke="#fff" stroke-width="1"/>
+            <circle cx="352" cy="140" r="6" fill="#38bdf8" stroke="#fff" stroke-width="1"/>
+            <circle cx="372" cy="187" r="6" fill="#38bdf8" stroke="#fff" stroke-width="1"/>
+            <circle cx="468" cy="187" r="6" fill="#38bdf8" stroke="#fff" stroke-width="1"/>
+            <!-- empty slot marker -->
+            <circle cx="420" cy="208" r="6" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <text x="420" y="228" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="Nunito">Cl atom</text>
+            <text x="420" y="243" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">7 valence e⁻ (needs 1 more)</text>
+
+            <!-- ── EQUALS / RESULT ── -->
+            <text x="560" y="145" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="800" font-family="Nunito">→</text>
+
+            <!-- ── Na⁺ ION ── -->
+            <circle cx="620" cy="130" r="30" fill="rgba(255,123,84,0.25)" stroke="#ff7b54" stroke-width="2.5"/>
+            <text x="620" y="135" text-anchor="middle" fill="#ff7b54" font-size="16" font-weight="800" font-family="Nunito">Na⁺</text>
+            <text x="620" y="176" text-anchor="middle" fill="#ff7b54" font-size="11" font-family="Nunito">cation (+)</text>
+            <text x="620" y="190" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">lost 1 e⁻</text>
+
+            <!-- ionic attraction arrow -->
+            <text x="665" y="125" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" font-family="Nunito">⚡</text>
+
+            <!-- ── Cl⁻ ION ── -->
+            <circle cx="710" cy="130" r="36" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="2.5"/>
+            <text x="710" y="135" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="800" font-family="Nunito">Cl⁻</text>
+            <text x="710" y="182" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="Nunito">anion (−)</text>
+            <text x="710" y="196" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">gained 1 e⁻</text>
+
+            <!-- NaCl label -->
+            <text x="665" y="230" text-anchor="middle" fill="#00c9a7" font-size="13" font-weight="800" font-family="Nunito">NaCl — Ionic Compound</text>
+            <text x="665" y="247" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">opposite charges attract → ionic bond</text>
+          </svg>
+          <div class="info-box">
+            <div class="ib-label">📌 Step-by-Step Summary</div>
+            <strong>Step 1:</strong> Na has 1 valence electron (Group 1) — it is unstable.<br>
+            <strong>Step 2:</strong> Cl has 7 valence electrons (Group 17) — needs 1 more to fill its shell.<br>
+            <strong>Step 3:</strong> Na <em>transfers</em> its 1 valence electron to Cl.<br>
+            <strong>Step 4:</strong> Na becomes Na⁺ (positive cation); Cl becomes Cl⁻ (negative anion).<br>
+            <strong>Step 5:</strong> Opposite charges attract → <span style="color:#ff7b54;font-weight:700;">ionic bond</span> forms → NaCl crystal lattice (table salt)!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 — H2O ionic? NO — polar covalent intro as ionic example complement -->
+    <!-- Actually H2O is covalent — keeping ionic slide 4 as MgO or add as "what about H2O?" transition -->
+    <!-- Slide 4 — second ionic example context + transition to covalent -->
+    <div class="slide" id="slide-4">
+      <div class="slide-card">
+        <div class="slide-num">Slide 4 of 10</div>
+        <div class="slide-title">⚡ Ionic Bond: NaCl Crystal Lattice + Ion Recap</div>
+        <div class="slide-body">
+          <p>After electron transfer, Na⁺ and Cl⁻ ions arrange themselves in a repeating 3-D pattern called a <span class="highlight2">crystal lattice</span>. Each Na⁺ is surrounded by 6 Cl⁻ ions and vice versa.</p>
+          <!-- NaCl lattice SVG -->
+          <svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:12px auto;">
+            <text x="290" y="16" text-anchor="middle" fill="#7a9bb8" font-size="11" font-family="Nunito" font-style="italic">NaCl Crystal Lattice — alternating Na⁺ and Cl⁻ ions</text>
+            <!-- Grid of ions -->
+            <!-- Row 1 -->
+            <circle cx="80"  cy="55" r="22" fill="rgba(255,123,84,0.25)" stroke="#ff7b54" stroke-width="2"/><text x="80"  cy="55" y="60" text-anchor="middle" fill="#ff7b54" font-size="12" font-weight="700" font-family="Nunito">Na⁺</text>
+            <circle cx="160" cy="55" r="28" fill="rgba(56,189,248,0.2)"  stroke="#38bdf8" stroke-width="2"/><text x="160" cy="55" y="60" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="Nunito">Cl⁻</text>
+            <circle cx="240" cy="55" r="22" fill="rgba(255,123,84,0.25)" stroke="#ff7b54" stroke-width="2"/><text x="240" cy="55" y="60" text-anchor="middle" fill="#ff7b54" font-size="12" font-weight="700" font-family="Nunito">Na⁺</text>
+            <circle cx="320" cy="55" r="28" fill="rgba(56,189,248,0.2)"  stroke="#38bdf8" stroke-width="2"/><text x="320" cy="55" y="60" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="Nunito">Cl⁻</text>
+            <circle cx="400" cy="55" r="22" fill="rgba(255,123,84,0.25)" stroke="#ff7b54" stroke-width="2"/><text x="400" cy="55" y="60" text-anchor="middle" fill="#ff7b54" font-size="12" font-weight="700" font-family="Nunito">Na⁺</text>
+            <circle cx="480" cy="55" r="28" fill="rgba(56,189,248,0.2)"  stroke="#38bdf8" stroke-width="2"/><text x="480" cy="55" y="60" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="Nunito">Cl⁻</text>
+            <!-- Row 2 -->
+            <circle cx="80"  cy="135" r="28" fill="rgba(56,189,248,0.2)"  stroke="#38bdf8" stroke-width="2"/><text x="80"  cy="135" y="140" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="Nunito">Cl⁻</text>
+            <circle cx="160" cy="135" r="22" fill="rgba(255,123,84,0.25)" stroke="#ff7b54" stroke-width="2"/><text x="160" cy="135" y="140" text-anchor="middle" fill="#ff7b54" font-size="12" font-weight="700" font-family="Nunito">Na⁺</text>
+            <circle cx="240" cy="135" r="28" fill="rgba(56,189,248,0.2)"  stroke="#38bdf8" stroke-width="2"/><text x="240" cy="135" y="140" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="Nunito">Cl⁻</text>
+            <circle cx="320" cy="135" r="22" fill="rgba(255,123,84,0.25)" stroke="#ff7b54" stroke-width="2"/><text x="320" cy="135" y="140" text-anchor="middle" fill="#ff7b54" font-size="12" font-weight="700" font-family="Nunito">Na⁺</text>
+            <circle cx="400" cy="135" r="28" fill="rgba(56,189,248,0.2)"  stroke="#38bdf8" stroke-width="2"/><text x="400" cy="135" y="140" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="Nunito">Cl⁻</text>
+            <circle cx="480" cy="135" r="22" fill="rgba(255,123,84,0.25)" stroke="#ff7b54" stroke-width="2"/><text x="480" cy="135" y="140" text-anchor="middle" fill="#ff7b54" font-size="12" font-weight="700" font-family="Nunito">Na⁺</text>
+            <!-- bond lines row1 -->
+            <line x1="102" y1="55"  x2="132" y2="55"  stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="188" y1="55"  x2="218" y2="55"  stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="262" y1="55"  x2="292" y2="55"  stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="348" y1="55"  x2="378" y2="55"  stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="422" y1="55"  x2="452" y2="55"  stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <!-- bond lines row2 -->
+            <line x1="108" y1="135" x2="138" y2="135" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="182" y1="135" x2="212" y2="135" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="268" y1="135" x2="298" y2="135" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="342" y1="135" x2="372" y2="135" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="428" y1="135" x2="458" y2="135" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <!-- vertical bonds col1 -->
+            <line x1="80"  y1="83"  x2="80"  y2="107" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="160" y1="77"  x2="160" y2="113" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="240" y1="83"  x2="240" y2="107" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="320" y1="83"  x2="320" y2="107" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="400" y1="77"  x2="400" y2="113" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <line x1="480" y1="83"  x2="480" y2="107" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+            <text x="290" y="190" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">Each ion is held in place by electrostatic attraction from surrounding opposite-charge ions</text>
+          </svg>
+          <div class="info-box">
+            <div class="ib-label">💡 Why are ionic compounds brittle?</div>
+            If the lattice is struck, rows shift — same charges align → repel each other → the crystal shatters! This explains why table salt breaks into flat pieces rather than bending.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5 — Covalent bonds intro -->
+    <div class="slide" id="slide-5">
+      <div class="slide-card">
+        <div class="slide-num">Slide 5 of 10</div>
+        <div class="slide-title">🔗 Covalent Bonds — Electron Sharing</div>
+        <div class="slide-body">
+          <p>A <span class="highlight">covalent bond</span> forms when two atoms <strong>share</strong> one or more pairs of electrons. This usually happens between <span class="highlight">two nonmetals</span>.</p>
+          <ul>
+            <li><strong>Single bond:</strong> 1 shared pair (e.g., Cl–Cl, H–H)</li>
+            <li><strong>Double bond:</strong> 2 shared pairs (e.g., O=O in O₂)</li>
+            <li><strong>Triple bond:</strong> 3 shared pairs (e.g., N≡N)</li>
+          </ul>
+          <p><strong>Polar vs. Nonpolar Covalent Bonds:</strong></p>
+          <ul>
+            <li><span class="highlight4">Nonpolar covalent:</span> electrons shared <em>equally</em> between identical atoms (Cl₂, O₂, H₂)</li>
+            <li><span class="highlight4">Polar covalent:</span> electrons shared <em>unequally</em> — more electronegative atom pulls harder (H₂O)</li>
+          </ul>
+          <div class="info-box">
+            <div class="ib-label">🔬 Properties of Covalent Compounds</div>
+            • Form discrete <em>molecules</em> (not lattices)<br>
+            • Lower melting/boiling points than ionic compounds<br>
+            • Usually do NOT conduct electricity<br>
+            • Examples: H₂O, CO₂, Cl₂, O₂, sugar
+          </div>
+          <p style="margin-top:10px;">➡ The next slides show <strong>diagrams</strong> of <strong>Cl₂</strong> (single covalent), <strong>O₂</strong> (double covalent), and <strong>H₂O</strong> (polar covalent).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6 — Cl2 diagram -->
+    <div class="slide" id="slide-6">
+      <div class="slide-card">
+        <div class="slide-num">Slide 6 of 10</div>
+        <div class="slide-title">🔗 Covalent Bond Diagram: Cl₂ (Chlorine Molecule) — Single Bond</div>
+        <div class="slide-body">
+          <!-- Cl2 Lewis dot + orbital overlap SVG -->
+          <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto 14px;">
+            <defs>
+              <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#a0b8cc"/></marker>
+            </defs>
+            <text x="350" y="16" text-anchor="middle" fill="#7a9bb8" font-size="11" font-family="Nunito" font-style="italic">Each Cl atom shares 1 electron → 1 shared pair = single covalent bond</text>
+
+            <!-- LEFT Cl atom -->
+            <circle cx="170" cy="120" r="65" fill="rgba(0,201,167,0.08)" stroke="#00c9a7" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <circle cx="170" cy="120" r="32" fill="rgba(0,201,167,0.25)" stroke="#00c9a7" stroke-width="2"/>
+            <text x="170" y="126" text-anchor="middle" fill="#00c9a7" font-size="17" font-weight="800" font-family="Nunito">Cl</text>
+            <!-- 6 lone electrons (3 pairs) on left Cl — top, left, bottom sides -->
+            <circle cx="170" cy="46"  r="6" fill="#00c9a7"/><circle cx="185" cy="46"  r="6" fill="#00c9a7"/>
+            <circle cx="93"  cy="107" r="6" fill="#00c9a7"/><circle cx="93"  cy="133" r="6" fill="#00c9a7"/>
+            <circle cx="170" cy="195" r="6" fill="#00c9a7"/><circle cx="185" cy="195" r="6" fill="#00c9a7"/>
+            <!-- 1 shared electron (right side) -->
+            <circle cx="235" cy="120" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+
+            <!-- RIGHT Cl atom -->
+            <circle cx="530" cy="120" r="65" fill="rgba(0,201,167,0.08)" stroke="#00c9a7" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <circle cx="530" cy="120" r="32" fill="rgba(0,201,167,0.25)" stroke="#00c9a7" stroke-width="2"/>
+            <text x="530" y="126" text-anchor="middle" fill="#00c9a7" font-size="17" font-weight="800" font-family="Nunito">Cl</text>
+            <!-- 6 lone electrons on right Cl -->
+            <circle cx="515" cy="46"  r="6" fill="#00c9a7"/><circle cx="530" cy="46"  r="6" fill="#00c9a7"/>
+            <circle cx="607" cy="107" r="6" fill="#00c9a7"/><circle cx="607" cy="133" r="6" fill="#00c9a7"/>
+            <circle cx="515" cy="195" r="6" fill="#00c9a7"/><circle cx="530" cy="195" r="6" fill="#00c9a7"/>
+            <!-- 1 shared electron (left side) -->
+            <circle cx="465" cy="120" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+
+            <!-- shared pair region highlight -->
+            <ellipse cx="350" cy="120" rx="55" ry="28" fill="rgba(255,215,0,0.12)" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <text x="350" y="124" text-anchor="middle" fill="#ffd700" font-size="11" font-weight="700" font-family="Nunito">shared pair</text>
+
+            <!-- Lewis dot structural formula below -->
+            <text x="350" y="218" text-anchor="middle" fill="#a0b8cc" font-size="13" font-family="Space Mono, monospace">:Cl — Cl:</text>
+            <text x="350" y="234" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">Lewis Structure (each : = lone pair, — = shared pair)</text>
+
+            <!-- labels -->
+            <text x="170" y="205" text-anchor="middle" fill="#00c9a7" font-size="11" font-weight="700" font-family="Nunito" dy="20">Cl: 7 valence e⁻</text>
+            <text x="530" y="205" text-anchor="middle" fill="#00c9a7" font-size="11" font-weight="700" font-family="Nunito" dy="20">Cl: 7 valence e⁻</text>
+          </svg>
+          <div class="info-box">
+            <div class="ib-label">📌 Step-by-Step: Cl₂ Formation</div>
+            <strong>Step 1:</strong> Each Cl atom has 7 valence electrons — needs 1 more to reach 8 (octet).<br>
+            <strong>Step 2:</strong> Each Cl contributes 1 electron to a shared pair between them.<br>
+            <strong>Step 3:</strong> The shared pair "belongs" to both atoms — both now effectively have 8 valence electrons.<br>
+            <strong>Result:</strong> Cl₂ — a <span style="color:#00c9a7;font-weight:700;">nonpolar covalent single bond</span> (electrons shared equally, same element).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7 — O2 diagram -->
+    <div class="slide" id="slide-7">
+      <div class="slide-card">
+        <div class="slide-num">Slide 7 of 10</div>
+        <div class="slide-title">🔗 Covalent Bond Diagram: O₂ (Oxygen Molecule) — Double Bond</div>
+        <div class="slide-body">
+          <svg viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto 14px;">
+            <text x="350" y="16" text-anchor="middle" fill="#7a9bb8" font-size="11" font-family="Nunito" font-style="italic">Each O atom shares 2 electrons → 2 shared pairs = double covalent bond (O=O)</text>
+
+            <!-- LEFT O atom -->
+            <circle cx="185" cy="125" r="62" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <circle cx="185" cy="125" r="30" fill="rgba(167,139,250,0.3)" stroke="#a78bfa" stroke-width="2"/>
+            <text x="185" y="131" text-anchor="middle" fill="#a78bfa" font-size="17" font-weight="800" font-family="Nunito">O</text>
+            <!-- 2 lone pairs (4 electrons) on left, top & bottom -->
+            <circle cx="170" cy="54" r="6" fill="#a78bfa"/><circle cx="200" cy="54" r="6" fill="#a78bfa"/>
+            <circle cx="170" cy="196" r="6" fill="#a78bfa"/><circle cx="200" cy="196" r="6" fill="#a78bfa"/>
+            <!-- 2 shared electrons right side -->
+            <circle cx="247" cy="110" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="247" cy="140" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+
+            <!-- RIGHT O atom -->
+            <circle cx="515" cy="125" r="62" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <circle cx="515" cy="125" r="30" fill="rgba(167,139,250,0.3)" stroke="#a78bfa" stroke-width="2"/>
+            <text x="515" y="131" text-anchor="middle" fill="#a78bfa" font-size="17" font-weight="800" font-family="Nunito">O</text>
+            <!-- 2 lone pairs right side top & bottom -->
+            <circle cx="500" cy="54" r="6" fill="#a78bfa"/><circle cx="530" cy="54" r="6" fill="#a78bfa"/>
+            <circle cx="500" cy="196" r="6" fill="#a78bfa"/><circle cx="530" cy="196" r="6" fill="#a78bfa"/>
+            <!-- 2 shared electrons left side -->
+            <circle cx="453" cy="110" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="453" cy="140" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+
+            <!-- shared pair region — double bond area -->
+            <ellipse cx="350" cy="125" rx="58" ry="38" fill="rgba(255,215,0,0.13)" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <text x="350" y="120" text-anchor="middle" fill="#ffd700" font-size="10.5" font-weight="700" font-family="Nunito">2 shared pairs</text>
+            <text x="350" y="134" text-anchor="middle" fill="#ffd700" font-size="10" font-family="Nunito">(double bond)</text>
+
+            <!-- double bond lines -->
+            <line x1="215" y1="115" x2="453" y2="115" stroke="#ffd700" stroke-width="2.5" opacity="0.6"/>
+            <line x1="215" y1="135" x2="453" y2="135" stroke="#ffd700" stroke-width="2.5" opacity="0.6"/>
+
+            <!-- Lewis dot structural formula -->
+            <text x="350" y="225" text-anchor="middle" fill="#a0b8cc" font-size="13" font-family="Space Mono, monospace">:O = O:</text>
+            <text x="350" y="241" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">Lewis Structure — double bond (=) = 2 shared electron pairs</text>
+
+            <text x="185" y="220" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="700" font-family="Nunito">O: 6 valence e⁻</text>
+            <text x="515" y="220" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="700" font-family="Nunito">O: 6 valence e⁻</text>
+          </svg>
+          <div class="info-box">
+            <div class="ib-label">📌 Step-by-Step: O₂ Formation</div>
+            <strong>Step 1:</strong> Each O atom has 6 valence electrons — needs 2 more to complete the octet.<br>
+            <strong>Step 2:</strong> Each O contributes <em>2 electrons</em> to form <em>2 shared pairs</em> between them.<br>
+            <strong>Step 3:</strong> Both O atoms now effectively have 8 valence electrons (2 lone pairs + 2 shared pairs × 2).<br>
+            <strong>Result:</strong> O₂ — a <span style="color:#a78bfa;font-weight:700;">nonpolar covalent double bond</span>. Double bonds are <em>shorter and stronger</em> than single bonds!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8 — H2O polar covalent diagram -->
+    <div class="slide" id="slide-8">
+      <div class="slide-card">
+        <div class="slide-num">Slide 8 of 10</div>
+        <div class="slide-title">🔗 Covalent Bond Diagram: H₂O (Water) — Polar Covalent</div>
+        <div class="slide-body">
+          <svg viewBox="0 0 700 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto 14px;">
+            <defs>
+              <marker id="arr3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#ef4444"/></marker>
+              <marker id="arr4" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#3b82f6"/></marker>
+            </defs>
+            <text x="350" y="16" text-anchor="middle" fill="#7a9bb8" font-size="11" font-family="Nunito" font-style="italic">O shares 1 electron with each H → 2 polar covalent bonds → bent molecule</text>
+
+            <!-- H left -->
+            <circle cx="145" cy="180" r="38" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <circle cx="145" cy="180" r="20" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="2"/>
+            <text x="145" y="186" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="800" font-family="Nunito">H</text>
+            <!-- H left shared e- -->
+            <circle cx="185" cy="162" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+            <text x="145" y="232" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700" font-family="Nunito">1 valence e⁻</text>
+
+            <!-- O center -->
+            <circle cx="350" cy="110" r="58" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <circle cx="350" cy="110" r="30" fill="rgba(239,68,68,0.3)" stroke="#ef4444" stroke-width="2.5"/>
+            <text x="350" y="116" text-anchor="middle" fill="#ef4444" font-size="17" font-weight="800" font-family="Nunito">O</text>
+            <!-- 2 lone pairs on O (top) -->
+            <circle cx="330" cy="44" r="6" fill="#ef4444"/><circle cx="350" cy="38" r="6" fill="#ef4444"/>
+            <circle cx="370" cy="44" r="6" fill="#ef4444"/><circle cx="350" cy="56" r="6" fill="#ef4444"/>
+            <!-- shared electrons left-H -->
+            <circle cx="290" cy="148" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+            <!-- shared electrons right-H -->
+            <circle cx="410" cy="148" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+
+            <!-- H right -->
+            <circle cx="555" cy="180" r="38" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <circle cx="555" cy="180" r="20" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="2"/>
+            <text x="555" y="186" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="800" font-family="Nunito">H</text>
+            <!-- H right shared e- -->
+            <circle cx="515" cy="162" r="7" fill="#ffd700" stroke="#fff" stroke-width="1.5"/>
+            <text x="555" y="232" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700" font-family="Nunito">1 valence e⁻</text>
+
+            <!-- bond lines -->
+            <line x1="215" y1="155" x2="290" y2="145" stroke="#ffd700" stroke-width="2.5"/>
+            <line x1="410" y1="145" x2="485" y2="155" stroke="#ffd700" stroke-width="2.5"/>
+
+            <!-- partial charge arrows & labels -->
+            <text x="350" y="76" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="800" font-family="Nunito">δ⁻</text>
+            <text x="145" y="210" text-anchor="middle" fill="#3b82f6" font-size="16" font-weight="800" font-family="Nunito">δ⁺</text>
+            <text x="555" y="210" text-anchor="middle" fill="#3b82f6" font-size="16" font-weight="800" font-family="Nunito">δ⁺</text>
+
+            <!-- electron pull arrow -->
+            <path d="M320 148 Q290 120 320 100" stroke="#ef4444" stroke-width="1.5" fill="none" marker-end="url(#arr3)"/>
+            <text x="280" y="118" text-anchor="middle" fill="#ef4444" font-size="9.5" font-family="Nunito">O pulls e⁻</text>
+            <text x="280" y="130" text-anchor="middle" fill="#ef4444" font-size="9.5" font-family="Nunito">harder</text>
+
+            <!-- bond angle -->
+            <path d="M260 170 Q350 215 440 170" stroke="#7a9bb8" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+            <text x="350" y="215" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">104.5° bond angle (bent shape)</text>
+
+            <!-- Lewis structure below -->
+            <text x="350" y="252" text-anchor="middle" fill="#a0b8cc" font-size="12" font-family="Space Mono, monospace">H — O — H</text>
+            <text x="350" y="267" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">Lewis Structure: 2 single bonds + 2 lone pairs on O</text>
+
+            <text x="350" y="152" text-anchor="middle" fill="#7a9bb8" font-size="10" font-family="Nunito">O: 6 valence e⁻</text>
+          </svg>
+          <div class="info-box">
+            <div class="ib-label">📌 Why is H₂O polar (not nonpolar)?</div>
+            <strong>Step 1:</strong> O has 6 valence electrons; each H has 1. O needs 2 more; each H needs 1 more.<br>
+            <strong>Step 2:</strong> O shares 1 electron with each H → 2 single covalent bonds formed.<br>
+            <strong>Step 3:</strong> Oxygen is more electronegative — it pulls shared electrons closer to itself.<br>
+            <strong>Step 4:</strong> O gains a partial negative charge (δ⁻); each H gains partial positive (δ⁺).<br>
+            <strong>Result:</strong> H₂O is a <span style="color:#38bdf8;font-weight:700;">polar covalent molecule</span> with a bent shape — this is why water is such a powerful solvent!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9 — Metallic bonds -->
+    <div class="slide" id="slide-9">
+      <div class="slide-card">
+        <div class="slide-num">Slide 9 of 10</div>
+        <div class="slide-title">🪙 Metallic Bonds — The Electron Sea</div>
+        <div class="slide-body">
+          <p>Metallic bonds occur in pure metals and alloys. Metal atoms release their valence electrons into a shared <span class="highlight3">"sea of electrons"</span> that flows freely throughout the material.</p>
+          <ul>
+            <li>Positive metal ions sit in a fixed lattice</li>
+            <li>Mobile electrons flow freely through the metal</li>
+            <li>The attraction between positive ions and the electron sea holds everything together</li>
+          </ul>
+          <div class="info-box">
+            <div class="ib-label">🔬 Properties of Metals (explained by metallic bonding)</div>
+            • <strong>Conductivity:</strong> free electrons carry electric current and heat<br>
+            • <strong>Malleability:</strong> layers of ions can slide — electrons adjust — doesn't shatter<br>
+            • <strong>Ductility:</strong> can be drawn into wires<br>
+            • <strong>Luster:</strong> free electrons interact with light → shiny surface<br>
+            • <strong>High melting points</strong> (strong attraction between ions and electrons)
+          </div>
+          <p>Examples: copper wire (Cu), aluminum foil (Al), iron (Fe), gold jewelry (Au)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 10 — Comparison + Lewis dots -->
+    <div class="slide" id="slide-10">
+      <div class="slide-card">
+        <div class="slide-num">Slide 10 of 10</div>
+        <div class="slide-title">📊 Bond Types — Summary Comparison</div>
+        <div class="slide-body">
+          <table style="width:100%;border-collapse:collapse;font-size:0.82rem;margin-bottom:16px;">
+            <tr style="background:rgba(0,201,167,0.1);">
+              <th style="padding:9px;border:1px solid #253b56;text-align:left;color:#00c9a7;">Property</th>
+              <th style="padding:9px;border:1px solid #253b56;text-align:left;color:#ff7b54;">Ionic</th>
+              <th style="padding:9px;border:1px solid #253b56;text-align:left;color:#00c9a7;">Covalent</th>
+              <th style="padding:9px;border:1px solid #253b56;text-align:left;color:#a78bfa;">Metallic</th>
+            </tr>
+            <tr>
+              <td style="padding:8px;border:1px solid #253b56;">Electron behavior</td>
+              <td style="padding:8px;border:1px solid #253b56;color:#ff7b54;">Transferred</td>
+              <td style="padding:8px;border:1px solid #253b56;color:#00c9a7;">Shared</td>
+              <td style="padding:8px;border:1px solid #253b56;color:#a78bfa;">Free-floating sea</td>
+            </tr>
+            <tr style="background:rgba(255,255,255,0.02);">
+              <td style="padding:8px;border:1px solid #253b56;">Between</td>
+              <td style="padding:8px;border:1px solid #253b56;">Metal + Nonmetal</td>
+              <td style="padding:8px;border:1px solid #253b56;">Nonmetal + Nonmetal</td>
+              <td style="padding:8px;border:1px solid #253b56;">Metal + Metal</td>
+            </tr>
+            <tr>
+              <td style="padding:8px;border:1px solid #253b56;">Conducts electricity?</td>
+              <td style="padding:8px;border:1px solid #253b56;">When dissolved/melted</td>
+              <td style="padding:8px;border:1px solid #253b56;">Usually NO</td>
+              <td style="padding:8px;border:1px solid #253b56;">YES (always)</td>
+            </tr>
+            <tr style="background:rgba(255,255,255,0.02);">
+              <td style="padding:8px;border:1px solid #253b56;">Examples from lesson</td>
+              <td style="padding:8px;border:1px solid #253b56;">NaCl</td>
+              <td style="padding:8px;border:1px solid #253b56;">Cl₂, O₂, H₂O</td>
+              <td style="padding:8px;border:1px solid #253b56;">Cu, Fe, Al</td>
+            </tr>
+          </table>
+          <div class="info-box">
+            <div class="ib-label">✏️ Lewis Dot Quick Reference</div>
+            <span style="font-family:'Space Mono',monospace;font-size:0.85rem;line-height:2;">
+              Na •&nbsp;&nbsp;+&nbsp;&nbsp;• Cl : → Na⁺ Cl⁻&nbsp;&nbsp;&nbsp;<em style="color:#7a9bb8;">(ionic — transfer)</em><br>
+              :Cl • + • Cl: → :Cl—Cl:&nbsp;&nbsp;&nbsp;<em style="color:#7a9bb8;">(single covalent)</em><br>
+              :O: + :O: → :O=O:&nbsp;&nbsp;&nbsp;<em style="color:#7a9bb8;">(double covalent)</em><br>
+              H• + :O: + •H → H—O—H&nbsp;&nbsp;&nbsp;<em style="color:#7a9bb8;">(polar covalent)</em>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="slide-nav">
+      <button class="btn btn-outline btn-small" onclick="prevSlide()">← Previous</button>
+      <div class="slide-dots" id="slideDots"></div>
+      <button class="btn btn-outline btn-small" onclick="nextSlide()">Next →</button>
+    </div>
+  </div>
+
+  <div class="nav-footer">
+    <button class="btn btn-outline" onclick="goSection('intro')">← Back</button>
+    <button class="btn btn-primary" onclick="goSection('vocab');markDone('slides')">Vocabulary →</button>
+  </div>
+</div>
+
+<!-- ══ VOCAB ══ -->
+<div class="section" id="section-vocab">
+  <div class="section-header">
+    <div class="section-tag">Module 3 · Vocabulary</div>
+    <div class="section-title">Key Terms — Flip to Reveal!</div>
+    <div class="section-desc">Click each card to flip it and see the definition. Master these before moving to videos.</div>
+  </div>
+
+  <div class="vocab-grid">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">⚛️</div><div class="flip-term">Chemical Bond</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">A force of attraction that holds two atoms together, formed through interactions of valence electrons.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">🔢</div><div class="flip-term">Valence Electrons</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">Electrons in the outermost energy level of an atom that participate in chemical bonding.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">⚡</div><div class="flip-term">Ionic Bond</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">Bond formed by the transfer of electrons from a metal to a nonmetal, creating oppositely charged ions that attract each other.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">🔗</div><div class="flip-term">Covalent Bond</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">Bond formed when two nonmetal atoms share one or more pairs of electrons to achieve stability.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">➕</div><div class="flip-term">Cation</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">A positively charged ion formed when an atom loses one or more electrons. Most metals form cations.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">➖</div><div class="flip-term">Anion</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">A negatively charged ion formed when an atom gains one or more electrons. Most nonmetals form anions.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">🪙</div><div class="flip-term">Metallic Bond</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">Bond in metals where valence electrons are shared freely among all atoms in a "sea of electrons," allowing conductivity.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">🎯</div><div class="flip-term">Octet Rule</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">The tendency of atoms to gain, lose, or share electrons in order to have 8 valence electrons in the outer shell (like noble gases).</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">🧲</div><div class="flip-term">Polar Covalent Bond</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">A covalent bond where electrons are shared unequally due to different electronegativities, creating partial positive and negative ends.</div></div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front"><div class="flip-icon">✏️</div><div class="flip-term">Lewis Dot Diagram</div><div class="flip-hint">Click to reveal definition</div></div>
+        <div class="flip-back"><div class="flip-def">A diagram that uses dots around a chemical symbol to represent the valence electrons of an atom.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-footer">
+    <button class="btn btn-outline" onclick="goSection('slides')">← Slides</button>
+    <button class="btn btn-primary" onclick="goSection('videos');markDone('vocab')">Videos →</button>
+  </div>
+</div>
+
+<!-- ══ VIDEOS ══ -->
+<div class="section" id="section-videos">
+  <div class="section-header">
+    <div class="section-tag">Module 4 · Videos</div>
+    <div class="section-title">Watch & Learn</div>
+    <div class="section-desc">Watch the video below about chemical bonding. Click the card to open it on YouTube.</div>
+  </div>
+
+  <div style="max-width:480px;">
+    <div class="video-card" onclick="openVideo('NgD9yHSJ29I')">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#1a2a3a,#0f2030);">
+        <img src="https://img.youtube.com/vi/NgD9yHSJ29I/hqdefault.jpg" alt="Chemical Bonding video thumbnail" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">TED-ED</div>
+        <div class="video-title">Chemical Bonding — TED-Ed</div>
+        <div class="video-meta">Click to watch on YouTube</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="yt-note" style="max-width:480px;margin-top:12px;">
+    ▶ Video opens in YouTube. Click the card above to begin watching.
+  </div>
+
+  <div class="nav-footer">
+    <button class="btn btn-outline" onclick="goSection('vocab')">← Vocabulary</button>
+    <button class="btn btn-primary" onclick="goSection('lab');markDone('videos')">Virtual Lab →</button>
+  </div>
+</div>
+
+<!-- ══ VIRTUAL LAB ══ -->
+<div class="section" id="section-lab">
+  <div class="section-header">
+    <div class="section-tag">Module 5 · Virtual Lab</div>
+    <div class="section-title">Bond Builder Simulator</div>
+    <div class="section-desc">Explore how each type of bond forms. Select a bond type to see the atomic model and read the lab observations.</div>
+  </div>
+
+  <div class="lab-container">
+    <div class="lab-header">
+      <div class="lab-title">🔬 Bond Formation Lab</div>
+      <div class="lab-subtitle">VA SOL PS.4c — Observe ionic, covalent, and metallic bonding</div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-controls">
+        <button class="lab-btn lab-btn-ionic active" id="labBtnIonic" onclick="showLab('ionic')">⚡ Ionic Bond</button>
+        <button class="lab-btn lab-btn-covalent" id="labBtnCovalent" onclick="showLab('covalent')">🔗 Covalent Bond</button>
+        <button class="lab-btn lab-btn-metallic" id="labBtnMetallic" onclick="showLab('metallic')">🪙 Metallic Bond</button>
+      </div>
+
+      <div class="lab-display" id="labDisplay">
+        <!-- Ionic SVG (default) -->
+        <svg class="svg-lab" viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" id="svgIonic">
+          <!-- Na atom -->
+          <circle cx="130" cy="140" r="55" fill="rgba(255,123,84,0.15)" stroke="#ff7b54" stroke-width="2"/>
+          <circle cx="130" cy="140" r="30" fill="rgba(255,123,84,0.3)" stroke="#ff7b54" stroke-width="1.5"/>
+          <text x="130" y="145" text-anchor="middle" fill="#ff7b54" font-size="18" font-weight="bold" font-family="Nunito">Na</text>
+          <!-- Valence electron dot -->
+          <circle cx="185" cy="140" r="5" fill="#ff7b54"/>
+          <text x="130" y="215" text-anchor="middle" fill="#ff7b54" font-size="12" font-family="Nunito">11 protons</text>
+          <!-- Arrow -->
+          <path d="M200 140 L280 140" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+          <text x="240" y="128" text-anchor="middle" fill="#a0b8cc" font-size="11" font-family="Nunito">electron</text>
+          <text x="240" y="158" text-anchor="middle" fill="#a0b8cc" font-size="11" font-family="Nunito">transfer</text>
+          <!-- Cl atom -->
+          <circle cx="360" cy="140" r="55" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="2"/>
+          <circle cx="360" cy="140" r="30" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="360" y="145" text-anchor="middle" fill="#38bdf8" font-size="18" font-weight="bold" font-family="Nunito">Cl</text>
+          <!-- 7 dots around Cl -->
+          <circle cx="403" cy="117" r="5" fill="#38bdf8"/>
+          <circle cx="415" cy="140" r="5" fill="#38bdf8"/>
+          <circle cx="403" cy="163" r="5" fill="#38bdf8"/>
+          <circle cx="360" cy="195" r="5" fill="#38bdf8"/>
+          <circle cx="317" cy="163" r="5" fill="#38bdf8"/>
+          <circle cx="305" cy="140" r="5" fill="#38bdf8"/>
+          <circle cx="317" cy="117" r="5" fill="#38bdf8"/>
+          <text x="360" y="215" text-anchor="middle" fill="#38bdf8" font-size="12" font-family="Nunito">17 protons</text>
+          <!-- Ion labels -->
+          <text x="130" y="82" text-anchor="middle" fill="#ff7b54" font-size="13" font-weight="bold" font-family="Nunito">Na⁺</text>
+          <text x="360" y="82" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="Nunito">Cl⁻</text>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#ffffff"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="lab-info-panel" id="labInfoPanel">
+        <strong>Ionic Bond: NaCl (Table Salt)</strong><br>
+        <strong>What's happening:</strong> Sodium (Na) has 1 valence electron — it "wants" to lose it. Chlorine (Cl) has 7 valence electrons — it "wants" to gain 1. Na transfers its electron to Cl.<br>
+        <div class="lab-observation">
+          🔍 <strong>Observation:</strong> Na becomes Na⁺ (positive ion/cation). Cl becomes Cl⁻ (negative ion/anion). The opposite charges attract strongly, forming an <strong>ionic bond</strong>. Result: a crystalline compound — table salt!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-footer">
+    <button class="btn btn-outline" onclick="goSection('videos')">← Videos</button>
+    <button class="btn btn-primary" onclick="goSection('assignment');markDone('lab')">Assignment →</button>
+  </div>
+</div>
+
+<!-- ══ ASSIGNMENT ══ -->
+<div class="section" id="section-assignment">
+  <div class="section-header">
+    <div class="section-tag">Module 6 · Assignment</div>
+    <div class="section-title">Chemical Bonding — Practice Questions</div>
+    <div class="section-desc">Complete all questions. Your work is saved in the browser. Print or screenshot when finished.</div>
+  </div>
+
+  <div class="assignment-card">
+    <div class="assign-q"><span>Question 1 · Short Answer</span>Explain the Octet Rule in your own words. Why do atoms form bonds?</div>
+    <textarea class="assign-input" id="a1" placeholder="Write your answer here..." oninput="saveAssign()"></textarea>
+  </div>
+
+  <div class="assignment-card">
+    <div class="assign-q"><span>Question 2 · Classify the Bond</span>For each pair of elements below, identify whether the bond formed would be ionic, covalent, or metallic. Explain your reasoning.</div>
+    <table class="assign-table">
+      <tr>
+        <th>Element Pair</th>
+        <th>Bond Type</th>
+        <th>Reason</th>
+      </tr>
+      <tr>
+        <td>Na + Cl</td>
+        <td><input type="text" id="b1t" placeholder="Bond type..." oninput="saveAssign()"></td>
+        <td><input type="text" id="b1r" placeholder="Your reason..." oninput="saveAssign()"></td>
+      </tr>
+      <tr>
+        <td>H + O (water)</td>
+        <td><input type="text" id="b2t" placeholder="Bond type..." oninput="saveAssign()"></td>
+        <td><input type="text" id="b2r" placeholder="Your reason..." oninput="saveAssign()"></td>
+      </tr>
+      <tr>
+        <td>Fe + Fe (iron)</td>
+        <td><input type="text" id="b3t" placeholder="Bond type..." oninput="saveAssign()"></td>
+        <td><input type="text" id="b3r" placeholder="Your reason..." oninput="saveAssign()"></td>
+      </tr>
+      <tr>
+        <td>C + C (diamond)</td>
+        <td><input type="text" id="b4t" placeholder="Bond type..." oninput="saveAssign()"></td>
+        <td><input type="text" id="b4r" placeholder="Your reason..." oninput="saveAssign()"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="assignment-card">
+    <div class="assign-q"><span>Question 3 · Compare & Contrast</span>Compare ionic and covalent compounds. How do their properties differ? Give one real-world example of each.</div>
+    <textarea class="assign-input" id="a3" placeholder="Write your comparison here..." style="min-height:110px;" oninput="saveAssign()"></textarea>
+  </div>
+
+  <div class="assignment-card">
+    <div class="assign-q"><span>Question 4 · Explain a Property</span>Copper is used for electrical wiring. Using your knowledge of metallic bonding, explain why copper is a good conductor of electricity.</div>
+    <textarea class="assign-input" id="a4" placeholder="Explain using the 'sea of electrons' model..." oninput="saveAssign()"></textarea>
+  </div>
+
+  <div class="assignment-card">
+    <div class="assign-q"><span>Question 5 · Application</span>A mystery substance has a high melting point, dissolves in water, and conducts electricity when dissolved. What type of compound is it? What type of bonding does it have? Explain your evidence.</div>
+    <textarea class="assign-input" id="a5" placeholder="Identify and explain..." oninput="saveAssign()"></textarea>
+  </div>
+
+  <div class="assign-submit">
+    <button class="btn btn-primary" onclick="markDone('assignment');goSection('quiz')">Complete Assignment → Take Quiz</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<div class="section" id="section-quiz">
+  <div class="section-header">
+    <div class="section-tag">Module 7 · SOL Quiz</div>
+    <div class="section-title">Chemical Bonding — SOL Style Quiz</div>
+    <div class="section-desc">10 questions aligned to Virginia SOL PS.4c. Choose the best answer for each question.</div>
+  </div>
+
+  <div id="quizContainer">
+    <div class="quiz-progress" id="quizProgress">Question 1 of 10</div>
+
+    <!-- Q1 -->
+    <div class="quiz-q-card" id="q1" style="display:block">
+      <div class="quiz-q-num">Question 1</div>
+      <div class="quiz-q-text">Which type of chemical bond forms when electrons are TRANSFERRED from one atom to another?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(1,'A','B')" id="q1A"><div class="opt-letter">A</div> Covalent bond</div>
+        <div class="quiz-opt" onclick="selectAnswer(1,'B','B')" id="q1B"><div class="opt-letter">B</div> Ionic bond</div>
+        <div class="quiz-opt" onclick="selectAnswer(1,'C','B')" id="q1C"><div class="opt-letter">C</div> Metallic bond</div>
+        <div class="quiz-opt" onclick="selectAnswer(1,'D','B')" id="q1D"><div class="opt-letter">D</div> Hydrogen bond</div>
+      </div>
+      <div class="quiz-feedback" id="fb1"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-q-card" id="q2" style="display:none">
+      <div class="quiz-q-num">Question 2</div>
+      <div class="quiz-q-text">The "sea of electrons" model best describes which type of bonding?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(2,'A','C')" id="q2A"><div class="opt-letter">A</div> Ionic bonding</div>
+        <div class="quiz-opt" onclick="selectAnswer(2,'B','C')" id="q2B"><div class="opt-letter">B</div> Polar covalent bonding</div>
+        <div class="quiz-opt" onclick="selectAnswer(2,'C','C')" id="q2C"><div class="opt-letter">C</div> Metallic bonding</div>
+        <div class="quiz-opt" onclick="selectAnswer(2,'D','C')" id="q2D"><div class="opt-letter">D</div> Nonpolar covalent bonding</div>
+      </div>
+      <div class="quiz-feedback" id="fb2"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-q-card" id="q3" style="display:none">
+      <div class="quiz-q-num">Question 3</div>
+      <div class="quiz-q-text">How many valence electrons does a neutral chlorine (Cl) atom have? (Group 17)</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(3,'A','C')" id="q3A"><div class="opt-letter">A</div> 1</div>
+        <div class="quiz-opt" onclick="selectAnswer(3,'B','C')" id="q3B"><div class="opt-letter">B</div> 2</div>
+        <div class="quiz-opt" onclick="selectAnswer(3,'C','C')" id="q3C"><div class="opt-letter">C</div> 7</div>
+        <div class="quiz-opt" onclick="selectAnswer(3,'D','C')" id="q3D"><div class="opt-letter">D</div> 17</div>
+      </div>
+      <div class="quiz-feedback" id="fb3"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-q-card" id="q4" style="display:none">
+      <div class="quiz-q-num">Question 4</div>
+      <div class="quiz-q-text">Water (H₂O) is formed by which type of bond?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(4,'A','A')" id="q4A"><div class="opt-letter">A</div> Polar covalent bonds</div>
+        <div class="quiz-opt" onclick="selectAnswer(4,'B','A')" id="q4B"><div class="opt-letter">B</div> Ionic bonds</div>
+        <div class="quiz-opt" onclick="selectAnswer(4,'C','A')" id="q4C"><div class="opt-letter">C</div> Metallic bonds</div>
+        <div class="quiz-opt" onclick="selectAnswer(4,'D','A')" id="q4D"><div class="opt-letter">D</div> Nonpolar covalent bonds</div>
+      </div>
+      <div class="quiz-feedback" id="fb4"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-q-card" id="q5" style="display:none">
+      <div class="quiz-q-num">Question 5</div>
+      <div class="quiz-q-text">A substance has a very high melting point and conducts electricity when melted or dissolved in water. What type of compound is it most likely?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(5,'A','B')" id="q5A"><div class="opt-letter">A</div> Covalent molecular compound</div>
+        <div class="quiz-opt" onclick="selectAnswer(5,'B','B')" id="q5B"><div class="opt-letter">B</div> Ionic compound</div>
+        <div class="quiz-opt" onclick="selectAnswer(5,'C','B')" id="q5C"><div class="opt-letter">C</div> Nonpolar molecule</div>
+        <div class="quiz-opt" onclick="selectAnswer(5,'D','B')" id="q5D"><div class="opt-letter">D</div> Noble gas compound</div>
+      </div>
+      <div class="quiz-feedback" id="fb5"></div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-q-card" id="q6" style="display:none">
+      <div class="quiz-q-num">Question 6</div>
+      <div class="quiz-q-text">In a Lewis dot diagram for sodium (Na, Group 1), how many dots are shown?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(6,'A','A')" id="q6A"><div class="opt-letter">A</div> 1</div>
+        <div class="quiz-opt" onclick="selectAnswer(6,'B','A')" id="q6B"><div class="opt-letter">B</div> 2</div>
+        <div class="quiz-opt" onclick="selectAnswer(6,'C','A')" id="q6C"><div class="opt-letter">C</div> 8</div>
+        <div class="quiz-opt" onclick="selectAnswer(6,'D','A')" id="q6D"><div class="opt-letter">D</div> 11</div>
+      </div>
+      <div class="quiz-feedback" id="fb6"></div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="quiz-q-card" id="q7" style="display:none">
+      <div class="quiz-q-num">Question 7</div>
+      <div class="quiz-q-text">Why is copper commonly used to make electrical wires?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(7,'A','C')" id="q7A"><div class="opt-letter">A</div> It forms strong ionic bonds</div>
+        <div class="quiz-opt" onclick="selectAnswer(7,'B','C')" id="q7B"><div class="opt-letter">B</div> Its electrons are tightly held in place</div>
+        <div class="quiz-opt" onclick="selectAnswer(7,'C','C')" id="q7C"><div class="opt-letter">C</div> Metallic bonding allows free electron flow</div>
+        <div class="quiz-opt" onclick="selectAnswer(7,'D','C')" id="q7D"><div class="opt-letter">D</div> It has more protons than neutrons</div>
+      </div>
+      <div class="quiz-feedback" id="fb7"></div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="quiz-q-card" id="q8" style="display:none">
+      <div class="quiz-q-num">Question 8</div>
+      <div class="quiz-q-text">Which of the following pairs would most likely form an IONIC compound?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(8,'A','D')" id="q8A"><div class="opt-letter">A</div> H and O</div>
+        <div class="quiz-opt" onclick="selectAnswer(8,'B','D')" id="q8B"><div class="opt-letter">B</div> C and H</div>
+        <div class="quiz-opt" onclick="selectAnswer(8,'C','D')" id="q8C"><div class="opt-letter">C</div> N and O</div>
+        <div class="quiz-opt" onclick="selectAnswer(8,'D','D')" id="q8D"><div class="opt-letter">D</div> Mg and Cl</div>
+      </div>
+      <div class="quiz-feedback" id="fb8"></div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="quiz-q-card" id="q9" style="display:none">
+      <div class="quiz-q-num">Question 9</div>
+      <div class="quiz-q-text">A student tests two unknown substances. Substance A dissolves in water but does not conduct electricity. Substance B conducts electricity when dissolved. Which conclusion is BEST supported?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(9,'A','B')" id="q9A"><div class="opt-letter">A</div> Both substances are ionic compounds</div>
+        <div class="quiz-opt" onclick="selectAnswer(9,'B','B')" id="q9B"><div class="opt-letter">B</div> Substance A is covalent; Substance B is ionic</div>
+        <div class="quiz-opt" onclick="selectAnswer(9,'C','B')" id="q9C"><div class="opt-letter">C</div> Substance A is metallic; Substance B is covalent</div>
+        <div class="quiz-opt" onclick="selectAnswer(9,'D','B')" id="q9D"><div class="opt-letter">D</div> Both substances are covalent compounds</div>
+      </div>
+      <div class="quiz-feedback" id="fb9"></div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="quiz-q-card" id="q10" style="display:none">
+      <div class="quiz-q-num">Question 10</div>
+      <div class="quiz-q-text">Which statement BEST describes the Octet Rule?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectAnswer(10,'A','C')" id="q10A"><div class="opt-letter">A</div> Atoms always gain electrons to become stable</div>
+        <div class="quiz-opt" onclick="selectAnswer(10,'B','C')" id="q10B"><div class="opt-letter">B</div> An atom is most stable when it has 10 valence electrons</div>
+        <div class="quiz-opt" onclick="selectAnswer(10,'C','C')" id="q10C"><div class="opt-letter">C</div> Atoms tend to gain, lose, or share electrons to achieve 8 valence electrons</div>
+        <div class="quiz-opt" onclick="selectAnswer(10,'D','C')" id="q10D"><div class="opt-letter">D</div> Only metals follow the Octet Rule</div>
+      </div>
+      <div class="quiz-feedback" id="fb10"></div>
+    </div>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:10px;">
+      <button class="btn btn-outline" id="btnPrevQ" onclick="prevQuestion()" style="display:none">← Previous</button>
+      <button class="btn btn-primary" id="btnNextQ" onclick="nextQuestion()">Next Question →</button>
+      <button class="btn btn-primary" id="btnSubmitQ" onclick="submitQuiz()" style="display:none">Submit Quiz ✓</button>
+    </div>
+  </div>
+
+  <div class="quiz-score" id="quizScore">
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-label">out of 10 questions correct</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <div style="margin-top:20px;">
+      <button class="btn btn-outline" onclick="retakeQuiz()">↺ Retake Quiz</button>
+      <button class="btn btn-primary" style="margin-left:12px;" onclick="goSection('summary');markDone('quiz')">View Summary →</button>
+    </div>
+  </div>
+
+  <div class="nav-footer">
+    <button class="btn btn-outline" onclick="goSection('assignment')">← Assignment</button>
+  </div>
+</div>
+
+<!-- ══ SUMMARY ══ -->
+<div class="section" id="section-summary">
+  <div class="section-header">
+    <div class="section-tag">Module 8 · Summary</div>
+    <div class="section-title">🎉 Lesson Complete!</div>
+    <div class="section-desc">Great work! Here's a summary of everything you've learned about Chemical Bonding.</div>
+  </div>
+
+  <div class="slide-card">
+    <div class="slide-title">📚 Key Takeaways — VA SOL PS.4c</div>
+    <div class="slide-body">
+      <p><span class="highlight">1. Chemical bonds</span> hold atoms together through interactions of valence electrons.</p>
+      <p><span class="highlight2">2. Ionic bonds</span> — electron <em>transfer</em> between metal + nonmetal → creates ions, forms crystals, conducts electricity when dissolved.</p>
+      <p><span class="highlight">3. Covalent bonds</span> — electron <em>sharing</em> between nonmetals → forms molecules, generally lower melting points, usually don't conduct electricity.</p>
+      <p><span class="highlight3">4. Metallic bonds</span> — "sea of electrons" in metals → explains conductivity, malleability, and luster.</p>
+      <p><span class="highlight4">5. The Octet Rule</span> drives bonding — atoms seek 8 valence electrons for stability.</p>
+      <p><span class="highlight">6. Lewis dot diagrams</span> model valence electrons and predict how atoms will bond.</p>
+    </div>
+  </div>
+
+  <div class="bond-cards" style="margin-top:20px;">
+    <div class="bond-card ionic" style="cursor:pointer;" onclick="goSection('slides')">
+      <div class="bond-icon">⚡</div>
+      <div class="bond-name">Review Slides</div>
+      <div class="bond-desc">Go back to content slides</div>
+    </div>
+    <div class="bond-card covalent" style="cursor:pointer;" onclick="goSection('lab')">
+      <div class="bond-icon">🔬</div>
+      <div class="bond-name">Redo Lab</div>
+      <div class="bond-desc">Explore bond simulations again</div>
+    </div>
+    <div class="bond-card metallic" style="cursor:pointer;" onclick="goSection('quiz')">
+      <div class="bond-icon">📝</div>
+      <div class="bond-name">Retake Quiz</div>
+      <div class="bond-desc">Practice SOL-style questions</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="margin-top:24px;">
+    <div class="ib-label">🔗 SOL Connection</div>
+    This lesson addresses <strong>Virginia Physical Science SOL PS.4c</strong>: "The student will investigate and understand the organization and use of the periodic table of elements — including simple compounds (formulas and nature of bonding)."
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+// ── Navigation ──
+const sections = ['intro','slides','vocab','videos','lab','assignment','quiz','summary'];
+let completed = new Set();
+
+function goSection(id) {
+  sections.forEach(s => {
+    document.getElementById('section-'+s).classList.remove('active');
+    document.getElementById('nav-'+s).classList.remove('active');
+  });
+  document.getElementById('section-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  updateProgress();
+}
+
+function markDone(id) {
+  completed.add(id);
+  const navItem = document.getElementById('nav-'+id);
+  navItem.classList.add('done');
+  updateProgress();
+}
+
+function updateProgress() {
+  const pct = Math.round((completed.size / sections.length) * 100);
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressLabel').textContent = pct+'% Complete';
+  document.getElementById('progressModules').textContent = completed.size+' / '+sections.length+' Modules';
+}
+
+// ── Slides ──
+let currentSlide = 1;
+const totalSlides = 10;
+
+function buildDots() {
+  const container = document.getElementById('slideDots');
+  container.innerHTML = '';
+  for(let i=1; i<=totalSlides; i++) {
+    const d = document.createElement('div');
+    d.className = 'slide-dot'+(i===currentSlide?' active':'');
+    d.onclick = () => goSlide(i);
+    container.appendChild(d);
+  }
+}
+
+function goSlide(n) {
+  document.getElementById('slide-'+currentSlide).classList.remove('active');
+  currentSlide = n;
+  document.getElementById('slide-'+currentSlide).classList.add('active');
+  buildDots();
+}
+
+function nextSlide() { if(currentSlide < totalSlides) goSlide(currentSlide+1); }
+function prevSlide() { if(currentSlide > 1) goSlide(currentSlide-1); }
+
+buildDots();
+
+// ── Virtual Lab ──
+const labData = {
+  ionic: {
+    svg: `<svg class="svg-lab" viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="130" cy="140" r="55" fill="rgba(255,123,84,0.15)" stroke="#ff7b54" stroke-width="2"/>
+      <circle cx="130" cy="140" r="30" fill="rgba(255,123,84,0.3)" stroke="#ff7b54" stroke-width="1.5"/>
+      <text x="130" y="145" text-anchor="middle" fill="#ff7b54" font-size="18" font-weight="bold" font-family="Nunito">Na</text>
+      <circle cx="185" cy="140" r="5" fill="#ff7b54"/>
+      <text x="130" y="215" text-anchor="middle" fill="#ff7b54" font-size="12" font-family="Nunito">11 protons</text>
+      <path d="M200 140 L280 140" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#a1)"/>
+      <text x="240" y="128" text-anchor="middle" fill="#a0b8cc" font-size="11" font-family="Nunito">e⁻ transfer</text>
+      <circle cx="360" cy="140" r="55" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="2"/>
+      <circle cx="360" cy="140" r="30" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="360" y="145" text-anchor="middle" fill="#38bdf8" font-size="18" font-weight="bold" font-family="Nunito">Cl</text>
+      <circle cx="403" cy="117" r="5" fill="#38bdf8"/><circle cx="415" cy="140" r="5" fill="#38bdf8"/>
+      <circle cx="403" cy="163" r="5" fill="#38bdf8"/><circle cx="360" cy="195" r="5" fill="#38bdf8"/>
+      <circle cx="317" cy="163" r="5" fill="#38bdf8"/><circle cx="305" cy="140" r="5" fill="#38bdf8"/>
+      <circle cx="317" cy="117" r="5" fill="#38bdf8"/>
+      <text x="130" y="82" text-anchor="middle" fill="#ff7b54" font-size="13" font-weight="bold" font-family="Nunito">Na⁺</text>
+      <text x="360" y="82" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="Nunito">Cl⁻</text>
+      <defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ffffff"/></marker></defs>
+    </svg>`,
+    info: `<strong>Ionic Bond: NaCl (Table Salt)</strong><br>
+    <strong>What's happening:</strong> Sodium (Na) has 1 valence electron and transfers it to Chlorine (Cl) which needs 1 to complete its outer shell.<br>
+    <div class="lab-observation">🔍 <strong>Observation:</strong> Na⁺ and Cl⁻ ions form. Opposite charges attract → ionic bond. Result: crystalline table salt. Conducts electricity when dissolved!</div>`
+  },
+  covalent: {
+    svg: `<svg class="svg-lab" viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- H2O molecule -->
+      <text x="240" y="30" text-anchor="middle" fill="#a0b8cc" font-size="13" font-family="Nunito">Water Molecule (H₂O) — Polar Covalent</text>
+      <!-- O center -->
+      <circle cx="240" cy="150" r="50" fill="rgba(0,201,167,0.15)" stroke="#00c9a7" stroke-width="2.5"/>
+      <text x="240" y="156" text-anchor="middle" fill="#00c9a7" font-size="20" font-weight="bold" font-family="Nunito">O</text>
+      <!-- shared electron pairs -->
+      <circle cx="175" cy="170" r="5" fill="#00c9a7"/><circle cx="165" cy="155" r="5" fill="#00c9a7"/>
+      <circle cx="305" cy="170" r="5" fill="#00c9a7"/><circle cx="315" cy="155" r="5" fill="#00c9a7"/>
+      <!-- H left -->
+      <circle cx="130" cy="190" r="30" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="2"/>
+      <text x="130" y="195" text-anchor="middle" fill="#a78bfa" font-size="18" font-weight="bold" font-family="Nunito">H</text>
+      <!-- H right -->
+      <circle cx="350" cy="190" r="30" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="2"/>
+      <text x="350" y="195" text-anchor="middle" fill="#a78bfa" font-size="18" font-weight="bold" font-family="Nunito">H</text>
+      <!-- bond lines -->
+      <line x1="190" y1="165" x2="158" y2="178" stroke="#ffffff" stroke-width="2.5"/>
+      <line x1="290" y1="165" x2="322" y2="178" stroke="#ffffff" stroke-width="2.5"/>
+      <!-- partial charges -->
+      <text x="240" y="110" text-anchor="middle" fill="#ef4444" font-size="13" font-family="Nunito">δ⁻</text>
+      <text x="105" y="215" text-anchor="middle" fill="#3b82f6" font-size="13" font-family="Nunito">δ⁺</text>
+      <text x="375" y="215" text-anchor="middle" fill="#3b82f6" font-size="13" font-family="Nunito">δ⁺</text>
+    </svg>`,
+    info: `<strong>Polar Covalent Bond: H₂O (Water)</strong><br>
+    <strong>What's happening:</strong> Oxygen and Hydrogen SHARE electrons. Oxygen pulls harder (higher electronegativity), so electrons spend more time near O — creating partial charges (δ⁻ on O, δ⁺ on H).<br>
+    <div class="lab-observation">🔍 <strong>Observation:</strong> No ions formed — the atoms share electrons. Water is a polar molecule (uneven sharing). This is why water is such a great solvent!</div>`
+  },
+  metallic: {
+    svg: `<svg class="svg-lab" viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg">
+      <text x="240" y="25" text-anchor="middle" fill="#a0b8cc" font-size="13" font-family="Nunito">Metallic Bonding — Sea of Electrons</text>
+      <!-- Metal lattice -->
+      <circle cx="120" cy="90"  r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="240" cy="90"  r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="360" cy="90"  r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="120" cy="170" r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="240" cy="170" r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="360" cy="170" r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="120" cy="250" r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="240" cy="250" r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <circle cx="360" cy="250" r="28" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+      <!-- Ion labels -->
+      <text x="120" y="95"  text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="240" y="95"  text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="360" y="95"  text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="120" y="175" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="240" y="175" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="360" y="175" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="120" y="255" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="240" y="255" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <text x="360" y="255" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold" font-family="Nunito">Cu⁺</text>
+      <!-- Free electrons -->
+      <circle cx="180" cy="130" r="6" fill="#ffd700" opacity="0.9">
+        <animate attributeName="cx" values="180;200;170;190;180" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="130;150;160;140;130" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="300" cy="130" r="6" fill="#ffd700" opacity="0.9">
+        <animate attributeName="cx" values="300;280;310;295;300" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="130;145;120;155;130" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="180" cy="210" r="6" fill="#ffd700" opacity="0.9">
+        <animate attributeName="cx" values="180;195;165;185;180" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="210;225;200;215;210" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="300" cy="210" r="6" fill="#ffd700" opacity="0.9">
+        <animate attributeName="cx" values="300;320;285;305;300" dur="2.8s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="210;200;225;195;210" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+      <text x="440" y="170" text-anchor="middle" fill="#ffd700" font-size="11" font-family="Nunito">e⁻</text>
+      <text x="440" y="182" text-anchor="middle" fill="#ffd700" font-size="11" font-family="Nunito">free</text>
+    </svg>`,
+    info: `<strong>Metallic Bond: Copper (Cu)</strong><br>
+    <strong>What's happening:</strong> Copper atoms release their valence electrons into a shared "sea." The positive Cu⁺ ions sit in a lattice held together by the mobile electrons (shown in gold).<br>
+    <div class="lab-observation">🔍 <strong>Observation:</strong> Free electrons (animated dots) move through the metal. This explains why copper conducts electricity, can be bent (malleable), and is shiny (lustrous)!</div>`
+  }
+};
+
+function showLab(type) {
+  document.getElementById('labBtnIonic').classList.remove('active');
+  document.getElementById('labBtnCovalent').classList.remove('active');
+  document.getElementById('labBtnMetallic').classList.remove('active');
+  document.getElementById('labBtn'+type.charAt(0).toUpperCase()+type.slice(1)).classList.add('active');
+  document.getElementById('labDisplay').innerHTML = labData[type].svg;
+  document.getElementById('labInfoPanel').innerHTML = labData[type].info;
+}
+
+// ── Videos ──
+function openVideo(id) {
+  window.open('https://www.youtube.com/watch?v='+id, '_blank');
+}
+
+// ── Quiz ──
+let currentQ = 1;
+let score = 0;
+const answers = {};
+const feedbacks = {
+  1: { correct: 'Correct! Ionic bonds form when electrons are transferred from a metal to a nonmetal, creating oppositely charged ions.', wrong: 'Not quite. Ionic bonds involve TRANSFER of electrons. Covalent bonds involve sharing.' },
+  2: { correct: 'Correct! Metallic bonding is described as a "sea of electrons" — valence electrons flow freely among metal ions.', wrong: 'Incorrect. The "sea of electrons" model describes metallic bonding in pure metals.' },
+  3: { correct: 'Correct! Chlorine is in Group 17, so it has 7 valence electrons — it needs 1 more to complete its outer shell.', wrong: 'Incorrect. Chlorine (Group 17) has 7 valence electrons. Don\'t confuse valence electrons with atomic number (17).' },
+  4: { correct: 'Correct! H₂O has polar covalent bonds — oxygen and hydrogen share electrons, but oxygen pulls them harder.', wrong: 'Incorrect. Water has polar covalent bonds — shared electrons (covalent) pulled unequally (polar).' },
+  5: { correct: 'Correct! Ionic compounds have high melting points and form ions in solution that conduct electricity.', wrong: 'Incorrect. These properties (high melting point, electrical conductivity when dissolved) are characteristic of ionic compounds.' },
+  6: { correct: 'Correct! Sodium is in Group 1, so it has 1 valence electron → 1 dot in its Lewis diagram.', wrong: 'Incorrect. The number of Lewis dots = number of valence electrons. Na is in Group 1 → 1 valence electron → 1 dot.' },
+  7: { correct: 'Correct! Metallic bonding creates a sea of free electrons that can move through the metal, carrying electrical charge.', wrong: 'Incorrect. Copper conducts because metallic bonding allows electrons to move freely through the metal lattice.' },
+  8: { correct: 'Correct! Magnesium (Mg) is a metal and Chlorine (Cl) is a nonmetal → electron transfer → ionic bond.', wrong: 'Incorrect. Ionic bonds form between metals and nonmetals. Mg is a metal; Cl is a nonmetal → ionic compound MgCl₂.' },
+  9: { correct: 'Correct! Covalent compounds don\'t form ions, so they don\'t conduct. Ionic compounds dissociate into ions in water, enabling conduction.', wrong: 'Incorrect. Only ionic compounds break into ions in water and conduct electricity. Covalent compounds generally do not.' },
+  10: { correct: 'Correct! The Octet Rule states atoms seek 8 valence electrons (like noble gases) through gaining, losing, or sharing electrons.', wrong: 'Incorrect. The Octet Rule says atoms gain, lose, or share electrons to achieve 8 valence electrons — both metals and nonmetals follow it.' }
+};
+
+function selectAnswer(qNum, choice, correct) {
+  if(answers[qNum]) return; // already answered
+  answers[qNum] = choice;
+
+  const opts = document.querySelectorAll(`#q${qNum} .quiz-opt`);
+  opts.forEach(o => o.classList.add('disabled'));
+
+  const chosen = document.getElementById(`q${qNum}${choice}`);
+  const correctEl = document.getElementById(`q${qNum}${correct}`);
+  const fb = document.getElementById(`fb${qNum}`);
+
+  if(choice === correct) {
+    chosen.classList.add('correct');
+    score++;
+    fb.className = 'quiz-feedback correct-fb show';
+    fb.innerHTML = '✅ ' + feedbacks[qNum].correct;
+  } else {
+    chosen.classList.add('wrong');
+    correctEl.classList.add('correct');
+    fb.className = 'quiz-feedback wrong-fb show';
+    fb.innerHTML = '❌ ' + feedbacks[qNum].wrong;
+  }
+
+  // show next/submit buttons
+  if(currentQ < 10) {
+    document.getElementById('btnNextQ').style.display = '';
+  } else {
+    document.getElementById('btnSubmitQ').style.display = '';
+    document.getElementById('btnNextQ').style.display = 'none';
+  }
+}
+
+function nextQuestion() {
+  if(!answers[currentQ]) {
+    alert('Please select an answer first!');
+    return;
+  }
+  document.getElementById('q'+currentQ).style.display = 'none';
+  currentQ++;
+  document.getElementById('q'+currentQ).style.display = 'block';
+  document.getElementById('quizProgress').textContent = 'Question '+currentQ+' of 10';
+  document.getElementById('btnPrevQ').style.display = currentQ > 1 ? '' : 'none';
+  document.getElementById('btnNextQ').style.display = 'none';
+  if(answers[currentQ]) {
+    if(currentQ < 10) document.getElementById('btnNextQ').style.display = '';
+    else document.getElementById('btnSubmitQ').style.display = '';
+  }
+}
+
+function prevQuestion() {
+  document.getElementById('q'+currentQ).style.display = 'none';
+  currentQ--;
+  document.getElementById('q'+currentQ).style.display = 'block';
+  document.getElementById('quizProgress').textContent = 'Question '+currentQ+' of 10';
+  document.getElementById('btnNextQ').style.display = '';
+  document.getElementById('btnSubmitQ').style.display = 'none';
+  if(currentQ === 1) document.getElementById('btnPrevQ').style.display = 'none';
+}
+
+function submitQuiz() {
+  if(!answers[10]) { alert('Please answer question 10 first!'); return; }
+  document.getElementById('quizContainer').style.display = 'none';
+  const scoreDiv = document.getElementById('quizScore');
+  scoreDiv.style.display = 'block';
+  document.getElementById('scoreBig').textContent = score + '/10';
+
+  let msg = '';
+  if(score === 10) msg = '🌟 Perfect score! Outstanding mastery of chemical bonding!';
+  else if(score >= 8) msg = '🎉 Excellent! You have a strong understanding of bonding.';
+  else if(score >= 6) msg = '👍 Good job! Review the slides on bond types to reinforce concepts.';
+  else msg = '📖 Keep studying! Revisit the slides and virtual lab, then try again.';
+  document.getElementById('scoreMsg').textContent = msg;
+  markDone('quiz');
+}
+
+function retakeQuiz() {
+  score = 0; currentQ = 1;
+  Object.keys(answers).forEach(k => delete answers[k]);
+  for(let i=1; i<=10; i++) {
+    document.getElementById('q'+i).style.display = i===1 ? 'block' : 'none';
+    document.getElementById('fb'+i).className = 'quiz-feedback';
+    const opts = document.querySelectorAll(`#q${i} .quiz-opt`);
+    opts.forEach(o => { o.className='quiz-opt'; });
+  }
+  document.getElementById('quizProgress').textContent = 'Question 1 of 10';
+  document.getElementById('btnNextQ').style.display = '';
+  document.getElementById('btnSubmitQ').style.display = 'none';
+  document.getElementById('btnPrevQ').style.display = 'none';
+  document.getElementById('quizContainer').style.display = 'block';
+  document.getElementById('quizScore').style.display = 'none';
+}
+
+// ── Assignment persistence ──
+function saveAssign() {
+  const fields = ['a1','a3','a4','a5','b1t','b1r','b2t','b2r','b3t','b3r','b4t','b4r'];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) localStorage.setItem('ps_chem_'+id, el.value);
+  });
+}
+
+function loadAssign() {
+  const fields = ['a1','a3','a4','a5','b1t','b1r','b2t','b2r','b3t','b3r','b4t','b4r'];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    const saved = localStorage.getItem('ps_chem_'+id);
+    if(el && saved) el.value = saved;
+  });
+}
+loadAssign();
+</script>
+</body>
+</html>
