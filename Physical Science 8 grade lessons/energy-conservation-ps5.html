@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS.5 Energy Conservation | 8th Grade Physical Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0e1a;
+    --navy2: #0f1628;
+    --navy3: #141d35;
+    --cyan: #00d4ff;
+    --cyan2: #00a8cc;
+    --purple: #7c3aed;
+    --purple2: #9f67ff;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --border: rgba(0,212,255,0.18);
+    --card: rgba(255,255,255,0.04);
+    --glow: 0 0 20px rgba(0,212,255,0.25);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Exo 2',sans-serif; background:var(--navy); color:var(--text); min-height:100vh; display:flex; }
+
+  /* SIDEBAR */
+  #sidebar {
+    width:270px; min-width:270px; background:var(--navy2);
+    border-right:1px solid var(--border); display:flex; flex-direction:column;
+    position:fixed; top:0; left:0; height:100vh; overflow-y:auto; z-index:100;
+  }
+  #sidebar-header {
+    padding:20px 18px 16px; border-bottom:1px solid var(--border);
+    background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(124,58,237,0.08));
+  }
+  #sidebar-header .sol-badge {
+    font-family:Orbitron,sans-serif; font-size:10px; font-weight:700; color:var(--cyan);
+    background:rgba(0,212,255,0.12); border:1px solid rgba(0,212,255,0.3);
+    padding:3px 10px; border-radius:20px; letter-spacing:1.5px; display:inline-block; margin-bottom:8px;
+  }
+  #sidebar-header h2 { font-family:Orbitron,sans-serif; font-size:15px; color:#fff; line-height:1.3; }
+  #sidebar-header p { font-size:11px; color:var(--text2); margin-top:4px; }
+
+  /* Progress */
+  #progress-wrap { padding:14px 18px; border-bottom:1px solid var(--border); }
+  #progress-wrap label { font-size:11px; color:var(--text2); display:flex; justify-content:space-between; margin-bottom:6px; }
+  #progress-bar-bg { background:rgba(255,255,255,0.08); border-radius:10px; height:7px; overflow:hidden; }
+  #progress-bar { height:100%; background:linear-gradient(90deg,var(--cyan),var(--purple2)); border-radius:10px; width:0%; transition:width 0.5s; }
+
+  /* Nav items */
+  #nav-list { flex:1; padding:10px 0; }
+  .nav-section { padding:10px 18px 4px; font-size:10px; font-weight:600; color:var(--text2); letter-spacing:1.5px; text-transform:uppercase; }
+  .nav-item {
+    display:flex; align-items:center; gap:10px; padding:10px 18px;
+    cursor:pointer; transition:all 0.2s; border-left:3px solid transparent;
+    font-size:13px; color:var(--text2);
+  }
+  .nav-item:hover { background:rgba(0,212,255,0.06); color:var(--text); }
+  .nav-item.active { background:rgba(0,212,255,0.1); color:var(--cyan); border-left-color:var(--cyan); }
+  .nav-item.completed { color:var(--green); }
+  .nav-item.completed .nav-icon { color:var(--green); }
+  .nav-icon { font-size:15px; min-width:18px; text-align:center; }
+  .nav-check { margin-left:auto; font-size:13px; color:var(--green); opacity:0; }
+  .nav-item.completed .nav-check { opacity:1; }
+
+  /* MAIN */
+  #main { margin-left:270px; flex:1; display:flex; flex-direction:column; min-height:100vh; }
+
+  /* TOP BAR */
+  #topbar {
+    background:var(--navy2); border-bottom:1px solid var(--border);
+    padding:14px 32px; display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:50;
+  }
+  #topbar h1 { font-family:Orbitron,sans-serif; font-size:14px; color:var(--cyan); letter-spacing:1px; }
+  #topbar .grade-tag { font-size:12px; color:var(--text2); background:rgba(255,255,255,0.05); padding:4px 12px; border-radius:20px; border:1px solid var(--border); }
+
+  /* CONTENT */
+  #content { flex:1; padding:36px 44px; max-width:960px; }
+
+  /* SECTION */
+  .section { display:none; animation:fadeIn 0.4s; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  .section-title {
+    font-family:Orbitron,sans-serif; font-size:22px; color:#fff;
+    margin-bottom:6px; display:flex; align-items:center; gap:12px;
+  }
+  .section-title .icon { font-size:28px; }
+  .section-subtitle { color:var(--text2); font-size:14px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+
+  /* Cards */
+  .card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:22px 26px; margin-bottom:18px;
+  }
+  .card h3 { font-family:Orbitron,sans-serif; font-size:13px; color:var(--cyan); margin-bottom:12px; letter-spacing:0.5px; }
+  .card p, .card li { font-size:14px; line-height:1.75; color:var(--text); }
+  .card ul, .card ol { padding-left:20px; }
+  .card li { margin-bottom:6px; }
+
+  .highlight-box {
+    background:linear-gradient(135deg,rgba(0,212,255,0.07),rgba(124,58,237,0.07));
+    border:1px solid rgba(0,212,255,0.25); border-radius:12px; padding:18px 22px; margin:16px 0;
+  }
+  .highlight-box .label { font-size:10px; font-weight:700; color:var(--cyan); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .highlight-box p { font-size:14px; line-height:1.7; }
+
+  /* SLIDES */
+  .slide-container { position:relative; }
+  .slides-wrap { overflow:hidden; border-radius:14px; }
+  .slide {
+    display:none; background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:30px 32px; min-height:300px;
+  }
+  .slide.active { display:block; animation:fadeIn 0.3s; }
+  .slide h2 { font-family:Orbitron,sans-serif; font-size:17px; color:var(--cyan); margin-bottom:16px; }
+  .slide p, .slide li { font-size:14px; line-height:1.8; color:var(--text); }
+  .slide ul { padding-left:22px; margin-top:10px; }
+  .slide li { margin-bottom:8px; }
+  .slide-nav { display:flex; align-items:center; justify-content:space-between; margin-top:18px; }
+  .slide-nav button {
+    background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.3);
+    color:var(--cyan); padding:8px 22px; border-radius:8px; cursor:pointer; font-family:'Exo 2',sans-serif; font-size:13px;
+    transition:all 0.2s;
+  }
+  .slide-nav button:hover { background:rgba(0,212,255,0.2); }
+  .slide-nav button:disabled { opacity:0.3; cursor:default; }
+  .slide-counter { font-size:12px; color:var(--text2); }
+
+  /* Energy type cards */
+  .energy-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; margin:18px 0; }
+  .energy-card {
+    border-radius:12px; padding:18px 16px; text-align:center;
+    border:1px solid transparent; cursor:default; transition:transform 0.2s;
+  }
+  .energy-card:hover { transform:translateY(-3px); }
+  .energy-card .e-icon { font-size:30px; margin-bottom:8px; }
+  .energy-card .e-name { font-family:Orbitron,sans-serif; font-size:11px; font-weight:700; margin-bottom:6px; }
+  .energy-card .e-desc { font-size:12px; line-height:1.5; color:rgba(255,255,255,0.75); }
+  .e-kinetic { background:rgba(0,212,255,0.1); border-color:rgba(0,212,255,0.3); color:var(--cyan); }
+  .e-potential { background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.3); color:var(--purple2); }
+  .e-thermal { background:rgba(245,158,11,0.1); border-color:rgba(245,158,11,0.3); color:var(--yellow); }
+  .e-chemical { background:rgba(16,185,129,0.1); border-color:rgba(16,185,129,0.3); color:var(--green); }
+  .e-nuclear { background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3); color:var(--red); }
+  .e-light { background:rgba(255,220,50,0.1); border-color:rgba(255,220,50,0.3); color:#ffe234; }
+
+  /* VOCAB CARDS */
+  .vocab-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin-top:16px; }
+  .flip-card { height:150px; perspective:800px; cursor:pointer; }
+  .flip-inner { position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform 0.55s; }
+  .flip-card.flipped .flip-inner { transform:rotateY(180deg); }
+  .flip-front, .flip-back {
+    position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:12px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px; text-align:center;
+  }
+  .flip-front { background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(124,58,237,0.1)); border:1px solid var(--border); }
+  .flip-front .v-word { font-family:Orbitron,sans-serif; font-size:13px; color:var(--cyan); font-weight:700; }
+  .flip-front .v-hint { font-size:10px; color:var(--text2); margin-top:8px; }
+  .flip-back { background:var(--navy3); border:1px solid rgba(0,212,255,0.3); transform:rotateY(180deg); }
+  .flip-back .v-def { font-size:12px; line-height:1.6; color:var(--text); }
+
+  /* VIRTUAL LAB */
+  .lab-container { background:var(--navy3); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+  .lab-header { background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(0,212,255,0.1)); padding:18px 24px; border-bottom:1px solid var(--border); }
+  .lab-header h3 { font-family:Orbitron,sans-serif; font-size:14px; color:var(--green); margin-bottom:4px; }
+  .lab-header p { font-size:12px; color:var(--text2); }
+  .lab-body { padding:24px; }
+
+  /* Roller coaster lab */
+  .coaster-sim {
+    background:rgba(0,0,0,0.3); border-radius:10px; padding:20px;
+    text-align:center; margin-bottom:18px;
+  }
+  .coaster-svg { width:100%; max-width:520px; height:180px; }
+  .coaster-controls { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:16px; }
+  .lab-btn {
+    background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.4);
+    color:var(--green); padding:9px 20px; border-radius:8px; cursor:pointer;
+    font-family:'Exo 2',sans-serif; font-size:13px; font-weight:600; transition:all 0.2s;
+  }
+  .lab-btn:hover { background:rgba(16,185,129,0.28); }
+  .lab-btn.reset { background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3); color:var(--red); }
+  .lab-btn.reset:hover { background:rgba(239,68,68,0.2); }
+
+  .energy-bars { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:16px; }
+  .e-bar-wrap { text-align:center; }
+  .e-bar-label { font-size:11px; color:var(--text2); margin-bottom:6px; }
+  .e-bar-bg { background:rgba(255,255,255,0.07); border-radius:6px; height:80px; display:flex; align-items:flex-end; overflow:hidden; }
+  .e-bar-fill { width:100%; border-radius:6px 6px 0 0; transition:height 0.8s ease; }
+  .e-bar-pe .e-bar-fill { background:linear-gradient(0deg,var(--purple),var(--purple2)); }
+  .e-bar-ke .e-bar-fill { background:linear-gradient(0deg,var(--cyan2),var(--cyan)); }
+  .e-bar-te .e-bar-fill { background:linear-gradient(0deg,#d97706,var(--yellow)); }
+  .e-bar-val { font-family:Orbitron,sans-serif; font-size:12px; color:#fff; margin-top:6px; }
+
+  .lab-observation { background:rgba(0,0,0,0.2); border-radius:8px; padding:16px; margin-top:16px; }
+  .lab-observation h4 { font-size:12px; color:var(--cyan); font-weight:600; margin-bottom:8px; letter-spacing:1px; text-transform:uppercase; }
+  #lab-output { font-size:13px; line-height:1.7; color:var(--text); min-height:60px; }
+
+  /* QUIZ */
+  .quiz-wrap { }
+  .quiz-question-block { margin-bottom:24px; }
+  .q-number { font-family:Orbitron,sans-serif; font-size:10px; color:var(--purple2); letter-spacing:1px; margin-bottom:8px; }
+  .q-text { font-size:15px; color:#fff; line-height:1.6; margin-bottom:14px; }
+  .q-options { display:flex; flex-direction:column; gap:8px; }
+  .q-option {
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+    border-radius:9px; padding:12px 16px; cursor:pointer; font-size:14px; color:var(--text);
+    transition:all 0.2s; display:flex; align-items:center; gap:10px;
+  }
+  .q-option:hover:not(.disabled) { background:rgba(0,212,255,0.07); border-color:rgba(0,212,255,0.3); }
+  .q-option.correct { background:rgba(16,185,129,0.15); border-color:var(--green); color:var(--green); }
+  .q-option.wrong { background:rgba(239,68,68,0.1); border-color:var(--red); color:var(--red); }
+  .q-option.disabled { cursor:default; }
+  .q-letter { font-family:Orbitron,sans-serif; font-size:11px; font-weight:700; min-width:22px; }
+  .q-feedback { font-size:13px; padding:10px 14px; border-radius:8px; margin-top:10px; display:none; }
+  .q-feedback.correct { background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); color:var(--green); display:block; }
+  .q-feedback.wrong { background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25); color:#fca5a5; display:block; }
+
+  .quiz-submit-wrap { text-align:center; margin-top:20px; }
+  .quiz-result { background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(124,58,237,0.08)); border:1px solid var(--border); border-radius:14px; padding:28px; text-align:center; display:none; }
+  .quiz-result.show { display:block; animation:fadeIn 0.4s; }
+  .score-big { font-family:Orbitron,sans-serif; font-size:48px; font-weight:900; margin:10px 0; }
+  .score-label { font-size:14px; color:var(--text2); }
+  .score-msg { font-size:16px; color:#fff; margin-top:12px; }
+
+  /* REAL WORLD section */
+  .rw-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; margin-top:16px; }
+  .rw-card {
+    border-radius:12px; padding:20px; border:1px solid transparent;
+    background:rgba(255,255,255,0.03);
+  }
+  .rw-card:hover { transform:translateY(-2px); transition:transform 0.2s; }
+  .rw-icon { font-size:28px; margin-bottom:10px; }
+  .rw-title { font-family:Orbitron,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+  .rw-text { font-size:13px; line-height:1.65; color:var(--text2); }
+  .rw-card.solar { border-color:rgba(255,226,52,0.3); }
+  .rw-card.solar .rw-title { color:#ffe234; }
+  .rw-card.wind { border-color:rgba(0,212,255,0.3); }
+  .rw-card.wind .rw-title { color:var(--cyan); }
+  .rw-card.hydro { border-color:rgba(124,58,237,0.3); }
+  .rw-card.hydro .rw-title { color:var(--purple2); }
+  .rw-card.bio { border-color:rgba(16,185,129,0.3); }
+  .rw-card.bio .rw-title { color:var(--green); }
+  .rw-card.nuclear2 { border-color:rgba(239,68,68,0.3); }
+  .rw-card.nuclear2 .rw-title { color:var(--red); }
+  .rw-card.ef { border-color:rgba(245,158,11,0.3); }
+  .rw-card.ef .rw-title { color:var(--yellow); }
+
+  /* Video section */
+  .video-list { display:flex; flex-direction:column; gap:14px; margin-top:10px; }
+  .video-link-card {
+    display:flex; align-items:center; gap:16px;
+    background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 20px;
+    text-decoration:none; transition:all 0.2s;
+  }
+  .video-link-card:hover { background:rgba(0,212,255,0.07); border-color:rgba(0,212,255,0.35); }
+  .yt-icon { font-size:28px; color:#ff4444; min-width:36px; text-align:center; }
+  .video-info h4 { font-size:14px; color:#fff; margin-bottom:3px; }
+  .video-info p { font-size:12px; color:var(--text2); }
+
+  /* Navigation footer */
+  .section-footer { display:flex; justify-content:space-between; align-items:center; margin-top:36px; padding-top:22px; border-top:1px solid var(--border); }
+  .nav-footer-btn {
+    display:flex; align-items:center; gap:8px;
+    background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.3);
+    color:var(--cyan); padding:11px 24px; border-radius:9px; cursor:pointer;
+    font-family:'Exo 2',sans-serif; font-size:14px; font-weight:600; transition:all 0.2s;
+  }
+  .nav-footer-btn:hover { background:rgba(0,212,255,0.2); box-shadow:var(--glow); }
+  .nav-footer-btn.complete { background:rgba(16,185,129,0.15); border-color:rgba(16,185,129,0.4); color:var(--green); }
+  .nav-footer-btn.complete:hover { background:rgba(16,185,129,0.25); }
+
+  /* Completion banner */
+  #completion-banner {
+    display:none; background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(0,212,255,0.1));
+    border:1px solid rgba(16,185,129,0.4); border-radius:14px;
+    padding:32px; text-align:center; margin:20px 0;
+  }
+  #completion-banner.show { display:block; animation:fadeIn 0.5s; }
+  #completion-banner h2 { font-family:Orbitron,sans-serif; font-size:20px; color:var(--green); margin-bottom:10px; }
+  #completion-banner p { color:var(--text2); font-size:14px; }
+
+  /* SOL Standards box */
+  .sol-box {
+    background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.3);
+    border-radius:12px; padding:18px 22px; margin:18px 0;
+  }
+  .sol-box .sol-tag { font-family:Orbitron,sans-serif; font-size:10px; color:var(--purple2); letter-spacing:2px; margin-bottom:10px; }
+  .sol-box ul { padding-left:18px; }
+  .sol-box li { font-size:13px; color:var(--text); margin-bottom:5px; line-height:1.6; }
+
+  /* Transformation arrow diagram */
+  .transform-chain { display:flex; align-items:center; flex-wrap:wrap; gap:4px; margin:16px 0; }
+  .t-node {
+    background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.3);
+    color:var(--cyan); padding:9px 14px; border-radius:8px; font-size:13px; text-align:center;
+  }
+  .t-arrow { color:var(--text2); font-size:18px; padding:0 2px; }
+  .t-node.purple { background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.3); color:var(--purple2); }
+  .t-node.green { background:rgba(16,185,129,0.1); border-color:rgba(16,185,129,0.3); color:var(--green); }
+  .t-node.yellow { background:rgba(245,158,11,0.1); border-color:rgba(245,158,11,0.3); color:var(--yellow); }
+
+  @media (max-width:768px) {
+    #sidebar { display:none; }
+    #main { margin-left:0; }
+    #content { padding:20px 18px; }
+    .energy-grid { grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <div class="sol-badge">PS.5 · GRADE 8</div>
+    <h2>Energy Conservation</h2>
+    <p>Physical Science · Virginia SOL</p>
+  </div>
+  <div id="progress-wrap">
+    <label><span>Your Progress</span><span id="progress-pct">0%</span></label>
+    <div id="progress-bar-bg"><div id="progress-bar"></div></div>
+  </div>
+  <div id="nav-list">
+    <div class="nav-section">Lessons</div>
+    <div class="nav-item active" onclick="goSection('intro')" id="nav-intro">
+      <span class="nav-icon">🚀</span><span>Introduction</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="goSection('stored')" id="nav-stored">
+      <span class="nav-icon">🔋</span><span>Stored Energy</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="goSection('transfer')" id="nav-transfer">
+      <span class="nav-icon">⚡</span><span>Transfer & Transformation</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="goSection('lab')" id="nav-lab">
+      <span class="nav-icon">🧪</span><span>Virtual Lab</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="goSection('vocab')" id="nav-vocab">
+      <span class="nav-icon">📖</span><span>Vocabulary</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="goSection('society')" id="nav-society">
+      <span class="nav-icon">🌍</span><span>Energy & Society</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="goSection('videos')" id="nav-videos">
+      <span class="nav-icon">🎬</span><span>Watch & Learn</span><span class="nav-check">✓</span>
+    </div>
+    <div class="nav-item" onclick="goSection('quiz')" id="nav-quiz">
+      <span class="nav-icon">✏️</span><span>SOL Quiz</span><span class="nav-check">✓</span>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+  <div id="topbar">
+    <h1>PS.5 · Energy Conservation</h1>
+    <span class="grade-tag">8th Grade Physical Science</span>
+  </div>
+
+  <div id="content">
+
+    <!-- ===================== INTRO ===================== -->
+    <div class="section active" id="section-intro">
+      <div class="section-title"><span class="icon">🚀</span>Introduction to Energy Conservation</div>
+      <p class="section-subtitle">Explore how energy is stored, transferred, and transformed — and why it's never truly "lost."</p>
+
+      <div class="sol-box">
+        <div class="sol-tag">SOL PS.5 — Key Ideas</div>
+        <ul>
+          <li><strong>a)</strong> Energy can be stored in different ways.</li>
+          <li><strong>b)</strong> Energy is transferred and transformed.</li>
+          <li><strong>c)</strong> Energy can be transformed to meet societal needs.</li>
+        </ul>
+      </div>
+
+      <div class="slide-container">
+        <div class="slides-wrap">
+          <div class="slide active" id="intro-slide-1">
+            <h2>What Is Energy?</h2>
+            <p>Energy is the ability to do <strong style="color:var(--cyan)">work</strong> or cause <strong style="color:var(--cyan)">change</strong>. It exists in many forms and can move between objects and systems — but it cannot be created or destroyed.</p>
+            <div class="highlight-box" style="margin-top:18px;">
+              <div class="label">Law of Conservation of Energy</div>
+              <p><em>Energy cannot be created or destroyed — it can only be transferred or transformed from one form to another.</em> The total amount of energy in a closed system always remains constant.</p>
+            </div>
+          </div>
+          <div class="slide" id="intro-slide-2">
+            <h2>Why Does Energy Matter?</h2>
+            <p>Everything you do uses energy — from walking to school to charging your phone. Understanding energy helps scientists and engineers:</p>
+            <ul>
+              <li>Design more efficient machines and vehicles</li>
+              <li>Develop renewable energy sources to reduce pollution</li>
+              <li>Understand natural processes like weather and ecosystems</li>
+              <li>Solve global challenges like climate change</li>
+            </ul>
+          </div>
+          <div class="slide" id="intro-slide-3">
+            <h2>The Two Big Categories</h2>
+            <p>All forms of energy fall into two major categories:</p>
+            <ul>
+              <li><strong style="color:var(--cyan)">Kinetic Energy</strong> — energy of <em>motion</em>. Any object that is moving has kinetic energy. The faster it moves and the more mass it has, the greater its kinetic energy.</li>
+              <li><strong style="color:var(--purple2)">Potential Energy</strong> — energy that is <em>stored</em> due to position or condition. A stretched spring, a book on a shelf, and food all contain potential energy.</li>
+            </ul>
+            <div class="highlight-box">
+              <div class="label">Key Insight</div>
+              <p>Energy constantly switches between kinetic and potential — like a swinging pendulum or a roller coaster!</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-nav">
+          <button onclick="prevSlide('intro')" id="intro-prev" disabled>← Previous</button>
+          <span class="slide-counter" id="intro-counter">Slide 1 of 3</span>
+          <button onclick="nextSlide('intro')" id="intro-next">Next →</button>
+        </div>
+      </div>
+      <div class="section-footer">
+        <div></div>
+        <button class="nav-footer-btn" onclick="completeAndGo('intro','stored')">Next: Stored Energy →</button>
+      </div>
+    </div>
+
+    <!-- ===================== STORED ===================== -->
+    <div class="section" id="section-stored">
+      <div class="section-title"><span class="icon">🔋</span>Energy Can Be Stored</div>
+      <p class="section-subtitle">Key Idea A: Energy is held in many different forms — ready to be released and do work.</p>
+
+      <div class="card">
+        <h3>Forms of Stored (Potential) Energy</h3>
+        <p>Potential energy is stored energy that has the <em>potential</em> to be converted into kinetic energy. Below are the major types you'll need to know:</p>
+      </div>
+
+      <div class="energy-grid">
+        <div class="energy-card e-kinetic">
+          <div class="e-icon">🏃</div>
+          <div class="e-name">Kinetic</div>
+          <div class="e-desc">Energy of motion — moving cars, flowing water, thrown balls</div>
+        </div>
+        <div class="energy-card e-potential">
+          <div class="e-icon">⬆️</div>
+          <div class="e-name">Gravitational PE</div>
+          <div class="e-desc">Stored by height — a book on a shelf, water in a reservoir</div>
+        </div>
+        <div class="energy-card e-chemical">
+          <div class="e-icon">🧪</div>
+          <div class="e-name">Chemical</div>
+          <div class="e-desc">Stored in bonds — food, batteries, fossil fuels, TNT</div>
+        </div>
+        <div class="energy-card e-thermal">
+          <div class="e-icon">🌡️</div>
+          <div class="e-name">Thermal</div>
+          <div class="e-desc">Heat energy — related to the movement of particles</div>
+        </div>
+        <div class="energy-card e-nuclear">
+          <div class="e-icon">⚛️</div>
+          <div class="e-name">Nuclear</div>
+          <div class="e-desc">Stored in atomic nuclei — released in fission/fusion reactions</div>
+        </div>
+        <div class="energy-card e-light">
+          <div class="e-icon">💡</div>
+          <div class="e-name">Radiant (Light)</div>
+          <div class="e-desc">Electromagnetic radiation — sunlight, microwaves, X-rays</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Elastic Potential Energy</h3>
+        <p>A stretched or compressed elastic material (spring, rubber band, bow) stores <strong style="color:var(--cyan)">elastic potential energy</strong>. When released, this energy converts to kinetic energy. The more you stretch or compress, the more energy is stored.</p>
+        <div class="highlight-box">
+          <div class="label">Real World Example</div>
+          <p>When you pull back a slingshot, you store elastic potential energy in the stretched rubber. When released, that energy converts to kinetic energy in the projectile — this is energy transformation in action!</p>
+        </div>
+      </div>
+
+      <div class="section-footer">
+        <button class="nav-footer-btn" onclick="completeAndGo('stored','intro')">← Back</button>
+        <button class="nav-footer-btn" onclick="completeAndGo('stored','transfer')">Next: Transfer & Transformation →</button>
+      </div>
+    </div>
+
+    <!-- ===================== TRANSFER ===================== -->
+    <div class="section" id="section-transfer">
+      <div class="section-title"><span class="icon">⚡</span>Energy Transfer & Transformation</div>
+      <p class="section-subtitle">Key Idea B: Energy moves between objects (transfer) and changes form (transformation).</p>
+
+      <div class="slide-container">
+        <div class="slides-wrap">
+          <div class="slide active" id="transfer-slide-1">
+            <h2>Energy Transfer vs. Transformation</h2>
+            <p><strong style="color:var(--cyan)">Energy Transfer</strong> — Energy moves from one object or location to another <em>without changing form</em>.</p>
+            <p style="margin-top:12px;"><strong style="color:var(--purple2)">Energy Transformation</strong> — Energy changes from one <em>form</em> to another. This is also called energy conversion.</p>
+            <div class="highlight-box" style="margin-top:14px;">
+              <div class="label">Key Distinction</div>
+              <p>When you push a box across the floor, you <em>transfer</em> kinetic energy from your muscles to the box. When a battery powers a light bulb, chemical energy is <em>transformed</em> into electrical, then light and heat energy.</p>
+            </div>
+          </div>
+          <div class="slide" id="transfer-slide-2">
+            <h2>Methods of Heat Transfer</h2>
+            <p>Thermal energy (heat) transfers in three main ways:</p>
+            <ul>
+              <li><strong style="color:var(--cyan)">Conduction</strong> — Direct contact between particles. Heat travels through solids. (Example: touching a hot pan)</li>
+              <li><strong style="color:var(--purple2)">Convection</strong> — Heat carried by moving fluids (liquids or gases). (Example: boiling water, weather patterns)</li>
+              <li><strong style="color:var(--yellow)">Radiation</strong> — Energy travels as electromagnetic waves — no medium needed. (Example: sunlight warming Earth)</li>
+            </ul>
+          </div>
+          <div class="slide" id="transfer-slide-3">
+            <h2>Energy Transformation Chains</h2>
+            <p>In most real-world systems, energy goes through <strong style="color:var(--cyan)">multiple transformations</strong> before reaching its final form. Here are two examples:</p>
+            <p style="margin-top:14px; font-size:13px; color:var(--text2);">A coal power plant:</p>
+            <div class="transform-chain">
+              <div class="t-node">Chemical<br><small>Coal</small></div>
+              <div class="t-arrow">→</div>
+              <div class="t-node yellow">Thermal<br><small>Burning</small></div>
+              <div class="t-arrow">→</div>
+              <div class="t-node purple">Mechanical<br><small>Steam turbine</small></div>
+              <div class="t-arrow">→</div>
+              <div class="t-node green">Electrical<br><small>Generator</small></div>
+            </div>
+            <p style="margin-top:12px; font-size:13px; color:var(--text2);">Your body running:</p>
+            <div class="transform-chain">
+              <div class="t-node green">Chemical<br><small>Food</small></div>
+              <div class="t-arrow">→</div>
+              <div class="t-node">Kinetic<br><small>Muscles</small></div>
+              <div class="t-arrow">→</div>
+              <div class="t-node yellow">Thermal<br><small>Body heat</small></div>
+            </div>
+          </div>
+          <div class="slide" id="transfer-slide-4">
+            <h2>Energy Is Always Conserved</h2>
+            <p>During every transfer and transformation, the <strong style="color:var(--cyan)">total energy remains constant</strong>. However, some energy is often transformed into forms that are less useful — usually <strong style="color:var(--yellow)">heat (thermal energy)</strong> due to friction.</p>
+            <div class="highlight-box">
+              <div class="label">Example: Light Bulb</div>
+              <p>A traditional incandescent bulb converts electrical energy to light — but about <strong>90% becomes wasted heat</strong>. Only ~10% is visible light. An LED bulb converts ~40% to light, wasting far less. Energy is conserved either way — just transformed differently.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-nav">
+          <button onclick="prevSlide('transfer')" id="transfer-prev" disabled>← Previous</button>
+          <span class="slide-counter" id="transfer-counter">Slide 1 of 4</span>
+          <button onclick="nextSlide('transfer')" id="transfer-next">Next →</button>
+        </div>
+      </div>
+      <div class="section-footer">
+        <button class="nav-footer-btn" onclick="completeAndGo('transfer','stored')">← Back</button>
+        <button class="nav-footer-btn" onclick="completeAndGo('transfer','lab')">Next: Virtual Lab →</button>
+      </div>
+    </div>
+
+    <!-- ===================== LAB ===================== -->
+    <div class="section" id="section-lab">
+      <div class="section-title"><span class="icon">🧪</span>Virtual Lab: Roller Coaster Energy</div>
+      <p class="section-subtitle">Investigate how potential and kinetic energy trade off on a roller coaster — and observe the Law of Conservation of Energy.</p>
+
+      <div class="lab-container">
+        <div class="lab-header">
+          <h3>🎢 Roller Coaster Energy Simulator</h3>
+          <p>Simulate a cart at three positions on a roller coaster. Observe how energy is transferred between forms.</p>
+        </div>
+        <div class="lab-body">
+          <div class="coaster-sim">
+            <svg class="coaster-svg" viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+              <!-- Track -->
+              <path d="M 30 40 Q 80 40 120 140 Q 200 140 260 70 Q 320 0 380 80 Q 420 140 490 140" stroke="#00d4ff" stroke-width="3" fill="none" stroke-opacity="0.5"/>
+              <!-- Ground -->
+              <line x1="20" y1="150" x2="500" y2="150" stroke="#334155" stroke-width="2"/>
+              <!-- Height markers -->
+              <line x1="30" y1="40" x2="30" y2="150" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4"/>
+              <text x="8" y="100" fill="#9f67ff" font-size="9" font-family="Exo 2">h=HIGH</text>
+              <line x1="260" y1="70" x2="260" y2="150" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4"/>
+              <text x="238" y="105" fill="#9f67ff" font-size="9" font-family="Exo 2">h=MED</text>
+              <!-- Cart -->
+              <rect id="cart-rect" x="18" y="28" width="28" height="16" rx="4" fill="#00d4ff" opacity="0.9"/>
+              <text id="cart-emoji" x="22" y="42" font-size="14">🚃</text>
+              <!-- Position labels -->
+              <text x="20" y="170" fill="#64748b" font-size="10" font-family="Exo 2">A – Top (High)</text>
+              <text x="220" y="170" fill="#64748b" font-size="10" font-family="Exo 2">B – Valley</text>
+              <text x="350" y="170" fill="#64748b" font-size="10" font-family="Exo 2">C – Mid Hill</text>
+            </svg>
+            <div class="coaster-controls">
+              <button class="lab-btn" onclick="setPosition('A')">📍 Position A (Top)</button>
+              <button class="lab-btn" onclick="setPosition('B')">📍 Position B (Valley)</button>
+              <button class="lab-btn" onclick="setPosition('C')">📍 Position C (Mid Hill)</button>
+              <button class="lab-btn reset" onclick="resetLab()">↺ Reset</button>
+            </div>
+          </div>
+
+          <div class="energy-bars">
+            <div class="e-bar-wrap">
+              <div class="e-bar-label">Potential Energy</div>
+              <div class="e-bar-bg e-bar-pe"><div class="e-bar-fill" id="pe-bar" style="height:0%"></div></div>
+              <div class="e-bar-val" id="pe-val">— J</div>
+            </div>
+            <div class="e-bar-wrap">
+              <div class="e-bar-label">Kinetic Energy</div>
+              <div class="e-bar-bg e-bar-ke"><div class="e-bar-fill" id="ke-bar" style="height:0%"></div></div>
+              <div class="e-bar-val" id="ke-val">— J</div>
+            </div>
+            <div class="e-bar-wrap">
+              <div class="e-bar-label">Total Energy</div>
+              <div class="e-bar-bg e-bar-te"><div class="e-bar-fill" id="te-bar" style="height:50%"></div></div>
+              <div class="e-bar-val" id="te-val">100 J</div>
+            </div>
+          </div>
+
+          <div class="lab-observation">
+            <h4>Lab Observation</h4>
+            <div id="lab-output">Select a position above to begin your investigation. Observe how PE and KE change while the total energy stays the same.</div>
+          </div>
+
+          <div class="card" style="margin-top:18px;">
+            <h3>Lab Questions — Think About It</h3>
+            <ol style="padding-left:20px;">
+              <li style="margin-bottom:10px; font-size:14px; line-height:1.7;">At which position does the cart have the <strong>most potential energy</strong>? The least? Why?</li>
+              <li style="margin-bottom:10px; font-size:14px; line-height:1.7;">At which position is the cart moving the <strong>fastest</strong>? Explain using the Law of Conservation of Energy.</li>
+              <li style="margin-bottom:10px; font-size:14px; line-height:1.7;">In a real roller coaster, the total energy slowly decreases over time. Where does that "missing" energy go?</li>
+              <li style="font-size:14px; line-height:1.7;">How does the roller coaster demonstrate that energy is <strong>transformed</strong>, not destroyed?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-footer">
+        <button class="nav-footer-btn" onclick="completeAndGo('lab','transfer')">← Back</button>
+        <button class="nav-footer-btn" onclick="completeAndGo('lab','vocab')">Next: Vocabulary →</button>
+      </div>
+    </div>
+
+    <!-- ===================== VOCAB ===================== -->
+    <div class="section" id="section-vocab">
+      <div class="section-title"><span class="icon">📖</span>Vocabulary Review</div>
+      <p class="section-subtitle">Click each card to flip it and reveal the definition. Master these terms for your SOL test!</p>
+
+      <div class="vocab-grid">
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Energy</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">The ability to do work or cause change in matter. It exists in many forms and cannot be created or destroyed.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Kinetic Energy</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">The energy an object has because of its motion. Depends on both mass and velocity (speed).</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Potential Energy</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Stored energy — energy that has the potential to do work. Includes gravitational, chemical, elastic, and nuclear PE.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Law of Conservation of Energy</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Energy cannot be created or destroyed — only transferred or transformed. The total energy in a closed system stays constant.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Energy Transfer</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Energy moves from one object or system to another without changing form. Example: pushing a cart across the floor.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Energy Transformation</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Energy changes from one form to another. Example: chemical energy in food → kinetic energy when you run.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Thermal Energy</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">The total kinetic energy of all particles in a substance. Often the result of "wasted" energy in transformations due to friction.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Chemical Energy</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Energy stored in chemical bonds. Released during chemical reactions. Found in food, fuels, and batteries.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Gravitational PE</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Potential energy stored in an object due to its height above a reference point. GPE = mass × gravity × height.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Conduction</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Transfer of thermal energy through direct contact between particles of matter (solids transfer heat by conduction).</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Convection</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Transfer of thermal energy by the movement of a fluid (liquid or gas). Warm fluid rises; cool fluid sinks.</div></div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="v-word">Radiation</div><div class="v-hint">Click to reveal</div></div>
+            <div class="flip-back"><div class="v-def">Transfer of energy by electromagnetic waves. Does not require matter — energy can travel through a vacuum. Example: sunlight.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-footer">
+        <button class="nav-footer-btn" onclick="completeAndGo('vocab','lab')">← Back</button>
+        <button class="nav-footer-btn" onclick="completeAndGo('vocab','society')">Next: Energy & Society →</button>
+      </div>
+    </div>
+
+    <!-- ===================== SOCIETY ===================== -->
+    <div class="section" id="section-society">
+      <div class="section-title"><span class="icon">🌍</span>Energy & Society</div>
+      <p class="section-subtitle">Key Idea C: How energy transformations are engineered to meet human needs — and the trade-offs involved.</p>
+
+      <div class="card">
+        <h3>Energy for Human Civilization</h3>
+        <p>Every technology humans use depends on energy transformations. Engineers design systems to <strong style="color:var(--cyan)">maximize useful energy output</strong> while minimizing waste. The choice of energy source has major environmental, economic, and social consequences.</p>
+      </div>
+
+      <div class="rw-grid">
+        <div class="rw-card solar">
+          <div class="rw-icon">☀️</div>
+          <div class="rw-title">Solar Power</div>
+          <div class="rw-text">Photovoltaic cells transform radiant (light) energy → electrical energy. Clean, renewable, no emissions. Dependent on sunlight availability.</div>
+        </div>
+        <div class="rw-card wind">
+          <div class="rw-icon">💨</div>
+          <div class="rw-title">Wind Energy</div>
+          <div class="rw-text">Wind turbines transform kinetic energy (moving air) → mechanical → electrical. Renewable, but wind is intermittent and turbines affect wildlife.</div>
+        </div>
+        <div class="rw-card hydro">
+          <div class="rw-icon">💧</div>
+          <div class="rw-title">Hydroelectric Power</div>
+          <div class="rw-text">Gravitational PE (water held behind a dam) → kinetic energy → electrical. Reliable and renewable, but dams alter river ecosystems.</div>
+        </div>
+        <div class="rw-card bio">
+          <div class="rw-icon">🌿</div>
+          <div class="rw-title">Biomass / Biofuels</div>
+          <div class="rw-text">Chemical energy stored in organic material (wood, crops, waste) → thermal → mechanical → electrical. Carbon-neutral if sustainably managed.</div>
+        </div>
+        <div class="rw-card nuclear2">
+          <div class="rw-icon">⚛️</div>
+          <div class="rw-title">Nuclear Power</div>
+          <div class="rw-text">Nuclear PE → thermal (via fission) → mechanical → electrical. Extremely energy-dense with no CO₂ emissions, but produces radioactive waste.</div>
+        </div>
+        <div class="rw-card ef">
+          <div class="rw-icon">🔋</div>
+          <div class="rw-title">Energy Efficiency</div>
+          <div class="rw-text">Reducing wasted energy in transformations. LED bulbs, hybrid vehicles, and insulation are examples. Less waste = lower cost and less pollution.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Trade-Offs in Energy Choices</h3>
+        <p>No energy source is perfect. Scientists, engineers, and citizens must evaluate <strong style="color:var(--cyan)">trade-offs</strong> between cost, reliability, environmental impact, land use, safety, and energy density. Virginia's energy future involves transitioning to more renewable sources while managing grid reliability.</p>
+        <div class="highlight-box">
+          <div class="label">SOL Connection</div>
+          <p>In Virginia, the 2020 Clean Economy Act set goals to achieve 100% carbon-free electricity by 2050. This requires massive energy transformation: shifting from chemical energy (coal, natural gas) to radiant and kinetic energy sources (solar, wind) — all grounded in the same physics you're learning here.</p>
+        </div>
+      </div>
+
+      <div class="section-footer">
+        <button class="nav-footer-btn" onclick="completeAndGo('society','vocab')">← Back</button>
+        <button class="nav-footer-btn" onclick="completeAndGo('society','videos')">Next: Watch & Learn →</button>
+      </div>
+    </div>
+
+    <!-- ===================== VIDEOS ===================== -->
+    <div class="section" id="section-videos">
+      <div class="section-title"><span class="icon">🎬</span>Watch & Learn</div>
+      <p class="section-subtitle">Watch these videos to deepen your understanding of PS.5 Energy Conservation. Each link opens in YouTube.</p>
+
+      <div class="video-list">
+        <a class="video-link-card" href="https://youtu.be/yyHV-zVryyI?si=A5OACW4N0sl6OhO6" target="_blank" rel="noopener">
+          <div class="yt-icon">▶</div>
+          <div class="video-info">
+            <h4>Types of Energy</h4>
+            <p>Explore kinetic, potential, thermal, chemical, and other forms of energy with examples.</p>
+          </div>
+        </a>
+        <a class="video-link-card" href="https://youtu.be/4To7C151iS8?si=CfYQ9YiSL3NPX4Ev" target="_blank" rel="noopener">
+          <div class="yt-icon">▶</div>
+          <div class="video-info">
+            <h4>Law of Conservation of Energy — Next Generation Science</h4>
+            <p>Clear explanation of why energy is never created or destroyed — only transferred or transformed.</p>
+          </div>
+        </a>
+        <a class="video-link-card" href="https://youtu.be/PKm4ZVNmJyQ?si=NNEOmG8Y_TXLU6py" target="_blank" rel="noopener">
+          <div class="yt-icon">▶</div>
+          <div class="video-info">
+            <h4>Energy Transfer & Transformation — NGS</h4>
+            <p>Walks through how energy moves between objects and changes from one form to another.</p>
+          </div>
+        </a>
+        <a class="video-link-card" href="https://youtu.be/DW0jTe80kmM?si=InnV9JlJyJMw692d" target="_blank" rel="noopener">
+          <div class="yt-icon">▶</div>
+          <div class="video-info">
+            <h4>Energy & Society — Meeting Societal Needs</h4>
+            <p>Explores how energy transformations are used to power homes, transportation, and industry.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="section-footer">
+        <button class="nav-footer-btn" onclick="completeAndGo('videos','society')">← Back</button>
+        <button class="nav-footer-btn" onclick="completeAndGo('videos','quiz')">Next: SOL Quiz →</button>
+      </div>
+    </div>
+
+    <!-- ===================== QUIZ ===================== -->
+    <div class="section" id="section-quiz">
+      <div class="section-title"><span class="icon">✏️</span>SOL-Style Quiz</div>
+      <p class="section-subtitle">Test your mastery of PS.5. Answer all questions, then check your results.</p>
+
+      <div class="quiz-wrap" id="quiz-form">
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 1 OF 10</div>
+          <div class="q-text">A student holds a ball at the top of a ramp and then releases it. As the ball rolls to the bottom, which best describes the energy transformation that occurs?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,1,'A')"><span class="q-letter">A</span> Kinetic energy transforms into potential energy</div>
+            <div class="q-option" onclick="selectOption(this,1,'B')"><span class="q-letter">B</span> Potential energy is destroyed as the ball moves</div>
+            <div class="q-option" onclick="selectOption(this,1,'C')"><span class="q-letter">C</span> Gravitational potential energy transforms into kinetic energy</div>
+            <div class="q-option" onclick="selectOption(this,1,'D')"><span class="q-letter">D</span> New kinetic energy is created from nothing</div>
+          </div>
+          <div class="q-feedback" id="fb-1"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 2 OF 10</div>
+          <div class="q-text">Which statement BEST describes the Law of Conservation of Energy?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,2,'A')"><span class="q-letter">A</span> Energy is always converted to thermal energy in the end</div>
+            <div class="q-option" onclick="selectOption(this,2,'B')"><span class="q-letter">B</span> Energy cannot be created or destroyed, only transferred or transformed</div>
+            <div class="q-option" onclick="selectOption(this,2,'C')"><span class="q-letter">C</span> The total amount of energy in the universe is constantly increasing</div>
+            <div class="q-option" onclick="selectOption(this,2,'D')"><span class="q-letter">D</span> Energy can only exist as kinetic or potential energy</div>
+          </div>
+          <div class="q-feedback" id="fb-2"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 3 OF 10</div>
+          <div class="q-text">A log is burned in a fireplace. Which energy transformation is taking place?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,3,'A')"><span class="q-letter">A</span> Thermal energy → chemical energy</div>
+            <div class="q-option" onclick="selectOption(this,3,'B')"><span class="q-letter">B</span> Chemical energy → thermal energy and light energy</div>
+            <div class="q-option" onclick="selectOption(this,3,'C')"><span class="q-letter">C</span> Nuclear energy → kinetic energy</div>
+            <div class="q-option" onclick="selectOption(this,3,'D')"><span class="q-letter">D</span> Electrical energy → chemical energy</div>
+          </div>
+          <div class="q-feedback" id="fb-3"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 4 OF 10</div>
+          <div class="q-text">Which type of energy is stored in a stretched rubber band?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,4,'A')"><span class="q-letter">A</span> Nuclear energy</div>
+            <div class="q-option" onclick="selectOption(this,4,'B')"><span class="q-letter">B</span> Chemical potential energy</div>
+            <div class="q-option" onclick="selectOption(this,4,'C')"><span class="q-letter">C</span> Elastic potential energy</div>
+            <div class="q-option" onclick="selectOption(this,4,'D')"><span class="q-letter">D</span> Gravitational potential energy</div>
+          </div>
+          <div class="q-feedback" id="fb-4"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 5 OF 10</div>
+          <div class="q-text">A roller coaster cart is at the bottom of a valley between two hills. Compared to when it was at the top of the first hill, its energy is:</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,5,'A')"><span class="q-letter">A</span> The same total energy, but more is kinetic and less is potential</div>
+            <div class="q-option" onclick="selectOption(this,5,'B')"><span class="q-letter">B</span> Greater total energy because it is moving faster</div>
+            <div class="q-option" onclick="selectOption(this,5,'C')"><span class="q-letter">C</span> Less total energy because potential energy was used up</div>
+            <div class="q-option" onclick="selectOption(this,5,'D')"><span class="q-letter">D</span> All potential energy with no kinetic energy</div>
+          </div>
+          <div class="q-feedback" id="fb-5"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 6 OF 10</div>
+          <div class="q-text">Which method of heat transfer does NOT require matter (can travel through a vacuum)?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,6,'A')"><span class="q-letter">A</span> Conduction</div>
+            <div class="q-option" onclick="selectOption(this,6,'B')"><span class="q-letter">B</span> Convection</div>
+            <div class="q-option" onclick="selectOption(this,6,'C')"><span class="q-letter">C</span> Radiation</div>
+            <div class="q-option" onclick="selectOption(this,6,'D')"><span class="q-letter">D</span> Absorption</div>
+          </div>
+          <div class="q-feedback" id="fb-6"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 7 OF 10</div>
+          <div class="q-text">In a solar panel system, which energy transformation occurs?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,7,'A')"><span class="q-letter">A</span> Chemical energy → electrical energy</div>
+            <div class="q-option" onclick="selectOption(this,7,'B')"><span class="q-letter">B</span> Nuclear energy → thermal energy</div>
+            <div class="q-option" onclick="selectOption(this,7,'C')"><span class="q-letter">C</span> Radiant (light) energy → electrical energy</div>
+            <div class="q-option" onclick="selectOption(this,7,'D')"><span class="q-letter">D</span> Kinetic energy → chemical energy</div>
+          </div>
+          <div class="q-feedback" id="fb-7"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 8 OF 10</div>
+          <div class="q-text">A student notices that after rubbing her hands together, they feel warm. What energy transformation took place?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,8,'A')"><span class="q-letter">A</span> Thermal energy → kinetic energy (friction)</div>
+            <div class="q-option" onclick="selectOption(this,8,'B')"><span class="q-letter">B</span> Kinetic energy → thermal energy (friction)</div>
+            <div class="q-option" onclick="selectOption(this,8,'C')"><span class="q-letter">C</span> Chemical energy → electrical energy</div>
+            <div class="q-option" onclick="selectOption(this,8,'D')"><span class="q-letter">D</span> Potential energy → nuclear energy</div>
+          </div>
+          <div class="q-feedback" id="fb-8"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 9 OF 10</div>
+          <div class="q-text">Which energy source relies on the transformation of gravitational potential energy into electrical energy?</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,9,'A')"><span class="q-letter">A</span> Solar panels</div>
+            <div class="q-option" onclick="selectOption(this,9,'B')"><span class="q-letter">B</span> Coal-burning power plant</div>
+            <div class="q-option" onclick="selectOption(this,9,'C')"><span class="q-letter">C</span> Hydroelectric dam</div>
+            <div class="q-option" onclick="selectOption(this,9,'D')"><span class="q-letter">D</span> Nuclear power plant</div>
+          </div>
+          <div class="q-feedback" id="fb-9"></div>
+        </div>
+
+        <div class="quiz-question-block">
+          <div class="q-number">QUESTION 10 OF 10</div>
+          <div class="q-text">An incandescent light bulb converts only about 10% of its electrical energy to visible light. The remaining 90% becomes thermal energy (heat). This is an example of:</div>
+          <div class="q-options">
+            <div class="q-option" onclick="selectOption(this,10,'A')"><span class="q-letter">A</span> A violation of the Law of Conservation of Energy</div>
+            <div class="q-option" onclick="selectOption(this,10,'B')"><span class="q-letter">B</span> Energy being destroyed inside the bulb</div>
+            <div class="q-option" onclick="selectOption(this,10,'C')"><span class="q-letter">C</span> Energy transformation — total energy is conserved, but much is wasted as heat</div>
+            <div class="q-option" onclick="selectOption(this,10,'D')"><span class="q-letter">D</span> Energy transfer — energy moves from the bulb to the socket unchanged</div>
+          </div>
+          <div class="q-feedback" id="fb-10"></div>
+        </div>
+
+        <div class="quiz-submit-wrap">
+          <button class="nav-footer-btn" onclick="submitQuiz()" id="submit-btn" style="font-size:15px; padding:14px 40px;">Submit Quiz</button>
+        </div>
+      </div>
+
+      <div class="quiz-result" id="quiz-result">
+        <div style="font-size:40px; margin-bottom:10px;">🎉</div>
+        <div class="score-label">Your Score</div>
+        <div class="score-big" id="score-display">—</div>
+        <div class="score-label">out of 10 questions</div>
+        <div class="score-msg" id="score-msg"></div>
+        <button class="nav-footer-btn" onclick="retakeQuiz()" style="margin-top:20px; display:inline-flex;">↺ Retake Quiz</button>
+      </div>
+
+      <div id="completion-banner">
+        <h2>🏆 Lesson Complete!</h2>
+        <p>You have completed all modules in PS.5 Energy Conservation. Great work!</p>
+        <p style="margin-top:8px; font-size:13px;">Review any section using the sidebar navigation.</p>
+      </div>
+
+      <div class="section-footer">
+        <button class="nav-footer-btn" onclick="completeAndGo('quiz','videos')">← Back</button>
+      </div>
+    </div>
+
+  </div><!-- end #content -->
+</main>
+
+<script>
+// ===================== NAV & PROGRESS =====================
+const sections = ['intro','stored','transfer','lab','vocab','society','videos','quiz'];
+const completed = {};
+
+function goSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('nav-' + id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function completeAndGo(current, next) {
+  completed[current] = true;
+  document.getElementById('nav-' + current).classList.add('completed');
+  updateProgress();
+  goSection(next);
+}
+
+function updateProgress() {
+  const done = Object.keys(completed).length;
+  const pct = Math.round((done / sections.length) * 100);
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+// ===================== SLIDES =====================
+const slideState = {};
+
+function initSlides(name, count) {
+  slideState[name] = { current: 1, total: count };
+}
+initSlides('intro', 3);
+initSlides('transfer', 4);
+
+function showSlide(name, index) {
+  const state = slideState[name];
+  document.querySelectorAll('[id^="' + name + '-slide-"]').forEach((el, i) => {
+    el.classList.toggle('active', i + 1 === index);
+  });
+  document.getElementById(name + '-counter').textContent = 'Slide ' + index + ' of ' + state.total;
+  document.getElementById(name + '-prev').disabled = index === 1;
+  document.getElementById(name + '-next').disabled = index === state.total;
+  state.current = index;
+}
+
+function nextSlide(name) {
+  const s = slideState[name];
+  if (s.current < s.total) showSlide(name, s.current + 1);
+}
+function prevSlide(name) {
+  const s = slideState[name];
+  if (s.current > 1) showSlide(name, s.current - 1);
+}
+
+// ===================== VIRTUAL LAB =====================
+const positions = {
+  A: { pe: 100, ke: 0, label: 'Position A – Top of hill', obs: 'At the TOP of the roller coaster, the cart is not moving yet — all 100 J of energy is stored as GRAVITATIONAL POTENTIAL ENERGY (height). Kinetic energy is zero because velocity is zero. This is maximum stored energy.' },
+  B: { pe: 5,   ke: 95, label: 'Position B – Valley (bottom)', obs: 'At the VALLEY (bottom), the cart has lost nearly all its height. Most energy has transformed into KINETIC ENERGY — the cart is moving at maximum speed! A small amount became thermal energy from friction (shown as ~5 J PE remaining). Total energy ≈ 100 J.' },
+  C: { pe: 55,  ke: 40, label: 'Position C – Mid-height hill', obs: 'At the MID-HILL position, energy is SPLIT between potential and kinetic. As the cart climbed, kinetic energy was converted back into gravitational potential energy. Notice: PE + KE ≈ 95 J (a small amount lost to friction). Total energy is conserved!' }
+};
+
+function setPosition(pos) {
+  const d = positions[pos];
+  document.getElementById('pe-bar').style.height = d.pe + '%';
+  document.getElementById('ke-bar').style.height = d.ke + '%';
+  document.getElementById('te-bar').style.height = '95%';
+  document.getElementById('pe-val').textContent = d.pe + ' J';
+  document.getElementById('ke-val').textContent = d.ke + ' J';
+  document.getElementById('te-val').textContent = '~100 J';
+  document.getElementById('lab-output').innerHTML = '<strong style="color:var(--cyan)">' + d.label + '</strong><br><br>' + d.obs;
+
+  // Move cart on SVG
+  const cart = document.getElementById('cart-rect');
+  const emoji = document.getElementById('cart-emoji');
+  if (pos === 'A') { cart.setAttribute('x','18'); cart.setAttribute('y','28'); emoji.setAttribute('x','22'); emoji.setAttribute('y','42'); }
+  else if (pos === 'B') { cart.setAttribute('x','238'); cart.setAttribute('y','128'); emoji.setAttribute('x','242'); emoji.setAttribute('y','142'); }
+  else { cart.setAttribute('x','360'); cart.setAttribute('y','68'); emoji.setAttribute('x','364'); emoji.setAttribute('y','82'); }
+}
+
+function resetLab() {
+  ['pe-bar','ke-bar','te-bar'].forEach(id => document.getElementById(id).style.height = '0%');
+  ['pe-val','ke-val'].forEach(id => document.getElementById(id).textContent = '— J');
+  document.getElementById('te-val').textContent = '100 J';
+  document.getElementById('lab-output').textContent = 'Select a position above to begin your investigation.';
+  document.getElementById('cart-rect').setAttribute('x','18'); document.getElementById('cart-rect').setAttribute('y','28');
+  document.getElementById('cart-emoji').setAttribute('x','22'); document.getElementById('cart-emoji').setAttribute('y','42');
+}
+
+// ===================== QUIZ =====================
+const answers = { 1:'C', 2:'B', 3:'B', 4:'C', 5:'A', 6:'C', 7:'C', 8:'B', 9:'C', 10:'C' };
+const explanations = {
+  1: 'Correct! Gravitational PE → Kinetic Energy as the ball descends.',
+  2: 'Correct! The Law of Conservation of Energy states energy cannot be created or destroyed.',
+  3: 'Correct! Burning wood releases chemical energy as thermal (heat) and light energy.',
+  4: 'Correct! A stretched rubber band stores elastic potential energy.',
+  5: 'Correct! Total energy is conserved — at the bottom, most PE has become KE (maximum speed).',
+  6: 'Correct! Radiation travels as electromagnetic waves and needs no medium.',
+  7: 'Correct! Solar panels convert radiant (light) energy into electrical energy.',
+  8: 'Correct! Friction converts kinetic energy (rubbing motion) into thermal energy (heat).',
+  9: 'Correct! A hydroelectric dam converts gravitational PE of held water into electrical energy.',
+  10: 'Correct! Energy is conserved — it is transformed, not destroyed. 90% becomes heat (wasted energy).'
+};
+const wrongExplanations = {
+  1: 'Not quite. At the top, the ball has potential energy. As it rolls down, PE → KE (kinetic energy). The correct answer is C.',
+  2: 'Not quite. The Law of Conservation of Energy means energy cannot be created or destroyed — only transferred or transformed. Answer: B.',
+  3: 'Not quite. Burning releases stored chemical energy as heat and light. Answer: B.',
+  4: 'Not quite. A stretched rubber band stores elastic potential energy — a special type of PE. Answer: C.',
+  5: 'Not quite. Total energy is conserved. At the bottom, most PE has been converted to KE (maximum speed). Answer: A.',
+  6: 'Not quite. Radiation travels as electromagnetic waves through a vacuum (like sunlight through space). Answer: C.',
+  7: 'Not quite. Solar panels convert sunlight (radiant energy) into electrical energy. Answer: C.',
+  8: 'Not quite. Friction converts kinetic energy (movement) into thermal energy (heat in your hands). Answer: B.',
+  9: 'Not quite. Hydroelectric dams use water stored at height (gravitational PE) → kinetic → electrical. Answer: C.',
+  10: 'Not quite. Energy is conserved — 90% becomes heat (transformed, not destroyed). This does NOT violate conservation of energy. Answer: C.'
+};
+
+const selected = {};
+
+function selectOption(el, qNum, choice) {
+  if (selected[qNum] !== undefined) return;
+  selected[qNum] = choice;
+  const parent = el.closest('.q-options');
+  parent.querySelectorAll('.q-option').forEach(o => o.classList.add('disabled'));
+  const correct = answers[qNum];
+  if (choice === correct) {
+    el.classList.add('correct');
+    const fb = document.getElementById('fb-' + qNum);
+    fb.textContent = '✓ ' + explanations[qNum];
+    fb.className = 'q-feedback correct';
+  } else {
+    el.classList.add('wrong');
+    const fb = document.getElementById('fb-' + qNum);
+    fb.textContent = '✗ ' + wrongExplanations[qNum];
+    fb.className = 'q-feedback wrong';
+    // Highlight correct
+    parent.querySelectorAll('.q-option').forEach(o => {
+      if (o.querySelector('.q-letter').textContent === correct) o.classList.add('correct');
+    });
+  }
+}
+
+function submitQuiz() {
+  let score = 0;
+  for (let i = 1; i <= 10; i++) {
+    if (selected[i] === answers[i]) score++;
+  }
+  document.getElementById('quiz-form').style.display = 'none';
+  const result = document.getElementById('quiz-result');
+  result.classList.add('show');
+  document.getElementById('score-display').textContent = score + '/10';
+  const pct = score * 10;
+  let msg = '';
+  if (pct >= 90) { msg = '🌟 Outstanding! You have mastered PS.5 Energy Conservation.'; document.getElementById('score-display').style.color = 'var(--green)'; }
+  else if (pct >= 70) { msg = '👍 Good work! Review any missed questions and try again.'; document.getElementById('score-display').style.color = 'var(--cyan)'; }
+  else { msg = '📚 Keep practicing! Review the lesson slides and vocabulary, then retake the quiz.'; document.getElementById('score-display').style.color = 'var(--yellow)'; }
+  document.getElementById('score-msg').textContent = msg;
+  completed['quiz'] = true;
+  document.getElementById('nav-quiz').classList.add('completed');
+  updateProgress();
+  if (Object.keys(completed).length === sections.length) {
+    document.getElementById('completion-banner').classList.add('show');
+  }
+}
+
+function retakeQuiz() {
+  Object.keys(selected).forEach(k => delete selected[k]);
+  document.getElementById('quiz-form').style.display = 'block';
+  document.getElementById('quiz-result').classList.remove('show');
+  document.querySelectorAll('.q-option').forEach(o => {
+    o.classList.remove('correct','wrong','disabled');
+  });
+  document.querySelectorAll('.q-feedback').forEach(f => {
+    f.className = 'q-feedback'; f.textContent = '';
+  });
+}
+</script>
+</body>
+</html>
