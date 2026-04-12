@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS.9 – Properties of Light | 8th Grade Physical Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a14;
+    --surface: #0d1a2e;
+    --card: #0f2040;
+    --border: #1a3a6a;
+    --accent: #00d4ff;
+    --accent2: #ff6b35;
+    --accent3: #7fff6b;
+    --gold: #ffd700;
+    --text: #e8f4ff;
+    --muted: #7aa0c4;
+    --correct: #4cff91;
+    --wrong: #ff4c6a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* STARFIELD */
+  .stars {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(1px 1px at 10% 15%, #fff, transparent),
+      radial-gradient(1px 1px at 30% 55%, #adf, transparent),
+      radial-gradient(1px 1px at 50% 25%, #fff, transparent),
+      radial-gradient(1px 1px at 70% 70%, #dff, transparent),
+      radial-gradient(1px 1px at 85% 40%, #fff, transparent),
+      radial-gradient(1px 1px at 20% 85%, #aff, transparent),
+      radial-gradient(1px 1px at 60% 90%, #fff, transparent),
+      radial-gradient(1px 1px at 90% 10%, #ffd, transparent),
+      radial-gradient(1px 1px at 45% 60%, #fff, transparent),
+      radial-gradient(1px 1px at 5% 50%, #dff, transparent);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 56px 24px 40px;
+    background: linear-gradient(180deg, #00d4ff08 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-tag {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 6vw, 56px);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 40px var(--accent), 0 0 80px #00d4ff44;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero-sub {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  .sol-badge {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 18px;
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    background: #00d4ff0d;
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    position: sticky; top: 0; z-index: 100;
+    background: #060e1eee;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+  }
+
+  .progress-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .nav-pill {
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-pill:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-pill.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
+  .nav-pill.done { background: #00d4ff22; color: var(--accent); border-color: var(--accent); }
+  .nav-pill.done::after { content: ' ✓'; }
+
+  /* SECTIONS */
+  .section {
+    display: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    position: relative; z-index: 1;
+  }
+  .section.active { display: block; animation: fadeUp 0.4s ease; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent) 0%, #0066aa 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px #00d4ff44;
+  }
+
+  .section-header h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .section-header p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: #2a5a9a; }
+
+  .card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .card p, .card li {
+    color: #c8dff0;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .card ul { padding-left: 20px; }
+  .card li { margin-bottom: 6px; }
+
+  .highlight {
+    background: #00d4ff11;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .highlight strong { color: var(--accent); }
+
+  /* VIDEO CARD */
+  .video-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 28px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .video-card:hover {
+    border-color: var(--accent2);
+    background: #1a1a00;
+    transform: translateX(4px);
+  }
+
+  .vid-thumb {
+    width: 56px; height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent2), #aa3300);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .vid-info h4 { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .vid-info p  { color: var(--muted); font-size: 13px; }
+
+  .vid-arrow { margin-left: auto; color: var(--accent2); font-size: 20px; }
+
+  /* VOCAB FLIP CARDS */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .flip-card {
+    height: 130px;
+    perspective: 800px;
+    cursor: pointer;
+  }
+
+  .flip-inner {
+    width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    position: relative;
+  }
+
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+  .flip-front, .flip-back {
+    position: absolute; inset: 0;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 14px;
+  }
+
+  .flip-front {
+    background: var(--card);
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+
+  .flip-back {
+    background: linear-gradient(135deg, #0d2a4a, #0a1e38);
+    transform: rotateY(180deg);
+    font-size: 13px;
+    color: #c8dff0;
+    line-height: 1.5;
+    border-color: var(--accent);
+  }
+
+  .flip-hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+
+  /* INTERACTIVE LAB */
+  .lab-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .lab-box h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    color: var(--accent3);
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+
+  /* Light Ray SVG Diagram */
+  .diagram-wrap {
+    background: #060e1e;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .diagram-wrap svg { max-width: 100%; height: auto; }
+
+  /* Slider */
+  .slider-group {
+    margin: 18px 0;
+  }
+
+  .slider-group label {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .slider-group input[type=range] {
+    width: 100%;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .slider-val {
+    color: var(--accent);
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* QUIZ */
+  .quiz-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .q-counter {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .q-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+
+  .q-options {
+    display: grid;
+    gap: 10px;
+  }
+
+  .q-opt {
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+  }
+
+  .q-opt:hover:not(:disabled) { border-color: var(--accent); background: #00d4ff0d; }
+  .q-opt.correct { border-color: var(--correct); background: #00ff6611; color: var(--correct); }
+  .q-opt.wrong   { border-color: var(--wrong);   background: #ff004411; color: var(--wrong); }
+
+  .q-feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: none;
+  }
+  .q-feedback.show { display: block; }
+  .q-feedback.ok  { background: #00ff6611; border: 1px solid var(--correct); color: var(--correct); }
+  .q-feedback.bad { background: #ff004411; border: 1px solid var(--wrong);   color: #ff8899; }
+
+  .q-next {
+    margin-top: 16px;
+    padding: 10px 28px;
+    border-radius: 100px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.2s;
+  }
+  .q-next.show { display: inline-block; }
+  .q-next:hover { background: var(--accent); color: #000; }
+
+  .score-box {
+    text-align: center;
+    padding: 40px 20px;
+    display: none;
+  }
+  .score-box.show { display: block; }
+
+  .score-ring {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 30px #00d4ff44;
+  }
+
+  .score-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+  }
+
+  .score-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .score-msg { font-size: 18px; color: #fff; margin-bottom: 8px; }
+  .score-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+  .btn-retry {
+    padding: 12px 32px;
+    border-radius: 100px;
+    border: 1px solid var(--accent2);
+    background: transparent;
+    color: var(--accent2);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-retry:hover { background: var(--accent2); color: #000; }
+
+  /* NAV BUTTONS */
+  .section-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    gap: 12px;
+  }
+
+  .btn-nav {
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-nav:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-nav.primary { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
+  .btn-nav.primary:hover { background: #00b8dd; border-color: #00b8dd; }
+  .btn-nav:disabled { opacity: 0.3; cursor: default; }
+
+  /* TWO-COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* SPECTRUM BAR */
+  .spectrum-bar {
+    height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #8b00ff, #4b0082, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000);
+    margin: 16px 0;
+    position: relative;
+    border: 1px solid #333;
+  }
+
+  .spectrum-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    padding: 0 2px;
+  }
+
+  /* ANGLE DEMO */
+  #angle-canvas {
+    width: 100%;
+    border-radius: 12px;
+    background: #060e1e;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .tag.reflect { background: #00d4ff22; color: var(--accent); border: 1px solid var(--accent); }
+  .tag.refract  { background: #ff6b3522; color: var(--accent2); border: 1px solid var(--accent2); }
+  .tag.absorb   { background: #7fff6b22; color: var(--accent3); border: 1px solid var(--accent3); }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  @media(max-width: 600px) { .intro-grid { grid-template-columns: 1fr; } }
+
+  .intro-tile {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: all 0.25s;
+  }
+  .intro-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 24px #00000055; }
+  .intro-tile .icon { font-size: 32px; margin-bottom: 10px; }
+  .intro-tile h4 { font-family: 'Orbitron', monospace; font-size: 12px; color: var(--accent); letter-spacing: 1px; margin-bottom: 6px; }
+  .intro-tile p  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  th { background: #0a1e38; color: var(--accent); font-family: 'Orbitron', monospace; font-size: 11px; letter-spacing: 1px; padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 11px 14px; font-size: 14px; color: #c8dff0; border-bottom: 1px solid #0d2040; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #0a1e3022; }
+
+  .back-btn {
+    position:relative; z-index:10;
+    display:inline-flex; align-items:center; gap:8px;
+    margin:16px 20px 0;
+    padding:8px 18px;
+    border-radius:100px;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--muted);
+    font-family:'Exo 2',sans-serif; font-size:13px;
+    cursor:pointer; text-decoration:none;
+    transition:all 0.2s;
+  }
+  .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+
+  .next-lesson-card { background:linear-gradient(135deg,#0f2040,#150a2e); border:1px solid var(--accent); border-radius:16px; padding:28px; text-align:center; text-decoration:none; display:block; transition:all 0.25s; margin-top:20px; }
+  .next-lesson-card:hover { transform:translateY(-3px); box-shadow:0 12px 32px #00d4ff22; }
+  .next-lesson-card .nl-tag { font-family:'Orbitron',monospace; font-size:11px; letter-spacing:3px; color:var(--muted); margin-bottom:8px; }
+  .next-lesson-card h3 { font-family:'Orbitron',monospace; font-size:20px; color:#fff; margin-bottom:6px; }
+  .next-lesson-card p { color:var(--muted); font-size:14px; }
+  .next-lesson-card .nl-arrow { font-size:28px; color:var(--accent); margin-top:12px; }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<a class="back-btn" href="../light-unit.html">← Back to Unit Overview</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">8th Grade Physical Science · Unit: Light</div>
+  <h1>Properties of <span>Light</span></h1>
+  <p class="hero-sub">Reflection · Refraction · Absorption</p>
+  <div class="sol-badge">Virginia SOL PS.9</div>
+</div>
+
+<!-- STICKY NAV -->
+<div class="progress-wrap">
+  <div class="progress-nav" id="navBar">
+    <button class="nav-pill active" onclick="goTo(0)">1. Intro</button>
+    <button class="nav-pill" onclick="goTo(1)">2. Reflection</button>
+    <button class="nav-pill" onclick="goTo(2)">3. Refraction</button>
+    <button class="nav-pill" onclick="goTo(3)">4. Absorption</button>
+    <button class="nav-pill" onclick="goTo(4)">5. Vocabulary</button>
+    <button class="nav-pill" onclick="goTo(5)">6. Virtual Lab</button>
+    <button class="nav-pill" onclick="goTo(6)">7. Quiz</button>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 0: INTRO ══════════════ -->
+<div class="section active" id="sec0">
+  <div class="section-header">
+    <div class="section-icon">💡</div>
+    <div>
+      <h2>What Is Light?</h2>
+      <p>Module 1 of 7 · Introduction</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p>Light is a form of <strong style="color:var(--accent)">electromagnetic energy</strong> that travels as waves. It is the only form of energy our eyes can detect directly. Light travels at an incredible speed — <strong style="color:var(--gold)">approximately 300,000,000 meters per second</strong> in a vacuum!</p>
+    <div class="highlight">
+      <strong>Key Idea:</strong> When light strikes a surface or passes into a new material, three things can happen — it can be <strong style="color:var(--accent)">reflected</strong>, <strong style="color:var(--accent2)">refracted</strong>, or <strong style="color:var(--accent3)">absorbed</strong>. Often all three happen at once!
+    </div>
+  </div>
+
+  <div class="intro-grid">
+    <div class="intro-tile">
+      <div class="icon">🔄</div>
+      <h4>Reflection</h4>
+      <p>Light bounces off a surface and changes direction</p>
+    </div>
+    <div class="intro-tile">
+      <div class="icon">🌊</div>
+      <h4>Refraction</h4>
+      <p>Light bends as it passes from one material into another</p>
+    </div>
+    <div class="intro-tile">
+      <div class="icon">🌑</div>
+      <h4>Absorption</h4>
+      <p>Light energy is taken in by a material and converted to heat</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🌈 Visible Light & The Electromagnetic Spectrum</h3>
+    <p>Visible light is just a small portion of the full electromagnetic spectrum. Different colors of visible light have different wavelengths.</p>
+    <div class="spectrum-bar"></div>
+    <div class="spectrum-labels">
+      <span>Violet (380nm)</span>
+      <span>Blue</span>
+      <span>Green</span>
+      <span>Yellow</span>
+      <span>Orange</span>
+      <span>Red (700nm)</span>
+    </div>
+  </div>
+
+  <a class="video-card" href="https://youtu.be/IRBfpBPELmE" target="_blank">
+    <div class="vid-thumb">▶</div>
+    <div class="vid-info">
+      <h4>Light Is Waves – Crash Course Physics #39</h4>
+      <p>How we know light travels as a wave · PBS / CrashCourse</p>
+    </div>
+    <div class="vid-arrow">→</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" disabled>← Previous</button>
+    <button class="btn-nav primary" onclick="goTo(1)">Next: Reflection →</button>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 1: REFLECTION ══════════════ -->
+<div class="section" id="sec1">
+  <div class="section-header">
+    <div class="section-icon">🔄</div>
+    <div>
+      <h2>Reflection</h2>
+      <p>Module 2 of 7 · How light bounces</p>
+    </div>
+  </div>
+
+  <span class="tag reflect">REFLECTION</span>
+  <div class="card">
+    <h3>THE LAW OF REFLECTION</h3>
+    <p><strong style="color:#fff">Reflection</strong> occurs when light strikes a surface and bounces back. The direction of the reflected ray follows a precise rule:</p>
+    <div class="highlight">
+      <strong>Law of Reflection:</strong> The angle of incidence = the angle of reflection.<br>
+      Both angles are measured from an imaginary line called the <strong>normal</strong> — a line perpendicular to the surface at the point where light hits.
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Surface -->
+      <line x1="50" y1="200" x2="450" y2="200" stroke="#1a3a6a" stroke-width="3"/>
+      <text x="460" y="204" fill="#7aa0c4" font-size="12" font-family="Exo 2">Surface</text>
+      <!-- Normal -->
+      <line x1="250" y1="60" x2="250" y2="200" stroke="#ffffff33" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="258" y="80" fill="#ffffff55" font-size="11" font-family="Exo 2">Normal</text>
+      <!-- Incoming ray -->
+      <line x1="80" y1="80" x2="250" y2="200" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#arr1)"/>
+      <text x="85" y="70" fill="#00d4ff" font-size="13" font-family="Exo 2" font-weight="600">Incident Ray</text>
+      <!-- Reflected ray -->
+      <line x1="250" y1="200" x2="420" y2="80" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#arr2)"/>
+      <text x="370" y="70" fill="#00d4ff" font-size="13" font-family="Exo 2" font-weight="600">Reflected Ray</text>
+      <!-- Angle labels -->
+      <path d="M 210 200 A 40 40 0 0 1 250 160" fill="none" stroke="#ffd70088" stroke-width="1.5"/>
+      <text x="196" y="175" fill="#ffd700" font-size="13" font-family="Exo 2">θ₁</text>
+      <path d="M 250 160 A 40 40 0 0 1 290 200" fill="none" stroke="#ffd70088" stroke-width="1.5"/>
+      <text x="275" y="175" fill="#ffd700" font-size="13" font-family="Exo 2">θ₂</text>
+      <text x="160" y="240" fill="#ffd700" font-size="12" font-family="Exo 2" font-style="italic">θ₁ = θ₂</text>
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>🪞 REGULAR (SPECULAR) REFLECTION</h3>
+      <p>Occurs on <strong style="color:#fff">smooth, shiny surfaces</strong> like mirrors or calm water. All light rays reflect at the same angle, producing a clear image.</p>
+      <ul style="margin-top:10px">
+        <li>Mirror</li>
+        <li>Polished metal</li>
+        <li>Calm lake surface</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📋 DIFFUSE REFLECTION</h3>
+      <p>Occurs on <strong style="color:#fff">rough surfaces</strong>. Light rays hit tiny uneven bumps and scatter in many directions. No clear image is formed.</p>
+      <ul style="margin-top:10px">
+        <li>Paper</li>
+        <li>Painted walls</li>
+        <li>Rough asphalt</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔑 WHY CAN WE SEE OBJECTS?</h3>
+    <p>Most objects do <em>not</em> produce their own light. We see them because they <strong style="color:var(--accent)">diffusely reflect</strong> light from another source (like the sun or a lamp) into our eyes. This is called <strong style="color:var(--accent)">reflected light</strong>.</p>
+  </div>
+
+  <a class="video-card" href="https://youtu.be/Oh4m8Ees-3Q" target="_blank">
+    <div class="vid-thumb" style="background:linear-gradient(135deg,#00d4ff,#006699)">▶</div>
+    <div class="vid-info">
+      <h4>Geometric Optics – Crash Course Physics #38</h4>
+      <p>Law of reflection, refraction & lenses · PBS / CrashCourse</p>
+    </div>
+    <div class="vid-arrow">→</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(0)">← Intro</button>
+    <button class="btn-nav primary" onclick="goTo(2)">Next: Refraction →</button>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 2: REFRACTION ══════════════ -->
+<div class="section" id="sec2">
+  <div class="section-header">
+    <div class="section-icon">🌊</div>
+    <div>
+      <h2>Refraction</h2>
+      <p>Module 3 of 7 · How light bends</p>
+    </div>
+  </div>
+
+  <span class="tag refract">REFRACTION</span>
+  <div class="card">
+    <h3>WHAT IS REFRACTION?</h3>
+    <p><strong style="color:#fff">Refraction</strong> is the bending of light as it passes from one transparent material (medium) into another. The bending occurs because light travels at different speeds in different materials.</p>
+    <div class="highlight">
+      <strong>Rule:</strong> Light bends <em>toward</em> the normal when slowing down (entering a denser medium) and <em>away</em> from the normal when speeding up (entering a less dense medium).
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- Media labels -->
+      <rect x="0" y="0" width="500" height="150" fill="#00d4ff06"/>
+      <rect x="0" y="150" width="500" height="150" fill="#00d4ff12"/>
+      <text x="20" y="30" fill="#7aa0c4" font-size="13" font-family="Exo 2">Air (less dense — light moves faster)</text>
+      <text x="20" y="260" fill="#00d4ff" font-size="13" font-family="Exo 2">Glass / Water (more dense — light moves slower)</text>
+      <!-- Interface -->
+      <line x1="0" y1="150" x2="500" y2="150" stroke="#1a3a6a" stroke-width="2"/>
+      <!-- Normal -->
+      <line x1="220" y1="30" x2="220" y2="270" stroke="#ffffff22" stroke-width="1" stroke-dasharray="5,4"/>
+      <!-- Incident ray -->
+      <line x1="60" y1="20" x2="220" y2="150" stroke="#ffd700" stroke-width="2.5" marker-end="url(#arri)"/>
+      <text x="30" y="18" fill="#ffd700" font-size="12" font-family="Exo 2">Incident</text>
+      <!-- Refracted ray -->
+      <line x1="220" y1="150" x2="300" y2="280" stroke="#ff6b35" stroke-width="2.5" marker-end="url(#arrr)"/>
+      <text x="305" y="275" fill="#ff6b35" font-size="12" font-family="Exo 2">Refracted</text>
+      <!-- Angle arcs -->
+      <path d="M 185 150 A 35 35 0 0 1 220 115" fill="none" stroke="#ffd70066" stroke-width="1.5"/>
+      <text x="170" y="130" fill="#ffd700" font-size="12" font-family="Exo 2">θ₁</text>
+      <path d="M 220 185 A 35 35 0 0 1 245 150" fill="none" stroke="#ff6b3566" stroke-width="1.5"/>
+      <text x="247" y="180" fill="#ff6b35" font-size="12" font-family="Exo 2">θ₂</text>
+      <defs>
+        <marker id="arri" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ffd700"/></marker>
+        <marker id="arrr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ff6b35"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>📊 SPEED OF LIGHT IN DIFFERENT MATERIALS</h3>
+    <table>
+      <tr><th>Material</th><th>Speed of Light</th><th>Relative Density</th></tr>
+      <tr><td>Vacuum / Space</td><td>300,000,000 m/s</td><td>—</td></tr>
+      <tr><td>Air</td><td>~299,700,000 m/s</td><td>Very low</td></tr>
+      <tr><td>Water</td><td>~225,000,000 m/s</td><td>Medium</td></tr>
+      <tr><td>Glass</td><td>~200,000,000 m/s</td><td>High</td></tr>
+      <tr><td>Diamond</td><td>~124,000,000 m/s</td><td>Very high</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>🌈 DISPERSION</h3>
+      <p>When white light refracts through a prism, different colors bend at slightly different angles, separating into a <strong style="color:#fff">spectrum</strong>. This is how rainbows form!</p>
+    </div>
+    <div class="card">
+      <h3>👁️ REAL-WORLD EXAMPLES</h3>
+      <ul>
+        <li>Straw appearing bent in water</li>
+        <li>Swimming pool looking shallower</li>
+        <li>Mirages on hot roads</li>
+        <li>Camera and eyeglass lenses</li>
+      </ul>
+    </div>
+  </div>
+
+  <a class="video-card" href="https://youtu.be/Oh4m8Ees-3Q" target="_blank">
+    <div class="vid-thumb" style="background:linear-gradient(135deg,#ff6b35,#aa3300)">▶</div>
+    <div class="vid-info">
+      <h4>Geometric Optics – Crash Course Physics #38</h4>
+      <p>Refraction, Snell's Law & lenses explained · PBS / CrashCourse</p>
+    </div>
+    <div class="vid-arrow">→</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(1)">← Reflection</button>
+    <button class="btn-nav primary" onclick="goTo(3)">Next: Absorption →</button>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 3: ABSORPTION ══════════════ -->
+<div class="section" id="sec3">
+  <div class="section-header">
+    <div class="section-icon">🌑</div>
+    <div>
+      <h2>Absorption</h2>
+      <p>Module 4 of 7 · How light is taken in</p>
+    </div>
+  </div>
+
+  <span class="tag absorb">ABSORPTION</span>
+  <div class="card">
+    <h3>WHAT IS ABSORPTION?</h3>
+    <p><strong style="color:#fff">Absorption</strong> occurs when light energy strikes a material and is taken in rather than reflected or transmitted. The absorbed energy is usually converted into <strong style="color:var(--accent3)">thermal (heat) energy</strong>, causing the object to warm up.</p>
+    <div class="highlight">
+      <strong>Key Idea:</strong> The more light a material absorbs, the warmer it gets. Dark-colored objects absorb more light energy than light-colored objects.
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>⚫ DARK COLORS</h3>
+      <p>Dark colors <strong style="color:var(--accent3)">absorb most wavelengths</strong> of visible light. Black absorbs nearly all incoming light energy, converting it to heat. This is why dark asphalt feels so hot in summer!</p>
+    </div>
+    <div class="card">
+      <h3>⚪ LIGHT COLORS</h3>
+      <p>Light colors <strong style="color:var(--accent)">reflect most wavelengths</strong> of visible light. White reflects almost all visible light, absorbing very little. This is why white clothing keeps you cooler in sunlight.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🎨 COLOR & ABSORPTION — THE CONNECTION</h3>
+    <p>The <strong style="color:#fff">color we see</strong> is the wavelength of light that is <em>reflected</em>, not absorbed. When you see a red apple:</p>
+    <ul style="margin-top: 12px">
+      <li>The apple <strong style="color:var(--wrong)">absorbs</strong> blue, green, orange, and yellow wavelengths</li>
+      <li>The apple <strong style="color:var(--correct)">reflects</strong> red wavelengths into your eyes</li>
+      <li>Your brain interprets that reflected red light as the color "red"</li>
+    </ul>
+    <div class="highlight" style="margin-top:16px">
+      <strong>Think about it:</strong> A black object absorbs ALL visible wavelengths. A white object reflects ALL visible wavelengths. Colored objects selectively absorb and reflect specific wavelengths.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🌍 REAL-WORLD APPLICATIONS</h3>
+    <table>
+      <tr><th>Application</th><th>Absorption Principle</th></tr>
+      <tr><td>Solar panels</td><td>Dark cells absorb maximum light energy to generate electricity</td></tr>
+      <tr><td>White roofs / "cool roofs"</td><td>Reflect sunlight to reduce building cooling costs</td></tr>
+      <tr><td>Greenhouse effect</td><td>Earth absorbs solar radiation; atmosphere traps heat</td></tr>
+      <tr><td>Night-vision goggles</td><td>Detect infrared (absorbed heat) instead of visible light</td></tr>
+    </table>
+  </div>
+
+  <a class="video-card" href="https://youtu.be/xA8MT6yhP4w" target="_blank">
+    <div class="vid-thumb" style="background:linear-gradient(135deg,#7fff6b,#2a8800)">▶</div>
+    <div class="vid-info">
+      <h4>Understanding Absorption of Light – Edmund Optics</h4>
+      <p>Why objects appear different colors · absorption & reflection demo</p>
+    </div>
+    <div class="vid-arrow">→</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(2)">← Refraction</button>
+    <button class="btn-nav primary" onclick="goTo(4)">Next: Vocabulary →</button>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 4: VOCABULARY ══════════════ -->
+<div class="section" id="sec4">
+  <div class="section-header">
+    <div class="section-icon">📖</div>
+    <div>
+      <h2>Key Vocabulary</h2>
+      <p>Module 5 of 7 · Tap each card to reveal the definition</p>
+    </div>
+  </div>
+
+  <p class="flip-hint">▸ TAP A CARD TO FLIP IT</p>
+
+  <div class="vocab-grid" id="vocabGrid"></div>
+
+  <div class="section-nav" style="margin-top:32px">
+    <button class="btn-nav" onclick="goTo(3)">← Absorption</button>
+    <button class="btn-nav primary" onclick="goTo(5)">Next: Virtual Lab →</button>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 5: VIRTUAL LAB ══════════════ -->
+<div class="section" id="sec5">
+  <div class="section-header">
+    <div class="section-icon">🔬</div>
+    <div>
+      <h2>Virtual Lab</h2>
+      <p>Module 6 of 7 · Interactive light explorer</p>
+    </div>
+  </div>
+
+  <!-- LAB 1: Reflection Angle -->
+  <div class="lab-box">
+    <h3>⚗️ LAB 1 — LAW OF REFLECTION EXPLORER</h3>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:16px">Drag the slider to change the angle of the incoming light ray. Observe how the reflected ray changes.</p>
+    <canvas id="reflectCanvas" height="220" style="width:100%;border-radius:12px;background:#060e1e;border:1px solid var(--border);display:block;"></canvas>
+    <div class="slider-group" style="margin-top:16px">
+      <label>ANGLE OF INCIDENCE</label>
+      <input type="range" id="angleSlider" min="10" max="80" value="40" oninput="drawReflection()">
+      <span class="slider-val" id="angleVal">40°</span>
+    </div>
+    <div class="highlight" id="reflectObs">
+      <strong>Observation:</strong> The angle of incidence is <span id="incAng" style="color:var(--accent)">40°</span> and the angle of reflection is also <span id="refAng" style="color:var(--accent)">40°</span> — they are always equal!
+    </div>
+  </div>
+
+  <!-- LAB 2: Absorption comparison -->
+  <div class="lab-box">
+    <h3>⚗️ LAB 2 — ABSORPTION & SURFACE COLOR</h3>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:16px">Simulate how a surface's color affects light absorption. Adjust light intensity and observe temperature change.</p>
+    <div class="two-col">
+      <div style="text-align:center">
+        <div id="darkBox" style="width:100%;height:90px;border-radius:10px;background:#111;border:2px solid #333;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:all 0.3s;margin-bottom:8px">
+          <span style="font-size:22px">⬛</span>
+          <span style="color:#aaa;font-size:13px">Dark Surface</span>
+          <span id="darkTemp" style="color:var(--accent3);font-family:'Orbitron',monospace;font-size:16px;font-weight:700">22°C</span>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div id="lightBox" style="width:100%;height:90px;border-radius:10px;background:#e8e8e8;border:2px solid #ccc;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:all 0.3s;margin-bottom:8px">
+          <span style="font-size:22px">⬜</span>
+          <span style="color:#333;font-size:13px">Light Surface</span>
+          <span id="lightTemp" style="color:#555;font-family:'Orbitron',monospace;font-size:16px;font-weight:700">22°C</span>
+        </div>
+      </div>
+    </div>
+    <div class="slider-group" style="margin-top:6px">
+      <label>LIGHT INTENSITY (Simulated Sun Exposure)</label>
+      <input type="range" id="lightSlider" min="0" max="100" value="0" oninput="updateAbsorption()">
+      <span class="slider-val" id="lightVal">0%</span>
+    </div>
+    <div class="highlight" id="absObs">
+      Set the light intensity to see how each surface responds differently!
+    </div>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(4)">← Vocabulary</button>
+    <button class="btn-nav primary" onclick="goTo(6)">Take the Quiz →</button>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION 6: QUIZ ══════════════ -->
+<div class="section" id="sec6">
+  <div class="section-header">
+    <div class="section-icon">✏️</div>
+    <div>
+      <h2>SOL-Style Quiz</h2>
+      <p>Module 7 of 7 · Test your understanding</p>
+    </div>
+  </div>
+
+  <div class="quiz-box" id="quizBox">
+    <div class="q-counter" id="qCounter">QUESTION 1 OF 8</div>
+    <div class="q-text" id="qText"></div>
+    <div class="q-options" id="qOptions"></div>
+    <div class="q-feedback" id="qFeedback"></div>
+    <button class="q-next" id="qNext" onclick="nextQuestion()">Next Question →</button>
+  </div>
+
+  <div class="score-box" id="scoreBox">
+    <div class="score-ring">
+      <span class="score-num" id="scoreNum">0/8</span>
+      <span class="score-label">SCORE</span>
+    </div>
+    <p class="score-msg" id="scoreMsg"></p>
+    <p class="score-sub" id="scoreSub"></p>
+    <button class="btn-retry" onclick="resetQuiz()">↺ Try Again</button>
+  </div>
+
+  <a href="../light-unit.html" style="background:linear-gradient(135deg,#0f2040,#050a14);border:1px solid var(--accent);border-radius:16px;padding:28px;text-align:center;text-decoration:none;display:block;transition:all 0.25s;margin-top:20px;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+    <div style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:3px;color:var(--muted);margin-bottom:8px;">UNIT OVERVIEW</div>
+    <h3 style="font-family:'Orbitron',monospace;font-size:18px;color:#fff;margin-bottom:6px;">Return to Light Unit Hub</h3>
+    <p style="color:var(--muted);font-size:14px;">PS.7 Electromagnetic Radiation · PS.9 Properties of Light</p>
+    <div style="font-size:24px;color:var(--accent);margin-top:12px;">↩</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(5)">← Virtual Lab</button>
+    <button class="btn-nav primary" onclick="goTo(0)">↺ Restart Lesson</button>
+  </div>
+</div>
+
+<script>
+// ─── NAVIGATION ───────────────────────────────────────
+const sections = document.querySelectorAll('.section');
+const pills = document.querySelectorAll('.nav-pill');
+const completed = new Set();
+let current = 0;
+
+function goTo(idx) {
+  sections[current].classList.remove('active');
+  completed.add(current);
+  current = idx;
+  sections[current].classList.add('active');
+  pills.forEach((p, i) => {
+    p.classList.remove('active');
+    if (completed.has(i) && i !== current) p.classList.add('done');
+    else p.classList.remove('done');
+  });
+  pills[current].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (idx === 5) { setTimeout(drawReflection, 200); }
+}
+
+// ─── VOCABULARY DATA ──────────────────────────────────
+const vocab = [
+  { term: 'Reflection',    def: 'Light bouncing off a surface; angle of incidence equals angle of reflection.' },
+  { term: 'Refraction',    def: 'Bending of light as it passes from one medium into another of different density.' },
+  { term: 'Absorption',    def: 'Process by which a material takes in light energy, usually converting it to heat.' },
+  { term: 'Normal',        def: 'An imaginary line perpendicular to a surface at the point where light strikes it.' },
+  { term: 'Angle of Incidence', def: 'The angle between an incoming light ray and the normal to the surface.' },
+  { term: 'Angle of Reflection', def: 'The angle between a reflected light ray and the normal; always equals the angle of incidence.' },
+  { term: 'Medium',        def: 'A material or substance through which light (or other waves) travels.' },
+  { term: 'Transparent',   def: 'Allows light to pass through with little scattering (e.g., clear glass, water).' },
+  { term: 'Opaque',        def: 'Does not allow light to pass through; absorbs or reflects all incoming light.' },
+  { term: 'Translucent',   def: 'Partially transmits light but scatters it so objects behind are not clearly visible.' },
+  { term: 'Dispersion',    def: 'Separation of white light into its component colors due to different degrees of refraction.' },
+  { term: 'Diffuse Reflection', def: 'Reflection from a rough surface causing light to scatter in many directions.' },
+];
+
+const grid = document.getElementById('vocabGrid');
+vocab.forEach((v) => {
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+  card.innerHTML = `<div class="flip-inner"><div class="flip-front">${v.term}</div><div class="flip-back">${v.def}</div></div>`;
+  card.onclick = () => card.classList.toggle('flipped');
+  grid.appendChild(card);
+});
+
+// ─── REFLECTION LAB CANVAS ────────────────────────────
+function drawReflection() {
+  const canvas = document.getElementById('reflectCanvas');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.offsetWidth * dpr;
+  const H = 220 * dpr;
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const w = canvas.offsetWidth, h = 220;
+  ctx.clearRect(0, 0, w, h);
+
+  const angle = parseInt(document.getElementById('angleSlider').value);
+  document.getElementById('angleVal').textContent = angle + '°';
+  document.getElementById('incAng').textContent = angle + '°';
+  document.getElementById('refAng').textContent = angle + '°';
+
+  const cx = w / 2, cy = h - 40;
+  const rad = angle * Math.PI / 180;
+  const len = 120;
+
+  // Surface
+  ctx.strokeStyle = '#1a3a6a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(30, cy); ctx.lineTo(w - 30, cy); ctx.stroke();
+
+  // Normal
+  ctx.setLineDash([5, 4]); ctx.strokeStyle = '#ffffff33'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cx, cy - 130); ctx.lineTo(cx, cy); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Incident ray
+  const ix = cx - Math.sin(rad) * len, iy = cy - Math.cos(rad) * len;
+  ctx.strokeStyle = '#00d4ff'; ctx.lineWidth = 2.5;
+  drawArrow(ctx, ix, iy, cx, cy, '#00d4ff');
+
+  // Reflected ray
+  const rx = cx + Math.sin(rad) * len, ry = cy - Math.cos(rad) * len;
+  drawArrow(ctx, cx, cy, rx, ry, '#00d4ff');
+
+  // Labels
+  ctx.fillStyle = '#00d4ff'; ctx.font = '600 12px "Exo 2"';
+  ctx.fillText('Incident', ix - 65, iy + 5);
+  ctx.fillText('Reflected', rx + 8, ry + 5);
+  ctx.fillStyle = '#ffffff44'; ctx.font = '11px "Exo 2"';
+  ctx.fillText('Normal', cx + 6, cy - 115);
+  ctx.fillStyle = '#ffd700'; ctx.font = '13px "Exo 2"';
+  ctx.fillText('θ = ' + angle + '°', cx - 52, cy - 20);
+  ctx.fillText('θ = ' + angle + '°', cx + 20, cy - 20);
+}
+
+function drawArrow(ctx, x1, y1, x2, y2, color) {
+  ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  const ang = Math.atan2(y2 - y1, x2 - x1);
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - 10 * Math.cos(ang - 0.4), y2 - 10 * Math.sin(ang - 0.4));
+  ctx.lineTo(x2 - 10 * Math.cos(ang + 0.4), y2 - 10 * Math.sin(ang + 0.4));
+  ctx.closePath(); ctx.fill();
+}
+
+// ─── ABSORPTION LAB ───────────────────────────────────
+function updateAbsorption() {
+  const val = parseInt(document.getElementById('lightSlider').value);
+  document.getElementById('lightVal').textContent = val + '%';
+  const darkT = Math.round(22 + val * 0.58);
+  const lightT = Math.round(22 + val * 0.12);
+  document.getElementById('darkTemp').textContent = darkT + '°C';
+  document.getElementById('lightTemp').textContent = lightT + '°C';
+  const r = Math.min(255, Math.round(val * 1.5));
+  document.getElementById('darkBox').style.boxShadow = val > 0 ? `0 0 ${val/3}px #ff${(255-r).toString(16).padStart(2,'0')}0044` : 'none';
+
+  let obs = '';
+  if (val === 0) obs = 'Set the light intensity to see how each surface responds differently!';
+  else if (val < 30) obs = `<strong>Low intensity:</strong> The dark surface is already warmer (${darkT}°C vs ${lightT}°C). Absorption is happening!`;
+  else if (val < 70) obs = `<strong>Medium intensity:</strong> Big difference! Dark surface (${darkT}°C) absorbs much more energy than the light surface (${lightT}°C).`;
+  else obs = `<strong>High intensity:</strong> The dark surface (${darkT}°C) is dramatically hotter — it absorbed ~${Math.round((darkT-lightT)/(darkT-22)*100)}% more energy than the light surface (${lightT}°C)!`;
+  document.getElementById('absObs').innerHTML = obs;
+}
+
+// ─── QUIZ ─────────────────────────────────────────────
+const questions = [
+  {
+    q: 'According to the Law of Reflection, what is the relationship between the angle of incidence and the angle of reflection?',
+    opts: ['The angle of reflection is twice the angle of incidence', 'The angle of incidence equals the angle of reflection', 'The angle of reflection is always 90°', 'The angles are unrelated and vary randomly'],
+    ans: 1,
+    exp: 'The Law of Reflection states that the angle of incidence always equals the angle of reflection, both measured from the normal (perpendicular line) to the surface.'
+  },
+  {
+    q: 'A light ray passes from air into a glass block. Which statement BEST describes what happens?',
+    opts: ['The light speeds up and bends away from the normal', 'The light slows down and bends toward the normal', 'The light maintains the same speed and direction', 'The light is completely absorbed by the glass'],
+    ans: 1,
+    exp: 'Light travels slower in glass than in air. When it slows down entering a denser medium, it bends toward the normal — this is refraction.'
+  },
+  {
+    q: 'A red apple is placed under white light. Which statement BEST explains why the apple appears red?',
+    opts: ['The apple produces its own red light', 'The apple absorbs red light and reflects all others', 'The apple reflects red light and absorbs all other wavelengths', 'The apple refracts red light toward your eyes'],
+    ans: 2,
+    exp: 'Objects appear a certain color because they reflect that wavelength and absorb all others. The apple absorbs blue, green, and yellow light, and reflects red light into your eyes.'
+  },
+  {
+    q: 'Which type of surface would produce a clear, sharp mirror image?',
+    opts: ['A rough, matte surface that causes diffuse reflection', 'A smooth, polished surface that causes specular reflection', 'A dark surface that absorbs most light', 'A translucent surface that transmits light'],
+    ans: 1,
+    exp: 'Specular (regular) reflection occurs on smooth surfaces where all light rays reflect at the same angle, producing a clear image. Diffuse reflection on rough surfaces scatters light in many directions.'
+  },
+  {
+    q: 'Why does a black t-shirt feel hotter in sunlight than a white t-shirt?',
+    opts: ['Black fabric is thicker and traps more heat from your body', 'Black fabric absorbs more wavelengths of light, converting energy to heat', 'Black fabric reflects more sunlight than white fabric', 'White fabric refracts sunlight away from the body'],
+    ans: 1,
+    exp: 'Dark-colored objects absorb more wavelengths of visible light. The absorbed light energy is converted to thermal (heat) energy, making dark clothing warmer in sunlight.'
+  },
+  {
+    q: 'A student notices a straw appears bent at the surface of a glass of water. This is caused by:',
+    opts: ['Reflection of light off the water surface', 'Refraction of light as it moves between air and water', 'Absorption of light by the water', 'Diffuse reflection from the straw surface'],
+    ans: 1,
+    exp: 'This is refraction. Light traveling from water (denser) to air (less dense) bends at the boundary, making the straw appear displaced or bent at the water\'s surface.'
+  },
+  {
+    q: 'Solar panels are typically made with dark-colored surfaces. What property of light does this take advantage of?',
+    opts: ['Reflection — to bounce light toward a collector', 'Refraction — to bend light through the panel', 'Absorption — to maximize light energy intake', 'Dispersion — to separate light into colors'],
+    ans: 2,
+    exp: 'Dark surfaces absorb more light energy. Solar panels use dark materials to maximize the absorption of light energy, which is then converted into electrical energy.'
+  },
+  {
+    q: 'Which correctly lists what happens to the speed of light as it travels from air into water into glass?',
+    opts: ['Increases, then increases again', 'Decreases, then decreases again', 'Increases, then decreases', 'Stays the same throughout'],
+    ans: 1,
+    exp: 'Light travels fastest in air, slower in water, and even slower in glass. As density increases, light speed decreases. This is why light bends toward the normal each time it enters a denser medium.'
+  },
+];
+
+let qIdx = 0, score = 0, answered = false;
+
+function loadQ() {
+  const q = questions[qIdx];
+  document.getElementById('qCounter').textContent = `QUESTION ${qIdx + 1} OF ${questions.length}`;
+  document.getElementById('qText').textContent = q.q;
+  const opts = document.getElementById('qOptions');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-opt';
+    btn.textContent = o;
+    btn.onclick = () => selectAnswer(i);
+    opts.appendChild(btn);
+  });
+  document.getElementById('qFeedback').className = 'q-feedback';
+  document.getElementById('qFeedback').textContent = '';
+  document.getElementById('qNext').className = 'q-next';
+  answered = false;
+}
+
+function selectAnswer(i) {
+  if (answered) return;
+  answered = true;
+  const q = questions[qIdx];
+  const btns = document.querySelectorAll('.q-opt');
+  btns.forEach(b => b.disabled = true);
+  btns[q.ans].classList.add('correct');
+  const fb = document.getElementById('qFeedback');
+  if (i === q.ans) {
+    score++;
+    btns[i].classList.add('correct');
+    fb.className = 'q-feedback ok show';
+    fb.innerHTML = '✓ Correct! ' + q.exp;
+  } else {
+    btns[i].classList.add('wrong');
+    fb.className = 'q-feedback bad show';
+    fb.innerHTML = '✗ Not quite. ' + q.exp;
+  }
+  document.getElementById('qNext').className = 'q-next show';
+  if (qIdx === questions.length - 1) document.getElementById('qNext').textContent = 'See My Score →';
+}
+
+function nextQuestion() {
+  qIdx++;
+  if (qIdx >= questions.length) {
+    showScore();
+  } else {
+    loadQ();
+  }
+}
+
+function showScore() {
+  document.getElementById('quizBox').style.display = 'none';
+  const sb = document.getElementById('scoreBox');
+  sb.className = 'score-box show';
+  document.getElementById('scoreNum').textContent = score + '/' + questions.length;
+  const pct = score / questions.length;
+  let msg, sub;
+  if (pct === 1)        { msg = '🌟 Perfect Score!'; sub = 'Outstanding! You\'ve mastered the properties of light.'; }
+  else if (pct >= 0.75) { msg = '🎉 Great Work!'; sub = 'Strong understanding! Review any missed questions and you\'re set.'; }
+  else if (pct >= 0.5)  { msg = '📚 Keep Going!'; sub = 'Halfway there — revisit the Reflection, Refraction, and Absorption sections.'; }
+  else                  { msg = '🔁 Let\'s Review!'; sub = 'No worries — go back through the lesson modules and try again!'; }
+  document.getElementById('scoreMsg').textContent = msg;
+  document.getElementById('scoreSub').textContent = sub;
+}
+
+function resetQuiz() {
+  qIdx = 0; score = 0; answered = false;
+  document.getElementById('quizBox').style.display = 'block';
+  document.getElementById('scoreBox').className = 'score-box';
+  loadQ();
+}
+
+loadQ();
+drawReflection();
+
+window.addEventListener('resize', () => {
+  if (current === 5) drawReflection();
+});
+</script>
+</body>
+</html>
