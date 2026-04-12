@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS.7 – Electromagnetic Radiation | 8th Grade Physical Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a14;
+    --surface: #0d1a2e;
+    --card: #0f2040;
+    --border: #1a3a6a;
+    --accent: #a78bfa;
+    --accent2: #f472b6;
+    --accent3: #34d399;
+    --gold: #ffd700;
+    --text: #e8f4ff;
+    --muted: #7aa0c4;
+    --correct: #4cff91;
+    --wrong: #ff4c6a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Exo 2',sans-serif; font-weight:400; min-height:100vh; overflow-x:hidden; }
+
+  .stars {
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(1px 1px at 8% 12%, #fff, transparent),
+      radial-gradient(1px 1px at 25% 60%, #d4aaff, transparent),
+      radial-gradient(1px 1px at 55% 22%, #fff, transparent),
+      radial-gradient(1px 1px at 72% 75%, #ffd4ff, transparent),
+      radial-gradient(1px 1px at 88% 38%, #fff, transparent),
+      radial-gradient(1px 1px at 18% 88%, #aaffdd, transparent),
+      radial-gradient(1px 1px at 62% 92%, #fff, transparent),
+      radial-gradient(1px 1px at 92% 8%, #ffd, transparent),
+      radial-gradient(1px 1px at 42% 55%, #fff, transparent),
+      radial-gradient(1px 1px at 3% 45%, #ddaaff, transparent);
+  }
+
+  .back-btn {
+    position:relative; z-index:10;
+    display:inline-flex; align-items:center; gap:8px;
+    margin:16px 20px 0;
+    padding:8px 18px;
+    border-radius:100px;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--muted);
+    font-family:'Exo 2',sans-serif; font-size:13px;
+    cursor:pointer; text-decoration:none;
+    transition:all 0.2s;
+  }
+  .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+
+  .hero {
+    position:relative; z-index:1;
+    text-align:center; padding:48px 24px 36px;
+    background:linear-gradient(180deg,#a78bfa0a 0%,transparent 100%);
+    border-bottom:1px solid var(--border);
+  }
+  .hero-tag { font-family:'Orbitron',monospace; font-size:11px; letter-spacing:4px; color:var(--accent); text-transform:uppercase; margin-bottom:12px; opacity:0.8; }
+  .hero h1 { font-family:'Orbitron',monospace; font-size:clamp(24px,5vw,48px); font-weight:900; color:#fff; text-shadow:0 0 40px var(--accent),0 0 80px #a78bfa44; line-height:1.1; margin-bottom:10px; }
+  .hero h1 span { color:var(--accent); }
+  .hero-sub { color:var(--muted); font-size:15px; font-weight:300; letter-spacing:1px; }
+  .sol-badge { display:inline-block; margin-top:16px; padding:6px 18px; border:1px solid var(--accent); border-radius:100px; font-family:'Orbitron',monospace; font-size:11px; color:var(--accent); letter-spacing:2px; background:#a78bfa0d; }
+
+  .progress-wrap { position:sticky; top:0; z-index:100; background:#060e1eee; backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:10px 24px; }
+  .progress-nav { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; max-width:980px; margin:0 auto; }
+  .nav-pill { padding:5px 14px; border-radius:100px; border:1px solid var(--border); background:transparent; color:var(--muted); font-family:'Exo 2',sans-serif; font-size:12px; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
+  .nav-pill:hover { border-color:var(--accent); color:var(--accent); }
+  .nav-pill.active { background:var(--accent); color:#000; border-color:var(--accent); font-weight:600; }
+  .nav-pill.done { background:#a78bfa22; color:var(--accent); border-color:var(--accent); }
+  .nav-pill.done::after { content:' ✓'; }
+
+  .section { display:none; max-width:920px; margin:0 auto; padding:40px 20px 80px; position:relative; z-index:1; }
+  .section.active { display:block; animation:fadeUp 0.4s ease; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+  .section-header { display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+  .section-icon { width:52px; height:52px; border-radius:14px; background:linear-gradient(135deg,var(--accent) 0%,#5b21b6 100%); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; box-shadow:0 0 20px #a78bfa44; }
+  .section-header h2 { font-family:'Orbitron',monospace; font-size:clamp(18px,4vw,26px); font-weight:700; color:#fff; }
+  .section-header p { color:var(--muted); font-size:13px; margin-top:4px; }
+
+  .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; margin-bottom:20px; transition:border-color 0.2s; }
+  .card:hover { border-color:#2a2060; }
+  .card h3 { font-family:'Orbitron',monospace; font-size:14px; color:var(--accent); letter-spacing:1px; margin-bottom:12px; }
+  .card p, .card li { color:#c8dff0; font-size:15px; line-height:1.75; }
+  .card ul { padding-left:20px; }
+  .card li { margin-bottom:6px; }
+
+  .highlight { background:#a78bfa11; border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; color:var(--text); font-size:15px; line-height:1.7; }
+  .highlight strong { color:var(--accent); }
+
+  .video-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 28px; margin-bottom:16px; display:flex; align-items:center; gap:20px; cursor:pointer; transition:all 0.2s; text-decoration:none; }
+  .video-card:hover { border-color:var(--accent2); background:#1a001a; transform:translateX(4px); }
+  .vid-thumb { width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent2),#8b1a6a); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+  .vid-info h4 { color:#fff; font-size:15px; font-weight:600; margin-bottom:4px; }
+  .vid-info p { color:var(--muted); font-size:13px; }
+  .vid-arrow { margin-left:auto; color:var(--accent2); font-size:20px; }
+
+  .vocab-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin-top:8px; }
+  .flip-card { height:130px; perspective:800px; cursor:pointer; }
+  .flip-inner { width:100%; height:100%; transform-style:preserve-3d; transition:transform 0.5s ease; position:relative; }
+  .flip-card.flipped .flip-inner { transform:rotateY(180deg); }
+  .flip-front, .flip-back { position:absolute; inset:0; border-radius:12px; border:1px solid var(--border); backface-visibility:hidden; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; }
+  .flip-front { background:var(--card); font-family:'Orbitron',monospace; font-size:12px; font-weight:700; color:var(--accent); letter-spacing:0.5px; }
+  .flip-back { background:linear-gradient(135deg,#1a0a38,#120a28); transform:rotateY(180deg); font-size:13px; color:#c8dff0; line-height:1.5; border-color:var(--accent); }
+  .flip-hint { text-align:center; color:var(--muted); font-size:12px; margin-bottom:14px; letter-spacing:1px; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:600px){ .two-col{grid-template-columns:1fr;} }
+
+  table { width:100%; border-collapse:collapse; margin-top:12px; }
+  th { background:#150a2e; color:var(--accent); font-family:'Orbitron',monospace; font-size:11px; letter-spacing:1px; padding:12px 14px; text-align:left; border-bottom:1px solid var(--border); }
+  td { padding:11px 14px; font-size:14px; color:#c8dff0; border-bottom:1px solid #1a0a38; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:#1a0a3822; }
+
+  .spectrum-full {
+    height:44px; border-radius:10px;
+    background:linear-gradient(90deg,
+      #380038 0%,    /* Radio */
+      #6600aa 10%,   /* Microwave */
+      #aa0000 22%,   /* Infrared */
+      #ff2200 32%,   /* Infrared→Vis */
+      #ff6600 38%,
+      #ffcc00 42%,
+      #88ff00 46%,
+      #00ff44 50%,
+      #00aaff 54%,
+      #0044ff 58%,
+      #6600ff 62%,
+      #9900ff 65%,   /* UV starts */
+      #cc00ff 70%,   /* UV */
+      #4444ff 78%,   /* X-ray */
+      #aaaaff 88%,   /* Gamma */
+      #ffffff 100%
+    );
+    margin:14px 0 6px;
+    border:1px solid #333;
+    position:relative;
+  }
+  .spectrum-labels-full { display:flex; justify-content:space-between; font-size:10px; color:var(--muted); padding:0 2px; }
+  .vis-marker { position:absolute; top:-6px; left:38%; right:35%; height:56px; border:2px solid #ffffff66; border-radius:6px; pointer-events:none; }
+  .vis-label { position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-size:10px; color:#fff; white-space:nowrap; font-family:'Orbitron',monospace; letter-spacing:1px; }
+
+  .wave-demo { background:#060e1e; border-radius:12px; border:1px solid var(--border); padding:20px; margin-bottom:20px; text-align:center; }
+  .wave-demo canvas { display:block; width:100%; border-radius:8px; }
+
+  .slider-group { margin:16px 0; }
+  .slider-group label { display:block; color:var(--muted); font-size:13px; margin-bottom:6px; letter-spacing:1px; }
+  .slider-group input[type=range] { width:100%; accent-color:var(--accent); cursor:pointer; }
+  .slider-val { color:var(--accent); font-family:'Orbitron',monospace; font-size:14px; margin-top:4px; display:block; }
+
+  .region-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0; }
+  .region-card { border-radius:14px; border:1px solid var(--border); padding:20px 18px; cursor:pointer; transition:all 0.25s; }
+  .region-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px #00000055; }
+  .region-card .r-icon { font-size:28px; margin-bottom:8px; }
+  .region-card h4 { font-family:'Orbitron',monospace; font-size:12px; letter-spacing:1px; margin-bottom:6px; }
+  .region-card p { font-size:13px; color:var(--muted); line-height:1.5; }
+  .region-card .r-use { margin-top:8px; font-size:12px; font-weight:600; }
+
+  /* region color themes */
+  .r-radio    { background:#38003822; border-color:#660066; }
+  .r-radio    h4 { color:#dd88ff; } .r-radio .r-use { color:#dd88ff; }
+  .r-micro    { background:#00003822; border-color:#003399; }
+  .r-micro    h4 { color:#88aaff; } .r-micro .r-use { color:#88aaff; }
+  .r-infra    { background:#38000022; border-color:#660000; }
+  .r-infra    h4 { color:#ff8866; } .r-infra .r-use { color:#ff8866; }
+  .r-vis      { background:#00183022; border-color:#1a4a6a; }
+  .r-vis      h4 { color:#00d4ff; } .r-vis .r-use { color:#00d4ff; }
+  .r-uv       { background:#28003822; border-color:#550066; }
+  .r-uv       h4 { color:#cc66ff; } .r-uv .r-use { color:#cc66ff; }
+  .r-xray     { background:#001e3822; border-color:#004466; }
+  .r-xray     h4 { color:#66ddff; } .r-xray .r-use { color:#66ddff; }
+  .r-gamma    { background:#003a1022; border-color:#006622; }
+  .r-gamma    h4 { color:#44ff88; } .r-gamma .r-use { color:#44ff88; }
+
+  .wave-properties-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
+  @media(max-width:600px){ .wave-properties-grid{grid-template-columns:1fr 1fr;} }
+  .wp-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 14px; text-align:center; }
+  .wp-card .wp-icon { font-size:28px; margin-bottom:8px; }
+  .wp-card h4 { font-family:'Orbitron',monospace; font-size:11px; color:var(--accent); letter-spacing:1px; margin-bottom:6px; }
+  .wp-card p  { font-size:12px; color:var(--muted); line-height:1.4; }
+  .wp-card .wp-val { font-family:'Orbitron',monospace; font-size:14px; color:#fff; margin:6px 0; }
+
+  /* QUIZ */
+  .quiz-box { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; margin-bottom:20px; }
+  .q-counter { font-family:'Orbitron',monospace; font-size:11px; color:var(--muted); letter-spacing:2px; margin-bottom:12px; }
+  .q-text { font-size:17px; font-weight:600; color:#fff; margin-bottom:22px; line-height:1.5; }
+  .q-options { display:grid; gap:10px; }
+  .q-opt { padding:14px 18px; border-radius:10px; border:1px solid var(--border); background:transparent; color:var(--text); font-family:'Exo 2',sans-serif; font-size:14px; cursor:pointer; text-align:left; transition:all 0.2s; }
+  .q-opt:hover:not(:disabled) { border-color:var(--accent); background:#a78bfa0d; }
+  .q-opt.correct { border-color:var(--correct); background:#00ff6611; color:var(--correct); }
+  .q-opt.wrong   { border-color:var(--wrong);   background:#ff004411; color:var(--wrong); }
+  .q-feedback { margin-top:14px; padding:12px 16px; border-radius:8px; font-size:14px; line-height:1.6; display:none; }
+  .q-feedback.show { display:block; }
+  .q-feedback.ok  { background:#00ff6611; border:1px solid var(--correct); color:var(--correct); }
+  .q-feedback.bad { background:#ff004411; border:1px solid var(--wrong);   color:#ff8899; }
+  .q-next { margin-top:16px; padding:10px 28px; border-radius:100px; border:1px solid var(--accent); background:transparent; color:var(--accent); font-family:'Exo 2',sans-serif; font-size:14px; cursor:pointer; display:none; transition:all 0.2s; }
+  .q-next.show { display:inline-block; }
+  .q-next:hover { background:var(--accent); color:#000; }
+
+  .score-box { text-align:center; padding:40px 20px; display:none; }
+  .score-box.show { display:block; }
+  .score-ring { width:120px; height:120px; border-radius:50%; border:4px solid var(--accent); display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 20px; box-shadow:0 0 30px #a78bfa44; }
+  .score-num { font-family:'Orbitron',monospace; font-size:32px; font-weight:900; color:var(--accent); }
+  .score-lbl { font-size:11px; color:var(--muted); letter-spacing:1px; }
+  .score-msg { font-size:18px; color:#fff; margin-bottom:8px; }
+  .score-sub { color:var(--muted); font-size:14px; margin-bottom:24px; }
+  .btn-retry { padding:12px 32px; border-radius:100px; border:1px solid var(--accent2); background:transparent; color:var(--accent2); font-family:'Exo 2',sans-serif; font-size:14px; cursor:pointer; transition:all 0.2s; }
+  .btn-retry:hover { background:var(--accent2); color:#000; }
+
+  .section-nav { display:flex; justify-content:space-between; align-items:center; margin-top:40px; gap:12px; }
+  .btn-nav { padding:12px 28px; border-radius:100px; border:1px solid var(--border); background:transparent; color:var(--text); font-family:'Exo 2',sans-serif; font-size:14px; cursor:pointer; transition:all 0.2s; }
+  .btn-nav:hover { border-color:var(--accent); color:var(--accent); }
+  .btn-nav.primary { background:var(--accent); color:#000; border-color:var(--accent); font-weight:600; }
+  .btn-nav.primary:hover { background:#8b6fe8; border-color:#8b6fe8; }
+  .btn-nav:disabled { opacity:0.3; cursor:default; }
+
+  .next-lesson-card { background:linear-gradient(135deg,#0f2040,#150a2e); border:1px solid var(--accent); border-radius:16px; padding:28px; text-align:center; text-decoration:none; display:block; transition:all 0.25s; margin-top:20px; }
+  .next-lesson-card:hover { transform:translateY(-3px); box-shadow:0 12px 32px #a78bfa22; }
+  .next-lesson-card .nl-tag { font-family:'Orbitron',monospace; font-size:11px; letter-spacing:3px; color:var(--muted); margin-bottom:8px; }
+  .next-lesson-card h3 { font-family:'Orbitron',monospace; font-size:20px; color:#fff; margin-bottom:6px; }
+  .next-lesson-card p { color:var(--muted); font-size:14px; }
+  .next-lesson-card .nl-arrow { font-size:28px; color:var(--accent); margin-top:12px; }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<a class="back-btn" href="../light-unit.html">← Back to Unit Overview</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">8th Grade Physical Science · Unit: Light</div>
+  <h1><span>Electromagnetic</span> Radiation</h1>
+  <p class="hero-sub">Wave Characteristics · The EM Spectrum · Regions & Uses</p>
+  <div class="sol-badge">Virginia SOL PS.7</div>
+</div>
+
+<!-- NAV -->
+<div class="progress-wrap">
+  <div class="progress-nav" id="navBar">
+    <button class="nav-pill active"  onclick="goTo(0)">1. What Is EM?</button>
+    <button class="nav-pill" onclick="goTo(1)">2. Wave Properties</button>
+    <button class="nav-pill" onclick="goTo(2)">3. EM Spectrum</button>
+    <button class="nav-pill" onclick="goTo(3)">4. Regions & Uses</button>
+    <button class="nav-pill" onclick="goTo(4)">5. Visible Light</button>
+    <button class="nav-pill" onclick="goTo(5)">6. Vocabulary</button>
+    <button class="nav-pill" onclick="goTo(6)">7. Quiz</button>
+  </div>
+</div>
+
+<!-- ══ SEC 0: WHAT IS EM? ══ -->
+<div class="section active" id="sec0">
+  <div class="section-header">
+    <div class="section-icon">⚡</div>
+    <div><h2>What Is Electromagnetic Radiation?</h2><p>Module 1 of 7 · Introduction</p></div>
+  </div>
+
+  <div class="card">
+    <p><strong style="color:var(--accent)">Electromagnetic (EM) radiation</strong> is energy that travels through space as oscillating electric and magnetic fields. Unlike sound waves, EM waves do <strong style="color:#fff">not require a medium</strong> — they can travel through the vacuum of space!</p>
+    <div class="highlight">
+      <strong>Key Idea:</strong> All electromagnetic radiation travels at the same speed in a vacuum — the speed of light: <strong>~300,000,000 m/s (3 × 10⁸ m/s)</strong>. This is called <em>c</em>.
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>🔋 TWO FIELDS IN ONE</h3>
+      <p>EM radiation is made of two perpendicular waves oscillating together:</p>
+      <ul style="margin-top:10px">
+        <li>An <strong style="color:#ffaaff">electric field</strong> wave</li>
+        <li>A <strong style="color:#aaffaa">magnetic field</strong> wave</li>
+        <li>Both perpendicular to the direction of travel</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🚀 NO MEDIUM NEEDED</h3>
+      <p>EM waves are <strong style="color:#fff">transverse waves</strong> that need no matter to travel through. That's why:</p>
+      <ul style="margin-top:10px">
+        <li>Sunlight reaches Earth through space</li>
+        <li>Radio signals travel to satellites</li>
+        <li>X-rays pass through the body</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📡 SOURCES OF EM RADIATION</h3>
+    <table>
+      <tr><th>Source</th><th>Type of EM Radiation Produced</th></tr>
+      <tr><td>The Sun</td><td>Visible light, UV, infrared, X-rays</td></tr>
+      <tr><td>Cell towers</td><td>Microwaves, radio waves</td></tr>
+      <tr><td>Hot objects</td><td>Infrared (heat radiation)</td></tr>
+      <tr><td>Medical equipment</td><td>X-rays, gamma rays</td></tr>
+      <tr><td>Light bulbs</td><td>Visible light, infrared</td></tr>
+    </table>
+  </div>
+
+  <a class="video-card" href="https://youtu.be/IRBfpBPELmE?si=IOjj9K8EI1Jz-Qdc" target="_blank">
+    <div class="vid-thumb">▶</div>
+    <div class="vid-info">
+      <h4>Light Is Waves – PBS</h4>
+      <p>What is light and how does it travel as waves? · YouTube</p>
+    </div>
+    <div class="vid-arrow">→</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" disabled>← Previous</button>
+    <button class="btn-nav primary" onclick="goTo(1)">Next: Wave Properties →</button>
+  </div>
+</div>
+
+<!-- ══ SEC 1: WAVE PROPERTIES ══ -->
+<div class="section" id="sec1">
+  <div class="section-header">
+    <div class="section-icon">〰️</div>
+    <div><h2>Wave Characteristics</h2><p>Module 2 of 7 · How EM waves behave</p></div>
+  </div>
+
+  <div class="wave-properties-grid">
+    <div class="wp-card">
+      <div class="wp-icon">📏</div>
+      <h4>Wavelength</h4>
+      <div class="wp-val">λ (lambda)</div>
+      <p>Distance from one crest to the next. Measured in meters (m), nanometers (nm), or other units.</p>
+    </div>
+    <div class="wp-card">
+      <div class="wp-icon">🔁</div>
+      <h4>Frequency</h4>
+      <div class="wp-val">f (Hz)</div>
+      <p>Number of complete waves passing a point per second. Measured in Hertz (Hz).</p>
+    </div>
+    <div class="wp-card">
+      <div class="wp-icon">⚡</div>
+      <h4>Energy</h4>
+      <div class="wp-val">E (Joules)</div>
+      <p>Amount of energy carried by the wave. Higher frequency = more energy per photon.</p>
+    </div>
+    <div class="wp-card">
+      <div class="wp-icon">📐</div>
+      <h4>Amplitude</h4>
+      <div class="wp-val">A</div>
+      <p>Height of the wave from rest position to crest. Related to the intensity (brightness) of light.</p>
+    </div>
+    <div class="wp-card">
+      <div class="wp-icon">🚀</div>
+      <h4>Wave Speed</h4>
+      <div class="wp-val">c = f × λ</div>
+      <p>All EM waves travel at c = 3×10⁸ m/s in a vacuum, regardless of frequency.</p>
+    </div>
+    <div class="wp-card">
+      <div class="wp-icon">🔄</div>
+      <h4>Period</h4>
+      <div class="wp-val">T = 1/f</div>
+      <p>Time for one complete wave cycle to pass. Inverse of frequency.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>⚖️ WAVELENGTH VS. FREQUENCY RELATIONSHIP</h3>
+    <div class="highlight">
+      <strong>Inverse Relationship:</strong> As wavelength increases → frequency decreases. As wavelength decreases → frequency increases. Since all EM waves travel at the same speed (c), a shorter wavelength must "squeeze" more waves per second = higher frequency.
+    </div>
+    <p style="margin-top:12px">This also means: <strong style="color:var(--accent3)">Higher frequency = more energy.</strong> Gamma rays have the highest frequency and most energy. Radio waves have the lowest frequency and least energy.</p>
+  </div>
+
+  <!-- Interactive wave visualization -->
+  <div class="wave-demo">
+    <p style="color:var(--muted);font-size:13px;margin-bottom:14px;letter-spacing:1px">▸ ADJUST WAVELENGTH TO SEE FREQUENCY & ENERGY CHANGE</p>
+    <canvas id="waveCanvas" height="100"></canvas>
+    <div class="slider-group" style="margin-top:16px;text-align:left">
+      <label>WAVELENGTH (drag to change)</label>
+      <input type="range" id="waveSlider" min="1" max="10" value="5" oninput="drawWave()">
+    </div>
+    <div style="display:flex;gap:24px;margin-top:12px;flex-wrap:wrap">
+      <div>
+        <span style="color:var(--muted);font-size:12px;letter-spacing:1px">WAVELENGTH</span><br>
+        <span id="wvLambda" style="color:var(--accent);font-family:'Orbitron',monospace;font-size:18px">Medium</span>
+      </div>
+      <div>
+        <span style="color:var(--muted);font-size:12px;letter-spacing:1px">FREQUENCY</span><br>
+        <span id="wvFreq" style="color:var(--accent2);font-family:'Orbitron',monospace;font-size:18px">Medium</span>
+      </div>
+      <div>
+        <span style="color:var(--muted);font-size:12px;letter-spacing:1px">ENERGY</span><br>
+        <span id="wvEnergy" style="color:var(--accent3);font-family:'Orbitron',monospace;font-size:18px">Medium</span>
+      </div>
+      <div>
+        <span style="color:var(--muted);font-size:12px;letter-spacing:1px">REGION</span><br>
+        <span id="wvRegion" style="color:#fff;font-family:'Orbitron',monospace;font-size:14px">Visible Light</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📖 WAVE BEHAVIORS</h3>
+    <p>All EM radiation exhibits these wave behaviors:</p>
+    <ul style="margin-top:12px">
+      <li><strong style="color:var(--accent)">Reflection</strong> — bouncing off surfaces</li>
+      <li><strong style="color:var(--accent2)">Refraction</strong> — bending when entering a new medium</li>
+      <li><strong style="color:var(--accent3)">Absorption</strong> — energy taken in by matter</li>
+      <li><strong style="color:#ffd700">Diffraction</strong> — bending around obstacles or through openings</li>
+      <li><strong style="color:#ff9988">Interference</strong> — waves combining to amplify or cancel</li>
+      <li><strong style="color:#88ffff">Transmission</strong> — passing through a material</li>
+    </ul>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(0)">← What Is EM?</button>
+    <button class="btn-nav primary" onclick="goTo(2)">Next: EM Spectrum →</button>
+  </div>
+</div>
+
+<!-- ══ SEC 2: EM SPECTRUM ══ -->
+<div class="section" id="sec2">
+  <div class="section-header">
+    <div class="section-icon">🌈</div>
+    <div><h2>The Electromagnetic Spectrum</h2><p>Module 3 of 7 · All regions overview</p></div>
+  </div>
+
+  <div class="card">
+    <p>The <strong style="color:var(--accent)">electromagnetic spectrum</strong> is the complete range of all EM radiation, organized by wavelength and frequency. It is continuous — there are no sharp boundaries between regions. Visible light is only a tiny slice of the full spectrum!</p>
+    <div class="spectrum-full">
+      <div class="vis-marker"><span class="vis-label">Visible Light</span></div>
+    </div>
+    <div class="spectrum-labels-full">
+      <span>Radio</span>
+      <span>Micro</span>
+      <span>Infrared</span>
+      <span style="color:#aaf">VISIBLE</span>
+      <span>UV</span>
+      <span>X-Ray</span>
+      <span>Gamma</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:16px;flex-wrap:wrap;gap:8px">
+      <div style="text-align:left">
+        <span style="color:var(--muted);font-size:11px;letter-spacing:1px">LONGEST WAVELENGTH →</span><br>
+        <span style="color:#dd88ff;font-family:'Orbitron',monospace;font-size:13px">Radio Waves</span>
+      </div>
+      <div style="text-align:center">
+        <span style="color:var(--muted);font-size:11px;letter-spacing:1px">LOWEST ENERGY</span>
+      </div>
+      <div style="text-align:right">
+        <span style="color:var(--muted);font-size:11px;letter-spacing:1px">← SHORTEST WAVELENGTH</span><br>
+        <span style="color:#44ff88;font-family:'Orbitron',monospace;font-size:13px">Gamma Rays</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📊 SPECTRUM COMPARISON TABLE</h3>
+    <table>
+      <tr><th>Region</th><th>Wavelength</th><th>Frequency</th><th>Energy Level</th></tr>
+      <tr><td style="color:#dd88ff">Radio</td><td>&gt; 1 mm</td><td>Lowest</td><td>Lowest</td></tr>
+      <tr><td style="color:#88aaff">Microwave</td><td>1 mm – 1 m</td><td>Very Low</td><td>Very Low</td></tr>
+      <tr><td style="color:#ff8866">Infrared</td><td>700 nm – 1 mm</td><td>Low</td><td>Low</td></tr>
+      <tr><td style="color:#00d4ff">Visible</td><td>380 – 700 nm</td><td>Medium</td><td>Medium</td></tr>
+      <tr><td style="color:#cc66ff">Ultraviolet</td><td>10 – 380 nm</td><td>High</td><td>High</td></tr>
+      <tr><td style="color:#66ddff">X-Ray</td><td>0.01 – 10 nm</td><td>Very High</td><td>Very High</td></tr>
+      <tr><td style="color:#44ff88">Gamma Ray</td><td>&lt; 0.01 nm</td><td>Highest</td><td>Highest</td></tr>
+    </table>
+  </div>
+
+  <div class="highlight">
+    <strong>Memory Tip:</strong> To remember order from lowest to highest energy: <strong style="color:#fff">"Really Microwaved Infrared Vegetables Until eXplosively Glowing"</strong> — Radio, Microwave, Infrared, Visible, Ultraviolet, X-ray, Gamma
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(1)">← Wave Properties</button>
+    <button class="btn-nav primary" onclick="goTo(3)">Next: Regions & Uses →</button>
+  </div>
+</div>
+
+<!-- ══ SEC 3: REGIONS & USES ══ -->
+<div class="section" id="sec3">
+  <div class="section-header">
+    <div class="section-icon">📡</div>
+    <div><h2>Regions & Real-World Uses</h2><p>Module 4 of 7 · Characteristics and applications</p></div>
+  </div>
+
+  <p style="color:var(--muted);font-size:14px;margin-bottom:20px">Each region of the EM spectrum has unique characteristics that make it useful for specific technologies. Explore each region below.</p>
+
+  <div class="region-cards">
+    <div class="region-card r-radio">
+      <div class="r-icon">📻</div>
+      <h4>Radio Waves</h4>
+      <p>Longest wavelengths, lowest frequency and energy. Can travel great distances and pass through buildings.</p>
+      <div class="r-use">Uses: Radio/TV broadcasting, MRI scanners, WiFi, cell phones</div>
+    </div>
+    <div class="region-card r-micro">
+      <div class="r-icon">📡</div>
+      <h4>Microwaves</h4>
+      <p>Wavelengths 1 mm to 1 m. Can excite water molecules, producing heat. Penetrate clouds and rain.</p>
+      <div class="r-use">Uses: Microwave ovens, radar, satellite communication, GPS</div>
+    </div>
+    <div class="region-card r-infra">
+      <div class="r-icon">🔥</div>
+      <h4>Infrared (IR)</h4>
+      <p>Emitted by warm objects as heat. Wavelengths just longer than visible red light. We feel IR as warmth.</p>
+      <div class="r-use">Uses: TV remotes, night vision, thermal imaging, heat lamps</div>
+    </div>
+    <div class="region-card r-vis">
+      <div class="r-icon">👁️</div>
+      <h4>Visible Light</h4>
+      <p>The only region detectable by the human eye. Ranges from ~380 nm (violet) to ~700 nm (red).</p>
+      <div class="r-use">Uses: Vision, photography, fiber optic communication, lasers</div>
+    </div>
+    <div class="region-card r-uv">
+      <div class="r-icon">☀️</div>
+      <h4>Ultraviolet (UV)</h4>
+      <p>Higher energy than visible light. Causes sunburn, but also destroys bacteria. Produces fluorescence.</p>
+      <div class="r-use">Uses: Sterilization, black lights, detecting counterfeit bills, tanning</div>
+    </div>
+    <div class="region-card r-xray">
+      <div class="r-icon">🦴</div>
+      <h4>X-Rays</h4>
+      <p>High energy; can penetrate soft tissue but is partially blocked by dense materials like bone.</p>
+      <div class="r-use">Uses: Medical imaging, airport security scanning, studying crystals</div>
+    </div>
+    <div class="region-card r-gamma">
+      <div class="r-icon">☢️</div>
+      <h4>Gamma Rays</h4>
+      <p>Highest frequency and energy. Produced by nuclear reactions and radioactive decay. Most penetrating.</p>
+      <div class="r-use">Uses: Cancer treatment (radiation therapy), sterilizing food, studying universe</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>⚠️ IONIZING VS. NON-IONIZING RADIATION</h3>
+    <div class="two-col">
+      <div>
+        <p style="color:#ff8866;font-weight:600;margin-bottom:6px">Non-Ionizing (lower energy)</p>
+        <p>Radio, Microwave, Infrared, Visible — not enough energy to remove electrons from atoms. Generally safer for human exposure.</p>
+      </div>
+      <div>
+        <p style="color:#cc66ff;font-weight:600;margin-bottom:6px">Ionizing (higher energy)</p>
+        <p>UV, X-ray, Gamma — enough energy to remove electrons from atoms, potentially damaging DNA. Requires safety precautions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(2)">← EM Spectrum</button>
+    <button class="btn-nav primary" onclick="goTo(4)">Next: Visible Light →</button>
+  </div>
+</div>
+
+<!-- ══ SEC 4: VISIBLE LIGHT ══ -->
+<div class="section" id="sec4">
+  <div class="section-header">
+    <div class="section-icon">🌈</div>
+    <div><h2>Visible Light & Wave Behavior</h2><p>Module 5 of 7 · Our window into the spectrum</p></div>
+  </div>
+
+  <div class="card">
+    <p>Visible light is the narrow band of EM radiation that human eyes can detect, spanning wavelengths from approximately <strong style="color:violet">380 nm (violet)</strong> to <strong style="color:#ff6644">700 nm (red)</strong>. The colors we see are determined by the wavelength of the light entering our eyes.</p>
+    <div style="height:32px;border-radius:8px;background:linear-gradient(90deg,#8b00ff,#4400cc,#0000ff,#00aaff,#00ff88,#aaff00,#ffff00,#ff8800,#ff0000);margin:16px 0;border:1px solid #333;"></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)">
+      <span>Violet 380nm</span><span>Blue</span><span>Green</span><span>Yellow</span><span>Orange</span><span>Red 700nm</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>〰️ WAVE BEHAVIORS OF VISIBLE LIGHT</h3>
+    <p>Visible light demonstrates all wave behaviors. These behaviors explain many everyday phenomena:</p>
+    <table style="margin-top:12px">
+      <tr><th>Behavior</th><th>Example in Visible Light</th></tr>
+      <tr><td><strong style="color:#00d4ff">Reflection</strong></td><td>Seeing your face in a mirror; moonlight (reflected sunlight)</td></tr>
+      <tr><td><strong style="color:#ff6b35">Refraction</strong></td><td>Rainbow formation; straw appearing bent in water; lenses</td></tr>
+      <tr><td><strong style="color:#7fff6b">Absorption</strong></td><td>Black asphalt heating up; colored objects absorbing certain wavelengths</td></tr>
+      <tr><td><strong style="color:#ffd700">Diffraction</strong></td><td>Light spreading around edges; iridescent colors on a CD surface</td></tr>
+      <tr><td><strong style="color:#ff9988">Interference</strong></td><td>Soap bubble colors; oil slick rainbow patterns</td></tr>
+      <tr><td><strong style="color:#88ffff">Transmission</strong></td><td>Light passing through glass, water, or a window</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>🔴 COLOR & WAVELENGTH</h3>
+      <ul>
+        <li><span style="color:#cc44ff">Violet</span> — 380–450 nm (highest energy)</li>
+        <li><span style="color:#4444ff">Blue</span> — 450–495 nm</li>
+        <li><span style="color:#00aa44">Green</span> — 495–570 nm</li>
+        <li><span style="color:#aaaa00">Yellow</span> — 570–590 nm</li>
+        <li><span style="color:#ff8800">Orange</span> — 590–625 nm</li>
+        <li><span style="color:#ff4444">Red</span> — 625–700 nm (lowest energy)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🌤️ WHY IS THE SKY BLUE?</h3>
+      <p>Sunlight contains all colors. When it enters Earth's atmosphere, gas molecules <strong style="color:#4444ff">scatter blue light</strong> (shorter wavelength) much more than red light. This scattered blue light comes from all directions, making the sky appear blue.</p>
+    </div>
+  </div>
+
+  <a class="video-card" href="https://youtu.be/O0PawPSdk28?si=rcj7iVFfS_97aeyl" target="_blank">
+    <div class="vid-thumb" style="background:linear-gradient(135deg,#7b2fff,#0044ff)">▶</div>
+    <div class="vid-info">
+      <h4>The Physics of Light — TED-Ed</h4>
+      <p>Visible light wave behavior explained · YouTube</p>
+    </div>
+    <div class="vid-arrow">→</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(3)">← Regions & Uses</button>
+    <button class="btn-nav primary" onclick="goTo(5)">Next: Vocabulary →</button>
+  </div>
+</div>
+
+<!-- ══ SEC 5: VOCABULARY ══ -->
+<div class="section" id="sec5">
+  <div class="section-header">
+    <div class="section-icon">📖</div>
+    <div><h2>Key Vocabulary</h2><p>Module 6 of 7 · Tap each card to flip</p></div>
+  </div>
+  <p class="flip-hint">▸ TAP A CARD TO FLIP IT</p>
+  <div class="vocab-grid" id="vocabGrid"></div>
+  <div class="section-nav" style="margin-top:32px">
+    <button class="btn-nav" onclick="goTo(4)">← Visible Light</button>
+    <button class="btn-nav primary" onclick="goTo(6)">Take the Quiz →</button>
+  </div>
+</div>
+
+<!-- ══ SEC 6: QUIZ ══ -->
+<div class="section" id="sec6">
+  <div class="section-header">
+    <div class="section-icon">✏️</div>
+    <div><h2>SOL-Style Quiz</h2><p>Module 7 of 7 · Test your knowledge</p></div>
+  </div>
+
+  <div class="quiz-box" id="quizBox">
+    <div class="q-counter" id="qCounter">QUESTION 1 OF 8</div>
+    <div class="q-text" id="qText"></div>
+    <div class="q-options" id="qOptions"></div>
+    <div class="q-feedback" id="qFeedback"></div>
+    <button class="q-next" id="qNext" onclick="nextQuestion()">Next Question →</button>
+  </div>
+
+  <div class="score-box" id="scoreBox">
+    <div class="score-ring">
+      <span class="score-num" id="scoreNum">0/8</span>
+      <span class="score-lbl">SCORE</span>
+    </div>
+    <p class="score-msg" id="scoreMsg"></p>
+    <p class="score-sub" id="scoreSub"></p>
+    <button class="btn-retry" onclick="resetQuiz()">↺ Try Again</button>
+  </div>
+
+  <a class="next-lesson-card" href="ps9-properties-of-light.html">
+    <div class="nl-tag">NEXT LESSON IN THIS UNIT</div>
+    <h3>PS.9 — Properties of Light</h3>
+    <p>Reflection · Refraction · Absorption · Virtual Lab</p>
+    <div class="nl-arrow">→</div>
+  </a>
+
+  <div class="section-nav">
+    <button class="btn-nav" onclick="goTo(5)">← Vocabulary</button>
+    <button class="btn-nav primary" onclick="goTo(0)">↺ Restart</button>
+  </div>
+</div>
+
+<script>
+// NAV
+const sections = document.querySelectorAll('.section');
+const pills = document.querySelectorAll('.nav-pill');
+const completed = new Set();
+let current = 0;
+function goTo(idx) {
+  sections[current].classList.remove('active');
+  completed.add(current);
+  current = idx;
+  sections[current].classList.add('active');
+  pills.forEach((p,i)=>{
+    p.classList.remove('active');
+    if(completed.has(i)&&i!==current) p.classList.add('done');
+    else p.classList.remove('done');
+  });
+  pills[current].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(idx===1) setTimeout(drawWave,200);
+}
+
+// WAVE VISUALIZER
+function drawWave() {
+  const canvas = document.getElementById('waveCanvas');
+  if(!canvas) return;
+  const dpr = window.devicePixelRatio||1;
+  const W = canvas.offsetWidth*dpr, H = 100*dpr;
+  canvas.width=W; canvas.height=H;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  const w=canvas.offsetWidth, h=100;
+  ctx.clearRect(0,0,w,h);
+  const val = parseInt(document.getElementById('waveSlider').value); // 1=short/high, 10=long/low
+  const wl = val; // higher val = longer wavelength = lower freq
+  const cycles = 11 - wl;
+  const freq = cycles / w;
+  const amp = 28;
+
+  // color based on wavelength
+  const colors = ['#ffffff','#44ff88','#00d4ff','#a78bfa','#f472b6','#ff8866','#dd88ff','#ffdd00','#ff6644','#ff0000'];
+  const col = colors[Math.min(val-1, colors.length-1)];
+
+  ctx.strokeStyle = col; ctx.lineWidth = 2.5;
+  ctx.shadowColor = col; ctx.shadowBlur = 10;
+  ctx.beginPath();
+  for(let x=0;x<w;x++){
+    const y = h/2 + amp * Math.sin(2*Math.PI*freq*x);
+    if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+  ctx.shadowBlur=0;
+
+  // labels
+  const labels = ['Very Short','Short','Short','Medium-Short','Medium','Medium','Medium-Long','Long','Long','Very Long'];
+  const freqL = ['Extremely High','Very High','High','Medium-High','Medium','Medium','Medium-Low','Low','Low','Very Low'];
+  const energyL = ['Extremely High','Very High','High','Medium-High','Medium','Medium','Medium-Low','Low','Low','Very Low'];
+  const regions = ['Gamma Ray','X-Ray','X-Ray/UV','UV','Visible Light','Visible Light','Infrared','Infrared','Microwave','Radio Wave'];
+  const i = val-1;
+  document.getElementById('wvLambda').textContent = labels[i];
+  document.getElementById('wvFreq').textContent = freqL[10-val];
+  document.getElementById('wvEnergy').textContent = energyL[10-val];
+  document.getElementById('wvRegion').textContent = regions[i];
+}
+
+// VOCABULARY
+const vocab = [
+  {term:'Electromagnetic Radiation', def:'Energy that travels as oscillating electric and magnetic fields; requires no medium.'},
+  {term:'Electromagnetic Spectrum', def:'The complete range of all EM radiation organized by wavelength and frequency.'},
+  {term:'Wavelength (λ)', def:'Distance from one wave crest to the next; determines a wave\'s color/type.'},
+  {term:'Frequency (f)', def:'Number of complete waves passing a point per second; measured in Hertz (Hz).'},
+  {term:'Amplitude', def:'Height of a wave from its rest position; related to the intensity or brightness of light.'},
+  {term:'Transverse Wave', def:'A wave where the disturbance is perpendicular to the direction of travel.'},
+  {term:'Infrared', def:'EM radiation with wavelengths longer than visible red light; detected as heat.'},
+  {term:'Ultraviolet (UV)', def:'EM radiation with wavelengths shorter than visible violet; higher energy than visible.'},
+  {term:'Gamma Ray', def:'Highest-energy, shortest-wavelength EM radiation; produced by nuclear reactions.'},
+  {term:'Radio Wave', def:'Lowest-energy, longest-wavelength EM radiation; used in communication.'},
+  {term:'Visible Spectrum', def:'The narrow range of EM radiation (380–700 nm) detectable by the human eye.'},
+  {term:'Dispersion', def:'Separation of white light into component colors due to different degrees of refraction.'},
+];
+const grid = document.getElementById('vocabGrid');
+vocab.forEach(v=>{
+  const c=document.createElement('div');
+  c.className='flip-card';
+  c.innerHTML=`<div class="flip-inner"><div class="flip-front">${v.term}</div><div class="flip-back">${v.def}</div></div>`;
+  c.onclick=()=>c.classList.toggle('flipped');
+  grid.appendChild(c);
+});
+
+// QUIZ
+const questions = [
+  {q:'What is the speed of all electromagnetic radiation in a vacuum?',
+   opts:['150,000,000 m/s','3,000 m/s','300,000,000 m/s','It varies by type of EM wave'],
+   ans:2, exp:'All EM waves travel at c = 3 × 10⁸ m/s (300,000,000 m/s) in a vacuum, regardless of their frequency or wavelength.'},
+  {q:'Which region of the electromagnetic spectrum has the HIGHEST frequency and the MOST energy?',
+   opts:['Radio waves','Visible light','Infrared','Gamma rays'],
+   ans:3, exp:'Gamma rays have the shortest wavelength, highest frequency, and most energy of all EM radiation. They are produced by nuclear reactions.'},
+  {q:'As the wavelength of an electromagnetic wave increases, its frequency:',
+   opts:['Also increases','Decreases','Stays the same — they are unrelated','First increases, then decreases'],
+   ans:1, exp:'Wavelength and frequency have an inverse relationship. Since all EM waves travel at the same speed (c = f × λ), longer wavelength means fewer waves per second = lower frequency.'},
+  {q:'Which type of EM radiation is used in microwave ovens to heat food?',
+   opts:['Infrared radiation','Radio waves','Microwaves','Ultraviolet light'],
+   ans:2, exp:'Microwave ovens use microwaves, which excite water molecules in food, causing friction and generating heat throughout the food.'},
+  {q:'A student uses sunscreen to protect their skin at the beach. Which type of EM radiation is the sunscreen blocking?',
+   opts:['Infrared radiation','Ultraviolet (UV) radiation','Visible light','X-rays'],
+   ans:1, exp:'Sunscreen blocks ultraviolet (UV) radiation from the sun. UV has enough energy (ionizing radiation) to damage DNA in skin cells, causing sunburn and potentially cancer.'},
+  {q:'Which of the following correctly orders EM waves from LONGEST to SHORTEST wavelength?',
+   opts:['Gamma → X-ray → UV → Visible → IR → Microwave → Radio','Radio → Microwave → Infrared → Visible → UV → X-ray → Gamma','Visible → UV → Infrared → X-ray → Radio → Microwave → Gamma','X-ray → UV → Visible → Infrared → Radio → Microwave → Gamma'],
+   ans:1, exp:'From longest to shortest wavelength (lowest to highest energy): Radio, Microwave, Infrared, Visible, Ultraviolet, X-ray, Gamma. Remember: "Really Microwaved Infrared Vegetables Until eXplosively Glowing"'},
+  {q:'Which statement BEST explains why all regions of the EM spectrum are considered the same type of wave?',
+   opts:['They all have the same wavelength','They all require a medium to travel through','They all travel at the same speed and consist of oscillating electric and magnetic fields','They all have the same frequency and energy'],
+   ans:2, exp:'All EM waves are the same type because they consist of oscillating electric and magnetic fields and travel at the speed of light (c) in a vacuum. What differs is their wavelength and frequency.'},
+  {q:'A doctor uses X-rays to image a broken bone. Why can X-rays create images of bones inside the body?',
+   opts:['X-rays are reflected by bones just like visible light reflects from mirrors','X-rays have very high energy and can penetrate soft tissue, but are partially blocked by dense bone material','X-rays heat the bones, making them glow and become visible','X-rays travel slower through bone, making it appear different from tissue'],
+   ans:1, exp:'X-rays have very high energy and short wavelengths that allow them to pass through soft tissue (muscle, fat), but dense materials like bone partially absorb and block them, creating shadow-like images on film or a detector.'},
+];
+
+let qIdx=0, score=0, answered=false;
+function loadQ(){
+  const q=questions[qIdx];
+  document.getElementById('qCounter').textContent=`QUESTION ${qIdx+1} OF ${questions.length}`;
+  document.getElementById('qText').textContent=q.q;
+  const opts=document.getElementById('qOptions');
+  opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const btn=document.createElement('button');
+    btn.className='q-opt'; btn.textContent=o;
+    btn.onclick=()=>selectAnswer(i);
+    opts.appendChild(btn);
+  });
+  document.getElementById('qFeedback').className='q-feedback';
+  document.getElementById('qNext').className='q-next';
+  answered=false;
+}
+function selectAnswer(i){
+  if(answered)return;
+  answered=true;
+  const q=questions[qIdx];
+  const btns=document.querySelectorAll('.q-opt');
+  btns.forEach(b=>b.disabled=true);
+  btns[q.ans].classList.add('correct');
+  const fb=document.getElementById('qFeedback');
+  if(i===q.ans){score++; btns[i].classList.add('correct'); fb.className='q-feedback ok show'; fb.innerHTML='✓ Correct! '+q.exp;}
+  else{btns[i].classList.add('wrong'); fb.className='q-feedback bad show'; fb.innerHTML='✗ Not quite. '+q.exp;}
+  document.getElementById('qNext').className='q-next show';
+  if(qIdx===questions.length-1) document.getElementById('qNext').textContent='See My Score →';
+}
+function nextQuestion(){
+  qIdx++;
+  if(qIdx>=questions.length) showScore();
+  else loadQ();
+}
+function showScore(){
+  document.getElementById('quizBox').style.display='none';
+  const sb=document.getElementById('scoreBox'); sb.className='score-box show';
+  document.getElementById('scoreNum').textContent=score+'/'+questions.length;
+  const pct=score/questions.length;
+  let msg,sub;
+  if(pct===1){msg='🌟 Perfect Score!';sub='Outstanding! You\'ve mastered electromagnetic radiation.';}
+  else if(pct>=0.75){msg='🎉 Great Work!';sub='Strong understanding of the EM spectrum!';}
+  else if(pct>=0.5){msg='📚 Keep Going!';sub='Review the spectrum regions and wave properties modules.';}
+  else{msg='🔁 Let\'s Review!';sub='Go back through the lesson modules and try again.';}
+  document.getElementById('scoreMsg').textContent=msg;
+  document.getElementById('scoreSub').textContent=sub;
+}
+function resetQuiz(){
+  qIdx=0;score=0;answered=false;
+  document.getElementById('quizBox').style.display='block';
+  document.getElementById('scoreBox').className='score-box';
+  loadQ();
+}
+loadQ();
+drawWave();
+window.addEventListener('resize',()=>{ if(current===1) drawWave(); });
+</script>
+</body>
+</html>
